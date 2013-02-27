@@ -66,7 +66,7 @@ class EventController extends Controller {
     }
 
     public function actionAdd() {
-        $this->load_404();
+        
         $this->CheckPermission();
         if ($_POST)
             $this->do_add();
@@ -100,23 +100,23 @@ class EventController extends Controller {
         $show_tickets = $_POST['show_tickets'];
 
         if ($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tiêu đề không được để trống.";
+            $this->message['error'][] = "Please enter event title.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
-            $this->message['error'][] = "Hình ảnh không đúng định dạng hoặc dung lượng.";
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
-            $this->message['error'][] = "Hình ảnh không đúng kích thướt.";
+            $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
-            $this->message['error'][] = "Vui lòng chọn thể loại chính.";
+            $this->message['error'][] = "Please select a primary category.";
         if ($this->validator->is_empty_string($location))
-            $this->message['error'][] = "Địa điểm không được để trống.";
+            $this->message['error'][] = "Please enter the location.";
         if ($this->validator->is_empty_string($address))
-            $this->message['error'][] = "Địa chỉ không được để trống.";
+            $this->message['error'][] = "Please enter the address.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
-            $this->message['error'][] = "Ngày bắt đầu không chính xác.";
+            $this->message['error'][] = "Date starts incorrect.";
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
-            $this->message['error'][] = "Ngày kết thúc không chính xác.";
+            $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Nội dung không được để trống.";
+            $this->message['error'][] = "Please enter description.";
 
         //$this->validate_tickets();
 
@@ -128,7 +128,7 @@ class EventController extends Controller {
         $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
 
         if (strtotime($start_time) - strtotime($end_time) >= 0) {
-            $this->message['error'][] = "Ngày bắt đầu phải nhỏ hơn ngày kết thúc.";
+            $this->message['error'][] = "The ending time of your event must be later than the start time.";
             $this->message['success'] = false;
             return false;
         }
@@ -175,7 +175,7 @@ class EventController extends Controller {
 
         //$this->add_ticket_types($event_id);
 
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Thêm', 'Dữ liệu' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event_id/?s=1");
     }
 
@@ -210,37 +210,37 @@ class EventController extends Controller {
 
 
         if ($this->validator->is_empty_string(trim($ticket_name)))
-            $this->message['error'][] = "Tên loại vé không được để trống";
+            $this->message['error'][] = "Please enter a ticket name.";
         if ($this->validator->is_empty_string(trim($ticket_quantity)))
-            $this->message['error'][] = "Số lượng không được để trống";
+            $this->message['error'][] = "Please enter the quantity of tickets available for this ticket type";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_quantity)) || trim($ticket_quantity) < 1)
-            $this->message['error'][] = "Số lượng phải là số lớn hơn 0";
+            $this->message['error'][] = "The quantity of tickets must be larger than 0";
         if (array_search($ticket_status, array_flip(Helper::ticket_status())) === false)
-            $this->message['error'][] = "Tình trạng vé không chính xác";
+            $this->message['error'][] = "Status of tickets does not correct.";
         if (count($ticket_start_date) != 3 || !$this->validator->is_valid_date($ticket_start_date[0], $ticket_start_date[1], $ticket_start_date[2]))
-            $this->message['error'][] = "Ngày bắt đầu không chính xác.";
+            $this->message['error'][] = "Date starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_start_hour)) || trim($ticket_start_hour) < 0 || trim($ticket_start_hour) > 23)
-            $this->message['error'][] = "Giờ bắt đầu không chính xác.";
+            $this->message['error'][] = "Hour starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_start_minute)) || trim($ticket_start_minute) < 0 || trim($ticket_start_minute) > 59)
-            $this->message['error'][] = "Phút bắt đầu không chính xác.";
+            $this->message['error'][] = "Minute starts incorrect.";
         if (count($ticket_end_date) != 3 || !$this->validator->is_valid_date($ticket_end_date[0], $ticket_end_date[1], $ticket_end_date[2]))
-            $this->message['error'][] = "Ngày kết thúc không chính xác.";
+            $this->message['error'][] = "Date ends incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_end_hour)) || trim($ticket_end_hour) < 0 || trim($ticket_end_hour) > 23)
-            $this->message['error'][] = "Giờ bắt đầu không chính xác.";
+            $this->message['error'][] = "Hour starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_end_minute)) || trim($ticket_end_minute) < 0 || trim($ticket_end_minute) > 59)
-            $this->message['error'][] = "Phút bắt đầu không chính xác.";
+            $this->message['error'][] = "Minute starts incorrect.";
         if ($this->validator->is_empty_string($ticket_min))
-            $this->message['error'][] = "Số lượng vé tối thiểu không được để trống";
+            $this->message['error'][] = "Please enter Minimum tickets per order.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_min)) || trim($ticket_min) < 1)
-            $this->message['error'][] = "Số lượng vé tối thiểu phải là số lớn hơn 0";
+            $this->message['error'][] = "Minimum tickets per order must be larger than 0.";
         if (!$this->validator->is_empty_string($ticket_max) && (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_max)) || trim($ticket_max) < 1))
-            $this->message['error'][] = "Số lượng vé tối đa phải là số lớn hơn 0";
+            $this->message['error'][] = "Maximum tickets per order must be larger than 0.";
 
         if ($ticket_type == "paid") {
             if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_fee)) || trim($ticket_fee) < 1)
-                $this->message['error'][] = "Giá vé phải là số lớn hơn 0";
+                $this->message['error'][] = "Price of ticeket must be larger than 0.";
             if ($ticket_service_fee != 1 && $ticket_service_fee != 0)
-                $this->message['error'][] = "Phí dịch vụ không chính xác";
+                $this->message['error'][] = "Service fee does not correct.";
         }
 
         if (count($this->message['error']) > 0) {
@@ -252,7 +252,7 @@ class EventController extends Controller {
         $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
 
         if (strtotime($sale_start) - strtotime($sale_end) >= 0) {
-            $this->message['error'][] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu";
+            $this->message['error'][] = "The ending time must be later than the start time.";
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;
@@ -276,8 +276,8 @@ class EventController extends Controller {
             'sale_end' => $sale_end, 'minimum' => $ticket_min,
             'maximum' => $ticket_max, 'service_fee' => $service_fee
                 ));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Thêm', 'Dữ liệu' => $_POST));
-        $this->message['error'][] = "Thêm loại vé mới thành công";
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
+        $this->message['error'][] = "Add a new ticket successful.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
     }
 
@@ -288,7 +288,6 @@ class EventController extends Controller {
             return;
         if (array_search($ticket['type'], array_flip(Helper::ticket_types())) === false)
             return;
-
 
         $ticket_name = $_POST['ticket_name'];
         $ticket_quantity = $_POST['ticket_quantity'];
@@ -310,43 +309,43 @@ class EventController extends Controller {
 
 
         if ($this->validator->is_empty_string(trim($ticket_name)))
-            $this->message['error'][] = "Tên loại vé không được để trống";
+            $this->message['error'][] = "Please enter a ticket name.";
         if ($this->validator->is_empty_string(trim($ticket_quantity)))
-            $this->message['error'][] = "Số lượng không được để trống";
+            $this->message['error'][] = "Please enter the quantity of tickets available for this ticket type";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_quantity)) || trim($ticket_quantity) < 1)
-            $this->message['error'][] = "Số lượng phải là số lớn hơn 0";
+            $this->message['error'][] = "The quantity of tickets must be larger than 0";
         if (array_search($ticket_status, array_flip(Helper::ticket_status())) === false)
-            $this->message['error'][] = "Tình trạng vé không chính xác";
+            $this->message['error'][] = "Status of tickets does not correct.";
         if (count($ticket_start_date) != 3 || !$this->validator->is_valid_date($ticket_start_date[0], $ticket_start_date[1], $ticket_start_date[2]))
-            $this->message['error'][] = "Ngày bắt đầu không chính xác.";
+            $this->message['error'][] = "Date starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_start_hour)) || trim($ticket_start_hour) < 0 || trim($ticket_start_hour) > 23)
-            $this->message['error'][] = "Giờ bắt đầu không chính xác.";
+            $this->message['error'][] = "Hour starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_start_minute)) || trim($ticket_start_minute) < 0 || trim($ticket_start_minute) > 59)
-            $this->message['error'][] = "Phút bắt đầu không chính xác.";
+            $this->message['error'][] = "Minute starts incorrect.";
         if (count($ticket_end_date) != 3 || !$this->validator->is_valid_date($ticket_end_date[0], $ticket_end_date[1], $ticket_end_date[2]))
-            $this->message['error'][] = "Ngày kết thúc không chính xác.";
+            $this->message['error'][] = "Date ends incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_end_hour)) || trim($ticket_end_hour) < 0 || trim($ticket_end_hour) > 23)
-            $this->message['error'][] = "Giờ bắt đầu không chính xác.";
+            $this->message['error'][] = "Hour starts incorrect.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_end_minute)) || trim($ticket_end_minute) < 0 || trim($ticket_end_minute) > 59)
-            $this->message['error'][] = "Phút bắt đầu không chính xác.";
+            $this->message['error'][] = "Minute starts incorrect.";
         if ($this->validator->is_empty_string($ticket_min))
-            $this->message['error'][] = "Số lượng vé tối thiểu không được để trống";
+            $this->message['error'][] = "Please enter Minimum tickets per order.";
         if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_min)) || trim($ticket_min) < 1)
-            $this->message['error'][] = "Số lượng vé tối thiểu phải là số lớn hơn 0";
+            $this->message['error'][] = "Minimum tickets per order must be larger than 0.";
         if (!$this->validator->is_empty_string($ticket_max) && (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_max)) || trim($ticket_max) < 0))
-            $this->message['error'][] = "Số lượng vé tối đa phải là số";
+            $this->message['error'][] = "Minimum tickets per order must be numbers.";
 
         if ($ticket['type'] == "paid") {
             if (!$this->validator->is_valid(Yii::app()->getParams()->itemAt('regx_number'), trim($ticket_fee)) || trim($ticket_fee) < 1)
-                $this->message['error'][] = "Giá vé phải là số lớn hơn 0";
+                $this->message['error'][] = "Price of ticeket must be larger than 0.";
             if ($ticket_service_fee != 1 && $ticket_service_fee != 0)
-                $this->message['error'][] = "Phí dịch vụ không chính xác";
+                $this->message['error'][] = "Service fee does not correct.";
         }
 
         $sold_tickets = $this->TicketModel->counts(array('deleted' => 0, 'ticket_type_id' => $id, 'check_date_expired' => 1));
 
         if ($ticket_quantity < $sold_tickets)
-            $this->message['error'][] = "Số lượng vé phải lớn hơn hoặc bằng lượng vé bán ra. Bạn đã bán ra $sold_tickets vé.";
+            $this->message['error'][] = "Ticket number must be greater than or equal to the number of tickets sold. You are sold $sold_tickets tickets.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -358,7 +357,7 @@ class EventController extends Controller {
         $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
 
         if (strtotime($sale_start) - strtotime($sale_end) >= 0) {
-            $this->message['error'][] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu";
+            $this->message['error'][] = "The ending time must be later than the start time.";
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;
@@ -383,8 +382,8 @@ class EventController extends Controller {
             'maximum' => $ticket_max, 'service_fee' => $service_fee,
             'last_modified' => time()
         ));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Sửa', 'Dữ liệu cũ' => $ticket, 'Dữ liệu mới' => $_POST));
-        $this->message['error'][] = "Cập nhật loại vé <strong>$ticket_name</strong> thành công";
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $ticket, 'New data' => $_POST));
+        $this->message['error'][] = "Update ticket <strong>$ticket_name</strong> successful.";
         echo json_encode(array('message' => $this->message, 'type' => 'edit'));
     }
 
@@ -442,23 +441,23 @@ class EventController extends Controller {
         $show_tickets = $_POST['show_tickets'];
 
         if ($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tiêu đề không được để trống.";
+            $this->message['error'][] = "Please enter a ticket name.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
-            $this->message['error'][] = "Hình ảnh không đúng định dạng hoặc dung lượng.";
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
-            $this->message['error'][] = "Hình ảnh không đúng kích thướt.";
+            $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
-            $this->message['error'][] = "Vui lòng chọn thể loại chính.";
+            $this->message['error'][] = "Please select a primary category.";
         if ($this->validator->is_empty_string($location))
-            $this->message['error'][] = "Địa điểm không được để trống.";
+            $this->message['error'][] = "Please enter the location.";
         if ($this->validator->is_empty_string($address))
-            $this->message['error'][] = "Địa chỉ không được để trống.";
+            $this->message['error'][] = "Please enter the address.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
-            $this->message['error'][] = "Ngày bắt đầu không chính xác.";
+            $this->message['error'][] = "Date starts incorrect.";
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
-            $this->message['error'][] = "Ngày kết thúc không chính xác.";
+            $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Nội dung không được để trống.";
+            $this->message['error'][] = "Please enter description.";
 
         if (count($this->message['error'])) {
             $this->message['success'] = false;
@@ -468,7 +467,7 @@ class EventController extends Controller {
         $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
 
         if (strtotime($start_time) - strtotime($end_time) >= 0) {
-            $this->message['error'][] = "Ngày bắt đầu phải nhỏ hơn ngày kết thúc.";
+            $this->message['error'][] = "The ending time must be later than the start time.";
             $this->message['success'] = false;
             return false;
         }
@@ -515,7 +514,7 @@ class EventController extends Controller {
         if ($second_cate)
             $this->EventModel->add_event_category($event['id'], $second_cate, 0);
 
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Sửa', 'Dữ liệu cũ' => $event, 'Dữ liệu mới' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $event, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event[id]/?s=1");
     }
 
@@ -526,7 +525,7 @@ class EventController extends Controller {
             return;
 
         $this->CategoryModel->update(array('deleted' => 1, 'id' => $id));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Xóa', 'Dữ liệu' => array('id' => $id)));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
     }
 
     public function actionDelete_ticket_type($id = 0) {
@@ -538,15 +537,15 @@ class EventController extends Controller {
         $cannot_delete = $this->TicketModel->counts(array('deleted' => 0, 'ticket_type_id' => $ticket_type['id'], 'check_date_expired' => 1));
 
         if ($cannot_delete) {
-            $this->message['error'][] = "Bạn không thể xóa loại vé này vì đã có người đặt vé. Vui lòng liên hệ với Ban quản trị của VeSuKien.vn để xem xét vấn đề này.";
+            $this->message['error'][] = "You cannot delete this ticket because it's ordered. Please contact the administrator of eTicket to refer this problem.";
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;
         }
 
         $this->TicketTypeModel->update(array('deleted' => 1, 'id' => $id));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Xóa', 'Dữ liệu' => array('id' => $id)));
-        $this->message['error'][] = "Bạn đã xóa loại vé <strong>$ticket_type[title]</strong>.";
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Deleted', 'Data' => array('id' => $id)));
+        $this->message['error'][] = "You delete ticket <strong>$ticket_type[title]</strong>.";
         echo json_encode(array('message' => $this->message));
     }
 
@@ -573,7 +572,7 @@ class EventController extends Controller {
         $this->EventModel->update_metas('title', $title, $event['id']);
         $this->EventModel->update_metas('keyword', $keyword, $event['id']);
         $this->EventModel->update_metas('description', $description, $event['id']);
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Cập nhật', 'event_id'=>$event['id'],'Dữ liệu mới' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'event_id'=>$event['id'],'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl."/event/seo/id/$event[id]?s=1");
     }
 

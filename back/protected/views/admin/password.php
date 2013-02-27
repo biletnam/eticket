@@ -10,28 +10,28 @@
 
 <form class="form-horizontal" method="post">
     <div class="control-group">
-        <label class="control-label">Mật khẩu cũ</label>
+        <label class="control-label">Current Password</label>
         <div class="controls">
             <input type="password" name="oldpwd" value="" />
         </div>
     </div>
     
     <div class="control-group">
-        <label class="control-label">Mật khẩu mới</label>
+        <label class="control-label">New Password</label>
         <div class="controls">
             <input type="password" name="newpwd1" value="" />
         </div>
     </div>
     
     <div class="control-group">
-        <label class="control-label">Xác nhận</label>
+        <label class="control-label">Repeat Password</label>
         <div class="controls">
             <input type="password" name="newpwd2" value="" />
         </div>
     </div>
 
     <div class="form-actions">        
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
 

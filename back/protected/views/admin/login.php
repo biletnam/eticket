@@ -11,7 +11,7 @@
                 <label><?php echo Helper::_lang('password'); ?></label>
                 <input type="password" name="password" class="input-xlarge">
             </div>
-            <button type="submit" class="btn btn-large btn-primary">Đăng nhập</button>
+            <button type="submit" class="btn btn-large btn-primary">Log in</button>
         </fieldset>
     </form>
 </div>

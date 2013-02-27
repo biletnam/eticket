@@ -4,11 +4,11 @@ $ticket_status = Helper::ticket_status();
 $ticket_types = Helper::ticket_types();
 ?>
 <ul class="breadcrumb">
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a> <span class="divider">/</span> </li>
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/">Sự kiện</a> <span class="divider">/</span> </li>
-    <li class="active">Thêm mới</li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/">Event</a> <span class="divider">/</span> </li>
+    <li class="active">Add</li>
 </ul>
-<legend>Thêm sự kiện</legend>
+<legend>Add an new event</legend>
 
 
 <?php echo Helper::print_error($message); ?>
@@ -28,31 +28,31 @@ $ticket_types = Helper::ticket_types();
 
             <input type="hidden" name="location_id" value="0"/>
             <div class="control-group">
-                <label class="control-label">Tiêu đề</label>
+                <label class="control-label">Event title</label>
                 <div class="controls">
                     <input type="text" class="input-xxlarge" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>">
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Hình ảnh</label>
+                <label class="control-label">Upload the logo for your event</label>
                 <div class="controls">
                     <input type="file" name="file"/>
-                    <p class="help-block">Hình ảnh phải lơn hơn kích thước 300x300px và dung lượng nhỏ hơn 2MB</p>
+                    <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Thể loại</label>
+                <label class="control-label" style="padding-top: 0px"s>Select categories for your event</label>
                 <div class="controls">            
                     <select name="primary_cate" class="span3">
-                        <option value="0">Thể loại chính</option>
+                        <option value="0">Primary category</option>
                         <?php foreach ($categories as $k => $v): ?>                
                             <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <select name="second_cate" class="span3">
-                        <option value="0">Thể loại phụ</option>
+                        <option value="0">Secondary category</option>
                         <?php foreach ($categories as $k => $v): ?>                
                             <option <?php if (isset($_POST['second_cate']) && $_POST['second_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                         <?php endforeach; ?>
@@ -61,7 +61,7 @@ $ticket_types = Helper::ticket_types();
             </div>
 
             <div class="control-group">
-                <label class="control-label">Địa điểm</label>
+                <label class="control-label">The name of your location</label>
                 <div class="controls">
                     <input type="text" id="add_location" class="input-xxlarge" name="location" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>">
                     <img class="loading-location hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-big-roller.gif" />
@@ -69,14 +69,14 @@ $ticket_types = Helper::ticket_types();
             </div>
 
             <div class="control-group">
-                <label class="control-label">Địa chỉ</label>
+                <label class="control-label">Address</label>
                 <div class="controls">
                     <input type="text" class="input-xxlarge" name="address" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']); ?>">
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Thành phố</label>
+                <label class="control-label">City</label>
                 <div class="controls">
                     <select name="city">
                         <?php foreach ($cities as $k => $v): ?>
@@ -87,99 +87,99 @@ $ticket_types = Helper::ticket_types();
             </div>
 
             <div class="control-group">
-                <label class="control-label">Ngày bắt đầu</label>
+                <label class="control-label">Event starts</label>
                 <div class="controls">
                     <input type="text" class="datetimepicker input-medium" name="start_date" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y'); ?>" />
                     <select name="start_hour" class="span1">
                         <?php for ($i = 0; $i < 24; $i++): ?>
                             <option <?php if (isset($_POST['start_hour']) && $_POST['start_hour'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                         <?php endfor; ?>
-                    </select>
+                    </select> h 
                     <select name="start_minute" class="span1">
                         <?php for ($i = 0; $i < 60; $i++): ?>
                             <option <?php if (isset($_POST['start_minute']) && $_POST['start_minute'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                         <?php endfor; ?>
                     </select>
                     <label class="checkbox inline">
-                        <input type="checkbox" name="display_start_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>> Hiển thị
+                        <input type="checkbox" name="display_start_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>> Show
                     </label>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Ngày kết thúc</label>
+                <label class="control-label">Event ends</label>
                 <div class="controls">
                     <input type="text" class="datetimepicker input-medium" name="end_date" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y'); ?>" />
                     <select name="end_hour" class="span1">
                         <?php for ($i = 0; $i < 24; $i++): ?>
                             <option <?php if (isset($_POST['end_hour']) && $_POST['end_hour'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                         <?php endfor; ?>
-                    </select>
+                    </select> h 
                     <select name="end_minute" class="span1">
                         <?php for ($i = 0; $i < 60; $i++): ?>
                             <option <?php if (isset($_POST['end_minute']) && $_POST['end_minute'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                         <?php endfor; ?>
                     </select>
                     <label class="checkbox inline">
-                        <input type="checkbox" name="display_end_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>> Hiển thị
+                        <input type="checkbox" name="display_end_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>> Show
                     </label>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Lập lại sự kiện </label>
+                <label class="control-label">Event Repeats?</label>
                 <div class="controls">
 
                     <label class="radio">
                         <input type="radio" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat']) && $_POST['is_repeat'] == 1) echo 'checked'; ?>>
-                        Có
+                        Yes
                     </label>
                     <label class="radio">
                         <input type="radio" name="is_repeat" value="0" <?php if (isset($_POST['is_repeat']) && $_POST['is_repeat'] == 0) echo 'checked'; ?> checked>
-                        Không
+                        No
                     </label>
 
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Nội dung</label>
+                <label class="control-label">Event Details</label>
                 <div class="controls">
                     <textarea  name="description" class="span8 tinymce" rows="20"><?php if (isset($_POST['description'])) echo $_POST['description']; ?></textarea>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Hiện bên ngoài người dùng</label>
+                <label class="control-label">Publish</label>
                 <div class="controls">
                     <label class="radio">
                         <input type="radio" name="published" value="1" <?php if (isset($_POST['published']) && $_POST['published'] == 1) echo 'checked'; ?> checked>
-                        Có
+                        Yes
                     </label>
                     <label class="radio">
                         <input type="radio" name="published" value="0" <?php if (isset($_POST['published']) && $_POST['published'] == 0) echo 'checked'; ?>>
-                        Không
+                        No
                     </label>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label">Hiển thị số lượng vé</label>
+                <label class="control-label">Show number of tickets</label>
                 <div class="controls">
                     <label class="radio">
                         <input type="radio" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets']) && $_POST['show_tickets'] == 1) echo 'checked'; ?> checked>
-                        Có
+                        Yes
                     </label>
                     <label class="radio">
                         <input type="radio" name="show_tickets" value="0" <?php if (isset($_POST['show_tickets']) && $_POST['show_tickets'] == 0) echo 'checked';  ?>>
-                        Không
+                        No
                     </label>
                 </div>
             </div>
 
             <div class="form-actions">        
                 <!--<button type="button" class="btn btn-continue">Tiếp tục &raquo;</button> -->
-                <button style="margin-left: 50px" type="submit" class="btn btn-primary">Thêm</button>
+                <button style="margin-left: 50px" type="submit" class="btn btn-primary">Save</button>
             </div>
 
         </div>

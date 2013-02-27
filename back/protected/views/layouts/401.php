@@ -2,10 +2,10 @@
 <div class="container" style="padding-top:80px">   
     <div class="row-fluid">
         <div class="span12 well">
-            <h1>Bạn không có quyền truy cập vào đường dẫn này.</h1>
+            <h1>You are not authorized to access this page.</h1>
             <br/>
 
-            <h4>Nhấn vào <a href="<?php echo Yii::app()->request->baseUrl; ?>">đây</a> để về trang chủ.</h4>
+            <h4>Click <a href="<?php echo Yii::app()->request->baseUrl ?>">here</a> to return home page.</h4>
         </div>
 
     </div>

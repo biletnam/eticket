@@ -57,9 +57,9 @@ class FaqController extends Controller {
         $description = trim($_POST['description']);
         
         if($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tiêu đề không được để trống.";
+            $this->message['error'][] = "Please enter faq title.";
         if($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Nội dung không được để trống.";
+            $this->message['error'][] = "Please enter description.";
         
         if(count($this->message['error']) > 0)
         {
@@ -68,7 +68,7 @@ class FaqController extends Controller {
         }
         
         $id = $this->FaqModel->add($category_id, $title, Helper::create_slug($title), $description,$_POST['disabled']);
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Thêm', 'Dữ liệu' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl."/faq/edit/id/$id?s=1");
     }
     
@@ -92,9 +92,9 @@ class FaqController extends Controller {
         $description = trim($_POST['description']);
         
         if($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tiêu đề không được để trống.";
+            $this->message['error'][] = "Please enter faq title.";
         if($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Nội dung không được để trống.";
+            $this->message['error'][] = "Please enter description.";
         
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -104,7 +104,7 @@ class FaqController extends Controller {
        
 
         $this->FaqModel->update(array('title'=>$title,'category_id'=>$category_id,'description'=>$description,'disabled'=>$_POST['disabled'],'deleted'=>$_POST['deleted'],'id'=>$faq['id']));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Sửa', 'Dữ liệu cũ' => $faq, 'Dữ liệu mới' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $faq, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/faq/edit/id/$faq[id]/?s=1");
     }
     
@@ -115,6 +115,6 @@ class FaqController extends Controller {
             return;
         
         $this->FaqModel->update(array('deleted' => 1, 'id' => $id));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Xóa', 'Dữ liệu' => array('id' => $id)));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
     }
 }

@@ -3030,3 +3030,35 @@ Stack trace:
 REQUEST_URI=/vsk/back/event/seo/id/5/
 HTTP_REFERER=http://localhost/vsk/back/event/seo/id/5/
 ---
+2013/02/27 15:23:00 [error] [php] getimagesize(): Read error! (D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php:155)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php(66): FormValidator->is_valid_image()
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php(51): CategoryController->do_add()
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): CategoryController->actionAdd()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CategoryController->runAction()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CategoryController->runActionWithFilters()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CategoryController->run()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/category/add/
+in D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php (155)
+in D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php (174)
+in D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php (66)
+2013/02/27 15:25:42 [error] [php] getimagesize(): Read error! (D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php:155)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php(66): FormValidator->is_valid_image()
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php(51): CategoryController->do_add()
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): CategoryController->actionAdd()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CategoryController->runAction()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CategoryController->runActionWithFilters()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CategoryController->run()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/category/add/
+in D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php (155)
+in D:\xampp\htdocs\eticket\back\protected\components\FormValidator.php (174)
+in D:\xampp\htdocs\eticket\back\protected\controllers\CategoryController.php (66)

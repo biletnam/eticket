@@ -1,26 +1,26 @@
 
 <ul class="breadcrumb">
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a> <span class="divider">/</span> </li>
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/">Sự kiện</a> <span class="divider">/</span> </li>
-    <li class="active">Tất cả</li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/">Event</a> <span class="divider">/</span> </li>
+    <li class="active">All</li>
 </ul>
-<?php /*<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/add/" class="btn btn-primary">Thêm mới</a></p> */ ?>
+<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/add/" class="btn btn-primary">Add an new event</a></p> 
 <?php $this->renderFile(Yii::app()->basePath."/views/_shared/paging.php",array('total'=>$total,'paging'=>$paging)); ?>
 <table class="table table-bordered table-striped table-center">
     <thead>
         <tr>          
             <th class="row-img"></th>
-            <th>Tên</th>
-            <th>Thể loại</th>            
-            <th>Địa điểm</th>
-            <th>Thời gian</th>
+            <th>Event Title</th>
+            <th>Category</th>            
+            <th>Location</th>
+            <th>Time</th>
             <th class="row-action"></th>
         </tr>
     </thead>
     <tbody>
         <?php if(count($events) < 1): ?>
         <tr>
-            <td colspan="6" class="align-center">Không tìm thấy kết quả nào</td>
+            <td colspan="6" class="align-center">Result not found</td>
         </tr>
         <?php endif;?>
         <?php foreach ($events as $v): ?>
@@ -37,12 +37,12 @@
                     <span class="label label-success"><?php echo $v['city'] ?></span>
                 </td>
                 <td>
-                    <p>Từ: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['start_time'])); ?></span></p>
-                    <p>Đến: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['end_time'])); ?></span></p>
+                    <p>Start: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['start_time'])); ?></span></p>
+                    <p>End: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['end_time'])); ?></span></p>
                 </td>
                 <td>
-                    <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>">Sửa</a>
-                    <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/event/delete/id/".$v['id']; ?>">Xóa</a>
+                    <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>">Edit</a>
+                    <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/event/delete/id/".$v['id']; ?>">Delete</a>
                 </td>
                 
                 <?php /*

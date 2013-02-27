@@ -64,9 +64,9 @@ class AdminController extends Controller {
         $password = trim($_POST['password']);
 
         if ($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tài khoản không được đễ trống.";
+            $this->message['error'][] = "Please enter your username.";
         if ($this->validator->is_empty_string($password))
-            $this->message['error'][] = "Mật khẩu không được đễ trống.";
+            $this->message['error'][] = "Please enter your password.";
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             return false;
@@ -77,21 +77,21 @@ class AdminController extends Controller {
         
         
         if (!$admin) {
-            $this->message['error'][] = "Tài khoản hoặc mật khẩu không chính xác.";
+            $this->message['error'][] = "Invalid username and/or password. Please try again.";
             $this->message['success'] = false;
             return false;
         }
 
         $hasher = new PasswordHash(10, true);
         if (!$hasher->CheckPassword($password, $admin['password'])) {
-            $this->message['error'][] = "Tài khoản hoặc mật khẩu không chính xác.";
+            $this->message['error'][] = "Invalid username and/or password. Please try again.";
             $this->message['success'] = false;
             return false;
         }
         
         HelperApp::add_cookie('secret_key', $admin['secret_key'], true);
         //HelperApp::add_cookie('secret_key', $admin['secret_key'], false);
-        HelperGlobal::add_log($admin['id'], $this->controllerID(), $this->methodID(), array('Hành động' => 'Đăng nhập'));        
+        HelperGlobal::add_log($admin['id'], $this->controllerID(), $this->methodID(), array('Action' => 'Log in'));        
         $this->redirect(Yii::app()->request->baseUrl . "/home/");
     }
 
@@ -113,13 +113,13 @@ class AdminController extends Controller {
         $hasher = new PasswordHash(10, TRUE);
         
         if ($this->validator->is_empty_string($oldpwd))
-            $this->message['error'][] = "Mật khẩu cũ không được để trống.";
+            $this->message['error'][] = "Please enter your current password.";
         if (!$hasher->CheckPassword($oldpwd, UserControl::getPassword()))
-            $this->message['error'][] = "Mật khẩu cũ không chính xác.";
+            $this->message['error'][] = "Your password does not match our records.";
         if ($this->validator->is_empty_string($newpwd1))
-            $this->message['error'][] = "Mật khẩu mới không được để trống.";
+            $this->message['error'][] = "Please enter your new password.";
         if ($newpwd1 != $newpwd2)
-            $this->message['error'][] = "Mật khẩu mới và xác nhận không giống nhau.";
+            $this->message['error'][] = "The password you entered does not match that in the confirmation.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -128,7 +128,7 @@ class AdminController extends Controller {
 
         $password = $hasher->HashPassword($newpwd1);
         $this->AdminModel->update(array('password' => $password, 'id' => UserControl::getId()));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Đổi mật khẩu'));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Change password'));
         $this->redirect(Yii::app()->request->baseUrl . "/admin/password/?s=1");
     }
    

@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?v=05102012" />
 
-        <title>Vé Sự Kiện</title>
+        <title>eTicket</title>
         <script>
             var baseUrl = '<?php echo Yii::app()->request->baseUrl; ?>';
             var ticketTax = '<?php echo Yii::app()->getParams()->itemAt('ticket_tax'); ?>';
@@ -26,16 +26,16 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>                       
-                        <a href="<?php echo Yii::app()->request->baseUrl; ?>" class="brand">VeSuKien.vn</a>
+                        <a href="<?php echo Yii::app()->request->baseUrl; ?>" class="brand">eTicket.com</a>
                         <div class="nav-collapse">
                             <ul class="nav pull-left">
-                                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a></li>
+                                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a></li>
                             </ul>
                             <?php if (UserControl::LoggedIn()) : ?>
                                 <ul class="nav pull-right">
                                     <li><a href="#"><?php echo UserControl::getTitle() ?> (<?php echo UserControl::getRole(); ?>)</a></li>
-                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin/password">Đổi mật khẩu</a></li>
-                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin/logout">Thoát</a></li>
+                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin/password">Change password</a></li>
+                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin/logout">Log out</a></li>
                                     <?php /*
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo UserControl::getTitle(); ?><b class="caret"></b></a>

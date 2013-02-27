@@ -61,13 +61,13 @@ class CategoryController extends Controller {
         $description = trim($_POST['description']);
 
         if ($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tên thể loại không được để trống.";
+            $this->message['error'][] = "Please enter category title.";
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
-            $this->message['error'][] = "Hình ảnh không đúng định dạng hoặc dung lượng.";
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension";
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
-            $this->message['error'][] = "Hình ảnh không đúng kích thướt.";
+            $this->message['error'][] = "Image's size does not correct.";
 
         if (count($this->message['error'])) {
             $this->message['success'] = false;
@@ -83,7 +83,7 @@ class CategoryController extends Controller {
         }
 
         $category_id = $this->CategoryModel->add($title, Helper::create_slug($title),$type,$img,$thumbnail,$description,$_POST['disabled']);
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Thêm', 'Dữ liệu' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/category/edit/id/$category_id/?s=1");
     }
 
@@ -106,13 +106,13 @@ class CategoryController extends Controller {
         $type = $_POST['type'];
         $description = trim($_POST['description']);
         if ($this->validator->is_empty_string($title))
-            $this->message['error'][] = "Tên thể thoại không được để trống.";
+            $this->message['error'][] = "Please enter category title.";
         
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
-            $this->message['error'][] = "Hình ảnh không đúng định dạng hoặc dung lượng.";
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension";
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
-            $this->message['error'][] = "Hình ảnh không đúng kích thước.";
+            $this->message['error'][] = "Image's size does not correct.";
         
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -129,7 +129,7 @@ class CategoryController extends Controller {
         }
 
         $this->CategoryModel->update(array('title' => $title,'type'=>$type, 'disabled' => $_POST['disabled'], 'deleted' => $_POST['deleted'], 'last_modified' => time(),'img'=>$img,'thumbnail'=>$thumbnail,'description'=>$description,'featured'=>$_POST['featured'],'id' => $category['id']));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Sửa', 'Dữ liệu cũ' => $category, 'Dữ liệu mới' => $_POST));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $category, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/category/edit/id/$category[id]/?s=1");
     }
 
@@ -140,7 +140,7 @@ class CategoryController extends Controller {
             return;
 
         $this->CategoryModel->update(array('deleted' => 1, 'id' => $id));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Xóa', 'Dữ liệu' => array('id' => $id)));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Deleted', 'Data' => array('id' => $id)));
     }
 
 }

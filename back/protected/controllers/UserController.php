@@ -50,7 +50,7 @@ class UserController extends Controller {
             return;
         
         $this->UserModel->update(array('id'=>$id,'banned'=>1));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Banned người dùng', 'id' => $id));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Lock this user', 'id' => $id));
         echo json_encode($this->message);
     }
     
@@ -61,7 +61,7 @@ class UserController extends Controller {
             return;
         
         $this->UserModel->update(array('id'=>$id,'banned'=>0));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Unbanned người dùng', 'id' => $id));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Unlock this user', 'id' => $id));
         echo json_encode($this->message);
     }
     
@@ -86,9 +86,9 @@ class UserController extends Controller {
        $birthday = $user['birthday'];
        
        if($this->validator->is_empty_string($fullname))
-           $this->message['error'][] = "Họ tên không được để trống.";
+           $this->message['error'][] = "Please enter full name.";
        if(($day || $month || $year ) && !$this->validator->is_valid_date($day, $month, $year))
-           $this->message['error'][] = "Ngày sinh không chính xác.";
+           $this->message['error'][] = "Birth date does not correct.";
        
        if(count($this->message['error']) > 0){
            $this->message['success'] = false;
@@ -107,7 +107,7 @@ class UserController extends Controller {
                                       'paypal_account'=>trim($_POST['paypal_account']),
                                       'banned'=>$_POST['banned']
                                       ));
-       HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Hành động' => 'Sửa', 'Dữ liệu cũ' => $user,'Dữ liệu mới'=>$_POST));
+       HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $user,'New data'=>$_POST));
        $this->redirect(Yii::app()->request->baseUrl."/user/edit/id/$user[id]?s=1");
        
    }

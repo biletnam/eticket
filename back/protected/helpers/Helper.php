@@ -12,7 +12,7 @@ class Helper {
         if ($message['success'] == false) {
             $html.= '<div class="alert alert-error">';
             $html.='<button type = "button" class = "close" data-dismiss = "alert">×</button>';
-            $html.='<h4>Lỗi!</h4>';
+            $html.='<h4>Error!</h4>';
             foreach ($message['error'] as $e)
                 $html.= $e . "<br/>";
             $html.= '</div>';
@@ -25,10 +25,10 @@ class Helper {
             return "";
         $html = "";
         if ((isset($_GET['s']) && $_GET['s'] == 1)) {
-            $message = isset($_GET['msg']) ? $_GET['msg'] : "Cập nhật thành công.";
+            $message = isset($_GET['msg']) ? $_GET['msg'] : "Update successful.";
             $html.= '<div class="alert alert-success">';
             $html.='<button type = "button" class = "close" data-dismiss = "alert">×</button>';
-            $html.='<h4>Chúc mừng!</h4>';
+            $html.='<h4>Success!</h4>';
             $html.= $message;
             $html.= '</div>';
         }
@@ -115,7 +115,7 @@ class Helper {
     }
     
     public static function category_types(){
-        return array('faq'=>'Faq','event'=>'Sự kiện');
+        return array('faq'=>'Faq','event'=>'Event');
     }
     
     public static function cities(){
@@ -132,6 +132,6 @@ class Helper {
     }
     
     public static function ticket_status(){
-        return array(1=>'Bán',0=>'Ẩn');
+        return array(1=>'On Sale',0=>'Hide');
     }
 }

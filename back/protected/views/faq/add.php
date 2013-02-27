@@ -1,24 +1,24 @@
 
 <ul class="breadcrumb">
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a> <span class="divider">/</span> </li>
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/faq/">Faqs</a> <span class="divider">/</span> </li>
-    <li class="active">Thêm mới</li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/faq/">FAQs</a> <span class="divider">/</span> </li>
+    <li class="active">Add</li>
 </ul>
-<legend>Thêm Faq</legend>
+<legend>Add a new FAQ</legend>
 
 <?php echo Helper::print_error($message); ?>
 
 <form class="form-horizontal" method="post" enctype="multipart/form-data">    
     
     <div class="control-group">
-        <label class="control-label">Tiêu đề</label>
+        <label class="control-label">FAQ title</label>
         <div class="controls">
-            <input type="text" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars ($_POST['title']); ?>">
+            <input type="text" name="title" class="span5" value="<?php if (isset($_POST['title'])) echo htmlspecialchars ($_POST['title']); ?>">
         </div>
     </div>
     
     <div class="control-group">
-        <label class="control-label">Thể loại</label>
+        <label class="control-label">Type</label>
         <div class="controls">
             <select name="category">
                 <?php foreach($categories as $k=>$v): ?>
@@ -29,28 +29,28 @@
     </div>
     
     <div class="control-group">
-        <label class="control-label">Nội dung</label>
+        <label class="control-label">Description</label>
         <div class="controls">
             <textarea rows="5" class="span5" name="description"><?php if(isset($_POST['description'])) echo $_POST['description']; ?></textarea>
         </div>
     </div>
     
     <div class="control-group">
-        <label class="control-label">Trạng thái</label>
+        <label class="control-label">Status</label>
         <div class="controls">
             <label class="radio">
                 <input type="radio" name="disabled" value="1" <?php if (isset($_POST['disabled']) && $_POST['disabled']) echo 'checked'; ?>>
-                Ẩn
+                Hide
             </label>
             <label class="radio">
                 <input type="radio" name="disabled" value="0" <?php if (isset($_POST['disabled']) && !$_POST['disabled']) echo 'checked'; ?> checked>
-                Hiện
+                Show
             </label>
         </div>
     </div>
 
     <div class="form-actions">        
-        <button type="submit" class="btn btn-primary">Thêm</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
 

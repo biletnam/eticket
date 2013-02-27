@@ -1,15 +1,15 @@
 <?php $category_types = Helper::category_types(); ?>
 <ul class="breadcrumb">
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a> <span class="divider">/</span> </li>
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/category/">Thể loại</a> <span class="divider">/</span> </li>
-    <li class="active">Tất cả</li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/category/">Category</a> <span class="divider">/</span> </li>
+    <li class="active">All</li>
 </ul>
-<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/category/add/" class="btn btn-primary">Thêm mới</a></p>
+<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/category/add/" class="btn btn-primary">Add a new category</a></p>
 <br/>
 <p>
-    <span>Thể loại:</span>
+    <span>Type:</span>
     <select class="span2 category-type" style="margin: 0">
-        <option value="all">Tất cả</option>
+        <option value="all">All</option>
         <?php foreach(Helper::category_types() as $k=>$v): ?>
         <option <?php if($k == $type) echo 'selected'; ?> value="<?php echo $k; ?>"><?php echo $v; ?></option>
         <?php endforeach;?>
@@ -21,15 +21,15 @@
     <thead>
         <tr>          
             <th class="row-img"></th>
-            <th>Tên</th>
-            <th>Loại</th>
+            <th>Category Title</th>
+            <th>Type</th>
             <th class="row-action"></th>
         </tr>
     </thead>
     <tbody>
         <?php if(count($categories) < 1): ?>
         <tr>
-            <td colspan="3" class="align-center">Không tìm thấy kết quả nào</td>
+            <td colspan="4" class="align-center">Result not found</td>
         </tr>
         <?php endif;?>
         <?php foreach ($categories as $v): ?>
@@ -43,8 +43,8 @@
                 </td>    
                 <td><?php echo $category_types[$v['type']]; ?></td>
                 <td>
-                    <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/category/edit/id/".$v['id']; ?>">Sửa</a>
-                    <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/category/delete/id/".$v['id']; ?>">Xóa</a>
+                    <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/category/edit/id/".$v['id']; ?>">Edit</a>
+                    <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/category/delete/id/".$v['id']; ?>">Delete</a>
                 </td>
                 <?php /*
                 <td>

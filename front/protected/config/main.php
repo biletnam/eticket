@@ -49,7 +49,7 @@ return array(
         // uncomment the following to use a MySQL database
 
         'db' => array(
-            'connectionString' => 'mysql:host=127.0.0.1;dbname=vsk',
+            'connectionString' => 'mysql:host=127.0.0.1;dbname=eticket',
             'emulatePrepare' => true,
             //'enableProfiling' => true,
             //'enableParamLogging' => true,

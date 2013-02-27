@@ -1,0 +1,15 @@
+
+.alert{margin: 0 18px 18px;}
+#add_location{display: inline}
+
+.table-ticket .head-ticket-name{width:1%}
+.table-ticket .head-ticket-quantity{width:10%}
+.table-ticket .head-ticket-action{width:25%;}
+.table-ticket .head-ticket-status{width:12%}
+.table-ticket .head-ticket-price{width:10%}
+.table-ticket .head-ticket-price.free{width:38%}
+
+.table-ticket .loading td{text-align: center;}
+.table-ticket .loading img{vertical-align: middle}
+
+.ticket-name{width:110px}

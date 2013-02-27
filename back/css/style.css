@@ -1,0 +1,43 @@
+.navbar .brand{color:#fff}
+
+#login-panel {}    
+    #login-panel input[type="text"], #login-panel input[type="password"] {font-size: 18px;height: auto;padding: 10px;width: 95%;}
+    
+.align-center{text-align: center!important}
+.align-left{text-align: left!important}
+.align-right{text-align: right!important}
+
+.alert h4{font-size: 14px;}
+
+
+.row-action{width:14%}
+.row-id{width:5%}
+.row-edit{width: 3%;}
+
+.table-center{}
+.table-center th,.table-center td{vertical-align: middle;text-align: center}
+.total-records{margin-right: 10px;margin-top: 9px}
+
+.form-search{margin-top: 4px}
+
+
+.table-center th.row-img{width: 60px;}
+
+.table-center .dropdown-menu{min-width: 100px}
+
+
+#event_form a.setting {background-color: #666666;border-radius: 3px 3px 3px 3px;color: #FFFFFF;display: block;margin-top: 3px;padding: 2px 0 2px 5px;}
+#event_form a.setting:hover{background-color: #0F90BA;text-decoration: none}
+#event_form th,#event_form td{vertical-align: middle}
+#event_form .start-date-title,#event_form .end-date-title{margin-top: 5px}
+#event_form .ticket-date select{margin-left: 5px}
+
+.table-ticket .head-ticket-name{width:10%}
+.table-ticket .head-ticket-quantity{width:10%}
+.table-ticket .head-ticket-action{width:20%;}
+.table-ticket .head-ticket-status{width:13%}
+.table-ticket .head-ticket-price{width:10%}
+.table-ticket .head-ticket-price.free{width:39%}
+
+.table-ticket .loading td{text-align: center;}
+.table-ticket .loading img{vertical-align: middle}

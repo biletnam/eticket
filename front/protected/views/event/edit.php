@@ -141,7 +141,7 @@ $ticket_status = Helper::ticket_status();
                                                 <!--
                                                 <div class="controls"><button class="btn btn-primary" type="button">Upload</button></div> -->
                                                 <?php if ($event['img'] != ""): ?>
-                                                    <div class="controls" style="margin-top: 10px"><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/remove_thumb/id/<?php echo $event['id'] ?>" class="btn btn-large remove-event-thumb">Xóa</a></div>
+                                                    <div class="controls" style="margin-top: 10px"><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/remove_thumb/id/<?php echo $event['id'] ?>" class="btn btn-large remove-event-thumb">Remove</a></div>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="control-group">
@@ -299,7 +299,7 @@ $ticket_status = Helper::ticket_status();
                                                         <a href="#" class="apply-ticket icon btn btn-warning">Edit</a>                        
                                                     </td>
                                                     <td>
-                                                        <a href="<?php echo Yii::app()->request->baseUrl ?>/event/delete_ticket_type/id/<?php echo $v['id']; ?>" class="remove-ticket btn btn-danger">Xóa</a>                        
+                                                        <a href="<?php echo Yii::app()->request->baseUrl ?>/event/delete_ticket_type/id/<?php echo $v['id']; ?>" class="remove-ticket btn btn-danger">Delete</a>                        
                                                     </td>
                                                     </tr>
                                                     <tr class="description-ticket hide">

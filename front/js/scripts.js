@@ -104,7 +104,7 @@ function bind_event(){
     });
     
     $("#event_form .remove-event-thumb").click(function(){
-        if(!confirm('Bạn có chắc xóa ảnh đại diện của sự kiện này không?')) return false;        
+        if(!confirm('Do you want to delete this logo?')) return false;        
         
         var ele = $(this);
         var parent = ele.parents('#event_form');
@@ -129,7 +129,7 @@ function bind_event(){
     });
     
     $("#event_form .ticket-info .remove-ticket.clone").live('click',function(){
-        if(!confirm('Bạn có chắc không xóa loại vé này không?')) return false;
+        if(!confirm('Do you want to delete this ticket type?')) return false;
         var ele = $(this);
         ele.parents('.table-ticket').fadeOut('slow',function(){
             $(this).remove();            
@@ -138,7 +138,7 @@ function bind_event(){
     });
     
     $("#event_form .ticket-info .remove-ticket:not(.clone)").live('click',function(){
-        if(!confirm('Bạn có chắc không xóa loại vé này không?')) return false;
+        if(!confirm('Do you want to delete this ticket type?')) return false;
         var ele = $(this);
         var parent = ele.parents('.table-ticket');
         $(".ticket-info",parent).hide();
@@ -210,7 +210,7 @@ function bind_event(){
         
         if(parent.hasClass('processing')) return false;
         
-        if(!confirm("Bạn có chắc không?")) return false;
+        if(!confirm("Are you sure?")) return false;
         
         $(".apply-ticket",parent).addClass('disabled');
         

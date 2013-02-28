@@ -116,7 +116,7 @@ class EventController extends Controller {
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Please enter description.";
+            $this->message['error'][] = "Please enter Event Detail.";
 
         //$this->validate_tickets();
 
@@ -277,7 +277,7 @@ class EventController extends Controller {
             'maximum' => $ticket_max, 'service_fee' => $service_fee
                 ));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
-        $this->message['error'][] = "Add a new ticket successful.";
+        $this->message['error'][] = "Ticket type added successfull.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
     }
 

@@ -48,13 +48,13 @@
                                 </ul>
                             <?php endif; ?>
 
-                            <?php if (!UserControl::LoggedIn()): ?>
-                                <ul class="nav pull-right">
+                            <?php //if (!UserControl::LoggedIn()): ?>
+<!--                                <ul class="nav pull-right">
                                     
                                     <li><a href="<?php echo Yii::app()->request->baseUrl ?>/home/language/lang/vn">Tiếng việt</a></li>
                                     <li><a href="<?php echo Yii::app()->request->baseUrl ?>/home/language/lang/en">English</a></li>
-                                </ul>
-                            <?php endif; ?>
+                                </ul>-->
+                            <?php// endif; ?>
                         </div>
                     </div> 
                 </div>

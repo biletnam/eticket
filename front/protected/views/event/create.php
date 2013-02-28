@@ -16,26 +16,26 @@ $cities = Helper::cities();
 
                                     <fieldset>
                                         <div class="step"> <div class="number">1</div>
-                                            <h3>Thông tin Sự kiện</h3>
+                                            <h3>Create an Event</h3>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="title">Tên Sự kiện<div class="required">*</div></label>
+                                            <label class="control-label" for="title">Add Event Title<div class="required">*</div></label>
                                             <div class="controls"><input type="text" class="input-xlarge span11" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>"></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="location">Địa điểm<div class="required">*</div></label>
+                                            <label class="control-label" for="location">Loaction<div class="required">*</div></label>
                                             <div class="controls">
                                                 <input type="text" id="add_location" class="input-xlarge span11" name="location" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>">
                                                 <img class="loading-location hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-big-roller.gif" />
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="address">Địa chỉ</label>
+                                            <label class="control-label" for="address">Address</label>
                                             <div class="controls"><input type="text" class="input-xlarge span11" name="address" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']); ?>"></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Thành phố</label>
+                                            <label class="control-label">City</label>
                                             <div class="controls">
                                                 <select name="city">
                                                     <?php foreach ($cities as $k => $v): ?>
@@ -45,11 +45,11 @@ $cities = Helper::cities();
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Thời gian<div class="required">*</div></label>
+                                            <label class="control-label">Add When<div class="required">*</div></label>
                                             <div class="controls">
 
                                                 <div class="row-fluid">
-                                                    <p class="start-date-title">Ngày bắt đầu</p>
+                                                    <p class="start-date-title">Event starts</p>
                                                     <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
                                                         <input type="text" class="input-medium ico ico-calendar datetimepicker" name="start_date" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y'); ?>">
 
@@ -65,14 +65,14 @@ $cities = Helper::cities();
                                                         </select>                                                        
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" name="display_start_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
-                                                            Hiện thời gian
+                                                            Show
                                                         </label>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="row-fluid">
-                                                    <p class="end-date-title">Ngày kết thúc</p>
+                                                    <p class="end-date-title">Event ends</p>
 
                                                     <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
                                                         <input type="text" class="input-medium ico ico-calendar datetimepicker" name="end_date" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y'); ?>">
@@ -89,11 +89,11 @@ $cities = Helper::cities();
                                                         </select>                                                     
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" name="display_end_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
-                                                            Hiện thời gian
+                                                            Show
                                                         </label>
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" value="1" name="is_repeat" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
-                                                            Lập lại sự kiện
+                                                            Yes, this event repeats.
                                                         </label>
                                                     </div>
 
@@ -104,17 +104,17 @@ $cities = Helper::cities();
                                         </div>
 
                                         <div class="control-group upload">
-                                            <label class="control-label" for="title">Upload hình đại diện</label>
+                                            <label class="control-label" for="title">Upload the logo for your event:</label>
                                             <div class="controls">
                                                 <img class="image-default" src="<?php echo Yii::app()->request->baseUrl; ?>/img/default_upload_logo.gif" />
-                                                <p class="help-block">Hình ảnh định dạng JPG, PNG, GIF phải lơn hơn kích thước 300x300px và dung lượng nhỏ hơn 2MB</p>
+                                                <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
                                                 <input class="fileupload customfile-input" class="input-xlarge" name="file" type="file">
                                             </div>
                                             <!--
                                             <div class="controls"><button class="btn btn-primary" type="button">Upload</button></div> -->
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Nội dung Sự kiện  <!--<label class="control-label add-faq"> <a href="">+Add FAQs</a></label>--></label>
+                                            <label class="control-label">Add Event Details  <!--<label class="control-label add-faq"> <a href="">+Add FAQs</a></label>--></label>
                                                 <div class="control-group text">
                                                     <div class="controls">
                                                         <textarea cols="150" rows="15" name="description" class="tinymce"><?php if (isset($_POST['description'])) echo $_POST['description']; ?></textarea>
@@ -126,32 +126,32 @@ $cities = Helper::cities();
 
                                         <div class="step"> 
                                             <div class="number">2</div>
-                                            <h3>Thiết lập</h3>
+                                            <h3>Option</h3>
                                         </div>
 
                                         <div class="control-group">
-                                            <label for="select01" class="control-label">Cho phép mọi ngườ đăng ký</label>
+                                            <label for="select01" class="control-label">This event will public and registered.</label>
                                             <div class="controls">
                                                 <select name="published">
-                                                    <option <?php if (isset($_POST['published']) && $_POST['published']) echo 'selected'; ?> value="1">Có</option>
-                                                    <option <?php if (isset($_POST['published']) && !$_POST['published']) echo 'selected'; ?> value="0">Không</option>
+                                                    <option <?php if (isset($_POST['published']) && $_POST['published']) echo 'selected'; ?> value="1">Yes</option>
+                                                    <option <?php if (isset($_POST['published']) && !$_POST['published']) echo 'selected'; ?> value="0">No</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label">Thể loại</label>
+                                            <label class="control-label">Select categories for your event:</label>
                                             <div class="controls">
                                                 <select name="primary_cate">
 
-                                                    <option value="0">Thể loại chính</option>                                                    
+                                                    <option value="0">Primary category</option>                                                    
                                                     <?php foreach ($categories as $k => $v): ?>                
                                                         <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <select name="second_cate">
 
-                                                    <option value="0">Thể loại phụ</option>                                                    
+                                                    <option value="0">Secondary category</option>                                                    
                                                     <?php foreach ($categories as $k => $v): ?>                
                                                         <option <?php if (isset($_POST['second_cate']) && $_POST['second_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                                                     <?php endforeach; ?>
@@ -160,11 +160,11 @@ $cities = Helper::cities();
                                         </div>
 
                                         <div class="control-group">
-                                            <label for="optionsCheckbox" class="control-label">Số lượng vé còn lại</label>
+                                            <label for="optionsCheckbox" class="control-label">The number of tickets remaining</label>
                                             <div class="controls">
                                                 <label class="checkbox">
                                                     <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?> >
-                                                    Hiển thị số lượng vé còn lại trên trang đăng ký vé
+                                                    Show number of tickets remaining on the registration page.
                                                 </label>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@ $cities = Helper::cities();
                         <!--
                         <button class="btn btn-large">Save</button>
                         <button class="btn btn-large">Preview</button> -->
-                        <a href="#" class="btn-style make_event_live btn-save button-medium">Tạo sự kiện</a>
+                        <a href="#" class="btn-style make_event_live btn-save button-medium">Save</a>
                     </div>
                 </div>
 

@@ -6,12 +6,12 @@
                     <div class="pages span7 clearfix">
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#tab1" class="" data-toggle="tab"><i class="icon-pencil"></i>Chi tiết Sự kiện</a>
+                                <a href="#tab1" class="" data-toggle="tab"><i class="icon-pencil"></i>Event details</a>
                                 <div class="arrow"></div>
                             </li>
                             <li class="">
 
-                                <a href="#tab2" class="" data-toggle="tab"><i class="icon-search"></i>Xem trước Sự kiện</a>
+                                <a href="#tab2" class="" data-toggle="tab"><i class="icon-search"></i>Preview event</a>
                                 <div class="arrow"></div>
                             </li>
                         </ul>
@@ -30,27 +30,27 @@
 
                                     <fieldset>
                                         <div class="step"> <div class="number">1</div>
-                                            <h3>Thông tin Sự kiện</h3>
+                                            <h3>Information Event</h3>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="title">Tên Sự kiện<div class="required">*</div></label>
+                                            <label class="control-label" for="title">Add Event Title<div class="required">*</div></label>
                                             <div class="controls"><input type="text" class="input-xlarge span11" name="title" id="title"></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="location">Địa điểm<div class="required">*</div></label>
+                                            <label class="control-label" for="location">Loaction<div class="required">*</div></label>
                                             <div class="controls"><input type="text" class="input-xlarge span11" name="location" id="location"></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="address">Địa chỉ</label>
+                                            <label class="control-label" for="address">Address</label>
                                             <div class="controls"><input type="text" class="input-xlarge span11" name="address" id="address"></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Thời gian<div class="required">*</div></label>
+                                            <label class="control-label">Add When<div class="required">*</div></label>
                                             <div class="controls">
 
                                                 <div class="row-fluid">
-                                                    <p class="start-date-title">Ngày bắt đầu</p>
+                                                    <p class="start-date-title">Event starts</p>
                                                     <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
                                                         <input id="start_date" type="text" class="input-medium ico ico-calendar" name="datetime" value="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>">
 
@@ -78,14 +78,14 @@
                                                         </select>
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" value="show" id="show_time">
-                                                            Hiện thời gian
+                                                            Display
                                                         </label>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="row-fluid">
-                                                    <p class="end-date-title">Ngày kết thúc</p>
+                                                    <p class="end-date-title">Event ends</p>
 
 
                                                     <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
@@ -115,11 +115,11 @@
                                                         </select>
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" value="show" id="show_time">
-                                                            Hiện thời gian
+                                                            Display
                                                         </label>
                                                         <label class="checkbox inline">
                                                             <input type="checkbox" value="repeat" id="repeat">
-                                                            This event repeats
+                                                            Yes, this event repeats.
                                                         </label>
                                                     </div>
 
@@ -130,16 +130,16 @@
                                         </div>
 
                                         <div class="control-group upload">
-                                            <label class="control-label" for="title">Upload hình đại diện</label>
+                                            <label class="control-label" for="title">Upload the logo for your event:</label>
                                             <div class="controls">
                                                 <img class="image-default" src="<?php echo Yii::app()->request->baseUrl; ?>/img/default_upload_logo.gif" />
-                                                <p class="help-block">Your image must be JPG, GIF, or PNG format and not exceed 2MB. It will be resized to make its width 450px.</p>
+                                                <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
                                                 <input class="fileupload customfile-input" class="input-xlarge" name="img" type="file">
                                             </div>
                                             <div class="controls"><button class="btn btn-primary" type="button">Upload</button></div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label ">Nội dung Sự kiện  <label class="control-label add-faq"><a href="">+Add FAQs</a></label></label>
+                                            <label class="control-label ">Add Event Details  <label class="control-label add-faq"><a href="">+Add FAQs</a></label></label>
                                             <div class="control-group text">
                                                 <div class="controls">
                                                     <textarea name="content_magu" cols="100" rows="15" id="mce-content-magu" ><?php if (isset($item->content)) echo $item->content; ?></textarea>
@@ -147,7 +147,7 @@
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="title">Người tổ chức Sự kiện</label>
+                                            <label class="control-label" for="title">Created by</label>
                                             <div class="controls host"><input type="text" class="input-xlarge" name="host" id="title"></div>
                                             <div class="control-group text">
                                                 <div class="controls">
@@ -160,7 +160,7 @@
                                         <div class="ticket-ridges"></div>
                                         <div class="step"> 
                                             <div class="number">2</div>
-                                            <h3>Thông tin vé</h3>
+                                            <h3>Information ticket</h3>
                                         </div>
 
                                         <div class="add_ticket_container">
@@ -174,12 +174,12 @@
                                             <table class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Tên vé</th>
-                                                        <th>Số lượng vé</th>
-                                                        <th>Giá vé</th>
-                                                        <th>Phí</th>
-                                                        <th>Tổng cộng</th>
-                                                        <th>Tình trạng vé</th>
+                                                        <th>Ticket name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                        <th>Fee</th>
+                                                        <th>Total</th>
+                                                        <th>Status</th>
                                                         <th colspan="2"></th>
                                                     </tr>
                                                 </thead>
@@ -201,10 +201,10 @@
                                                             <span class="price">$  0.00</span>
                                                         </td>
                                                         <td>
-                                                            <span class="price">Chưa hết vé</span>
+                                                            <span class="price">Còn</span>
                                                         </td>
                                                         <td>
-                                                            <a class="setting" href="JavaScript:void(0);">Thiết lập <span class="icon-chevron-down icon-white ico-hide"></span></a>
+                                                            <a class="setting" href="JavaScript:void(0);">Option <span class="icon-chevron-down icon-white ico-hide"></span></a>
                                                         </td>
                                                         <td>
                                                             <i class="icon-remove btn-remove"></i>
@@ -214,7 +214,7 @@
                                                         <td colspan="8">
                                                             <div class="control-group">
                                                                 <div class="control-label">
-                                                                    Mô tả vé
+                                                                    Ticket Description
                                                                 </div>
                                                                 <div class="controls">
                                                                     <textarea class="input-xlarge"  rows="3" name="description_ticket" id="description_ticket"></textarea>
@@ -222,16 +222,16 @@
                                                                 <div class="controls">
                                                                     <label class="checkbox">
                                                                         <input id="hide-description-ticket" type="checkbox">
-                                                                        Ẩn mô tả vé trên trang Sự kiện
+                                                                        Auto Hide Description
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             <div class="control-group">
-                                                                <label class="control-label">Thời gian</label>
+                                                                <label class="control-label">Time</label>
                                                                 <div class="controls">
 
                                                                     <div class="row-fluid">
-                                                                        <p class="start-date-title">Ngày bắt đầu</p>
+                                                                        <p class="start-date-title">Start Sales</p>
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
                                                                             <input id="sale-start" type="text" class="input-medium ico ico-calendar" name="datetime" value="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>">
 
@@ -254,8 +254,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!-- 
                                                                             <label class="checkbox inline">
@@ -268,7 +268,7 @@
                                                                     </div>
 
                                                                     <div class="row-fluid">
-                                                                        <p class="end-date-title">Ngày kết thúc</p>
+                                                                        <p class="end-date-title">End Sales</p>
 
 
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
@@ -293,8 +293,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!--                                                                   
                                                                             <label class="checkbox inline">
@@ -359,7 +359,7 @@
                                                             <span class="price">Chưa hết vé</span>
                                                         </td>
                                                         <td>
-                                                            <a class="setting" href="JavaScript:void(0);">Thiết lập <span class="icon-chevron-down icon-white ico-hide"></span></a>
+                                                            <a class="setting" href="JavaScript:void(0);">Option<span class="icon-chevron-down icon-white ico-hide"></span></a>
                                                         </td>
                                                         <td>
                                                             <i class="icon-remove btn-remove"></i>
@@ -369,7 +369,7 @@
                                                         <td colspan="8">
                                                             <div class="control-group">
                                                                 <div class="control-label">
-                                                                    Mô tả vé
+                                                                    Ticket Description
                                                                 </div>
                                                                 <div class="controls">
                                                                     <textarea class="input-xlarge"  rows="3" name="description_ticket" id="description_ticket"></textarea>
@@ -377,16 +377,16 @@
                                                                 <div class="controls">
                                                                     <label class="checkbox">
                                                                         <input id="hide-description-ticket" type="checkbox">
-                                                                        Ẩn mô tả vé trên trang Sự kiện
+                                                                        Auto Hide Description
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             <div class="control-group">
-                                                                <label class="control-label">Thời gian</label>
+                                                                <label class="control-label">Time</label>
                                                                 <div class="controls">
 
                                                                     <div class="row-fluid">
-                                                                        <p class="start-date-title">Ngày bắt đầu</p>
+                                                                        <p class="start-date-title">Start Sales</p>
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
                                                                             <input id="sale-start" type="text" class="input-medium ico ico-calendar" name="datetime" value="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>">
 
@@ -409,8 +409,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!--                                                                    
                                                                             <label class="checkbox inline">
@@ -423,7 +423,7 @@
                                                                     </div>
 
                                                                     <div class="row-fluid">
-                                                                        <p class="end-date-title">Ngày kết thúc</p>
+                                                                        <p class="end-date-title">End Sales</p>
 
 
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
@@ -448,8 +448,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!--
                                                                             <label class="checkbox inline">
@@ -494,7 +494,7 @@
                                                             <span class="price">Chưa hết vé</span>
                                                         </td>
                                                         <td>
-                                                            <a class="setting" href="JavaScript:void(0);">Thiết lập <span class="icon-chevron-down icon-white ico-hide"></span></a>
+                                                            <a class="setting" href="JavaScript:void(0);">Option<span class="icon-chevron-down icon-white ico-hide"></span></a>
                                                         </td>
                                                         <td>
                                                             <i class="icon-remove btn-remove"></i>
@@ -504,7 +504,7 @@
                                                         <td colspan="8">
                                                             <div class="control-group">
                                                                 <div class="control-label">
-                                                                    Mô tả vé
+                                                                    Ticket Description
                                                                 </div>
                                                                 <div class="controls">
                                                                     <textarea class="input-xlarge"  rows="3" name="description_ticket" id="description_ticket"></textarea>
@@ -512,16 +512,16 @@
                                                                 <div class="controls">
                                                                     <label class="checkbox">
                                                                         <input id="hide-description-ticket" type="checkbox">
-                                                                        Ẩn mô tả vé trên trang Sự kiện
+                                                                        Auto Hide Description
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             <div class="control-group">
-                                                                <label class="control-label">Thời gian</label>
+                                                                <label class="control-label">Time</label>
                                                                 <div class="controls">
 
                                                                     <div class="row-fluid">
-                                                                        <p class="start-date-title">Ngày bắt đầu</p>
+                                                                        <p class="start-date-title">Start Sales</p>
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
                                                                             <input id="sale-start" type="text" class="input-medium ico ico-calendar" name="datetime" value="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>">
 
@@ -544,8 +544,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!-- 
                                                                             <label class="checkbox inline">
@@ -558,7 +558,7 @@
                                                                     </div>
 
                                                                     <div class="row-fluid">
-                                                                        <p class="end-date-title">Ngày kết thúc</p>
+                                                                        <p class="end-date-title">End Sales</p>
 
 
                                                                         <div class="input-append date dp3" data-date="<?php if (isset($item->datetime)) echo date('m/d/Y', $item->datetime); ?>" data-date-format="mm/dd/yyyy">
@@ -583,8 +583,8 @@
                                                                                 ?>
                                                                             </select>
                                                                             <select name="time_am" class="input-mini" id="time_am">
-                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>sáng</option>
-                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>chiều</option>
+                                                                                <option value="am" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'am') echo 'selected'; ?>>AM</option>
+                                                                                <option value="pm" <?php if (isset($item->datetime) && date('a', $item->datetime) == 'pm') echo 'selected'; ?>>PM</option>
                                                                             </select>
                                                                             <!--                                                                   
                                                                             <label class="checkbox inline">
@@ -658,7 +658,7 @@
                                             </table>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="optionCheckbox">Tôi muốn</label>
+                                            <label class="control-label" for="optionCheckbox">I want</label>
                                             <div class="controls">
                                                 <label class="checkbox inline">
                                                     <input checked="checked"  type="radio" value="show"  name="wanted">

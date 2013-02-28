@@ -13,7 +13,7 @@
                         <nav class="breadcrumbs">
                             <ul class="clearfix">
                                 <li>
-                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a>
+                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>">Home page</a>
                                 </li>
                                 <li><?php echo $category['title']; ?></li>
                             </ul>

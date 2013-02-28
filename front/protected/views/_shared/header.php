@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Vé Sự Kiện | VeSuKien.vn | Gặp gỡ - Giao lưu - Sáng tạo</title>
+        <title>eTicket | eTicket.com | Meet - Exchange - Creative </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -60,7 +60,7 @@
                 <a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt=""/></a>
                 <div class="nav-collapse pull-right">
                     <ul class="nav">
-                        <li class="hotline"><i class="icon-circle-arrow-right icon-white"></i> Gọi 0987.999.319 để được tư vấn trực tiếp</li>
+                        <li class="hotline"><i class="icon-circle-arrow-right icon-white"></i> Call 012 345 6789 </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -71,7 +71,7 @@
         <div class="container">
             <ul class="nav nav-pills pull-left">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tỉnh / Thành phố <b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> City <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/city/ha-noi">Hà Nội</a></li>
                         <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/city/ho-chi-minh">Hồ Chí Minh</a></li>
@@ -80,24 +80,24 @@
                         <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/city/vung-tau">Vũng Tàu</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/search">Tìm Sự Kiện</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/ticket/print">In Vé</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/create">Tạo Sự Kiện</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/info/view/page/help" class="bold">Hướng dẫn sử dụng</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/faq/">Câu hỏi thường găp</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/search">Find event</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/ticket/print">Print tickets</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/create">Create an event</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/info/view/page/help" class="bold">How it works</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/faq/">Help center</a></li>
             </ul>
             <ul class="nav nav-pills pull-right">
                 <?php if(!UserControl::LoggedIn()): ?>
-                <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signup">Đăng ký</a></li>
-                <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signin">Đăng nhập</a></li>
+                <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signup">Sign up</a></li>
+                <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signin">Log in</a></li>
                 <?php else:?>
                 <li class="dropdown nav-account">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo UserControl::getFullname(); ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/profile">Trang cá nhân</a></li>
-                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/settings">Cài đặt tài khoản</a></li>
+                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/profile">My account</a></li>
+                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/settings">Settings</a></li>
                         <li class="divider"></li>
-                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signout">Thoát</a></li>
+                        <li class=""><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/signout">Log out</a></li>
                     </ul>
                 </li>
                 <?php endif;?>

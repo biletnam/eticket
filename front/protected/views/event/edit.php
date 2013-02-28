@@ -10,12 +10,12 @@ $ticket_status = Helper::ticket_status();
                     <div class="pages span7 clearfix">
                         <ul class="nav nav-tabs">
                             <li class="<?php if ($type == "general") echo 'active'; ?>">
-                                <a href="<?php echo Yii::app()->request->baseUrl ?>/event/edit/id/<?php echo $event['id'] ?>/type/general" ><i class="icon-pencil"></i>Thông tin Sự kiện</a>
+                                <a href="<?php echo Yii::app()->request->baseUrl ?>/event/edit/id/<?php echo $event['id'] ?>/type/general" ><i class="icon-pencil"></i>Event Information</a>
                                 <div class="arrow"></div>
                             </li>
                             <li class="<?php if ($type == "ticket") echo 'active'; ?>">
 
-                                <a href="<?php echo Yii::app()->request->baseUrl ?>/event/edit/id/<?php echo $event['id'] ?>/type/ticket" ><i class="icon-book"></i>Vé</a>
+                                <a href="<?php echo Yii::app()->request->baseUrl ?>/event/edit/id/<?php echo $event['id'] ?>/type/ticket" ><i class="icon-book"></i>Ticket</a>
                                 <div class="arrow"></div>
                             </li>
                         </ul>
@@ -38,26 +38,26 @@ $ticket_status = Helper::ticket_status();
 
                                         <fieldset>
                                             <div class="step"> <div class="number">1</div>
-                                                <h3>Thông tin Sự kiện</h3>
+                                                <h3>Event Information</h3>
                                             </div>
 
                                             <div class="control-group">
-                                                <label class="control-label" for="title">Tên Sự kiện<div class="required">*</div></label>
+                                                <label class="control-label" for="title">Add Event Title<div class="required">*</div></label>
                                                 <div class="controls"><input type="text" class="input-xlarge span11" name="title" value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : htmlspecialchars($event['title']); ?>"></div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label" for="location">Địa điểm<div class="required">*</div></label>
+                                                <label class="control-label" for="location">Loaction<div class="required">*</div></label>
                                                 <div class="controls">
                                                     <input type="text" id="add_location" class="input-xlarge span11" name="location" value="<?php echo isset($_POST['location']) ? htmlspecialchars($_POST['location']) : htmlspecialchars($event['location']); ?>">
                                                     <img class="loading-location hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-big-roller.gif" />
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label" for="address">Địa chỉ</label>
+                                                <label class="control-label" for="address">Address</label>
                                                 <div class="controls"><input type="text" class="input-xlarge span11" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : htmlspecialchars($event['address']); ?>"></div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label">Thành phố</label>
+                                                <label class="control-label">City</label>
                                                 <div class="controls">
                                                     <select name="city">
                                                         <?php foreach ($cities as $k => $v): ?>
@@ -67,11 +67,11 @@ $ticket_status = Helper::ticket_status();
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label">Thời gian<div class="required">*</div></label>
+                                                <label class="control-label">Add When<div class="required">*</div></label>
                                                 <div class="controls">
 
                                                     <div class="row-fluid">
-                                                        <p class="start-date-title">Ngày bắt đầu</p>
+                                                        <p class="start-date-title">Event starts</p>
                                                         <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
                                                             <input type="text" class="input-medium ico ico-calendar datetimepicker" name="start_date" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y',strtotime($event['start_time'])); ?>">
 
@@ -87,14 +87,14 @@ $ticket_status = Helper::ticket_status();
                                                             </select>                                                        
                                                             <label class="checkbox inline">
                                                                 <input type="checkbox" name="display_start_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; else if ($event['display_start_time']) echo 'checked'; ?>>
-                                                                Hiện thời gian
+                                                                Show
                                                             </label>
                                                         </div>
 
                                                     </div>
 
                                                     <div class="row-fluid">
-                                                        <p class="end-date-title">Ngày kết thúc</p>
+                                                        <p class="end-date-title">Event ends</p>
 
                                                         <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
                                                             <input type="text" class="input-medium ico ico-calendar datetimepicker" name="end_date" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y',strtotime($event['end_time'])); ?>">
@@ -111,11 +111,11 @@ $ticket_status = Helper::ticket_status();
                                                             </select>                                                     
                                                             <label class="checkbox inline">
                                                                 <input type="checkbox" name="display_end_time" value="1" <?php if (isset($_POST['display_end_time'])) echo 'checked'; else if ($event['display_end_time']) echo 'checked'; ?>>
-                                                                Hiện thời gian
+                                                                Show
                                                             </label>
                                                             <label class="checkbox inline">
                                                                 <input type="checkbox" value="1" name="is_repeat" <?php if (isset($_POST['is_repeat'])) echo 'checked';else if ($event['is_repeat']) echo 'checked'; ?>>
-                                                                Lập lại sự kiện
+                                                                Yes, this event repeats.
                                                             </label>
                                                         </div>
 
@@ -126,7 +126,7 @@ $ticket_status = Helper::ticket_status();
                                             </div>
 
                                             <div class="control-group upload">
-                                                <label class="control-label" for="title">Upload hình đại diện</label>
+                                                <label class="control-label" for="title">Upload the logo for your event:</label>
                                                 <div class="controls">
                                                     <?php if ($event['img'] == ""): ?>
                                                         <img class="image-default" src="<?php echo Yii::app()->request->baseUrl; ?>/img/default_upload_logo.gif" />
@@ -135,7 +135,7 @@ $ticket_status = Helper::ticket_status();
                                                         <img class="image-default waiting hide" src="<?php echo Yii::app()->request->baseUrl; ?>/img/ajax-big-roller.gif" />
                                                         <img class="image-default thumbnail" src="<?php echo HelperApp::get_thumbnail($event['thumbnail']); ?>" />
                                                     <?php endif; ?>
-                                                    <p class="help-block">Hình ảnh định dạng JPG, PNG, GIF phải lơn hơn kích thước 300x300px và dung lượng nhỏ hơn 2MB</p>
+                                                    <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
                                                     <input class="fileupload customfile-input" class="input-xlarge" name="file" type="file">
                                                 </div>
                                                 <!--
@@ -145,7 +145,7 @@ $ticket_status = Helper::ticket_status();
                                                 <?php endif; ?>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label">Nội dung Sự kiện  <!--<label class="control-label add-faq"> <a href="">+Add FAQs</a></label>--></label>
+                                                <label class="control-label">Add Event Details <!--<label class="control-label add-faq"> <a href="">+Add FAQs</a></label>--></label>
                                                 <div class="control-group text">
                                                     <div class="controls">
                                                         <textarea cols="150" rows="15" name="description" class="tinymce"><?php echo isset($_POST['description']) ? $_POST['description'] : $event['description']; ?></textarea>
@@ -157,32 +157,32 @@ $ticket_status = Helper::ticket_status();
 
                                             <div class="step"> 
                                                 <div class="number">2</div>
-                                                <h3>Thiết lập</h3>
+                                                <h3>Option</h3>
                                             </div>
 
                                             <div class="control-group">
-                                                <label for="select01" class="control-label">Cho phép mọi người đăng ký</label>
+                                                <label for="select01" class="control-label">This event will public and registered.</label>
                                                 <div class="controls">
                                                     <select name="published">
-                                                        <option <?php if (isset($_POST['published']) && $_POST['published']) echo 'selected';else if ($event['published']) echo 'selected'; ?> value="1">Có</option>
-                                                        <option <?php if (isset($_POST['published']) && !$_POST['published']) echo 'selected';else if (!$event['published']) echo 'selected'; ?> value="0">Không</option>
+                                                        <option <?php if (isset($_POST['published']) && $_POST['published']) echo 'selected';else if ($event['published']) echo 'selected'; ?> value="1">Yes</option>
+                                                        <option <?php if (isset($_POST['published']) && !$_POST['published']) echo 'selected';else if (!$event['published']) echo 'selected'; ?> value="0">No</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="control-group">
-                                                <label class="control-label">Thể loại</label>
+                                                <label class="control-label">Select categories for your event:</label>
                                                 <div class="controls">
                                                     <select name="primary_cate">
 
-                                                        <option value="0">Thể loại chính</option>                                                    
+                                                        <option value="0">Primary category</option>                                                    
                                                         <?php foreach ($categories as $k => $v): ?>                
                                                             <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; else if ($event['categories']['primary']['id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <select name="second_cate">
 
-                                                        <option value="0">Thể loại phụ</option>                                                    
+                                                        <option value="0">Secondary category</option>                                                    
                                                         <?php foreach ($categories as $k => $v): ?>                
                                                             <option <?php if (isset($_POST['second_cate']) && $_POST['second_cate'] == $v['id']) echo 'selected'; else if (isset($event['categories']['second']) && $event['categories']['second']['id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                                                         <?php endforeach; ?>
@@ -191,11 +191,11 @@ $ticket_status = Helper::ticket_status();
                                             </div>
 
                                             <div class="control-group">
-                                                <label for="optionsCheckbox" class="control-label">Số lượng vé còn lại</label>
+                                                <label for="optionsCheckbox" class="control-label">The number of tickets remaining</label>
                                                 <div class="controls">
                                                     <label class="checkbox">
                                                         <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked';else if ($event['show_tickets']) echo 'checked'; ?> >
-                                                        Hiển thị số lượng vé còn lại trên trang đăng ký vé
+                                                        Show number of tickets remaining on the registration page.
                                                     </label>
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@ $ticket_status = Helper::ticket_status();
                             <div class="row-fluid content" >
                                 <div class="alert alert-error hide">
                                     <button type = "button" class = "close" data-dismiss = "alert">×</button>
-                                    <h4>Lỗi!</h4>
+                                    <h4>Error!</h4>
                                     <div class="msg">
 
                                     </div>
@@ -231,7 +231,7 @@ $ticket_status = Helper::ticket_status();
 
                                 <div class="alert alert-success hide">
                                     <button type = "button" class = "close" data-dismiss = "alert">×</button>
-                                    <h4>Chúc mừng!</h4>
+                                    <h4>Success!</h4>
                                     <div class="msg">
 
                                     </div>
@@ -239,12 +239,12 @@ $ticket_status = Helper::ticket_status();
                                 <div class="span10 form-magu">
 
                                     <div class="step"> <div class="number">3</div>
-                                        <h3>Thông tin Vé</h3>
+                                        <h3>Ticket Information</h3>
                                     </div>
                                     <div class="add_ticket_container">
-                                        <span class="add_ticket_text">Loại vé:</span>
-                                        <a class=" btn button-medium btn-donate eb_button small default add_ticket_class btn-ticket free">Miễn phí</a>
-                                        <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Trả phí</a>
+                                        <span class="add_ticket_text">Type of prices:</span>
+                                        <a class=" btn button-medium btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
+                                        <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a>
 
                                     </div>
                                     <div class="form-ticket" id="event_form">    
@@ -253,14 +253,14 @@ $ticket_status = Helper::ticket_status();
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th class="head-ticket-name">Tên vé</th>
-                                                            <th class="head-ticket-quantity">Số lượng</th>
-                                                            <th class="head-ticket-price <?php echo $v['type'] ?>">Giá vé</th>
+                                                            <th class="head-ticket-name">Ticket name</th>
+                                                            <th class="head-ticket-quantity">Quantity</th>
+                                                            <th class="head-ticket-price <?php echo $v['type'] ?>">Price</th>
                                                             <?php if ($v['type'] == "paid"): ?>
-                                                                <th>Phí</th>
-                                                                <th>Tổng cộng</th>
+                                                                <th>Fee</th>
+                                                                <th>Total</th>
                                                             <?php endif; ?>
-                                                            <th class="head-ticket-status">Tình trạng vé</th>
+                                                            <th class="head-ticket-status">Status</th>
                                                             <th class="head-ticket-action" colspan="3"></th>
                                                         </tr>
                                                     </thead>
@@ -284,7 +284,7 @@ $ticket_status = Helper::ticket_status();
                                                         <?php $total = $v['service_fee'] ? $v['price'] * $v['quantity'] + $v['tax'] : $v['price'] * $v['quantity']; ?>
                                                         <td><span class="price ticket-total"><?php echo number_format($total) ?> VNĐ</span></td>
                                                     <?php else: ?>
-                                                        <td class="ticket_fee" class="input-mini">Miễn phí</td>
+                                                        <td class="ticket_fee" class="input-mini">Free</td>
                                                     <?php endif; ?>
 
                                                     <td>
@@ -294,9 +294,9 @@ $ticket_status = Helper::ticket_status();
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </td>
-                                                    <td><a href="#" class="setting">Thiết lập <span class="icon-white ico-hide icon-chevron-down"></span></a></td>
+                                                    <td><a href="#" class="setting">Option <span class="icon-white ico-hide icon-chevron-down"></span></a></td>
                                                     <td>
-                                                        <a href="#" class="apply-ticket icon btn btn-warning">Sửa</a>                        
+                                                        <a href="#" class="apply-ticket icon btn btn-warning">Edit</a>                        
                                                     </td>
                                                     <td>
                                                         <a href="<?php echo Yii::app()->request->baseUrl ?>/event/delete_ticket_type/id/<?php echo $v['id']; ?>" class="remove-ticket btn btn-danger">Xóa</a>                        
@@ -306,7 +306,7 @@ $ticket_status = Helper::ticket_status();
                                                         <td colspan="9">
                                                             <div class="control-group">
                                                                 <div class="control-label">
-                                                                    Mô tả vé
+                                                                    Ticket Description
                                                                 </div>
                                                                 <div class="controls">
                                                                     <textarea name="ticket_description" rows="5" cols="10" class="input-xxlarge ticket-description"><?php echo $v['description']; ?></textarea>
@@ -314,16 +314,16 @@ $ticket_status = Helper::ticket_status();
                                                                 <div class="controls">
                                                                     <label class="checkbox">
                                                                         <input type="checkbox" name="ticket_hide_description" class="ticket-hide-description" <?php if ($v['hide_description']) echo 'checked'; ?>>
-                                                                        Ẩn mô tả vé trên trang Vé Sự Kiện
+                                                                        Auto Hide Description
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             <div class="control-group">
-                                                                <label class="control-label">Thời gian</label>
+                                                                <label class="control-label">Time</label>
                                                                 <div class="controls">
 
                                                                     <div class="row-fluid ticket-date">
-                                                                        <p class="start-date-title">Ngày bắt đầu</p>
+                                                                        <p class="start-date-title">Start Sales</p>
                                                                         <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                             <input type="text" value="<?php echo htmlspecialchars(date('d-m-Y', strtotime($v['sale_start']))); ?>" name="ticket_start_date" class="input-medium ico ico-calendar datetimepicker ticket-start-date">
                                                                             <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
@@ -347,7 +347,7 @@ $ticket_status = Helper::ticket_status();
                                                                     </div>
 
                                                                     <div class="row-fluid ticket-date">
-                                                                        <p class="end-date-title">Ngày kết thúc</p>
+                                                                        <p class="end-date-title">End Sales</p>
 
                                                                         <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                             <input type="text" value="<?php echo htmlspecialchars(date('d-m-Y', strtotime($v['sale_end']))); ?>" name="ticket_end_date" class="input-medium ico ico-calendar datetimepicker ticket-end-date">
@@ -374,32 +374,32 @@ $ticket_status = Helper::ticket_status();
                                                             </div>
 
                                                             <div class="control-group">
-                                                                <label class="control-label" for="address">Số lượng vé mỗi hóa đơn</label>
+                                                                <label class="control-label" for="address">Tickets per Order:</label>
                                                                 <div class="controls">
-                                                                    Tối thiểu <input type="text" class="input-mini ticket-min" name="ticket_min" value="<?php echo htmlspecialchars($v['minimum']); ?>">
-                                                                    Tối đa <input type="text" class="input-mini ticket-max" name="ticket_max" value="<?php echo htmlspecialchars($v['maximum']); ?>">
+                                                                    Minimum <input type="text" class="input-mini ticket-min" name="ticket_min" value="<?php echo htmlspecialchars($v['minimum']); ?>">
+                                                                    Maximum <input type="text" class="input-mini ticket-max" name="ticket_max" value="<?php echo htmlspecialchars($v['maximum']); ?>">
                                                                 </div>
                                                             </div>
 
                                                             <?php if ($v['type'] == "paid"): ?>
                                                                 <div class="control-group">
-                                                                    <label class="control-label">Phí dịch vụ </label>
+                                                                    <label class="control-label">Service Fee </label>
                                                                     <div class="controls">
 
                                                                         <label class="radio">
                                                                             <input type="radio" name="ticket_service_fee" value="0" class="ticket-service-fee" <?php if (!$v["service_fee"]) echo 'checked'; ?>>
-                                                                            Trừ phí dịch vụ vào giá vé
+                                                                            INCLUDE fees into total ticket price 
                                                                         </label>
                                                                         <label class="radio">
                                                                             <input type="radio" name="ticket_service_fee" value="1" class="ticket-service-fee" <?php if ($v["service_fee"]) echo 'checked'; ?>>
-                                                                            Cộng phí dịch vụ vào giá vé
+                                                                            ADD fees on top of total ticket price 
                                                                         </label>
                                                                     </div>
                                                                 </div>
                                                             <?php endif; ?>
 
                                                             <div class="btn-apply clearfix">
-                                                                <a href="#" class="btn btn-warning pull-right apply-ticket">Sửa</a>
+                                                                <a href="#" class="btn btn-warning pull-right apply-ticket">Edit</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -442,12 +442,12 @@ $ticket_status = Helper::ticket_status();
                                     <table class="table table-bordered table-striped ">
                                         <thead>
                                             <tr>
-                                                <th class="head-ticket-name">Tên vé</th>
-                                                <th class="head-ticket-quantity">Số lượng</th>
-                                                <th class="head-ticket-price">Giá vé</th>
-                                                <th>Phí</th>
-                                                <th>Tổng cộng</th>
-                                                <th class="head-ticket-status">Tình trạng vé</th>
+                                                <th class="head-ticket-name">Ticket name</th>
+                                                <th class="head-ticket-quantity">Quantity</th>
+                                                <th class="head-ticket-price">Price</th>
+                                                <th>Fee</th>
+                                                <th>Total</th>
+                                                <th class="head-ticket-status">Status</th>
                                                 <th class="head-ticket-action" colspan="3"></th>
                                             </tr>
                                         </thead>
@@ -473,13 +473,13 @@ $ticket_status = Helper::ticket_status();
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
-                                        <td><a href="#" class="setting">Thiết lập <span class="icon-white ico-hide icon-chevron-down"></span></a></td>
+                                        <td><a href="#" class="setting">Option <span class="icon-white ico-hide icon-chevron-down"></span></a></td>
                                         <td>
-                                            <a href="#" class="apply-ticket btn btn-info">Thêm</a>
+                                            <a href="#" class="apply-ticket btn btn-info">Add</a>
                                             <img class="waiting hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-circle-ball.gif" style="vertical-align: middle"/>
                                         </td>
                                         <td>
-                                            <a href="#" class="remove-ticket clone btn btn-danger">Xóa</a>
+                                            <a href="#" class="remove-ticket clone btn btn-danger">Delete</a>
                                             <img class="waiting hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-circle-ball.gif" style="vertical-align: middle"/>
                                         </td>
                                         </tr>
@@ -487,7 +487,7 @@ $ticket_status = Helper::ticket_status();
                                             <td colspan="9">
                                                 <div class="control-group">
                                                     <div class="control-label">
-                                                        Mô tả vé
+                                                        Ticket Description
                                                     </div>
                                                     <div class="controls">
                                                         <textarea name="ticket_description" rows="5" cols="10" class="input-xxlarge ticket-description"></textarea>
@@ -495,16 +495,16 @@ $ticket_status = Helper::ticket_status();
                                                     <div class="controls">
                                                         <label class="checkbox">
                                                             <input type="checkbox" name="ticket_hide_description" class="ticket-hide-description" checked>
-                                                            Ẩn mô tả vé trên trang Vé Sự Kiện
+                                                            Auto Hide Description
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
-                                                    <label class="control-label">Thời gian</label>
+                                                    <label class="control-label">Time</label>
                                                     <div class="controls">
 
                                                         <div class="row-fluid ticket-date">
-                                                            <p class="start-date-title">Ngày bắt đầu</p>
+                                                            <p class="start-date-title">Start Sales</p>
                                                             <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                 <input type="text" value="<?php echo date('d-m-Y'); ?>" name="ticket_start_date" class="input-medium ico ico-calendar datetimepicker ticket-start-date">
                                                                 <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
@@ -528,7 +528,7 @@ $ticket_status = Helper::ticket_status();
                                                         </div>
 
                                                         <div class="row-fluid ticket-date">
-                                                            <p class="end-date-title">Ngày kết thúc</p>
+                                                            <p class="end-date-title">End Sales</p>
 
                                                             <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                 <input type="text" value="<?php echo date('d-m-Y', strtotime("+1 month")); ?>" name="ticket_end_date" class="input-medium ico ico-calendar datetimepicker ticket-end-date">
@@ -555,30 +555,30 @@ $ticket_status = Helper::ticket_status();
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label" for="address">Số lượng vé mỗi hóa đơn</label>
+                                                    <label class="control-label" for="address">Tickets per Order:</label>
                                                     <div class="controls">
-                                                        Tối thiểu <input type="text" class="input-mini ticket-min" name="ticket_min" value="1">
-                                                        Tối đa <input type="text" class="input-mini ticket-max" name="ticket_max">
+                                                        Minimum <input type="text" class="input-mini ticket-min" name="ticket_min" value="1">
+                                                        Maximum <input type="text" class="input-mini ticket-max" name="ticket_max">
                                                     </div>
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label">Phí dịch vụ </label>
+                                                    <label class="control-label">Service Fee </label>
                                                     <div class="controls">
 
                                                         <label class="radio">
                                                             <input type="radio" name="ticket_service_fee" value="0" checked class="ticket-service-fee">
-                                                            Trừ phí dịch vụ vào giá vé
+                                                            INCLUDE fees into total ticket price 
                                                         </label>
                                                         <label class="radio">
                                                             <input type="radio" name="ticket_service_fee" value="1" class="ticket-service-fee">
-                                                            Cộng phí dịch vụ vào giá vé
+                                                            ADD fees on top of total ticket price 
                                                         </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="btn-apply clearfix">
-                                                    <a href="#" class="btn btn-info pull-right apply-ticket">Thêm</a>
+                                                    <a href="#" class="btn btn-info pull-right apply-ticket">Add</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -589,11 +589,11 @@ $ticket_status = Helper::ticket_status();
                                     <table class="table table-bordered table-striped ">
                                         <thead>
                                             <tr>
-                                                <th class="head-ticket-name">Tên vé</th>
-                                                <th class="head-ticket-quantity">Số lượng</th>
-                                                <th class="head-ticket-price free">Giá vé</th>
+                                                <th class="head-ticket-name">Ticket name</th>
+                                                <th class="head-ticket-quantity">Quantity</th>
+                                                <th class="head-ticket-price free">Price</th>
 
-                                                <th class="head-ticket-status">Tình trạng vé</th>
+                                                <th class="head-ticket-status">Status</th>
                                                 <th class="head-ticket-action" colspan="3"></th>
                                             </tr>
                                         </thead>
@@ -609,7 +609,7 @@ $ticket_status = Helper::ticket_status();
                                         <input type="hidden" name="ticket_id" value="" class="ticket-id"/>
                                         <td class="ticket_name"><input type="text" name="ticket_name" class="input-small ticket-name"></td>
                                         <td class="ticket_quantity"><input type="text" placeholder="0" name="ticket_quantity" class="input-mini quantity ticket-quantity"></td>
-                                        <td class="ticket_fee"class="input-mini">Miễn phí</td>
+                                        <td class="ticket_fee"class="input-mini">Free</td>
                                         <td>
                                             <select class="ticket-status input-small" name="ticket_status">
                                                 <?php foreach ($ticket_status as $k => $v): ?>
@@ -617,13 +617,13 @@ $ticket_status = Helper::ticket_status();
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
-                                        <td><a href="JavaScript:void(0);" class="setting">Thiết lập <span class="icon-chevron-down icon-white ico-hide"></span></a></td>
+                                        <td><a href="JavaScript:void(0);" class="setting">Option<span class="icon-chevron-down icon-white ico-hide"></span></a></td>
                                         <td>
-                                            <a href="#" class="apply-ticket btn btn-info">Thêm</a>
+                                            <a href="#" class="apply-ticket btn btn-info">Add</a>
                                             <img class="waiting hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-circle-ball.gif" style="vertical-align: middle"/>
                                         </td>
                                         <td>
-                                            <a href="#" class="remove-ticket clone btn btn-danger">Xóa</a>
+                                            <a href="#" class="remove-ticket clone btn btn-danger">Delete</a>
                                             <img class="waiting hide" src="<?php echo Yii::app()->request->baseUrl ?>/img/ajax-circle-ball.gif" style="vertical-align: middle"/>
                                         </td>
                                         </tr>
@@ -631,7 +631,7 @@ $ticket_status = Helper::ticket_status();
                                             <td colspan="9">
                                                 <div class="control-group">
                                                     <div class="control-label">
-                                                        Mô tả vé
+                                                        Ticket Description
                                                     </div>
                                                     <div class="controls">
                                                         <textarea name="ticket_description" rows="5" cols="10" class="input-xxlarge ticket-description"></textarea>
@@ -639,16 +639,16 @@ $ticket_status = Helper::ticket_status();
                                                     <div class="controls">
                                                         <label class="checkbox">
                                                             <input type="checkbox" class="ticket-hide-description" name="ticket_hide_description" checked>
-                                                            Ẩn mô tả vé trên trang Vé Sự Kiện
+                                                            Auto Hide Description
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
-                                                    <label class="control-label">Thời gian</label>
+                                                    <label class="control-label">Time</label>
                                                     <div class="controls">
 
                                                         <div class="row-fluid ticket-date">
-                                                            <p class="start-date-title">Ngày bắt đầu</p>
+                                                            <p class="start-date-title">Start Sales</p>
                                                             <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                 <input type="text" value="<?php echo date('d-m-Y'); ?>" name="ticket_start_date" class="input-medium ico ico-calendar datetimepicker ticket-start-date">
                                                                 <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
@@ -672,7 +672,7 @@ $ticket_status = Helper::ticket_status();
                                                         </div>
 
                                                         <div class="row-fluid ticket-date">
-                                                            <p class="end-date-title">Ngày kết thúc</p>
+                                                            <p class="end-date-title">End Sales</p>
 
 
                                                             <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
@@ -703,15 +703,15 @@ $ticket_status = Helper::ticket_status();
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label" for="address">Số lượng vé mỗi hóa đơn</label>
+                                                    <label class="control-label" for="address">Tickets per Order:</label>
                                                     <div class="controls">
-                                                        Tối thiểu <input type="text" class="input-mini ticket-min" name="ticket_min" value="1">
-                                                        Tối đa <input type="text" class="input-mini ticket-max" name="ticket_max">
+                                                        Minimum <input type="text" class="input-mini ticket-min" name="ticket_min" value="1">
+                                                        Maximum <input type="text" class="input-mini ticket-max" name="ticket_max">
                                                     </div>
                                                 </div>
 
                                                 <div class="btn-apply clearfix">
-                                                    <a href="#" class="btn btn-info pull-right apply-ticket">Thêm</a>
+                                                    <a href="#" class="btn btn-info pull-right apply-ticket">Add</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -736,7 +736,7 @@ $ticket_status = Helper::ticket_status();
                         <button class="btn btn-large">Save</button>
                         <button class="btn btn-large">Preview</button> -->
                         <?php if ($type != "ticket"): ?>
-                            <a href="#" class="btn-style make_event_live btn-save button-medium">Cập nhật</a>
+                            <a href="#" class="btn-style make_event_live btn-save button-medium">Save</a>
                         <?php endif; ?>
                     </div>
                 </div>

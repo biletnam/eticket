@@ -4,30 +4,30 @@
             <aside class="sidebar span3">
                 <div class="sidebar-wrap">
                     <div id="filter_date" class="filter">
-                        <h3>Ngày</h3>
+                        <h3>Date</h3>
                         <ul>
                             <li class="active">
-                                <a href="#">Tất cả</a>
+                                <a href="#">All dates</a>
                                 <span>(68340)</span>
                             </li>
                             <li class="">
-                                <a href="#">Hôm nay</a>
+                                <a href="#">Today</a>
                                 <span>(2314)</span>
                             </li>
                             <li class="">
-                                <a href="#">Ngày mai</a>
+                                <a href="#">Tomorrow</a>
                                 <span>(2771)</span>
                             </li>
                             <li class="">
-                                <a href="#">Trong tuần</a>
+                                <a href="#">This week</a>
                                 <span>(12552)</span>
                             </li>
                             <li class="">
-                                <a href="#">Cuối tuần</a>
+                                <a href="#">This weekend</a>
                                 <span>(5231)</span>
                             </li>
                             <li class="">
-                                <a href="#">Trong tháng</a>
+                                <a href="#">This month</a>
                                 <span>(32789)</span>
                             </li>
                         </ul>
@@ -37,26 +37,26 @@
 
 
                     <div id="filter_price" class="filter">
-                        <h3>Giá vé</h3>
+                        <h3>Price</h3>
                         <ul>
                             <li class="active">
-                                <a href="#">Tất cả</a>
+                                <a href="#">All prices</a>
                                 <span>(68340)</span>
                             </li>
                             <li class="">
-                                <a href="#">Miễn phí</a>
+                                <a href="#">Free</a>
                                 <span>(24242)</span>
                             </li>
                             <li class="">
-                                <a href="#">Giá thấp</a>
+                                <a href="#">Low</a>
                                 <span>(13330)</span>
                             </li>
                             <li class="">
-                                <a href="#">Giá trung bình</a>
+                                <a href="#">Normal</a>
                                 <span>(15684)</span>
                             </li>
                             <li class="">
-                                <a href="#">Giá cao</a>
+                                <a href="#">High</a>
                                 <span>(16210)</span>
                             </li>
                         </ul>
@@ -66,7 +66,7 @@
 
 
                     <div id="filter_category" class="filter">
-                        <h3>Lĩnh vực</h3>
+                        <h3>Category</h3>
                         <ul>
                             <li class="active">
                                 <a href="#">All Categories</a>
@@ -127,7 +127,7 @@
 
 
                     <div id="filter_city" class="filter">
-                        <h3>Tỉnh / Thành phố</h3>
+                        <h3>Location</h3>
                         <ul>
                             <li class="">
                                 <a href="#">London</a>
@@ -183,7 +183,7 @@
 
 
                     <a id="rss" href="#">
-                        Đăng ký RSS
+                        Subscribe to this RSS feed 
                     </a>
                 </div>
             </aside>
@@ -191,10 +191,10 @@
                 <div id="search_bar">
                     <form action="#" method="get" name="searchform" id="searchform" class="form-search clearfix">
 
-                        <input type="text" autocomplete="off" placeholder="Tìm kiếm (vd: âm nhạc, giáo dục)" maxlength="50" class="search-title" name="s">
-                        <input type="text" autocomplete="off" value="" maxlength="50" class="search-location" name="loc" id="cityfield" placeholder="Tỉnh / Thành phố">
+                        <input type="text" autocomplete="off" placeholder="Search for (e.g. music, education)" maxlength="50" class="search-title" name="s">
+                        <input type="text" autocomplete="off" value="" maxlength="50" class="search-location" name="loc" id="cityfield" placeholder="Location / City">
 
-                        <a href="#" class="btn-style search_button button-medium">Tìm Sự Kiện</a>
+                        <a href="#" class="btn-style search_button button-medium">Search</a>
                     </form>
                 </div>
 
@@ -202,17 +202,17 @@
                 <div id="search_results">
                     <div class="alert-message clearfix">
                         <strong>
-                            Danh sách sự kiện ở Việt Nam
+                            List events at Viet Nam
                         </strong>
                         <div id="sort_results">
                             <form action="?">
-                                Sắp xếp: 
+                                Sort by :  
                                 <select>
                                     <option value="#">
-                                        Ngày tháng
+                                        Date
                                     </option>
                                     <option selected="" value="#">
-                                        Hợp lý
+                                        Best Match
                                     </option>
                                 </select>
                             </form>

@@ -149,7 +149,7 @@ class UserController extends Controller {
         $date_expired = $date_added + (Yii::app()->getParams()->itemAt('token_time')) * 86400;
         
         $this->UserModel->add_token($token, $user['id'], 'password', $date_added, $date_expired);
-        $msg = "Email đã gửi đến bạn. Vui lòng kiểm tra hộp thư đến (inbox), nếu không có vui lòng kiểm tra hộp thư rác (spam mail).";
+        $msg = "Please check your email. We just sent you an email with a link to setup your new password.";
         
         $forgot_url = Yii::app()->request->hostInfo.Yii::app()->request->baseUrl . "/user/reset/t/$token";
         $to = $email;

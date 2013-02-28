@@ -13,15 +13,15 @@
                         <nav class="breadcrumbs">
                             <ul class="clearfix">
                                 <li>
-                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>">Trang chủ</a>
+                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>">Home page</a>
                                 </li>
-                                <li>Tìm kiếm</li>
+                                <li>Search</li>
                             </ul>
                         </nav>
 
                         <div class="row-fluid list">
                             <div class="span6">
-                                <h3><?php echo $total ?> kết quả cho từ khóa "<?php echo $_GET['q']; ?>"</h3>
+                                <h3><?php echo $total ?> results found for "<?php echo $_GET['q']; ?>"</h3>
                                 <ul>
                                     <?php foreach($faqs as $k=>$v): ?>
                                     <li>

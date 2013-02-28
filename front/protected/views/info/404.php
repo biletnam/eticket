@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row-fluid error-404">
             <div class="span12">
-                <div class="error-message">Không tìm thấy trang này. Bạn vui lòng click <a href="<?php echo Yii::app()->request->baseUrl; ?>">vào đây</a> để quay về trang chủ.</div>
+                <div class="error-message">The page or event you are looking for was not found. Please click <a href="<?php echo Yii::app()->request->baseUrl; ?>">here</a> to go home page.</div>
             </div>                    
         </div>
     </div>

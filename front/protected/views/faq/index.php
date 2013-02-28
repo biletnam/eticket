@@ -8,21 +8,21 @@
                         <?php $this->renderPartial('search'); ?>
 
                         <div id="intro">
-                            <h3>Lần đầu tiên sử dụng VeSuKien.vn?</h3>
+                            <h3>New to eTicket?</h3>
                             <section class="row-fluid">
                                 <div class="span5">
                                     <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/thumb_feature_tutorial.jpg" alt="">
                                 </div>
                                 <article class="span7">
                                     <p>
-                                        Đây là trang thông tin hướng dẫn dành cho người mới bắt đầu sử dụng VeSuKien.vn. Nếu vé tham gia sự kiện của bạn miễn phí, thì chúng tôi cung cấp dịch vụ hoàn toàn miễn phí cho bạn và cả khách hàng của bạn.
+                                        From sample pages to FAQ's for beginners, here's what you need to get started. Remember, Eventbrite's free to use if your event is free, so go ahead and create a test event page to give things a try! 
                                     </p>
                                     <p>
-                                        Bạn có thể nhập chủ đề bạn cần tìm vào ô <strong>Tìm kiếm</strong> phía trên. Hoặc bạn có thể tìm hiểu về các chủ đề thường được hỏi ở danh sách bên dưới.
+                                        You can enter a search term in <strong>Search</strong> on top. Or you can refer about the topics often asked in the list below.
                                     </p>
                                     <nav>
-                                        <a href="#">Dành cho người mới bắt đầu</a>
-                                        <a href="#">Xem video hướng dẫn</a>
+                                        <a href="#">View our help for beginners</a>
+                                        <a href="#">View all videos</a>
                                     </nav>
                                 </article>
                             </section>
@@ -58,7 +58,7 @@
                                     </li>
                                     <?php endforeach;?>
                                 </ul>
-                                <a href="<?php echo Yii::app()->request->baseUrl."/faq/category/c/".$cate_2['slug']."/"; ?>" class="view-all">Xem tất cả</a>
+                                <a href="<?php echo Yii::app()->request->baseUrl."/faq/category/c/".$cate_2['slug']."/"; ?>" class="view-all">View all</a>
                             </div>
                             <?php endif;?>
                         </div>

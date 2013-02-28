@@ -17,22 +17,22 @@ class AuthController extends Controller {
     private function validate() {
         $message = '';
         if ($_POST['email'] == '') {
-            $msg[] = 'Email không được để trống';
+            $msg[] = 'Please enter your email.';
         }
         // checking whether valid email
         $regexp = "/^[a-z0-9]+([_\\.-][a-z0-9]+)*@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i";
         if (!preg_match($regexp, $_POST['email'])) {
-            $msg[] = 'Email không hợp lệ';
+            $msg[] = 'Please enter a valid email address.';
         }
 
         if ($_POST['password'] == '') {
-            $msg[] = 'Mật khẩu không được để trống';
+            $msg[] = 'Please enter your password.';
         }
         // checking whether valid password
         $regexp = "/^[a-z0-9_-]{6,18}$/";
         if (!preg_match($regexp, $_POST['password'])) {
-            $msg[] = 'Mật khẩu không hợp lệ';
-            $msg[] = 'Mật khẩu phải có ít nhất 6 ký tự và nhiều nhất là 18 ký tự';
+            $msg[] = 'Password invalid';
+            $msg[] = 'Your password must be at least 4 characters and smaller than 18 characters. Please try again.';
         }
         if (isset($msg))
             $message = implode('<br/>', $msg);
@@ -59,7 +59,7 @@ class AuthController extends Controller {
                     $this->redirect(Yii::app()->request->baseUrl);
                 } else {
                     $item = $this->post_item();
-                    $notification = 'Tài khoản hoặc Mật khẩu của bạn chưa chính xác. Bạn vui lòng đăng nhập lại. ';
+                    $notification = 'Invalid email and/or password. Please try again.';
                     $this->render('signin', array('notification' => $notification, 'item' => $item));
                 }
             } else {

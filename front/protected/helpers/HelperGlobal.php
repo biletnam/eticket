@@ -8,10 +8,10 @@ class HelperGlobal {
         
     }
     
-    public static function require_login($return_url = false) {
+    public static function require_login() {
         
-        if (!UserControl::LoggedIn()) {            
-            header("location:" . Yii::app()->request->baseUrl . "/user/signin/");
+        if (!UserControl::LoggedIn()) {
+            header("location:" . HelperUrl::baseUrl() . "admin/login/");
             die;
         }
     }
@@ -20,7 +20,7 @@ class HelperGlobal {
         
         if(self::is_access($controller,$method))
             return true;
-        header("location:". Yii::app()->request->baseUrl."/home/access_denied/");
+        header("location:". HelperUrl::baseUrl()."home/access_denied/");
     }
 
     private static function is_access($controller,$method) {

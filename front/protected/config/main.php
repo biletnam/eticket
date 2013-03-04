@@ -6,7 +6,7 @@
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Magu.vn',
+    'name' => 'My Web Application',
     'defaultController' => 'home',
     // preloading 'log' component
     'preload' => array('log'),
@@ -35,31 +35,27 @@ return array(
             'allowAutoLogin' => true,
         ),
         // uncomment the following to enable URLs in path-format
+        
         'urlManager' => array(
             'urlFormat' => 'path',
             'rules' => array(
-            /* '<controller:\w+>/<id:\d+>' => '<controller>/view',
-              '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-              '<controller:\w+>/<action:\w+>' => '<controller>/<action>', */
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
-        /* 'db' => array(
-          'connectionString' => 'sqlite:' . dirname(__FILE__) . '/../data/testdrive.db',
-          ), */
         // uncomment the following to use a MySQL database
 
         'db' => array(
             'connectionString' => 'mysql:host=127.0.0.1;dbname=eticket',
             'emulatePrepare' => true,
-            //'enableProfiling' => true,
-            //'enableParamLogging' => true,
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
-            'errorAction' => 'home/error404',
+            'errorAction' => 'home/error',
         ),
         'log' => array(
             'class' => 'CLogRouter',
@@ -68,13 +64,12 @@ return array(
                     'class' => 'CFileLogRoute',
                     'levels' => 'error, warning',
                 ),
-                // uncomment the following to show log messages on web pages
-                /*
-                array(
-                    'class' => 'CWebLogRoute',
-                    'enabled' => YII_DEBUG_SHOW_PROFILER,
-                    'categories' => 'system.db.*',
-                ),*/
+            // uncomment the following to show log messages on web pages
+            /*
+              array(
+              'class'=>'CWebLogRoute',
+              ),
+             */
             ),
         ),
     ),
@@ -83,12 +78,12 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
-        'token_time' => 1,
-        'ppp' => 20,
-        'lang' => 'vn',
-        'ticket_tax' => 0.1,
+        'ppp'=>20,
+        'lang'=>'en',
+        'ticket_tax' =>0.1,
         'regx_number' => '/^\d+$/',
-        'upload_dir' => 'D:\xampp\htdocs\eticket\upload\\',
-        'upload_url' => "/eticket/upload/",
+        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/core/upload/',
+        'upload_url'=>"/core/upload/",
     ),
+    
 );

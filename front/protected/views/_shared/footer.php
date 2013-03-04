@@ -1,71 +1,77 @@
-    <div id="footer">
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span3">
-                    <h6>Site Map</h6>
+<footer class="footer">
+    <div class="city-land">&nbsp;</div>
+    <div class="footer-main">
+        <div class="container_12">
+            <section class="clearfix block-main">
+                <span class="grid_3 main-link">
+                    <h6 class="ai">Main Links</h6>
                     <ul>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">E-Ticket</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Site Map</a></li>
                     </ul>
-                </div>
-                <div class="span3">
-                    <h6>Using eTicket</h6>
-                    <ul>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
+                </span>
+                <span class="grid_3 social-icon">
+                    <h6 class="ai">Social Media</h6>
+                    <ul class="clearfix">
+                        <li><a href="#"><img src="img/social/1.png"/></a></li>
+                        <li><a href="#"><img src="img/social/2.png"/></a></li>
+                        <li><a href="#"><img src="img/social/3.png"/></a></li>
+                        <li><a href="#"><img src="img/social/4.png"/></a></li>
+                        <li><a href="#"><img src="img/social/5.png"/></a></li>
+                        <li><a href="#"><img src="img/social/6.png"/></a></li>
+                        <li><a href="#"><img src="img/social/7.png"/></a></li>
+                        <li><a href="#"><img src="img/social/8.png"/></a></li>
+                        <li><a href="#"><img src="img/social/9.png"/></a></li>
                     </ul>
-                </div>
-                <div class="span3">
-                    <h6>Popular Searches</h6>
-                    <ul>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
+                </span>
+                <span class="grid_3 footer-gallery">
+                    <h6 class="ai">Gallery</h6>
+                    <ul class="clearfix">
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
                     </ul>
-                </div>
-                <div class="span3">
-                    <h6>About eTicket</h6>
-                    <ul>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                    </ul>
-                    <h6>Contact with us</h6>
-                    <ul>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                        <li class=""><a href="">Link 01</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; <?php echo date('Y', time()); ?> eTicket.com
-                <a href="<?php echo Yii::app()->request->baseUrl; ?>/info/view/page/terms-conditions">Terms of Service</a>.
-                <a href="<?php echo Yii::app()->request->baseUrl; ?>/info/view/page/privacy-policy">Privacy Policy</a>.
-            </div>
+                </span>
+                <span class="grid_3 footer-contact-us">
+                    <h6 class="ai">Contact Us</h6>
+                    <form method="post">
+                        <div class="controls-group">
+                            <input class="ai" type="text" name="your_name" placeholder="Name:"/>
+                        </div>
+                        <div class="controls-group">
+                            <input class="ai" type="text" name="email" placeholder="Email:"/>
+                        </div>
+                        <div class="controls-group">
+                            <textarea class="ai" name="message" placeholder="Message:"></textarea>
+                        </div>
+                        <div class="form-actions clearfix">
+                            <input class="ai pull-right" type="submit" value="Submit"/>
+                        </div>
+                    </form>
+                </span>
+            </section>
+            <section class="copyright">
+                <p>Copyright &copy; by All Rights Reserved</p>
+            </section>
         </div>
     </div>
-<!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/libs.js"></script>        
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>              
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/tiny_mce/tiny_mce.js"></script>        
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/scripts.js"></script>
-        
-    </body>
+</footer>
+</div>
+
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/flexslider.js"></script>
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/libs.js"></script>
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/app.js?v=04032013"></script>
+
+</body>
 </html>

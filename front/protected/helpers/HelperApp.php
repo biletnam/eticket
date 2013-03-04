@@ -3,32 +3,61 @@
 class HelperApp {
 
     public static function get_category_sizes() {
-        $array = array(
-            'thumbnail' => array('w' => 260, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
+        $array = array(            
+            'thumbnail' => array('w' => 250, 'h' => 250, 'crop' => true),
+            'small' => array('w' => 100, 'h' => 100, 'crop' => true),
+            'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
         );
-        return $array;
+        return $array;        
     }
     
-    public static function get_event_sizes() {
-        $array = array(
-            'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
-        );
-        return $array;
-    }
-
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();
         $cookie->Add($name, $value);
-        if (!$is_session)
-            $cookie->setExpireTime($timeout);
+        if(!$is_session)         
+            $cookie->setExpireTime($timeout);        
         $cookie->Save($is_session);
     }
 
     public static function get_cookie($name) {
         $cookie = new CookieRegistry();
         return $cookie->Get($name);
+    }
+    
+    public static function clear_cookie(){
+        $cookie = new CookieRegistry();
+        $cookie->Clear();
+    }
+    
+    public static function start_session() {
+        $session = new CHttpSession;
+        $session->open();
+        return $session;
+    }
+
+    public static function add_session($key, $value) {
+        $session = self::start_session();
+        $session[$key] = $value;
+    }
+
+    public static function get_session($key) {
+        $session = self::start_session();
+        return $session[$key];
+    }
+
+    public static function remove_session($key) {
+        $session = self::start_session();
+        return $session->remove($key);
+    }
+
+    public static function clear_session() {
+        $session = self::start_session();
+        $session->clear();
+    }
+
+    public static function session_to_array() {
+        $session = self::start_session();
+        return $session->toArray();
     }
 
     public static function do_resize($remote_url, $sizes, $filename, $upload_dir, $old_filename = '') {
@@ -63,7 +92,7 @@ class HelperApp {
                 if ($old_filename)
                     $new_oldfilename = $size['w'] . 'x' . $size['h'] . '-' . $old_filename;
             }
-            $folder = str_replace(Yii::app()->getParams()->itemAt('upload_dir')."media/", '', $upload_dir);
+            $folder = str_replace(HelperUrl::upload_dir()."media/", '', $upload_dir);
 
             $new_size = '';
             if ($size['w'] == 0) {
@@ -112,8 +141,8 @@ class HelperApp {
     public static function get_thumbnail($sizes, $size = 'thumbnail') {
         $sizes = unserialize($sizes);
         if (isset($sizes[$size]['filename']))
-            return Yii::app()->getParams()->itemAt('upload_url') . "media/" . $sizes[$size]['folder'] . '/' . $sizes[$size]['filename'];
-        return Yii::app()->request->baseUrl . "/img/default.png";
+            return HelperUrl::upload_url() . "media/" . $sizes[$size]['folder'] . '/' . $sizes[$size]['filename'];
+        return HelperUrl::baseUrl() . "img/default.png";
     }
 
     public static function get_paging($ppp, $link_server, $total, $current_page) {
@@ -126,28 +155,65 @@ class HelperApp {
         return $p->display_pages();
     }
 
-    public static function resize_images($file, $sizes) {
+    public static function resize_images($file, $sizes,$old_name = '') {
         $image_info = getimagesize($file['tmp_name']);
-
+        
         $img = Ultilities::base32UUID() . "." . Helper::image_types($image_info['mime']);
-        $upload_dir = Yii::app()->getParams()->itemAt('upload_dir')."media/" . date('Y') . '/' . date('m') . '/';
-        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir));
+        $upload_dir = HelperUrl::upload_dir(). "media/" . date('Y') . '/' . date('m') . '/';
+        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir,$old_name));
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
+    
+    public static function upload_files($files, $allow_size = 3145728, $destination = "default") {
+        $total = count($files['name']);
+        if ($total <= 0)
+            return false;
 
-    public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@vesukien.vn') {
-        if ($footer)
-            $message .= '';
-        //$subject =  $subject;
+        $validator = new FormValidator();
+        $uploaded_items = array();
 
-        $header =
-                "MIME-Version: 1.0\r\n" .
-                "Content-type: text/html; charset=UTF-8\r\n" .
-                "From: VeSuKien.vn <$from>\r\n" .
-                "Reply-to: $from" .
-                "Date: " . date("r") . "\r\n";
+        if ($total == 1) {
+            $file_info = pathinfo($files['name']);
+            $file_name = Ultilities::base32UUID() . "." . $file_info['extension'];
+            if ($destination == "default")
+                $destination = "media/" . date('Y') . '/' . date('m') . '/';
+            $upload_dir = HelperUrl::upload_dir() . $destination;
+            self::make_folder($upload_dir);
+            try {
 
-        @mail($to, $subject, $message, $header);
+                if (!$validator->is_valid_file($files, $allow_size))
+                    return false;
+
+                move_uploaded_file($files['tmp_name'], $upload_dir . $file_name);
+                $new_file = array('name' => $file_name, 'size' => $files['size'], 'type' => $files['type'], 'url' => $destination . $file_name);
+                //var_dump($newFile);
+                array_push($uploaded_items, $new_file);
+            } catch (Exception $er) {
+                echo $er->getMessage();
+            }
+        } else {
+            for ($i = 0; $i < $total; $i++) {
+                $file_info = pathinfo($files['name'][$i]);
+                $file_name = Ultilities::base32UUID() . "." . $file_info['extension'];
+                if ($destination == "default")
+                    $destination = "media/" . date('Y') . '/' . date('m') . '/';
+                $upload_dir = HelperUrl::upload_dir() . $destination;
+                self::make_folder($upload_dir);
+                try {
+                    $file = array('name'=>$files['name'][$i],'type'=>$files['type'][$i],'tmp_name'=>$files['tmp_name'][$i],'error'=>$files['error'][$i],'size'=>$files['size'][$i]);
+                    if (!$validator->is_valid_file($file, $allow_size))
+                        continue;
+
+                    move_uploaded_file($files['tmp_name'][$i], $upload_dir . $file_name);
+                    $new_file = array('name' => $file_name, 'size' => $files['size'][$i], 'type' => $files['type'][$i], 'url' => $destination . $file_name);
+                    //var_dump($newFile);
+                    array_push($uploaded_items, $new_file);
+                } catch (Exception $er) {
+                    echo $er->getMessage();
+                }
+            }
+        }
+        return $uploaded_items;
     }
 
 }

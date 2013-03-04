@@ -26,8 +26,8 @@ class UserControl {
             self::$fetch = true;            
             return false;
         } else {
-            $UserModel = new UserModel();          
-            self::$instance = $UserModel->get_by_secret_key($secret_key);
+            $AdminModel = new AdminModel();          
+            self::$instance = $AdminModel->get_by_secret_key($secret_key);
         }
         self::$fetch = true;
     }
@@ -39,7 +39,7 @@ class UserControl {
     }
     
     public static function DoLogout() {
-        HelperApp::add_cookie('secret_key', null,true);
+        HelperApp::clear_cookie();
     }
     
     public static function getId(){
@@ -47,19 +47,19 @@ class UserControl {
         return self::$instance['id'];
     }
     
-    public static function getEmail(){
-        self::FetchUserInstance();
-        return self::$instance['email'];
-    }
-    
     public static function getPassword(){
         self::FetchUserInstance();
         return self::$instance['password'];
     }
     
-    public static function getFullname(){
+    public static function getTitle(){
         self::FetchUserInstance();
-        return self::$instance['fullname'];
+        return self::$instance['title'];
+    }
+    
+    public static function getRole(){
+        self::FetchUserInstance();
+        return self::$instance['role'];
     }
     
     public static function getSecretKey(){

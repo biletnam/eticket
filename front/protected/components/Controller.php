@@ -6,11 +6,15 @@
  */
 class Controller extends CController {
 
+    public function init() {
+        
+    }
+
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
      */
-    public $layout = 'main';
+    public $layout = '//layouts/main';
 
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
@@ -24,8 +28,27 @@ class Controller extends CController {
      */
     public $breadcrumbs = array();
 
+    public function CheckPermission() {
+        $controller = $this->controllerID();
+        $method = $this->methodID();
+        HelperGlobal::AccessControl($controller, $method);
+    }
+
+    public function controllerID() {
+        return Yii::app()->getController()->getId();
+    }
+
+    public function methodID() {
+        return Yii::app()->getController()->getAction()->getId();
+    }
+
     public function load_404() {
         $this->renderFile(Yii::app()->basePath . "/views/layouts/404.php");
+        die;
+    }
+    
+    public function load_401(){
+        $this->renderFile(Yii::app()->basePath . "/views/layouts/401.php");
         die;
     }
 

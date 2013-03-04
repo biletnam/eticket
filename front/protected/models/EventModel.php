@@ -35,10 +35,10 @@ class EventModel extends CFormModel {
         }
 
         $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
-                FROM vsk_events ve
-                LEFT JOIN vsk_users va
+                FROM etk_events ve
+                LEFT JOIN etk_users va
                 ON va.id = ve.id
-                LEFT JOIN vsk_locations vl
+                LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
                 WHERE 1
                 $custom
@@ -80,7 +80,7 @@ class EventModel extends CFormModel {
         }
 
         $sql = "SELECT count(*) as total
-                FROM vsk_events ve
+                FROM etk_events ve
                 WHERE 1
                 $custom
                 ";
@@ -94,13 +94,13 @@ class EventModel extends CFormModel {
     
     public function get_popular_events(){
         $sql = "SELECT vt.total_ticket,ve.*,va.email as author,vl.title as location, vl.address,vl.city
-                FROM vsk_events ve
-                LEFT JOIN vsk_users va
+                FROM etk_events ve
+                LEFT JOIN etk_users va
                 ON va.id = ve.id
-                LEFT JOIN vsk_locations vl
+                LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
                 LEFT JOIN (SELECT count(*) as total_ticket,event_id
-                            FROM vsk_tickets vt,vsk_ticket_types vtt
+                            FROM etk_tickets vt,etk_ticket_types vtt
                             WHERE vtt.id = vt.ticket_type_id
                             GROUP BY event_id) vt
                 ON vt.event_id = ve.id
@@ -119,10 +119,10 @@ class EventModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,vl.city
-                FROM vsk_events ve
-                LEFT JOIN vsk_users va
+                FROM etk_events ve
+                LEFT JOIN etk_users va
                 ON va.id = ve.user_id
-                LEFT JOIN vsk_locations vl
+                LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
                 WHERE ve.id = :id
                 AND ve.deleted = 0
@@ -134,10 +134,10 @@ class EventModel extends CFormModel {
     
     public function get_by_slug($slug){
         $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,vl.city
-                FROM vsk_events ve
-                LEFT JOIN vsk_users va
+                FROM etk_events ve
+                LEFT JOIN etk_users va
                 ON va.id = ve.user_id
-                LEFT JOIN vsk_locations vl
+                LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
                 WHERE ve.slug = :slug
                 AND ve.deleted = 0
@@ -165,7 +165,7 @@ class EventModel extends CFormModel {
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO vsk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added) 
+        $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added) 
                                     VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":user_id", $args['user_id'],PDO::PARAM_INT);
@@ -188,7 +188,7 @@ class EventModel extends CFormModel {
     }
 
     private function check_exist_slug($slug) {
-        $sql = 'SELECT count(slug) as count FROM vsk_categories WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+        $sql = 'SELECT count(slug) as count FROM etk_categories WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];
@@ -200,13 +200,13 @@ class EventModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_events set ' . $custom . ' where id = :id';
+        $sql = 'update etk_events set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }
     
     public function add_event_category($event_id,$category_id,$is_primary){
-        $sql = "INSERT INTO vsk_event_category(event_id,category_id,is_primary) VALUES(:event_id,:category_id,:is_primary)";
+        $sql = "INSERT INTO etk_event_category(event_id,category_id,is_primary) VALUES(:event_id,:category_id,:is_primary)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(':event_id', $event_id,PDO::PARAM_INT);
         $command->bindParam(':category_id', $category_id,PDO::PARAM_INT);
@@ -216,8 +216,8 @@ class EventModel extends CFormModel {
     
     public function get_event_category($event_id){
         $sql = "SELECT vc.*,vec.is_primary
-                FROM vsk_event_category vec
-                LEFT JOIN vsk_categories vc
+                FROM etk_event_category vec
+                LEFT JOIN etk_categories vc
                 ON vc.id = vec.category_id
                 WHERE vec.event_id = :event_id
                 AND vc.deleted = 0
@@ -234,7 +234,7 @@ class EventModel extends CFormModel {
     }
     
     public function delete_event_category($event_id){
-        $sql = "DELETE FROM vsk_event_category WHERE event_id = :event_id";
+        $sql = "DELETE FROM etk_event_category WHERE event_id = :event_id";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(':event_id', $event_id,PDO::PARAM_INT);
         return $command->execute();

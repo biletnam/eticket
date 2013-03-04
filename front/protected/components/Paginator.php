@@ -62,8 +62,6 @@ class Paginator {
         }
         */
         
-        
-        
         if($_SERVER['QUERY_STRING'] != "")
             $this->querystring.= "?".$_SERVER['QUERY_STRING'];
         

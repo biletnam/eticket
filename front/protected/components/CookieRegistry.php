@@ -31,7 +31,7 @@ class CookieRegistry {
     //Unique name dùng để phân biệt các registry với nhau
     ///tránh xung đột với cookie có sẵn
 
-    public function __construct($UniqueRegistryName = 'VeSuKienProject', $time = 2592000, $cookiePath = '/') {
+    public function __construct($UniqueRegistryName = 'CoreAdminProject', $time = 2592000, $cookiePath = '/') {
         $this->iv = base64_decode('wB3VLpOoTQVeWt04i/wagQ+zDGg0uAJdyneTUG3x8Gc=');
         $this->uniqueName = $UniqueRegistryName;
         $this->expire = time() + $time;

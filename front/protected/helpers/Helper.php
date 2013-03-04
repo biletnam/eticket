@@ -160,4 +160,23 @@ class Helper {
         return array(1 => 'Sell', 0 => 'Hide');
     }
 
+    public static function error_code(){
+        $error = array(
+            '401' => "You do not have permission to access this page",
+            '404' => "Page not found",
+            '200'=>'Successfully',
+            '1'=>'You are not login',
+            '2'=>'The api token does not correct',
+            '3'=>'The access token does not correct',
+            '4'=>'Fields do not correct'
+            
+        );
+        
+        return $error;
+    }
+    
+    public static function _error_code($code){
+        $error = self::error_code();
+        return isset($error[$code]) ? $error[$code] : $code;
+    }
 }

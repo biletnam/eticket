@@ -41,6 +41,17 @@ class UserModel extends CFormModel {
         return $command->queryRow();
     }
 
+    public function get_by_api($apikey) {
+        $sql = "SELECT *
+                FROM vsk_users
+                WHERE apikey = :apikey
+                AND disabled = 0
+                AND banned = 0";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":apikey", $apikey);
+        return $command->queryRow();
+    }
+    
     public function get_by_email($email) {
         $sql = "SELECT *
                 FROM vsk_users

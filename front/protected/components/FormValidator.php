@@ -15,15 +15,15 @@ class FormValidator {
     private $element_array = array();
     private $method = "post";
     private $invalid_elements = array();
-    private $allowed_image_type = array('image/png', 'image/jpeg','image/gif');
-    private $allowed_media_type = array('audio/mpeg');
+    private $allowed_image_type = array('image/png', 'image/jpeg', 'image/gif');
+    private $blacklist_extensions = array('php','php3','php4','phtml','pl','py','jsp','asp','aspx','htm','shtml','sh','cgi');
     /**
      * Constructor
      * method must be "get" or "post". Default value is "post"
      * @var string $_method
      * 
      */
-    public function __construct($_method="post") {
+    public function __construct($_method = "post") {
         if ($_method != "post")
             $this->method = "get";
     }
@@ -141,46 +141,91 @@ class FormValidator {
         //can not be here!! :-)
         return false;
     }
+
     private function validateType($type) {
         if (array_search($type, $this->allowed_image_type) === false)
             return false;
-        else
-            return true;
+        return true;
+    }
+
+    private function validateImage($image) {
+        $size = @getimagesize($image);
+        if (!is_array($size))
+            return false;
+        return true;
+    }
+
+    private function validateSize($filesize, $allow_size) {
+        if ((float) $filesize > (float) $allow_size)
+            return false;
+        return true;
     }
     
-    private function validateImage($image)
-    {
-        if($image == "")
+    public function is_blacklist_extension($extension){
+        if(array_search(strtolower($extension), $this->blacklist_extensions) === false)
             return false;
-        if(is_array(getimagesize($image)))
+        return true;
+    }
+
+    public function is_valid_image($file, $allow_size = 3145728) {
+        $information = pathinfo($file['name']);
+        if ($this->is_no_upload_file($file) || !$this->validateImage($file['tmp_name']) || !$this->validateType($file['type']) || !$this->validateSize($file['size'], $allow_size) || $this->is_blacklist_extension($information['extension']))
+            return false;
+        return true;
+    }
+
+    public function is_no_upload_file($file) {
+        if ($file['error'] != UPLOAD_ERR_NO_FILE)
+            return false;
+        return true;
+    }
+
+    public function is_exceed_file_ini_size($file) {
+        if ($file['error'] != UPLOAD_ERR_INI_SIZE)
+            return false;
+        return true;
+    }
+
+    public function is_exceed_file_form_size($file) {
+        if ($file['error'] != UPLOAD_ERR_FORM_SIZE)
+            return false;
+        return true;
+    }
+
+    public function is_valid_file($file, $allow_size = 3145728) {
+        $information = pathinfo($file['name']);
+        if ($this->is_no_upload_file($file))
+            return false;
+        if ($this->is_exceed_file_ini_size($file) || $this->is_exceed_file_form_size($file))
+            return false;
+        //if $allow_size == 0 mean don't check size
+        if ($allow_size  > 0 && !$this->validateSize($file['size'], $allow_size))
+            return false;
+        if($this->is_blacklist_extension($information['extension']))
+            return false;
+        return true;
+    }
+
+    public function is_normal_character($str) {
+        //this method use for validate Username, normal characters with no space but can contain "_"
+        $pattern = '/^[A-Za-z0-9]+(?:[_][A-Za-z0-9]+)*$/';
+        return FormValidator::is_valid($pattern, $str);
+    }
+
+    public function has_speacial_character($str) {
+        $pattern = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+        return FormValidator::is_valid($pattern, $str);
+    }
+
+    public function is_credit_card($str) {
+        $pattern = '/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/';
+        return FormValidator::is_valid($pattern, $str);
+    }
+    
+    public function is_positive_number($str){
+        if(is_int($str) && $str >= 0)
             return true;
         return false;
-    }
-    
-    private function validateSize($filesize,$allow_size) {
-        if ((float) $filesize > (float)$allow_size)
-            return false;
-        return true;
-    }
-    
-    private function validateMediaType($type) {
-        if (array_search($type, $this->allowed_media_type) === false)
-            return false;
-        else
-            return true;
-    }
-    public function is_valid_image($file,$allow_size = 3145728)
-    {
-        if (!$this->validateImage($file['tmp_name']) || !$this->validateType($file['type']) || !$this->validateSize($file['size'],$allow_size)) 
-            return false;
-        return true;
-    }
-    
-    public function is_valid_mp3($file,$allow_size = 3145728)
-    {
-        if (!$this->validateMediaType($file['type']) || !$this->validateSize($file['size'],$allow_size)) 
-            return false;
-        return true;
     }
 
     public function resetValidator() {
@@ -188,24 +233,21 @@ class FormValidator {
         $this->invalid_elements = array();
         $this->method = "post";
     }
-    
-    public static function check_max_image_size($w,$h,$img)
-    {
+
+    public static function check_max_image_size($w, $h, $img) {
         $info = getimagesize($img);
-        return (int)$info[0] <= $w && (int)$info[1] <= $h;
+        return (int) $info[0] <= $w && (int) $info[1] <= $h;
     }
-    
-    public static function check_min_image_size($w,$h,$img)
-    {
+
+    public static function check_min_image_size($w, $h, $img) {
         $info = getimagesize($img);
-        return (int)$info[0] >= $w && (int)$info[1] >= $h;
+        return (int) $info[0] >= $w && (int) $info[1] >= $h;
     }
-    
-    public static function check_fixed_image_size($w,$h,$img)
-    {
+
+    public static function check_fixed_image_size($w, $h, $img) {
         $info = getimagesize($img);
-        
-        return (int)$info[0] == $w && (int)$info[1] == $h;
+
+        return (int) $info[0] == $w && (int) $info[1] == $h;
     }
 
     public static function is_email($email) {
@@ -237,7 +279,7 @@ class FormValidator {
     }
 
     public static function is_match($str, $array) {
-        return array_search($str, $array);
+        return array_search($str, $array) !== FALSE;
     }
 
     public static function is_valid_date($day, $month, $year) {
@@ -249,5 +291,3 @@ class FormValidator {
     }
 
 }
-
-?>

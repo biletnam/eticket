@@ -19,6 +19,7 @@ class HelperGlobal {
 
     public static function CheckAccessToken($need_login = false) {
         $UserModel = new UserModel();
+        $AuthTokenModel = new AuthTokenModel();
         $api_token = isset($_GET['api_token']) ? $_GET['api_token'] : "";
         $access_token = isset($_GET['access_token']) ? $_GET['access_token'] : "";
         $code = "200";
@@ -28,7 +29,7 @@ class HelperGlobal {
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));
         }
 
-        if ($need_login && !$UserModel->get_by_api($access_token)) {
+        if ($need_login && !$AuthTokenModel->get_by_token($access_token)) {
             $code = "3";
             $error = Helper::_error_code($code);
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));

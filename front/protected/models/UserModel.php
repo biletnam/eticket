@@ -6,14 +6,15 @@ class UserModel extends CFormModel {
         
     }
 
-    public function add($email, $password, $secret_key, $fullname) {
+    public function add($email, $password, $secret_key, $fullname,$client) {
         $time = time();
-        $sql = "INSERT INTO vsk_users(email,password,secret_key,fullname,date_added) VALUES(:email,:password,:secret_key,:fullname,:date_added)";
+        $sql = "INSERT INTO vsk_users(email,password,secret_key,fullname,role,date_added) VALUES(:email,:password,:secret_key,:fullname,:role,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":email", $email);
         $command->bindParam(":password", $password);
         $command->bindParam(":secret_key", $secret_key);
         $command->bindParam(":fullname", $fullname);
+        $command->bindParam(":role", $client);
         $command->bindParam(":date_added", $time);
         $command->execute();
         return Yii::app()->db->lastInsertID;

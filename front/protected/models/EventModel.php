@@ -8,28 +8,66 @@ class EventModel extends CFormModel {
     
 
     public function gets($args, $page = 1, $ppp = 20) {
-        
+
         $page = ($page - 1) * $ppp;
         $custom = "";
         $order_by = "ve.date_added DESC";
         $params = array();
-        
+
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND ve.title like :title";            
-            $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
+            $custom.= " AND ve.title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['deleted'])){
+
+        if (isset($args['deleted'])) {
             $custom.= " AND ve.deleted = :deleted";
-            $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
+        }
+
+        if (isset($args['search_title']) && $args['search_title'] != "") {
+            $custom.= " AND (ve.title like :search_title)";
+            $params[] = array('name' => ':search_title', 'value' => "%$args[search_title]%", 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['search_cate']) && $args['search_cate'] != "") {
+
+            $custom.= " AND ve.id IN (SELECT event_id 
+                                    FROM vsk_event_category
+                                    WHERE category_id = :category_id)";
+            $params[] = array('name' => ':category_id', 'value' => $args['search_cate'], 'type' => PDO::PARAM_STR);
+        }
+
+
+        if (isset($args['search_city']) && $args['search_city'] != "") {
+            $custom.= " AND (vl.city like :search_city)";
+            $params[] = array('name' => ':search_city', 'value' => "%$args[search_city]%", 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['date']) && $args['date'] == "today") {         
+            $custom.= " AND DATE(ve.start_time)=DATE(NOW())";
         }
         
-        if(isset($args['published'])){
+        if (isset($args['date']) && $args['date'] == "tomorrow") {         
+            $custom.= " AND DATE(ve.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
+        }
+        
+        if (isset($args['date']) && $args['date'] == "week") {         
+            $custom.= " AND YEAR(NOW()) = YEAR(ve.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ve.start_time)";
+        }
+        
+        if (isset($args['date']) && $args['date'] == "year") {         
+            $custom.= " AND YEAR(NOW()) = YEAR(ve.start_time)";
+        }
+        
+        
+
+
+        if (isset($args['published'])) {
             $custom.= " AND ve.published = :published";
-            $params[] = array('name' => ':published', 'value' => $args['published'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':published', 'value' => $args['published'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['is_today']) && $args['is_today']){
+
+        if (isset($args['is_today']) && $args['is_today']) {
             $order_by = "ve.start_time ASC";
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
@@ -42,15 +80,16 @@ class EventModel extends CFormModel {
                 ON vl.id = ve.location_id
                 WHERE 1
                 $custom
+                GROUP BY ve.id
                 ORDER BY $order_by
                 LIMIT :page,:ppp";
-        
+
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":page", $page, PDO::PARAM_INT);
         $command->bindParam(":ppp", $ppp, PDO::PARAM_INT);
-        foreach ($params as $a)        
-            $command->bindParam($a['name'], $a['value'], $a['type']);        
-        
+        foreach ($params as $a)
+            $command->bindParam($a['name'], $a['value'], $a['type']);
+
         return $this->_parse_events($command->queryAll());
     }
 
@@ -60,22 +99,22 @@ class EventModel extends CFormModel {
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND ve.title like :title";            
-            $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
+            $custom.= " AND ve.title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['deleted'])){
+
+        if (isset($args['deleted'])) {
             $custom.= " AND ve.deleted = :deleted";
-            $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['published'])){
+
+        if (isset($args['published'])) {
             $custom.= " AND ve.published = :published";
-            $params[] = array('name' => ':published', 'value' => $args['published'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':published', 'value' => $args['published'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['is_today']) && $args['is_today']){
-            
+
+        if (isset($args['is_today']) && $args['is_today']) {
+
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 

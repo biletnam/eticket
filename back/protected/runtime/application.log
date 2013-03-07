@@ -3153,3 +3153,205 @@ Stack trace:
 REQUEST_URI=/eticket/back/event/destroy
 HTTP_REFERER=http://localhost/eticket/back/event/pending
 ---
+2013/03/07 15:48:23 [error] [php] Undefined variable: users (D:\xampp\htdocs\eticket\back\protected\views\user\pending.php:17)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php(130): UserController->render()
+#3 unknown(0): UserController->actionPending()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/pending
+in D:\xampp\htdocs\eticket\back\protected\views\user\pending.php (17)
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (130)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 15:48:39 [error] [php] Undefined variable: users (D:\xampp\htdocs\eticket\back\protected\views\user\pending.php:17)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php(130): UserController->render()
+#3 unknown(0): UserController->actionPending()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/pending
+in D:\xampp\htdocs\eticket\back\protected\views\user\pending.php (17)
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (130)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 15:48:55 [error] [php] Undefined variable: users (D:\xampp\htdocs\eticket\back\protected\views\user\pending.php:17)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php(130): UserController->render()
+#3 unknown(0): UserController->actionPending()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/pending
+in D:\xampp\htdocs\eticket\back\protected\views\user\pending.php (17)
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (130)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:00:52 [error] [php] Undefined index: author (D:\xampp\htdocs\eticket\back\protected\views\user\pending.php:53)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php(130): UserController->render()
+#3 unknown(0): UserController->actionPending()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/pending
+in D:\xampp\htdocs\eticket\back\protected\views\user\pending.php (53)
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (130)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:01:32 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:01:33 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:01:58 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:02:00 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:02:13 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:02:40 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('approved')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/approved//...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/user/approved//user/thanhn@gmail.com
+HTTP_REFERER=http://localhost/eticket/back/user/pending
+---
+2013/03/07 16:03:04 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('approved')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/approved//...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/user/approved//user/thanhn@gmail.com
+HTTP_REFERER=http://localhost/eticket/back/user/pending
+---
+2013/03/07 16:03:22 [error] [php] Undefined variable: id (D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php:145)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/user/approved/user/thanhn@gmail.com
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:04:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'deleted' in 'field list'. The SQL statement executed was: update vsk_users set deleted = :deleted, role = :role, id = :id where id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\UserModel.php (85)
+in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (145)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/07 16:04:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'deleted' in 'field list'. The SQL statement executed was: update vsk_users set deleted = :deleted, role = :role, id = :id where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\UserModel.php(85): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php(145): UserModel->update(Array)
+#2 [internal function]: UserController->actionApproved('thanhn@gmail.co...', '5')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('approved')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/approved/i...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/back/user/approved/id/5/user/thanhn@gmail.com
+HTTP_REFERER=http://localhost/eticket/back/user/pending
+---

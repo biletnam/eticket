@@ -22,7 +22,16 @@
                             <div class="control-group">
                                 <label class="control-label">Full name</label>
                                 <div class="controls"><input type="text" class="input-xlarge" name="fullname" value="<?php if (isset($_POST['fullname'])) echo $_POST['fullname']; ?>"></div>
-                            </div>                            
+                            </div>    
+
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="client" value="client" id="client">
+                                    I want to be a Client
+                                </label>
+                               
+                            </div>
+
                             <div class="controls">
                                 <label class="checkbox">
                                     <input type="checkbox" name="remember" value="remember" id="remember">

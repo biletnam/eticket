@@ -70,7 +70,7 @@
                         </table>
                     </div>
                     <div class="ticket-button">
-                        <a href ="http://localhost/vsk/front/event/register_to_event" class="btn-style button-medium btn-large">Order now</a>
+                        <a href ="<?php echo HelperUrl::baseUrl(true)?>front/event/register_to_event" class="btn-style button-medium btn-large">Order now</a>
                     </div>
                 </form>
             </article>

@@ -176,6 +176,9 @@ class EventController extends Controller {
         //$this->add_ticket_types($event_id);
 
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
+        
+        
+        
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event_id/?s=1");
     }
 

@@ -42,74 +42,111 @@ class UserController extends Controller {
 
         $this->render('index', $this->viewData);
     }
-    
-    public function actionBan($id){
+
+    public function actionBan($id) {
         $this->CheckPermission();
         $user = $this->UserModel->get($id);
-        if(!$user)
+        if (!$user)
             return;
-        
-        $this->UserModel->update(array('id'=>$id,'banned'=>1));
+
+        $this->UserModel->update(array('id' => $id, 'banned' => 1));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Lock this user', 'id' => $id));
         echo json_encode($this->message);
     }
-    
-    public function actionUnban($id){
+
+    public function actionUnban($id) {
         $this->CheckPermission();
         $user = $this->UserModel->get($id);
-        if(!$user)
+        if (!$user)
             return;
-        
-        $this->UserModel->update(array('id'=>$id,'banned'=>0));
+
+        $this->UserModel->update(array('id' => $id, 'banned' => 0));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Unlock this user', 'id' => $id));
         echo json_encode($this->message);
     }
-    
-    public function actionEdit($id){
+
+    public function actionEdit($id) {
         $this->CheckPermission();
         $user = $this->UserModel->get($id);
-        if(!$user)
-            $this->load_404 ();
-        if($_POST)
+        if (!$user)
+            $this->load_404();
+        if ($_POST)
             $this->do_edit($user);
         $this->viewData['user'] = $user;
         $this->viewData['message'] = $this->message;
-        $this->render('edit',$this->viewData);
+        $this->render('edit', $this->viewData);
     }
-    
-   private function do_edit($user){
-       $fullname = trim($_POST['fullname']);
-       $day = $_POST['day'];
-       $month = $_POST['month'];
-       $year = $_POST['year'];
-       $gender = isset($_POST['gender']) ? trim($_POST['gender']): null;       
-       $birthday = $user['birthday'];
-       
-       if($this->validator->is_empty_string($fullname))
-           $this->message['error'][] = "Please enter full name.";
-       if(($day || $month || $year ) && !$this->validator->is_valid_date($day, $month, $year))
-           $this->message['error'][] = "Birth date does not correct.";
-       
-       if(count($this->message['error']) > 0){
-           $this->message['success'] = false;
-           return false;
-       }
-       
-       if($day && $month && $year)
-           $birthday = "$year-$month-$day";
-       
-       $this->UserModel->update(array('id'=>$user['id'],
-                                      'fullname'=>$fullname,
-                                      'home_phone'=>trim($_POST['home_phone']),
-                                      'cell_phone'=>trim($_POST['cell_phone']),
-                                      'gender'=>$gender,
-                                      'birthday'=>$birthday,
-                                      'paypal_account'=>trim($_POST['paypal_account']),
-                                      'banned'=>$_POST['banned']
-                                      ));
-       HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $user,'New data'=>$_POST));
-       $this->redirect(Yii::app()->request->baseUrl."/user/edit/id/$user[id]?s=1");
-       
-   }
-    
+
+    private function do_edit($user) {
+        $fullname = trim($_POST['fullname']);
+        $day = $_POST['day'];
+        $month = $_POST['month'];
+        $year = $_POST['year'];
+        $gender = isset($_POST['gender']) ? trim($_POST['gender']) : null;
+        $birthday = $user['birthday'];
+
+        if ($this->validator->is_empty_string($fullname))
+            $this->message['error'][] = "Please enter full name.";
+        if (($day || $month || $year ) && !$this->validator->is_valid_date($day, $month, $year))
+            $this->message['error'][] = "Birth date does not correct.";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        if ($day && $month && $year)
+            $birthday = "$year-$month-$day";
+
+        $this->UserModel->update(array('id' => $user['id'],
+            'fullname' => $fullname,
+            'home_phone' => trim($_POST['home_phone']),
+            'cell_phone' => trim($_POST['cell_phone']),
+            'gender' => $gender,
+            'birthday' => $birthday,
+            'paypal_account' => trim($_POST['paypal_account']),
+            'banned' => $_POST['banned']
+        ));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $user, 'New data' => $_POST));
+        $this->redirect(Yii::app()->request->baseUrl . "/user/edit/id/$user[id]?s=1");
+    }
+
+    public function actionPending($p = 1) {
+        $this->CheckPermission();
+
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        $s = isset($_GET['s']) ? $_GET['s'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+
+        $args = array('s' => $s, 'deleted' => 0, 'role' => 'waiting');
+
+        $users = $this->UserModel->gets($args, $p, $ppp);
+        $total = $this->UserModel->counts($args);
+
+        $this->viewData['users'] = $users;
+        $this->viewData['total'] = $total;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, HelperUrl::baseUrl() . "user/pending/p/", $total, $p) : "";
+
+        $this->render('pending', $this->viewData);
+    }
+
+    public function actionApproved($user, $id, $approve) {
+        $this->CheckPermission();
+        $user_email = $user;
+
+        $link = HelperUrl::hostInfo();
+        if ($approve == 'client') {
+            $subject = 'Eticket - Account approved';
+            $note = "Your account was approved to become Client <br/>";
+        } else {
+            $subject = 'Eticket - Your account was not approved';
+            $note = "Your account was not approved to become Client <br/>";
+        }
+
+        @HelperApp::email($user_email, $subject, $note);
+
+        $this->UserModel->update(array('role' => $approve, 'id' => $id));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
+    }
+
 }

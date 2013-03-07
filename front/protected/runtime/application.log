@@ -11246,3 +11246,12 @@ Stack trace:
 REQUEST_URI=/eticket/front/user/images/facebook-login.png
 HTTP_REFERER=http://localhost/eticket/front/user/signin
 ---
+2013/03/07 16:39:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ticket/print".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ticket/print')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ticket/print
+HTTP_REFERER=http://localhost/eticket/front/
+---

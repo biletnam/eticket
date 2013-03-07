@@ -39,6 +39,8 @@ class UserController extends Controller {
         $pwd2 = trim($_POST['pwd2']);
         $fullname = trim($_POST['fullname']);
         $is_session = isset($_POST['remember']) ? false : true;
+        
+        $client = isset($_POST['client'])? 'waiting' : 'customer';
 
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email không được để trống.";
@@ -66,7 +68,7 @@ class UserController extends Controller {
         $password = $hasher->HashPassword($pwd1);
         $secret_key = Ultilities::base32UUID();
 
-        $user_id = $this->UserModel->add($email, $password, $secret_key, $fullname);
+        $user_id = $this->UserModel->add($email, $password, $secret_key, $fullname,$client);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
         $this->redirect(Yii::app()->request->baseUrl . "/home/");
     }

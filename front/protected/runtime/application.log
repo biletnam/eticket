@@ -11213,3 +11213,36 @@ Stack trace:
 REQUEST_URI=/eticket/front/ticket/print
 HTTP_REFERER=http://localhost/eticket/front/event/search
 ---
+2013/03/07 11:05:20 [error] [php] Undefined index: code (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:219)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(17): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/loginfacebook
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (219)
+in D:\xampp\htdocs\eticket\front\index.php (17)
+2013/03/07 11:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('images')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('images')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/images/fac...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/images/facebook-login.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin
+---
+2013/03/07 11:34:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('images')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('images')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/images/fac...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/images/facebook-login.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin
+---

@@ -135,8 +135,7 @@ class HelperApp {
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
 
-    public static function email($to, $subject, $message, $footer = true, $from = 'info@soinsale.com') {
-
+    public static function email($to, $subject, $message, $footer = true, $from = 'info@eticket.com') {
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .

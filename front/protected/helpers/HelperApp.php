@@ -9,7 +9,7 @@ class HelperApp {
         );
         return $array;
     }
-    
+
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
@@ -63,7 +63,7 @@ class HelperApp {
                 if ($old_filename)
                     $new_oldfilename = $size['w'] . 'x' . $size['h'] . '-' . $old_filename;
             }
-            $folder = str_replace(Yii::app()->getParams()->itemAt('upload_dir')."media/", '', $upload_dir);
+            $folder = str_replace(Yii::app()->getParams()->itemAt('upload_dir') . "media/", '', $upload_dir);
 
             $new_size = '';
             if ($size['w'] == 0) {
@@ -130,20 +130,18 @@ class HelperApp {
         $image_info = getimagesize($file['tmp_name']);
 
         $img = Ultilities::base32UUID() . "." . Helper::image_types($image_info['mime']);
-        $upload_dir = Yii::app()->getParams()->itemAt('upload_dir')."media/" . date('Y') . '/' . date('m') . '/';
+        $upload_dir = Yii::app()->getParams()->itemAt('upload_dir') . "media/" . date('Y') . '/' . date('m') . '/';
         $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir));
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
 
-    public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@vesukien.vn') {
-        if ($footer)
-            $message .= '';
-        //$subject =  $subject;
+
+    public static function email($to, $subject, $message, $footer = true, $from = 'info@eticket.com') {
 
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
-                "From: VeSuKien.vn <$from>\r\n" .
+                "From: Soinsale.com <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 

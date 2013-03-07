@@ -5,7 +5,7 @@ $(document).ready(function(){
     bind_user();
     bind_category();
     bind_event();
-    
+    bind_status_event();
 });
 
 function init(){
@@ -33,7 +33,7 @@ function init(){
             yearRange: "c-1:c+1"
         });
     });
-
+    $(".fancybox").fancybox();
     $(".tab-content .tab-pane .btn-continue,.tab-content .tab-pane .btn-previous").click(function(){
        
         var ele = $(this);       
@@ -42,6 +42,44 @@ function init(){
         var index = parseInt($('.tab-pane',tab_content).index(parent));
         var navigate = ele.hasClass('btn-continue') ? index+1 : index-1;
         $(".nav.nav-tabs li:eq("+navigate+") > a").trigger('click');
+    });
+}
+
+function bind_status_event(){
+    
+    $(".approved").click(function(){
+        //if(!confirm("Are you sure delete this item?")) return false;
+        var ele = $(this);
+        $.get(ele.attr('href'),"",function(){
+            ele.parents("tr").fadeOut('slow');
+        });
+        return false;
+    });
+    
+    $(".btn-destroy").click(function(){
+        
+        if(!confirm("Are you sure Disqualify this event?")) return false;
+        
+        var ele = $(this);
+        var id = ele.attr('value');
+        var parent = ele.parents('.frm-approve');
+        var note = $('.note',parent).val();
+        var event_id = $('.event_id',parent).val();
+        var email = $('.user_email',parent).val();
+        var data = {
+            id:event_id,
+            note:note,
+            email:email
+        };
+        
+       
+        
+        $.post(ele.attr('href'),data,function(){
+            $('#tr_'+id).fadeOut('slow');
+            $.fancybox.close();
+        });
+
+        return false;
     });
 }
 
@@ -54,9 +92,9 @@ function bind_user(){
         $.get(ele.attr('href'),"",function(data){
             if(data.success)
             {
-                 $(".label-banned",parent).show();
-                 ele.addClass('hide');
-                 $(".unban",parent).removeClass('hide');
+                $(".label-banned",parent).show();
+                ele.addClass('hide');
+                $(".unban",parent).removeClass('hide');
             }
         },'json');
         return false;
@@ -70,9 +108,9 @@ function bind_user(){
         $.get(ele.attr('href'),"",function(data){
             if(data.success)
             {
-                 $(".label-banned",parent).hide();
-                 ele.addClass('hide');
-                 $(".ban",parent).removeClass('hide');
+                $(".label-banned",parent).hide();
+                ele.addClass('hide');
+                $(".ban",parent).removeClass('hide');
             }
         },'json');
         return false;
@@ -191,6 +229,8 @@ function bind_event(){
         ticket_id++;
         return false;
     });*/
+    
+    
     
     $("#event_form .ticket-info .remove-ticket.clone").live('click',function(){
         if(!confirm("Do you want to delete this ticket?")) return false;

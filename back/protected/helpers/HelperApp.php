@@ -9,7 +9,7 @@ class HelperApp {
         );
         return $array;
     }
-    
+
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
@@ -21,8 +21,8 @@ class HelperApp {
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();
         $cookie->Add($name, $value);
-        if(!$is_session)         
-            $cookie->setExpireTime($timeout);        
+        if (!$is_session)
+            $cookie->setExpireTime($timeout);
         $cookie->Save($is_session);
     }
 
@@ -63,7 +63,7 @@ class HelperApp {
                 if ($old_filename)
                     $new_oldfilename = $size['w'] . 'x' . $size['h'] . '-' . $old_filename;
             }
-            $folder = str_replace(Yii::app()->getParams()->itemAt('upload_dir')."media/", '', $upload_dir);
+            $folder = str_replace(Yii::app()->getParams()->itemAt('upload_dir') . "media/", '', $upload_dir);
 
             $new_size = '';
             if ($size['w'] == 0) {
@@ -126,13 +126,25 @@ class HelperApp {
         return $p->display_pages();
     }
 
-    public static function resize_images($file, $sizes,$old_name = '') {
+    public static function resize_images($file, $sizes, $old_name = '') {
         $image_info = getimagesize($file['tmp_name']);
-        
+
         $img = Ultilities::base32UUID() . "." . Helper::image_types($image_info['mime']);
-        $upload_dir = Yii::app()->getParams()->itemAt('upload_dir'). "media/" . date('Y') . '/' . date('m') . '/';
-        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir,$old_name));
+        $upload_dir = Yii::app()->getParams()->itemAt('upload_dir') . "media/" . date('Y') . '/' . date('m') . '/';
+        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir, $old_name));
         return array('img' => $img, 'thumbnail' => $thumbnail);
+    }
+
+    public static function email($to, $subject, $message, $footer = true, $from = 'info@soinsale.com') {
+
+        $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From: Soinsale.com <$from>\r\n" .
+                "Reply-to: $from" .
+                "Date: " . date("r") . "\r\n";
+
+        @mail($to, $subject, $message, $header);
     }
 
 }

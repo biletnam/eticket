@@ -21,11 +21,16 @@ class EventModel extends CFormModel {
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
         }
         
+        if(isset($args['disabled'])){
+            $custom.= " AND ve.disabled = :disabled";
+            $params[] = array('name' => ':disabled', 'value' => $args['disabled'],'type'=>PDO::PARAM_INT);
+        }
+        
 
         $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
                 FROM vsk_events ve
                 LEFT JOIN vsk_users va
-                ON va.id = ve.id
+                ON va.id = ve.user_id
                 LEFT JOIN vsk_locations vl
                 ON vl.id = ve.location_id
                 WHERE 1
@@ -133,6 +138,7 @@ class EventModel extends CFormModel {
     }
 
     public function update($args) {
+
         $keys = array_keys($args);
         $custom = '';
         foreach ($keys as $k)

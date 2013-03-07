@@ -40,6 +40,17 @@ class UserModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();
     }
+    
+      public function get_by_app($id) {
+        $sql = "SELECT id,email,secret_key,fullname
+                FROM vsk_users
+                WHERE id = :id
+                AND disabled = 0
+                AND banned = 0";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
+        return $command->queryRow();
+    }
 
     public function get_by_email($email) {
         $sql = "SELECT *

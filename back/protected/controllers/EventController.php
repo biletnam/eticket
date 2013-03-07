@@ -66,7 +66,7 @@ class EventController extends Controller {
     }
 
     public function actionAdd() {
-        
+
         $this->CheckPermission();
         if ($_POST)
             $this->do_add();
@@ -554,26 +554,89 @@ class EventController extends Controller {
         $event = $this->EventModel->get($id);
         if (!$event)
             $this->load_404();
-        if($_POST)
+        if ($_POST)
             $this->do_seo($event);
         $this->viewData['event'] = $event;
         $this->viewData['metas'] = $this->EventModel->get_metas($event['id']);
         $this->viewData['type'] = "seo";
         $this->viewData['message'] = $this->message;
-        $this->render('seo',$this->viewData);
+        $this->render('seo', $this->viewData);
     }
-    
-    private function do_seo($event){
-        
+
+    private function do_seo($event) {
+
         $title = trim($_POST['title']);
         $keyword = trim($_POST['keyword']);
         $description = trim($_POST['description']);
-        
+
         $this->EventModel->update_metas('title', $title, $event['id']);
         $this->EventModel->update_metas('keyword', $keyword, $event['id']);
         $this->EventModel->update_metas('description', $description, $event['id']);
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'event_id'=>$event['id'],'New data' => $_POST));
-        $this->redirect(Yii::app()->request->baseUrl."/event/seo/id/$event[id]?s=1");
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'event_id' => $event['id'], 'New data' => $_POST));
+        $this->redirect(Yii::app()->request->baseUrl . "/event/seo/id/$event[id]?s=1");
+    }
+
+    public function actionPending($p = 1) {
+        $this->CheckPermission();
+
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        $s = isset($_GET['s']) ? $_GET['s'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+
+        $args = array('s' => $s, 'deleted' => 0, 'disabled' => 1);
+
+
+
+        $events = $this->EventModel->gets($args, $p, $ppp);
+        $total = $this->EventModel->counts($args);
+
+        $this->viewData['events'] = $events;
+        $this->viewData['total'] = $total;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, HelperUrl::baseUrl() . "product/pending/p/", $total, $p) : "";
+
+        $this->render('pending', $this->viewData);
+    }
+
+    public function actionApproved($id, $user) {
+        $this->CheckPermission();
+
+        $event = $this->EventModel->get($id);
+        if (!$event)
+            return;
+        $user_email = $user;
+
+        $link_event = HelperUrl::hostInfo() . "event/details/s/" . $event['slug'];
+
+        $note = "Your event was approved . Please visit follow link : <br/>" . $link_event;
+
+        @HelperApp::email($user_email, 'Event was approved', $note);
+
+        $this->EventModel->update(array('deleted' => 0, 'disabled' => 0, 'id' => $id));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
+    }
+
+    public function actionDestroy() {
+        $this->CheckPermission();
+
+        $event_id = isset($_POST['id']) ? $_POST['id'] : "";
+        $note = $_POST['note'];
+        $user_email = $_POST['email'];
+
+
+        if ($note == '') {
+            $note = "Vi phạm";
+        }
+        @HelperApp::email($user_email, 'Event was deleted', $note);
+
+
+        $this->EventModel->update(array('deleted' => 1, 'reason' => $note, 'id' => $event_id));
+        $this->message['success'] = true;
+        $this->message['event_id'] = $event_id;
+        $this->message['note'] = $note;
+        $this->message['email'] = $user_email;
+
+        echo json_encode($this->message);
+        die;
     }
 
 }

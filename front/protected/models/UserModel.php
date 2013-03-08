@@ -40,15 +40,15 @@ class UserModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();
     }
-    
-      public function get_by_app($id) {
-        $sql = "SELECT id,email,secret_key,fullname
+
+    public function get_by_api($apikey) {
+        $sql = "SELECT *
                 FROM vsk_users
-                WHERE id = :id
+                WHERE apikey = :apikey
                 AND disabled = 0
                 AND banned = 0";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":id", $id, PDO::PARAM_INT);
+        $command->bindParam(":apikey", $apikey);
         return $command->queryRow();
     }
 
@@ -96,13 +96,12 @@ class UserModel extends CFormModel {
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }
-    
-    public function update_token($id){
+
+    public function update_token($id) {
         $sql = "UPDATE vsk_tokens SET completed = 1 WHERE id = :id";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":id", $id,PDO::PARAM_INT);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->execute();
-        
     }
 
     public function get_token($token) {

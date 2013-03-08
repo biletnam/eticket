@@ -37,17 +37,7 @@
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
                 <a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt=""/></a>
-                <div class="nav-collapse pull-right">
-                    <ul class="nav">
-                        <li class="hotline"><i class="icon-circle-arrow-right icon-white"></i> Call 012 345 6789 </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
             </div>
         </div>
     </div>

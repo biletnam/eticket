@@ -4552,3 +4552,50 @@ Stack trace:
 REQUEST_URI=/eticket/front/ticket/print
 HTTP_REFERER=http://localhost/eticket/front/
 ---
+2013/03/08 10:13:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/08 10:13:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/08 10:14:57 [error] [php] include(UserModel.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/eticket/framework/YiiBase.php:423)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/protected/controllers/AppController.php(15): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(282): AppController->init()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController()
+#3 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/app/register./
+in /Applications/XAMPP/xamppfiles/htdocs/eticket/front/protected/controllers/AppController.php (15)
+in /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php (14)
+2013/03/08 10:15:01 [error] [php] include(UserModel.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/eticket/framework/YiiBase.php:423)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/protected/controllers/AppController.php(15): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(282): AppController->init()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController()
+#3 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/app/register
+in /Applications/XAMPP/xamppfiles/htdocs/eticket/front/protected/controllers/AppController.php (15)
+in /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php (14)
+2013/03/08 10:16:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/front/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/
+---

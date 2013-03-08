@@ -82,8 +82,8 @@ return array(
         'lang'=>'en',
         'ticket_tax' =>0.1,
         'regx_number' => '/^\d+$/',
-        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/core/upload/',
-        'upload_url'=>"/core/upload/",
+        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/eticket/upload/',
+        'upload_url'=>"/eticket/upload/",
     ),
     
 );

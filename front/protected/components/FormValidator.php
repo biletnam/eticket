@@ -16,7 +16,8 @@ class FormValidator {
     private $method = "post";
     private $invalid_elements = array();
     private $allowed_image_type = array('image/png', 'image/jpeg', 'image/gif');
-    private $blacklist_extensions = array('php','php3','php4','phtml','pl','py','jsp','asp','aspx','htm','shtml','sh','cgi');
+    private $blacklist_extensions = array('php', 'php3', 'php4', 'phtml', 'pl', 'py', 'jsp', 'asp', 'aspx', 'htm', 'shtml', 'sh', 'cgi');
+
     /**
      * Constructor
      * method must be "get" or "post". Default value is "post"
@@ -142,8 +143,11 @@ class FormValidator {
         return false;
     }
 
-    private function validateType($type) {
-        if (array_search($type, $this->allowed_image_type) === false)
+    private function validateType($image) {
+        $size = @getimagesize($image);
+        if (!is_array($size))
+            return false;
+        if (array_search($size['mime'], $this->allowed_image_type) === false)
             return false;
         return true;
     }
@@ -160,16 +164,16 @@ class FormValidator {
             return false;
         return true;
     }
-    
-    public function is_blacklist_extension($extension){
-        if(array_search(strtolower($extension), $this->blacklist_extensions) === false)
+
+    public function is_blacklist_extension($extension) {
+        if (array_search(strtolower($extension), $this->blacklist_extensions) === false)
             return false;
         return true;
     }
 
     public function is_valid_image($file, $allow_size = 3145728) {
         $information = pathinfo($file['name']);
-        if ($this->is_no_upload_file($file) || !$this->validateImage($file['tmp_name']) || !$this->validateType($file['type']) || !$this->validateSize($file['size'], $allow_size) || $this->is_blacklist_extension($information['extension']))
+        if ($this->is_no_upload_file($file) || !$this->validateImage($file['tmp_name']) || !$this->validateType($file['tmp_name']) || !$this->validateSize($file['size'], $allow_size) || $this->is_blacklist_extension($information['extension']))
             return false;
         return true;
     }
@@ -199,9 +203,9 @@ class FormValidator {
         if ($this->is_exceed_file_ini_size($file) || $this->is_exceed_file_form_size($file))
             return false;
         //if $allow_size == 0 mean don't check size
-        if ($allow_size  > 0 && !$this->validateSize($file['size'], $allow_size))
+        if ($allow_size > 0 && !$this->validateSize($file['size'], $allow_size))
             return false;
-        if($this->is_blacklist_extension($information['extension']))
+        if ($this->is_blacklist_extension($information['extension']))
             return false;
         return true;
     }
@@ -221,9 +225,9 @@ class FormValidator {
         $pattern = '/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/';
         return FormValidator::is_valid($pattern, $str);
     }
-    
-    public function is_positive_number($str){
-        if(is_int($str) && $str >= 0)
+
+    public function is_positive_number($str) {
+        if (is_int($str) && $str >= 0)
             return true;
         return false;
     }

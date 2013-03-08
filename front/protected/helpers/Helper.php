@@ -357,4 +357,5 @@ class Helper {
     public static function gen_access_token() {
         return base64_encode(pack('N6', mt_rand(), mt_rand(), mt_rand(), mt_rand(), mt_rand(), mt_rand()));
     }
+
 }

@@ -45,17 +45,17 @@ class HelperGlobal {
         ));
         die;
     }
-    
-    public static function user_info($user){
+
+    public static function user_info($user) {
         return array(
-            'id'=>$user['id'],
-            'email'=>$user['email'],
-            'fullname'=>$user['fullname'],
-            'img'=>$user['img'],
-            'thumbnail'=>$user['thumbnail'],
-            'date_added'=>$user['date_added'],
-            'last_modified'=>$user['last_modified'],
-            'apikey'=>$user['apikey']
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'fullname' => $user['fullname'],
+            'img' => $user['img'],
+            'thumbnail' => $user['thumbnail'],
+            'date_added' => $user['date_added'],
+            'last_modified' => $user['last_modified'],
+            'apikey' => $user['apikey']
         );
     }
 
@@ -119,4 +119,3 @@ class HelperGlobal {
     }
 
 }
-

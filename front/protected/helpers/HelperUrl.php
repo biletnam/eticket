@@ -14,7 +14,6 @@ class HelperUrl {
         return Yii::app()->request->getRequestUri();
     }
 
-
     public static function upload_dir(){
         return Yii::app()->params['upload_dir'];
     }
@@ -22,4 +21,5 @@ class HelperUrl {
     public static function upload_url(){
         return Yii::app()->params['upload_url'];
     }
+
 }

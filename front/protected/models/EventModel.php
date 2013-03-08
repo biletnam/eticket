@@ -68,11 +68,13 @@ class EventModel extends CFormModel {
         }
 
         if (isset($args['is_today']) && $args['is_today']) {
+
             $order_by = "ve.start_time ASC";
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 
         $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
                 FROM vsk_events ve
                 LEFT JOIN vsk_users va
                 ON va.id = ve.id

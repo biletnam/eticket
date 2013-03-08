@@ -74,7 +74,7 @@ class DateTimeFormat {
         return $string . $tense;
     }
     
-    public static function remaining_time($end_time)
+    public static function nicetime_challenge($end_time)
     {
        
         $remaining = $end_time - time();

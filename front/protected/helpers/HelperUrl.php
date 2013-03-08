@@ -7,9 +7,14 @@ class HelperUrl {
     }
     
     public static function hostInfo(){
-        return Yii::app()->getHomeUrl();        
+        return Yii::app()->request->hostInfo."/";        
     }
     
+    public static function requestUri(){
+        return Yii::app()->request->getRequestUri();
+    }
+
+
     public static function upload_dir(){
         return Yii::app()->params['upload_dir'];
     }

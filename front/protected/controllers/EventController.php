@@ -139,12 +139,16 @@ class EventController extends Controller {
             'description' => $description,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets,
-            'is_repeat' => $is_repeat ));
+            'is_repeat' => $is_repeat));
 
         //add new event category
         $this->EventModel->add_event_category($event_id, $primary_cate, 1);
         if ($second_cate)
             $this->EventModel->add_event_category($event_id, $second_cate, 0);
+
+        $note = "Your event :" . $title ."was created, please wait admin approve.";
+
+        @HelperApp::email(UserControl::getEmail(), 'Event was created', $note);
 
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event_id/?s=1&msg= You create <strong>$title</strong>");
     }
@@ -159,7 +163,7 @@ class EventController extends Controller {
             $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['city']);
         echo json_encode($tmp);
     }
-    
+
     public function actionEdit($id = "", $type = "general") {
         HelperGlobal::require_login();
         $event = $this->EventModel->get($id);
@@ -179,7 +183,7 @@ class EventController extends Controller {
 
         $this->render('edit', $this->viewData);
     }
-    
+
     private function do_edit($event) {
         $title = trim($_POST['title']);
         $file = $_FILES['file'];
@@ -276,29 +280,28 @@ class EventController extends Controller {
         $this->EventModel->add_event_category($event['id'], $primary_cate, 1);
         if ($second_cate)
             $this->EventModel->add_event_category($event['id'], $second_cate, 0);
-        
+
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event[id]/?s=1");
     }
-    
-    public function actionRemove_thumb($id){
+
+    public function actionRemove_thumb($id) {
         HelperGlobal::require_login();
         $event = $this->EventModel->get($id);
         if (!$event || $event['user_id'] != UserControl::getId())
             return;
-        
-        if($event['thumbnail'] == "")
-        {
+
+        if ($event['thumbnail'] == "") {
             echo json_encode($this->message);
             die;
         }
-        
+
         $thumbnail = unserialize($event['thumbnail']);
-        foreach($thumbnail as $v)
-            @unlink (Yii::app()->getParams()->itemAt('upload_dir')."media/".$v['folder'].$v['filename']);
-        $this->EventModel->update(array('img'=>'','thumbnail'=>'','id'=>$id));
+        foreach ($thumbnail as $v)
+            @unlink(Yii::app()->getParams()->itemAt('upload_dir') . "media/" . $v['folder'] . $v['filename']);
+        $this->EventModel->update(array('img' => '', 'thumbnail' => '', 'id' => $id));
         echo json_encode($this->message);
     }
-    
+
     public function actionAdd_ticket_type() {
         HelperGlobal::require_login();
         $event_id = $_POST['event_id'];
@@ -395,13 +398,13 @@ class EventController extends Controller {
             'sale_end' => $sale_end, 'minimum' => $ticket_min,
             'maximum' => $ticket_max, 'service_fee' => $service_fee
                 ));
-        
+
         $this->message['error'][] = "Ticket type added successfull.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
     }
 
     public function actionEdit_ticket_type($id = 0) {
-        
+
         HelperGlobal::require_login();
         $ticket = $this->TicketTypeModel->get($id);
         if (!$ticket || $ticket['author_id'] != UserControl::getId())
@@ -503,11 +506,11 @@ class EventController extends Controller {
             'maximum' => $ticket_max, 'service_fee' => $service_fee,
             'last_modified' => time()
         ));
-        
+
         $this->message['error'][] = "Update ticket <strong>$ticket_name</strong> suceessful.";
         echo json_encode(array('message' => $this->message, 'type' => 'edit'));
     }
-    
+
     public function actionDelete_ticket_type($id = 0) {
         HelperGlobal::require_login();
         $ticket_type = $this->TicketTypeModel->get($id);
@@ -517,34 +520,78 @@ class EventController extends Controller {
         $cannot_delete = $this->TicketModel->counts(array('deleted' => 0, 'ticket_type_id' => $ticket_type['id'], 'check_date_expired' => 1));
 
         if ($cannot_delete) {
-            $this->message['error'][] =  "You cannot delete this ticket because it's ordered. Please contact the administrator of eTicket to refer this problem.";
+            $this->message['error'][] = "You cannot delete this ticket because it's ordered. Please contact the administrator of eTicket to refer this problem.";
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;
         }
 
         $this->TicketTypeModel->update(array('deleted' => 1, 'id' => $id));
-        
+
         $this->message['error'][] = "You delete ticket <strong>$ticket_type[title]</strong>.";
         echo json_encode(array('message' => $this->message));
     }
 
-    public function actionSearch() {
-        $this->render('search');
+  public function actionSearch($p = 1) {
+
+        $s = isset($_GET['title']) ? $_GET['title'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+
+        $cate = isset($_GET['cate']) ? $_GET['cate'] : "";
+        $date = isset($_GET['date']) ? $_GET['date'] : "";
+        $city = isset($_GET['city']) ? $_GET['city'] : "";
+        $city = strlen($city) > 2 ? $city : "";
+//        $price = isset($_GET['price']) ? $_GET['price'] : "";
+//        $cid = isset($_GET['cid']) ? $_GET['cid'] : "";
+//        $oid = isset($_GET['oid']) ? $_GET['oid'] : "";
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        $args = array('search_title' => $s, 'search_city' => $city, 'search_cate' => $cate,'date'=>$date);
+
+        $events = $this->EventModel->gets($args, $p, $ppp);
+        $total = $this->EventModel->counts($args);
+
+        //print_r($events);die;
+
+        $event_categories = $this->CategoryModel->gets(array('deleted' => 0, 'type' => 'event'));
+        $event_city = $this->LocationModel->gets(array('deleted' => 0));
+
+//        if ($s || $city)
+//            $this->KeywordModel->add($s, $city, 0, time());
+
+        $this->viewData['events'] = $events;
+        $this->viewData['total'] = $total;
+        $this->viewData['event_categories'] = $event_categories;
+        $this->viewData['event_city'] = $event_city;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/search/p/", $total, $p) : "";
+        $this->viewData['query_string'] = $this->get_query_string();
+        $this->render('search', $this->viewData);
+    }
+
+    private function get_query_string() {
+        $queryString = Yii::app()->request->queryString;
+        $queryString = explode('&', $queryString);
+        $params = array();
+        foreach ($queryString as $k => $v) {
+            $tmp = explode('=', $v);
+            if (count($tmp) != 2)
+                continue;
+            $params[$tmp[0]] = $tmp[1];
+        }
+        return $params;
     }
 
     public function actionInfo($s = "") {
-        
+
         $event = $this->EventModel->get_by_slug($s);
-        if(!$event)
-            $this->load_404 ();
-        if(!$event['published'] && ($event['user_id'] != UserControl::getId()))
-            $this->load_404 ();
+        if (!$event)
+            $this->load_404();
+        if (!$event['published'] && ($event['user_id'] != UserControl::getId()))
+            $this->load_404();
         $this->layout = 'events';
-        
+
         $this->viewData['event'] = $event;
-        $this->viewData['ticket_types'] = $this->TicketTypeModel->gets(array('deleted'=>0,'event_id'=>$event['id']),1,200);        
-        $this->render('event',$this->viewData);
+        $this->viewData['ticket_types'] = $this->TicketTypeModel->gets(array('deleted' => 0, 'event_id' => $event['id']), 1, 200);
+        $this->render('event', $this->viewData);
     }
 
     public function actionContact_organizer() {

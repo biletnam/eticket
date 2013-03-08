@@ -16,12 +16,18 @@ class UserModel extends CFormModel {
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
         
+         if (isset($args['role']) && $args['role'] != "") {
+            $custom = " AND role = :role";
+            $params[] = array('name' => ':role', 'value' => $args['role'], 'type' => PDO::PARAM_STR);
+        }
+        
         $sql = "SELECT *
                 FROM vsk_users
                 WHERE 1
                 $custom
                 ORDER BY date_added DESC
                 LIMIT :page,:ppp";
+        
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":page", $page);
         $command->bindParam(":ppp", $ppp);
@@ -39,6 +45,10 @@ class UserModel extends CFormModel {
         if (isset($args['s']) && $args['s'] != "") {
             $custom = " AND title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
+        }
+         if (isset($args['role']) && $args['role'] != "") {
+            $custom = " AND role = :role";
+            $params[] = array('name' => ':role', 'value' => $args['role'], 'type' => PDO::PARAM_STR);
         }
         
         $sql = "SELECT count(*) as total

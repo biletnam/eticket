@@ -9,7 +9,7 @@ class HelperApp {
         );
         return $array;
     }
-    
+
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
@@ -17,12 +17,12 @@ class HelperApp {
         );
         return $array;
     }
-    
+
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();
         $cookie->Add($name, $value);
-        if(!$is_session)         
-            $cookie->setExpireTime($timeout);        
+        if (!$is_session)
+            $cookie->setExpireTime($timeout);
         $cookie->Save($is_session);
     }
 
@@ -30,12 +30,12 @@ class HelperApp {
         $cookie = new CookieRegistry();
         return $cookie->Get($name);
     }
-    
-    public static function clear_cookie(){
+
+    public static function clear_cookie() {
         $cookie = new CookieRegistry();
         $cookie->Clear();
     }
-    
+
     public static function start_session() {
         $session = new CHttpSession;
         $session->open();
@@ -99,7 +99,7 @@ class HelperApp {
                 if ($old_filename)
                     $new_oldfilename = $size['w'] . 'x' . $size['h'] . '-' . $old_filename;
             }
-            $folder = str_replace(HelperUrl::upload_dir()."media/", '', $upload_dir);
+            $folder = str_replace(HelperUrl::upload_dir() . "media/", '', $upload_dir);
 
             $new_size = '';
             if ($size['w'] == 0) {
@@ -162,15 +162,15 @@ class HelperApp {
         return $p->display_pages();
     }
 
-    public static function resize_images($file, $sizes,$old_name = '') {
+    public static function resize_images($file, $sizes, $old_name = '') {
         $image_info = getimagesize($file['tmp_name']);
-        
+
         $img = Ultilities::base32UUID() . "." . Helper::image_types($image_info['mime']);
-        $upload_dir = HelperUrl::upload_dir(). "media/" . date('Y') . '/' . date('m') . '/';
-        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir,$old_name));
+        $upload_dir = HelperUrl::upload_dir() . "media/" . date('Y') . '/' . date('m') . '/';
+        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir, $old_name));
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
-    
+
     public static function upload_files($files, $allow_size = 3145728, $destination = "default") {
         $total = count($files['name']);
         if ($total <= 0)
@@ -207,7 +207,7 @@ class HelperApp {
                 $upload_dir = HelperUrl::upload_dir() . $destination;
                 self::make_folder($upload_dir);
                 try {
-                    $file = array('name'=>$files['name'][$i],'type'=>$files['type'][$i],'tmp_name'=>$files['tmp_name'][$i],'error'=>$files['error'][$i],'size'=>$files['size'][$i]);
+                    $file = array('name' => $files['name'][$i], 'type' => $files['type'][$i], 'tmp_name' => $files['tmp_name'][$i], 'error' => $files['error'][$i], 'size' => $files['size'][$i]);
                     if (!$validator->is_valid_file($file, $allow_size))
                         continue;
 
@@ -222,7 +222,7 @@ class HelperApp {
         }
         return $uploaded_items;
     }
-    
+
     public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@vesukien.vn') {
         if ($footer)
             $message .= '';

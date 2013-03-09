@@ -29,24 +29,116 @@ ul{list-style: none}
 .pull-right{float:right}
 .border-style{background: url('../img/border_style.png') 0 0 repeat-x;height: 4px}
 .bg-kube{background: url("../img/bg_kube.png") no-repeat}
-.page-title{font-weight: normal}
 
 /*****Form Style******/
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+
 .form-style{background-color: #fafafa;padding:15px 20px}
 select{display: inline-block;padding:5px 8px;border:1px solid #e9e9e9;font-family: Georgia}
 .checkbox{font-family: Georgia}
 input[type='text'],input[type='password'],textarea{
-border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border:1px solid #e9e9e9;
-padding:5px 8px;box-shadow: 2px 0px 1px 0px #C0C0C0;display: inline-block;font-family: Georgia;
-transition: all 0.5s;
--moz-transition: all 0.5s; /* Firefox 4 */
--webkit-transition: all 0.5s; /* Safari and Chrome */
--o-transition: all 0.5s;}
-input[type='text']:focus,input[type='password']:focus,textarea:focus{box-shadow: 2px 0 1px 0px #5ba3d1;}
+border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;
+padding:5px 8px;display: inline-block;font-family: Georgia;
+}
+
 .input-large{width: 395px}
 .input-mini{width: 136px}
 .controls-group{margin-bottom: 20px}
-    .control-label{width: 125px;margin-right: 20px;font-weight: bold;color:#000000;font-family: Arial;text-align: right}
+    .control-label{width: 125px;margin-right: 20px;font-weight: bold;color:#000000;font-family: Arial;text-align: right;margin-top:3px}
     .controls{}
         .sub-label{margin: 0 8px 0 20px;font-family: Arial}
         
@@ -68,7 +160,8 @@ input[type='text']:focus,input[type='password']:focus,textarea:focus{box-shadow:
         -moz-transition: all 0.5s linear; /* Firefox 4 */
         -webkit-transition: all 0.5s linear; /* Safari and Chrome */
         -o-transition: all 0.5s linear;
-        border:none;border-radius: 5px;color:#fff;font-family: Georgia;font-size: 12px;padding:10px 15px;text-transform: uppercase;cursor: pointer
+        border:none;border-radius: 5px;color:#fff;font-family: Georgia;font-size: 12px;padding:10px 15px;text-transform: uppercase;cursor: pointer;
+        box-shadow: 1px 1px 1px 1px #CCCCCC;
 } 
 .btn:hover{
     background-image: linear-gradient(bottom, rgb(7,150,246) 0%, rgb(0,103,199) 100%);
@@ -85,7 +178,14 @@ input[type='text']:focus,input[type='password']:focus,textarea:focus{box-shadow:
             color-stop(1, rgb(0,103,199))
     );
 }
+
+button{border:none;background-color: transparent}
+
+.form-style .forgot-password{display: inline-block;color:#000;text-decoration: underline;margin-left: 10px;font-size: 11px}
+.border{border:1px solid #eceaea}
 /*******End Form Style*******/
+
+
 nav ul{margin-left: -20px;}
 nav ul li{float:left;margin-left:28px}
 
@@ -132,8 +232,8 @@ nav ul li{float:left;margin-left:28px}
                 .footer-contact-us input[type='text'],.footer-contact-us input[type='password'],.footer-contact-us textarea{font-size: 14px;color:#000;width: 205px;border:none;box-shadow: none}
        .footer .copyright{font-family: Arial;font-size: 12px;margin-top: 10px}      
  /**********************/
- .topbar{background: url('../img/bar_header.jpg') repeat-x;height: 50px;margin-bottom: 50px;}
-    .page-title{color:#fff;font-weight: normal;font-size: 36px;line-height: 18px;margin-top: 15px;}
+ .topbar{background: url('../img/bar_header.jpg') repeat;margin-bottom: 50px;padding:15px 0}
+    .page-title{color:#fff;font-weight: normal;font-size: 30px;line-height: 18px;margin-top:0;margin-bottom: 0;}
 .page-register{background-position: 750px 20px}   
     .form-register{width: 560px;margin-bottom: 50px}     
         .btn-signup-fb{display: inline-block;width: 200px}

@@ -24,14 +24,27 @@ class UserController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {  
-        $this->render('index',$this->viewData);
-        
+        $this->render('index',$this->viewData); 
     }   
     
-    public function actionRegister() {  
-
-        $this->render('register',$this->viewData);
-        
+    public function actionSignup() {  
+        Yii::app()->params['page'] = 'Register';
+        $this->render('signup',$this->viewData); 
+    }  
+    
+    public function actionSignin() {  
+        Yii::app()->params['page'] = 'Login';
+        $this->render('signin',$this->viewData);  
+    }  
+    
+    public function actionChangepassword() {  
+        Yii::app()->params['page'] = 'Change Password';
+        $this->render('change-password',$this->viewData);  
+    }
+    
+    public function actionRecovery() {  
+        Yii::app()->params['page'] = 'Recovery Password';
+        $this->render('recovery-password',$this->viewData);  
     }  
     
 }

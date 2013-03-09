@@ -15,8 +15,8 @@
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/text.css" />
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/960.css" />
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/style.css" />
+        <link href="<?php echo HelperUrl::baseUrl(); ?>/css/themes/start/jquery.ui.all.css" rel="stylesheet"/>
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/flex_slider.css" type="text/css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<?php echo HelperUrl::baseUrl(); ?>css/style.css?v=04032013" />
 
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -54,7 +54,7 @@
                                 <ul class="clearfix">
                                     <li><a href="#">Find Events</a></li>
                                     <li><a href="#">Print Tickets</a></li>
-                                    <li><a href="#">Create An Event</a></li>
+                                    <li><a href="<?php echo HelperUrl::baseUrl() ?>event/create">Create An Event</a></li>
                                     <li><a href="#">How It Works</a></li>
                                     <li class="last"><a href="#">Help</a></li>
                                 </ul>

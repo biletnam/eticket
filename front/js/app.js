@@ -8,6 +8,10 @@ $(document).ready(function(){
 });
 
 function init(){
+    $('.alert .close').click(function(){
+        $('.alert').fadeOut('slow');
+    });
+    
     $("table .delete-row").click(function(){
         if(!confirm("Are you sure delete this item?")) return false;
         var ele = $(this);

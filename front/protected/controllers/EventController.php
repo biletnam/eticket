@@ -49,5 +49,12 @@ class EventController extends Controller {
         $this->render('event',$this->viewData);  
     }  
     
+    public function actionRegister_to_event() {  
+        //HelperGlobal::require_login();
+        
+        Yii::app()->params['page'] = 'Payment Ticket';
+        $this->render('payment_ticket',$this->viewData);  
+    }  
+    
     
 }

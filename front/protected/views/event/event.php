@@ -21,7 +21,7 @@
     <div class="container_12">
         <div class="clearfix">
             <div class="grid_8">
-                <article class="event ticket-info border border-radius box-shadow-bottom">
+                <article class="event event-box  ticket-info border border-radius box-shadow-bottom">
                     <form method="POST" action="<?php echo HelperUrl::baseUrl() ?>event/register_to_event">
                         <div class="heading">Ticket Information</div>
                         <div class="ticket">
@@ -62,7 +62,7 @@
                     </form>
                 </article>
 
-                <article class="event details radius-body border border-radius box-shadow-bottom">
+                <article class="event event-box details radius-body border border-radius box-shadow-bottom">
                     <div class="heading">Event Detail</div>
                     <div class="event-body">
                         <section class="description"> <!-- class description is SEO, not css -->

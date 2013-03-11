@@ -40,6 +40,13 @@ class EventController extends Controller {
         
         Yii::app()->params['page'] = '';
         $this->render('edit',$this->viewData);  
+    } 
+    
+    public function actionInfo() {  
+        //HelperGlobal::require_login();
+        
+        Yii::app()->params['page'] = 'Event Detail';
+        $this->render('event',$this->viewData);  
     }  
     
     

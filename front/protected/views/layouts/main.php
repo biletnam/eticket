@@ -4,7 +4,17 @@
         <div class="clearfix">
             <h1 class="bebasneue grid_6 page-title"><?php echo Yii::app()->params['page'] ?></h1>
             <div class="grid_6 user-bar pull-right">
-                User bar
+                <ul class="user-bar-main clearfix">
+                    <li class="user-actions">
+                        <a href="javascript::void(0)">Peter</a>
+                        <ul>
+                            <li><a href="#">Log out</a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="#">My Events</a>|</li>
+                    <li><a href="#">My Profile</a>|</li>
+                    <li><a href="#">My Tickets</a>|</li>
+                </ul>
             </div>
         </div>
     </div>

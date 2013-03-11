@@ -42,7 +42,7 @@ class UserController extends Controller {
         $this->render('change-password',$this->viewData);  
     }
     
-    public function actionRecovery() {  
+    public function actionRecoverypassword() {  
         Yii::app()->params['page'] = 'Recovery Password';
         $this->render('recovery-password',$this->viewData);  
     }  

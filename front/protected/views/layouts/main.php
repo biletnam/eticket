@@ -3,7 +3,7 @@
     <div class="container_12">
         <div class="clearfix">
             <h1 class="bebasneue grid_6 page-title"><?php echo Yii::app()->params['page'] ?></h1>
-            <div class="grid_6 user-bar">
+            <div class="grid_6 user-bar pull-right">
                 User bar
             </div>
         </div>

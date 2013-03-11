@@ -29,8 +29,17 @@ class EventController extends Controller {
     
     
     public function actionCreate() {  
+        //HelperGlobal::require_login();
+        
         Yii::app()->params['page'] = 'Create Event';
         $this->render('create',$this->viewData);  
+    }  
+    
+    public function actionEdit() {  
+        //HelperGlobal::require_login();
+        
+        Yii::app()->params['page'] = '';
+        $this->render('edit',$this->viewData);  
     }  
     
     

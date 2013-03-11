@@ -17,7 +17,7 @@
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left">
                     <label class="checkbox"><input type="checkbox"/> Remember me</label>
-                    <a class="forgot-password" href="#">Forgotten password?</a>
+                    <a class="register forgot-password" href="<?php echo HelperUrl::baseUrl() ?>user/signup">Register</a>/<a class="forgot-password" href="<?php echo HelperUrl::baseUrl() ?>user/recoverypassword">Forgotten password?</a>
                 </div>
             </div>
             <div class="actions controls-group clearfix">

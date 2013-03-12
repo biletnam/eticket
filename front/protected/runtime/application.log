@@ -9457,3 +9457,841 @@ Stack trace:
 REQUEST_URI=/eticket/front/images/logo.png
 HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
 ---
+2013/03/12 10:06:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:06:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:06:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:06:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:09:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:09:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:10:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:11:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:11:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:11:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:11:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:20:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:20:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:20:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:20:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---
+2013/03/12 10:23:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:23:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:23:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:23:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:24:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:24:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:25:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:25:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:28:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin
+---
+2013/03/12 10:28:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin
+---
+2013/03/12 10:29:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:29:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:29:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/changepassword
+---
+2013/03/12 10:29:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/changepassword
+---
+2013/03/12 10:30:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:30:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:30:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:30:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/recoverypassword
+---
+2013/03/12 10:30:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/changepassword
+---
+2013/03/12 10:30:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/changepassword
+---
+2013/03/12 10:31:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "changepassword".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('changepassword')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('changepassword')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/changepass...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/changepassword
+---
+2013/03/12 10:31:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 10:31:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 10:34:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 10:34:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 10:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:37:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/12 10:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:37:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:38:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:38:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:41:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:42:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:42:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:42:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:42:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:42:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:43:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:43:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:44:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:44:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:44:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:44:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:45:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:45:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:45:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:45:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:46:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:46:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:47:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:47:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:47:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:48:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:49:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:49:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:49:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:49:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 10:49:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 10:49:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 11:09:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 11:09:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/newpassword
+---
+2013/03/12 11:09:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---
+2013/03/12 11:09:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/change_password
+---

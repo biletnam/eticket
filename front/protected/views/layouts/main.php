@@ -11,9 +11,8 @@
                             <li><a href="#">Log out</a></li> 
                         </ul>
                     </li>
-                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
                     <li><a href="#">My Profile</a>|</li>
-                    <li><a href="#">My Tickets</a>|</li>
+                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
                 </ul>
             </div>
         </div>

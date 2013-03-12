@@ -1,0 +1,37 @@
+<?php $this->renderFile(Yii::app()->basePath . "/views/_shared/header.php"); ?>
+<div class="topbar">
+    <div class="container_12">
+        <div class="clearfix">
+            <h1 class="bebasneue grid_6 page-title"><?php echo Yii::app()->params['page'] ?></h1>
+            <div class="grid_6 user-bar pull-right">
+                <ul class="user-bar-main clearfix">
+                    <li class="user-actions">
+                        <a href="javascript::void(0)">Peter</a>
+                        <ul>
+                            <li><a href="#">Log out</a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="#">My Profile</a>|</li>
+                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container_12 page-user">
+    <div class="clearfix">
+        <div class="grid_4">
+            <ul class="user-menu">
+                <li><a class="btn-style" href="#"><i class="icon icon-user"></i>Account Setting</a></li>
+                <li <?php if (Yii::app()->params['is_tab'] == 'change_password'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/change_password"><i class="icon icon-setting"></i>Change Password</a></li>
+                <li <?php if (Yii::app()->params['is_tab'] == 'manage_event'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event"><i class="icon icon-event"></i>Management Event</a></li>
+                <li <?php if(Yii::app()->params['is_tab'] == "paid_event"): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/paid_event"><i class="icon icon-refresh"></i>Management Paid Event's Ticket</a></li>
+                <li><a class="btn-style" href="#"><i class="icon icon-logout"></i>Log Out</a></li>
+            </ul>
+        </div>
+        <div class="grid_8">
+            <?php echo $content; ?>
+        </div>
+    </div>
+</div>
+<?php $this->renderFile(Yii::app()->basePath . "/views/_shared/footer.php"); ?>

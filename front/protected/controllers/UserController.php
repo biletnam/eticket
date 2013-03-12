@@ -37,9 +37,9 @@ class UserController extends Controller {
         $this->render('signin',$this->viewData);  
     }  
     
-    public function actionChangepassword() {  
-        Yii::app()->params['page'] = 'Change Password';
-        $this->render('change-password',$this->viewData);  
+    public function actionNewpassword() {  
+        Yii::app()->params['page'] = 'New Password';
+        $this->render('new-password',$this->viewData);  
     }
     
     public function actionRecoverypassword() {  
@@ -48,9 +48,17 @@ class UserController extends Controller {
     }  
     
     public function actionAccount($type = "setting", $p = 1, $id=""){
+        
+        $this->layout = 'account';
         switch ($type) {
             case "manage_event":
                 $this->manage_event($type);
+                break;
+            case "paid_event":
+                $this->paid_event($type);
+                break;
+            case "change_password":
+                $this->change_password($type);
                 break;
         }
     }
@@ -64,10 +72,46 @@ class UserController extends Controller {
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'Management Event';
+        Yii::app()->params['is_tab'] = 'manage_event';
         $this->render('manage_event', $this->viewData);
     }
     
     private function do_manage_event() {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
+    }
+    
+    
+    private function paid_event($type) {
+
+        if ($_POST)
+            $this->do_paid_event();
+        
+        
+        $this->viewData['message'] = $this->message;
+        $this->viewData['type'] = $type;
+        Yii::app()->params['page'] = "Management Paid Event's ticket";
+        Yii::app()->params['is_tab']= 'paid_event';
+        $this->render('paid_event', $this->viewData);
+    }
+    
+    private function do_paid_event() {
+        $this->redirect(HelperUrl::baseUrl() . "user/account/type/paid_event/?s=1");
+    }
+    
+    private function change_password($type) {
+
+        if ($_POST)
+            $this->do_change_password();
+        
+        
+        $this->viewData['message'] = $this->message;
+        $this->viewData['type'] = $type;
+        Yii::app()->params['page'] = "Change Password";
+        Yii::app()->params['is_tab']= 'change_password';
+        $this->render('change-password', $this->viewData);
+    }
+    
+    private function do_change_password() {
+        $this->redirect(HelperUrl::baseUrl() . "user/account/type/change_password/?s=1");
     }
 }

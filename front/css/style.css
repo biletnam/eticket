@@ -271,6 +271,36 @@ padding:5px 8px;display: inline-block;font-family: Arial;
             color-stop(1, rgb(0,103,199))
     );
 }
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #003399 \9;
+}
 
 button{border:none;background-color: transparent}
 
@@ -496,9 +526,10 @@ i{display: inline-block;position: relative}
 .add_ticket_container {margin-bottom: 20px;text-align: center;}     
 .btn-type-price:hover{color: #fff}
 .add_ticket_text{font-family: Arial}
+.form-create-ticket .table{margin-bottom: 10px}
 
 .table{width: 100%;border-spacing: 0; border-collapse: separate;font-family: Arial;margin-bottom: 0}
-    .table th, .table td {border-top: 1px solid #DDDDDD;line-height: 18px; padding: 8px;text-align: left;vertical-align: top;}
+    .table th, .table td {border-top: 1px solid #DDDDDD;line-height: 18px; padding: 8px;text-align: left;vertical-align: middle;}
     .table th {font-weight: bold;}
     .table-bordered th, .table-bordered td {border-left: 1px solid #DDDDDD;}
     .table thead th {vertical-align: bottom;}
@@ -518,7 +549,11 @@ i{display: inline-block;position: relative}
         border-left: 1px solid #DDDDDD;
         background-color:#eeeded
     }
+    .table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {background-color: #fff;}
     .table-ticket .head-ticket-price.free {width: 29%;}
+    
+    
+    
 .form-ticket a.setting {background-color: #666666;border-radius: 3px;color: #FFFFFF;display: block;margin-top: 3px;padding: 2px 0 2px 5px;width: 63px;}
     .form-ticket tr th{background-color: #FFF}
     .button-medium {padding:8px 12px;}
@@ -587,3 +622,18 @@ i{display: inline-block;position: relative}
         .box-register-info legend{font-size: 18px;padding-bottom: 10px; margin-bottom: 15px;border-bottom: 1px solid #dedede;font-family: 'MyriadProRegular';color: #06415A;}
         .box-what-this{margin-left: 20px}
             .box-what-this input{width: 30px}
+            
+/*************User Setting****************/        
+.icon-user{background-position: 0 -360px;width: 18px;height: 18px;top:3px}
+.icon-setting{background-position:  0 -196px;width: 16px;height: 16px;top:3px}
+.icon-event{background-position:  0 -236px;width: 16px;height: 16px;top:3px}
+.icon-refresh{background-position:  0 -277px;width: 16px;height: 17px;top:3px}
+.icon-logout{background-position:  0 -315px;width: 17px;height: 17px;top:3px}
+
+.page-user{margin-bottom: 50px}
+   .page-user .user-menu{} 
+    .page-user .user-menu li{margin-bottom: 10px}
+    .page-user .user-menu li a{display: block;text-align: left}
+    .page-user .user-menu li.active a,.page-user .user-menu li.active a:hover{background-color: #a6a6a6;background-position: 0 -30px;color:#fff;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75)}
+    
+   .page-user .table tr td.text-bold  a{color:#0044CC}

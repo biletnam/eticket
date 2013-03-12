@@ -47,4 +47,27 @@ class UserController extends Controller {
         $this->render('recovery-password',$this->viewData);  
     }  
     
+    public function actionAccount($type = "setting", $p = 1, $id=""){
+        switch ($type) {
+            case "manage_event":
+                $this->manage_event($type);
+                break;
+        }
+    }
+    
+    private function manage_event($type) {
+
+        if ($_POST)
+            $this->do_manage_event();
+        
+        
+        $this->viewData['message'] = $this->message;
+        $this->viewData['type'] = $type;
+        Yii::app()->params['page'] = 'Management Event';
+        $this->render('manage_event', $this->viewData);
+    }
+    
+    private function do_manage_event() {
+        $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
+    }
 }

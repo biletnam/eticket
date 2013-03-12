@@ -2,8 +2,8 @@
 <div class="topbar">
     <div class="container_12">
         <div class="clearfix">
-            <h1 class="bebasneue grid_6 page-title"><?php echo Yii::app()->params['page'] ?></h1>
-            <div class="grid_6 user-bar pull-right">
+            <h1 class="bebasneue grid_5 page-title"><?php echo Yii::app()->params['page'] ?></h1>
+            <div class="grid_7 user-bar pull-right">
                 <ul class="user-bar-main clearfix">
                     <li class="user-actions">
                         <a href="javascript::void(0)">Peter<i class="icon icon-arrow-down"></i></a>
@@ -12,6 +12,8 @@
                             <li><a href="#"><i class="icon icon-logout"></i> Log out</a></li> 
                         </ul>
                     </li>
+                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signup">Register</a>|</li>
+                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signin">Log in</a>|</li>
                     <li><a href="<?php echo HelperUrl::baseUrl() ?>user/make_profile">My Profile</a>|</li>
                     <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
                 </ul>

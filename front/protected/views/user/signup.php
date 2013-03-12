@@ -41,7 +41,7 @@
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left">
-                    <label class="checkbox"><input type="checkbox"/> I want to register as an Event Organizer.</label>
+                    <label class="checkbox"><input type="checkbox"/> Remember me.</label>
                 </div>
             </div>
             <div class="actions controls-group clearfix">

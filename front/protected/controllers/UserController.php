@@ -51,6 +51,9 @@ class UserController extends Controller {
         
         $this->layout = 'account';
         switch ($type) {
+            case "setting":
+                $this->account_setting($type);
+                break;
             case "manage_event":
                 $this->manage_event($type);
                 break;
@@ -61,6 +64,23 @@ class UserController extends Controller {
                 $this->change_password($type);
                 break;
         }
+    }
+    
+     private function account_setting($type) {
+
+        if ($_POST)
+            $this->do_account_setting();
+        
+        
+        $this->viewData['message'] = $this->message;
+        $this->viewData['type'] = $type;
+        Yii::app()->params['page'] = 'Account Setting';
+        Yii::app()->params['is_tab'] = 'setting';
+        $this->render('account-setting', $this->viewData);
+    }
+    
+    private function do_account_setting() {
+        $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }
     
     private function manage_event($type) {

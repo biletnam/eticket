@@ -414,6 +414,10 @@ button.close {
   -webkit-appearance: none;
 }
 
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+    background-color: #EEEEEE;
+    cursor: not-allowed;
+}
 
 /*******End Form Style*******/
 .padding-bottom-50px{padding-bottom: 50px}
@@ -643,7 +647,7 @@ i{display: inline-block;position: relative}
    .page-user .user-menu{} 
     .page-user .user-menu li{margin-bottom: 10px}
     .page-user .user-menu li a{display: block;text-align: left}
-    .page-user .user-menu li.active a,.page-user .user-menu li.active a:hover{background-color: #a6a6a6;background-position: 0 -30px;color:#fff;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75)}
+    .page-user .user-menu li.active a,.page-user .user-menu li.active a:hover{background-color: #a6a6a6;background-position: 0 -32px;color:#fff;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75)}
     
    .page-user .table tr td.text-bold  a{color:#0044CC}
 
@@ -679,3 +683,5 @@ i{display: inline-block;position: relative}
                             .organize-list-events .col-center a{color:#4c4b4c;font-weight: bold;font-size: 14px}
                             .organize-list-events .col-center p{margin-bottom: 0}
                         .organize-list-events .col-right{float:left;width: 75px;margin-top: 30px;}
+.page-account-setting{}
+    .user-avatar{width: 100px;padding:3px;}

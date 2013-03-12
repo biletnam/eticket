@@ -251,10 +251,6 @@ padding:5px 8px;display: inline-block;font-family: Arial;
                 color-stop(0, rgb(0,103,199)),
                 color-stop(1, rgb(7,150,246))
         );    
-        transition: all 0.5s linear;
-        -moz-transition: all 0.5s linear; /* Firefox 4 */
-        -webkit-transition: all 0.5s linear; /* Safari and Chrome */
-        -o-transition: all 0.5s linear;
         border:none;border-radius: 5px;color:#fff;font-family: Georgia;font-size: 12px;padding:10px 15px;text-transform: uppercase;cursor: pointer;
         box-shadow: 1px 1px 1px 1px #CCCCCC;display:inline-block
 } 
@@ -605,6 +601,7 @@ i{display: inline-block;position: relative}
 .contact-host{/*margin-bottom: 20px*/}
 
 /***********User Bar***********/
+.icon-arrow-down{background-position: -4px -404px;width: 8px;height: 7px;left:5px}
 .align-left{text-align: left !important}
 .align-center{text-align: center !important}
 .align-right{text-align: right !important}
@@ -613,9 +610,11 @@ i{display: inline-block;position: relative}
 .user-bar-main > li{float:right;position: relative;color:#fff}
     .user-bar-main > li > a{color:#fff;padding:7px 25px;display: inline-block}
     .user-bar-main > li.user-actions:hover >ul{display: block;}
-    .user-bar-main > li.user-actions > ul{display: none;position: absolute;width: 150px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-68px}
+    .user-bar-main > li.user-actions > ul{display: none;position: absolute;width: 150px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-55px;padding: 10px 0;}
+    .user-bar-main > li.user-actions > ul li:hover{background-color: #1B1A1A}
+    .user-bar-main > li.user-actions > ul li:hover a{color:#fff}
     .user-bar-main > li.user-actions {border:1px solid #050505;border-radius: 5px;margin-left: 20px;background-color: #1a1a1a;box-shadow: 0 0 3px 1px #29292a;}
-    .user-bar-main > li.user-actions > ul li a{padding:3px 10px;display: inline-block}
+    .user-bar-main > li.user-actions > ul li a{padding:5px 20px;display: block}
 /***********End User Bar**********/    
 .event.event-box{margin-bottom: 20px}
 .page-event-register{}
@@ -645,3 +644,14 @@ i{display: inline-block;position: relative}
     .page-user .user-menu li.active a,.page-user .user-menu li.active a:hover{background-color: #a6a6a6;background-position: 0 -30px;color:#fff;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75)}
     
    .page-user .table tr td.text-bold  a{color:#0044CC}
+
+.page-make-profile{} 
+    .page-make-profile p{font-size: 16px;color:#3f3f3f;line-height: 24px}
+    .organizer{width: 350px}
+    .organizer .organizer-logo{width: 150px;border:1px solid #ebebeb;margin-right: 10px}
+    .organizer .note-image{color:#5c5c5c;font-size: 11px}
+    
+    .organizer-description{margin-left: 20px;width: 528px;}
+        .organizer-description textarea{width: 510px;height: 300px}
+        .page-make-profile .actions{background-color: #e9e9e9;padding:10px 0 10px 370px}
+        .page-make-profile .actions a{font-size: 12px;padding:7px 15px 10px}

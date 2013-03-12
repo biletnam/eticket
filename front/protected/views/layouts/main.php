@@ -6,12 +6,12 @@
             <div class="grid_6 user-bar pull-right">
                 <ul class="user-bar-main clearfix">
                     <li class="user-actions">
-                        <a href="javascript::void(0)">Peter</a>
+                        <a href="javascript::void(0)">Peter<i class="icon icon-arrow-down"></i></a>
                         <ul>
                             <li><a href="#">Log out</a></li> 
                         </ul>
                     </li>
-                    <li><a href="#">My Profile</a>|</li>
+                    <li><a href="<?php echo HelperUrl::baseUrl() ?>user/make_profile">My Profile</a>|</li>
                     <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
                 </ul>
             </div>

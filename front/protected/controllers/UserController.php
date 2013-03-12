@@ -99,11 +99,8 @@ class UserController extends Controller {
     }
     
     private function change_password($type) {
-
         if ($_POST)
             $this->do_change_password();
-        
-        
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = "Change Password";
@@ -113,5 +110,12 @@ class UserController extends Controller {
     
     private function do_change_password() {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/change_password/?s=1");
+    }
+    
+    public function ActionMake_profile() {
+
+        $this->viewData['message'] = $this->message;
+        Yii::app()->params['page'] = "Make Profile";
+        $this->render('make-profile', $this->viewData);
     }
 }

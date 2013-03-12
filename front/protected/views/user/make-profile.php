@@ -14,7 +14,7 @@
                                 <div class="clearfix">
                                     <img class="organizer-logo pull-left" src="<?php echo HelperUrl::baseUrl() ?>img/organizer_logo.png" alt="" class="pull-left"/>
                                     <div class="note-image">
-                                        <div>Your image must be JPG, GIF, or PNG format and not exceed 1MB. It will be resized to make its width 225px.</div>
+                                        <div>Your image must be JPG, GIF, or PNG format and not exceed 1MB. It will be resized to make its width 300px.</div>
                                         <br/>
                                         <input type="file"/>
                                     </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="actions">
                     <input type="submit" class="btn" value="Save"/>
-                    <a class="btn" href="#">View profile</a>
+                    <a class="btn" href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current">View profile</a>
                 </div>
             </form>
         </div>

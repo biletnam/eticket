@@ -251,7 +251,7 @@ padding:5px 8px;display: inline-block;font-family: Arial;
                 color-stop(0, rgb(0,103,199)),
                 color-stop(1, rgb(7,150,246))
         );    
-        border:none;border-radius: 5px;color:#fff;font-family: Georgia;font-size: 12px;padding:10px 15px;text-transform: uppercase;cursor: pointer;
+        border:none;border-radius: 5px;color:#fff;font-family: Arial;font-size: 14px;padding:10px 15px;text-transform: capitalize;cursor: pointer;
         box-shadow: 1px 1px 1px 1px #CCCCCC;display:inline-block
 } 
 .btn:hover{
@@ -610,9 +610,11 @@ i{display: inline-block;position: relative}
 .user-bar-main > li{float:right;position: relative;color:#fff}
     .user-bar-main > li > a{color:#fff;padding:7px 25px;display: inline-block}
     .user-bar-main > li.user-actions:hover >ul{display: block;}
-    .user-bar-main > li.user-actions > ul{display: none;position: absolute;width: 150px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-55px;padding: 10px 0;}
+    .user-bar-main > li.user-actions > ul{display: none;position: absolute;width: 160px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-62px;padding: 10px 0;}
     .user-bar-main > li.user-actions > ul li:hover{background-color: #1B1A1A}
     .user-bar-main > li.user-actions > ul li:hover a{color:#fff}
+    .user-bar-main > li.user-actions > ul li:hover i.icon-setting{background-position: -4px -437px;}
+    .user-bar-main > li.user-actions > ul li:hover i.icon-logout{background-position: -4px -482px;}
     .user-bar-main > li.user-actions {border:1px solid #050505;border-radius: 5px;margin-left: 20px;background-color: #1a1a1a;box-shadow: 0 0 3px 1px #29292a;}
     .user-bar-main > li.user-actions > ul li a{padding:5px 20px;display: block}
 /***********End User Bar**********/    
@@ -647,11 +649,33 @@ i{display: inline-block;position: relative}
 
 .page-make-profile{} 
     .page-make-profile p{font-size: 16px;color:#3f3f3f;line-height: 24px}
-    .organizer{width: 350px}
-    .organizer .organizer-logo{width: 150px;border:1px solid #ebebeb;margin-right: 10px}
-    .organizer .note-image{color:#5c5c5c;font-size: 11px}
+    .page-make-profile .organizer{width: 350px}
+    .page-make-profile .organizer .organizer-logo{width: 150px;border:1px solid #ebebeb;margin-right: 10px}
+    .page-make-profile .organizer .note-image{color:#5c5c5c;font-size: 11px}
     
-    .organizer-description{margin-left: 20px;width: 528px;}
-        .organizer-description textarea{width: 510px;height: 300px}
+    .page-make-profile .organizer-description{margin-left: 20px;width: 528px;}
+        .page-make-profile .organizer-description textarea{width: 510px;height: 300px}
         .page-make-profile .actions{background-color: #e9e9e9;padding:10px 0 10px 370px}
-        .page-make-profile .actions a{font-size: 12px;padding:7px 15px 10px}
+        .page-make-profile .actions a{font-size: 12px;padding:9px 15px 10px}
+        
+.page-view-profile{}
+    .page-view-profile .box-organize-info{margin-top:20px;background-color: #fdfdfd; color:#3f3f3f;padding:5px}
+        .organize-title{font-size: 14px;line-height: 21px;border-bottom: 1px dashed #3f3f3f;padding:5px 0 10px}
+        
+    .box-organize-list-events{}
+        .organize-list-events-wrap{}
+            .header-tab{background-color: #f0eeee;border-bottom: 4px solid #4c4b4c;padding-top:8px;margin-bottom: 5px}
+                .header-tab ul{margin-bottom: 0}
+                .header-tab ul li{float:left;margin-left:10px}
+                .header-tab ul li a{padding:7px 20px 5px;background-color: #797979;display: inline-block;color:#fff;border-radius: 5px 5px 0 0;}
+                .header-tab ul li a:hover,.header-tab ul li a.current{background-color: #4c4b4c}
+            
+            .organize-list-events{}
+                .organize-list-events ul{}
+                    .organize-list-events ul li{padding:5px 0;margin:0 5px;border-bottom: 1px solid #dedede}
+                        .organize-list-events .col-left{float:left;width:96px;padding:3px;border:1px solid #f0eeee;margin-right: 10px;border-radius: 5px }
+                        .organize-list-events .col-center{float:left;margin-right: 40px;width: 370px;font-size: 12px;color:#4c4b4c}
+                            .organize-list-events .col-center h6{font-size: 12px;line-height: 18px;font-weight: normal;margin-bottom: 0}
+                            .organize-list-events .col-center a{color:#4c4b4c;font-weight: bold;font-size: 14px}
+                            .organize-list-events .col-center p{margin-bottom: 0}
+                        .organize-list-events .col-right{float:left;width: 75px;margin-top: 30px;}

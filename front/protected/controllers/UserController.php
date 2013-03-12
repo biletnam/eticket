@@ -112,10 +112,17 @@ class UserController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/change_password/?s=1");
     }
     
-    public function ActionMake_profile() {
+    public function actionMake_profile() {
 
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "Make Profile";
         $this->render('make-profile', $this->viewData);
+    }
+    
+    public function actionView_profile($s='current') {
+
+        $this->viewData['message'] = $this->message;
+        Yii::app()->params['page'] = "My Profile";
+        $this->render('view-profile', $this->viewData);
     }
 }

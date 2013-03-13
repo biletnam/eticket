@@ -7,9 +7,9 @@
                 <ul class="user-bar-main clearfix">
                     <?php if (UserControl::LoggedIn()): ?>
                         <li class="user-actions">
-                            <a href="javascript::void(0)">Peter<i class="icon icon-arrow-down"></i></a>
+                            <a href="javascript::void(0)"><?php echo UserControl::getFirstname() ?><i class="icon icon-arrow-down"></i></a>
                             <ul>
-                                <li><a href="#"><i class="icon icon-setting"></i> Account Setting</a></li>
+                                <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account"><i class="icon icon-setting"></i> Account Setting</a></li>
                                 <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signout"><i class="icon icon-logout"></i> Log out</a></li> 
                             </ul>
                         </li>

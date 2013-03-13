@@ -1,20 +1,24 @@
 <?php
 
 class UserController extends Controller {
-    
+
     private $viewData;
     private $validator;
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
-    
+    private $CityModel;
+
     public function init() {
         /* @var $validator FormValidator */
         $this->validator = new FormValidator();
 
         /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
+
+        /* @var $CityModel CityModel */
+        $this->CityModel = new CityModel();
     }
-    
+
     /**
      * Declares class-based actions.
      */
@@ -26,25 +30,25 @@ class UserController extends Controller {
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex() {  
-        $this->render('index',$this->viewData); 
-    } 
-    
+    public function actionIndex() {
+        $this->render('index', $this->viewData);
+    }
+
     public function actionSignout() {
         UserControl::DoLogout();
         $this->redirect(HelperUrl::baseUrl() . "home/");
     }
-    
-    public function actionSignup() {  
-        
+
+    public function actionSignup() {
+
         if ($_POST)
             $this->do_signup();
-        
+
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = 'Register';
-        $this->render('signup',$this->viewData); 
-    }  
-    
+        $this->render('signup', $this->viewData);
+    }
+
     private function do_signup() {
         $pattern = '/^[A-Za-z0-9]+(?:[_][A-Za-z0-9]+)*$/';
         $special_char = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
@@ -55,7 +59,7 @@ class UserController extends Controller {
         $lastname = trim($_POST['lastname']);
         $is_session = isset($_POST['remember']) ? false : true;
         $city_id = trim($_POST['city']);
-        $client = isset($_POST['client'])? 'waiting' : 'customer';
+        $client = isset($_POST['client']) ? 'waiting' : 'customer';
 
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email cannot be blank.";
@@ -87,23 +91,21 @@ class UserController extends Controller {
         $password = $hasher->HashPassword($pwd1);
         $secret_key = Ultilities::base32UUID();
 
-        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client);
+        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $city_id, $client);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
         $this->redirect(HelperUrl::baseUrl() . "home/");
     }
-    
-    
-    
-    public function actionSignin() {  
-        
+
+    public function actionSignin() {
+
         if ($_POST)
             $this->do_signin();
-        
+
         Yii::app()->params['page'] = 'Login';
         $this->viewData['message'] = $this->message;
-        $this->render('signin',$this->viewData);  
-    }  
-    
+        $this->render('signin', $this->viewData);
+    }
+
     private function do_signin() {
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
@@ -138,17 +140,16 @@ class UserController extends Controller {
         $url = isset($_GET['return']) ? $_GET['return'] : HelperUrl::baseUrl() . "home/";
         $this->redirect($url);
     }
-    
-    
-    public function actionForgot() {  
+
+    public function actionForgot() {
         if ($_POST)
             $this->do_forgot();
-        
+
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = 'Recovery Password';
-        $this->render('recovery-password',$this->viewData);  
-    }  
-    
+        $this->render('recovery-password', $this->viewData);
+    }
+
     private function do_forgot() {
         $email = trim($_POST['email']);
         $user = $this->UserModel->get_by_email($email);
@@ -174,7 +175,7 @@ class UserController extends Controller {
         $forgot_url = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl . "/user/reset/t/$token";
         $to = $email;
         $subject = "Recovery Password";
-        $message = 'Hello <strong>' . $user['firstname'].' '.$user['lastname'] . '</strong>, <br /><br />
+        $message = 'Hello <strong>' . $user['firstname'] . ' ' . $user['lastname'] . '</strong>, <br /><br />
                     Has requested get back password at Eticket website.
                     If this is you, please click on the link below to continue.
                     If not, please ignore this email.<br/><br />
@@ -184,13 +185,13 @@ class UserController extends Controller {
         HelperApp::email($to, $subject, $message);
         $this->redirect(HelperUrl::baseUrl() . "user/forgot/?s=1&msg=$msg");
     }
-    
+
     public function actionReset($t = "") {
         if ($this->validator->is_empty_string($t))
             $this->redirect(HelperUrl::baseUrl() . "user/forgot/");
 
         $token = $this->UserModel->get_token($t);
-        
+
         if (!$token)
             $this->message['success'] = false;
         if ($_POST)
@@ -198,7 +199,7 @@ class UserController extends Controller {
         $this->viewData['token'] = $token;
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = 'New Password';
-        $this->render('new-password',$this->viewData);  
+        $this->render('new-password', $this->viewData);
     }
 
     private function do_reset($token) {
@@ -223,10 +224,9 @@ class UserController extends Controller {
         $this->UserModel->update(array('password' => $password, 'id' => $token['user_id']));
         $this->redirect(HelperUrl::baseUrl() . "user/signin/");
     }
-    
-    
-    public function actionAccount($type = "setting", $p = 1, $id=""){
-        
+
+    public function actionAccount($type = "setting", $p = 1, $id = "") {
+
         $this->layout = 'account';
         switch ($type) {
             case "setting":
@@ -243,84 +243,147 @@ class UserController extends Controller {
                 break;
         }
     }
-    
-     private function account_setting($type) {
 
+    private function account_setting($type) {
+        HelperGlobal::require_login();
         if ($_POST)
             $this->do_account_setting();
-        
-        
+
+        $this->viewData['cities'] = $this->CityModel->gets_all_cities();
+        $this->viewData['metas'] = $this->UserModel->get_metas(UserControl::getId());
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'Account Setting';
         Yii::app()->params['is_tab'] = 'setting';
         $this->render('account-setting', $this->viewData);
     }
-    
+
     private function do_account_setting() {
+        $file = $_FILES['file'];
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
+        $city_id = $_POST['city_id'];
+
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file, 1048576))
+            $this->message['error'][] = "Image or size is not correct.";
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(250, 250, $file['tmp_name']))
+            $this->message['error'][] = "Minimum image size is 250x250px.";
+        if ($this->validator->is_empty_string($firstname) || $this->validator->has_speacial_character($firstname))
+            $this->message['error'][] = "Firstname can not be blank and not contains any speacial characters.";
+        if ($this->validator->is_empty_string($lastname) || $this->validator->has_speacial_character($lastname))
+            $this->message['error'][] = "Lastname can not be blank and not contains any speacial characters.";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        $img = UserControl::getImg();
+        $thumbnail = UserControl::getThumbnail();
+
+        if (!$this->validator->is_empty_string($file['name'])) {
+            $resize = HelperApp::resize_images($file, HelperApp::get_avatar_sizes(), $img);
+            $img = $resize['img'];
+            $thumbnail = $resize['thumbnail'];
+        }
+
+
+        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'city_id' => $city_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
+
+        //update metas
+        $this->UserModel->update_metas('address', trim($_POST['address']), UserControl::getId());
+        $this->UserModel->update_metas('phone', trim($_POST['phone']), UserControl::getId());
+
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }
-    
-    private function manage_event($type) {
 
+    private function manage_event($type) {
+        HelperGlobal::require_login();
         if ($_POST)
             $this->do_manage_event();
-        
-        
+
+
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'Management Event';
         Yii::app()->params['is_tab'] = 'manage_event';
         $this->render('manage_event', $this->viewData);
     }
-    
+
     private function do_manage_event() {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
     }
-    
-    
-    private function paid_event($type) {
 
+    private function paid_event($type) {
+        HelperGlobal::require_login();
         if ($_POST)
             $this->do_paid_event();
-        
-        
+
+
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = "Management Paid Event's ticket";
-        Yii::app()->params['is_tab']= 'paid_event';
+        Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);
     }
-    
+
     private function do_paid_event() {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/paid_event/?s=1");
     }
-    
+
     private function change_password($type) {
+        HelperGlobal::require_login();
+
         if ($_POST)
             $this->do_change_password();
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = "Change Password";
-        Yii::app()->params['is_tab']= 'change_password';
+        Yii::app()->params['is_tab'] = 'change_password';
         $this->render('change-password', $this->viewData);
     }
-    
+
     private function do_change_password() {
+
+        $oldpwd = trim($_POST['oldpwd']);
+        $pwd1 = trim($_POST['pwd1']);
+        $pwd2 = trim($_POST['pwd2']);
+
+        $hasher = new PasswordHash(10, TRUE);
+        if ($this->validator->is_empty_string($oldpwd))
+            $this->message['error'][] = "Password cannot be blank.";
+        if (!$hasher->CheckPassword($oldpwd, UserControl::getPassword()))
+            $this->message['error'][] = "Current password is not match.";
+        if ($this->validator->is_empty_string($pwd1))
+            $this->message['error'][] = "New password cannot be blank.";
+        if (strlen($pwd1) < 6 || strlen($pwd1) > 20)
+            $this->message['error'][] = "Password must be length 6-20 characters";
+        if ($pwd1 != $pwd2)
+            $this->message['error'][] = "New password is not match";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        $password = $hasher->HashPassword($pwd1);
+        $this->UserModel->update(array('password' => $password, 'id' => UserControl::getId()));
+
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/change_password/?s=1");
     }
-    
+
     public function actionMake_profile() {
 
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "Make Profile";
         $this->render('make-profile', $this->viewData);
     }
-    
-    public function actionView_profile($s='current') {
+
+    public function actionView_profile($s = 'current') {
 
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "My Profile";
         $this->render('view-profile', $this->viewData);
     }
+
 }

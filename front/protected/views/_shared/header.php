@@ -32,15 +32,6 @@
     </head>
 
     <body>
-        
-        
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt=""/></a>
-            </div>
-        </div>
-    </div>
 
         <div id="wrapper">
             <header class="header">

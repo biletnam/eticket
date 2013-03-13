@@ -64,6 +64,18 @@ class UserControl {
         self::FetchUserInstance();
         return self::$instance['lastname'];
     }
+    public static function getCityId(){
+        self::FetchUserInstance();
+        return self::$instance['city_id'];
+    }
+    public static function getImg(){
+        self::FetchUserInstance();
+        return self::$instance['img'];
+    }
+    public static function getThumbnail(){
+        self::FetchUserInstance();
+        return self::$instance['thumbnail'];
+    }
     
     public static function getRole(){
         self::FetchUserInstance();

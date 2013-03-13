@@ -118,4 +118,56 @@ class UserModel extends CFormModel {
         return $command->queryRow();
     }
 
+    
+    public function get_metas($user_id) {
+        $sql = "SELECT *
+                FROM etk_user_metas
+                WHERE user_id = :user_id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        return $this->_parse_metas($command->queryAll());
+    }
+
+    private function _parse_metas($metas) {
+        $tmp_metas = array();
+        foreach ($metas as $k => $v) {
+            $tmp_metas[$v['meta_key']] = $v['meta_value'];
+        }
+        return $tmp_metas;
+    }
+
+    public function update_metas($meta_key, $meta_value, $user_id) {
+        $meta = $this->get_meta($meta_key, $user_id);
+        if (!$meta)
+            return $this->add_meta($meta_key, $meta_value, $user_id);
+
+        $sql = "UPDATE etk_user_metas
+                SET meta_value = :meta_value
+                WHERE id = :id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":meta_value", $meta_value);
+        $command->bindParam(":id", $meta['id'], PDO::PARAM_INT);
+        return $command->execute();
+    }
+
+    public function get_meta($meta_key, $user_id) {
+        $sql = "SELECT *
+                FROM etk_user_metas
+                WHERE meta_key = :meta_key
+                AND user_id = :user_id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":meta_key", $meta_key);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        return $command->queryRow();
+    }
+
+    public function add_meta($meta_key, $meta_value, $user_id) {
+        $sql = "INSERT INTO etk_user_metas(meta_key,meta_value,user_id) VALUES(:meta_key,:meta_value,:user_id)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":meta_key", $meta_key);
+        $command->bindParam(":meta_value", $meta_value);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        $command->execute();
+        return Yii::app()->db->lastInsertID;
+    }
 }

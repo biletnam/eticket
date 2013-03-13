@@ -1,11 +1,13 @@
 <section class="manage-event">
-    <form class="form-style border border-radius">
+    <form class="form-style border border-radius" method="POST">
+        <?php echo Helper::print_error($message); ?>
+        <?php echo Helper::print_success($message); ?>
         <div class="controls-group clearfix">
             <label class="control-label pull-left">
                 Current Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini"/>
+                <input type="password" class="input-mini" name="oldpwd" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">
@@ -13,7 +15,7 @@
                 New Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini"/>
+                <input type="password" class="input-mini" name="pwd1" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">
@@ -21,7 +23,7 @@
                 Confirm Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini"/>
+                <input type="password" class="input-mini" name="pwd2" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">

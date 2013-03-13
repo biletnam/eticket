@@ -368,6 +368,7 @@ function bind_event(){
                         msg+= v+"<br/>"; 
                     });
                     display_error(msg);
+                    $(".apply-ticket",parent).removeClass('disabled');
                 }
                 else{
                     display_success(response.message.error[0]);
@@ -375,12 +376,13 @@ function bind_event(){
                         parent.attr('action',baseUrl+"/event/edit_ticket_type/id/"+response.id);
                         $(".remove-ticket",parent).removeClass('clone').attr('href',baseUrl+"/event/delete_ticket_type/id/"+response.id);
                     }
-                    
+                    $(".apply-ticket.edit1",parent).removeClass('disabled btn-info').html('Edit <i class="icon icon-edit"></i>');
+                    $(".apply-ticket.edit2",parent).removeClass('disabled btn-info').addClass('btn').html('Edit');
                 }
                 $(".loading",parent).hide();
                 $(".ticket-info",parent).show();
                 
-                $(".apply-ticket",parent).removeClass('disabled btn-info').addClass('btn-warning').text('Sửa');
+                
                 parent.removeClass('processing');
             },
             dataType:'json'
@@ -393,4 +395,25 @@ function bind_event(){
         $(".apply-ticket",ele).eq(0).trigger('click');
         return false;
     });
+}
+
+
+function count_total(ticket_info){
+    
+    var type = $(".ticket-id",ticket_info).val();
+    if(type == "free")
+        return false;
+    
+    var quantity = parseInt($(".ticket-quantity",ticket_info).val());
+    var fee = parseFloat($(".ticket-fee",ticket_info).val());    
+    if(isNaN(quantity) || isNaN(fee))
+        return false;
+    
+    var service_fee = $(".ticket-service-fee:checked",ticket_info).val();
+    var tmp_total = quantity*fee;
+    var tax = tmp_total * ticketTax;
+    var final_total = service_fee == 1 ? tmp_total + tax : tmp_total;
+    
+    $(".ticket-tax",ticket_info).text(number_format(tax)+" USD");
+    $(".ticket-total",ticket_info).text(number_format(final_total)+" USD");
 }

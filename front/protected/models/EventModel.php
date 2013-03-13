@@ -160,12 +160,14 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
                 WHERE ee.id = :id
                 AND ee.deleted = 0
                 ";

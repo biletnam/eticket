@@ -479,6 +479,7 @@ i{display: inline-block;position: relative}
 .icon{background: url('../img/sprite.png') no-repeat;position: relative;margin-right: 5px;}
 .icon-edit-white{width: 14px;height: 19px;background-position: 0 0;top: 3px;}
 .icon-ticket{width: 18px;height: 16px;background-position: -31px -34px;top:7px;height: 19px}
+.icon-edit{background-position: -4px -525px;width: 10px;height: 14px;left: 3px;top: 1px;}
 
 .hide{display: none}
 .required{color:#fa0000}
@@ -559,12 +560,12 @@ i{display: inline-block;position: relative}
     }
     .table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {background-color: #fff;}
     .table-ticket .head-ticket-price.free {width: 29%;}
-    
+    .custom-table .head-ticket-fee{width: 65px}
     
     
 .form-ticket a.setting {background-color: #666666;border-radius: 3px;color: #FFFFFF;display: block;margin-top: 3px;padding: 2px 0 2px 5px;width: 63px;}
     .form-ticket tr th{background-color: #FFF}
-    .button-medium {padding:8px 12px;}
+    .button-medium {padding:8px 12px;position: relative;top: -1px;}
 
     .icon-chevron-down {background-position: 0 -66px;width: 14px;height: 7px;}
     .icon-add{width: 12px;height: 12px;background-position: -2px -93px;right: -5px;}
@@ -577,6 +578,8 @@ i{display: inline-block;position: relative}
     .form-create-ticket .controls{width: 720px;}
     .ticket-date{margin-top:3px}
     .loading-location{width: 32px;height: 32px}
+    
+.waiting{width: 32px}    
 /*********End Create event and create ticket*********/
 
 .event-header{padding:20px 15px 20px 20px;background-color: #f7f7f7;margin-bottom: 20px}

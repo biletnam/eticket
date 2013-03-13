@@ -1,13 +1,12 @@
+<?php
+$cities = Helper::cities();
+?>
 <div class="container_12">
     <div class="grid_12 padding-bottom-50px">
-        <form id="event_form" enctype="multipart/form-data" method="post" class="form-style form-create-event border">
-            <input type="hidden" value="" name="location_id">
+        <form id="event_form" enctype="multipart/form-data" method="POST" class="form-style form-create-event border">
+            <input type="hidden" name="location_id" value="<?php if (isset($_POST['location_id'])) echo $_POST['location_id']; ?>"/>
+            <?php echo Helper::print_error($message); ?>
             <div class="content">
-                <div class="alert alert-error">
-                    <button data-dismiss="alert" class="close" type="button">×</button>
-                    <h4>Error!</h4>
-                    Message 1.<br>
-                </div>
 
                 <div class="step">
                     <div class="number"><span>1</span></div>
@@ -16,25 +15,31 @@
 
                 <div class="controls-group clearfix">
                     <label for="title" class="control-label pull-left">Add Event Title<span class="required">*</span></label>
-                    <div class="controls pull-left"><input type="text" value="" name="title" class="input-xxlarge span11"></div>
+                    <div class="controls pull-left">
+                        <input type="text" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>" class="input-xxlarge span11">
+                    </div>
                 </div>
                 <div class="controls-group clearfix">
                     <label for="location" class="control-label pull-left">Location<span class="required">*</span></label>
                     <div class="controls pull-left">
-                        <input type="text" value="" name="location" class="input-xxlarge span11" id="add_location">
+                        <input type="text" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>" name="location" class="input-xxlarge span11" id="add_location">
                         <img src="/vsk_old/front/img/ajax-big-roller.gif" class="loading-location hide">
                     </div>
                 </div>
                 <div class="controls-group clearfix">
                     <label for="address" class="control-label pull-left">Address</label>
-                    <div class="controls pull-left"><input type="text" value="" name="address" class="input-xxlarge span11"></div>
+                    <div class="controls pull-left">
+                        <input type="text" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']); ?>" name="address" class="input-xxlarge span11">
+                    </div>
                 </div>
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left">City</label>
                     <div class="controls pull-left">
+                        <?php //print_r($cities);die; ?>
                         <select name="city">
-                            <option value="1" selected="">1</option>
-                            <option value="2">2</option>
+                            <?php foreach ($cities as $k => $v): ?>
+                                <option <?php if (isset($_POST['city']) && $_POST['city'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -45,98 +50,21 @@
                         <div class="row-fluid">
                             <p class="start-date-title">Event start</p>
                             <div data-date-format="mm/dd/yyyy" class="input-append date dp3">
-                                <input type="text" value="09-03-2013" name="start_date" class="input-mini ico ico-calendar datetimepicker">
+                                <input type="text" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y'); ?>" name="start_date" class="input-mini ico ico-calendar datetimepicker">
 
-                                <select class="input-mini" name="start_hour">
-                                    <option value="0" selected="">00</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
+                                <select name="start_hour" class="input-mini">
+                                    <?php for ($i = 0; $i < 24; $i++): ?>
+                                        <option <?php if (isset($_POST['start_hour']) && $_POST['start_hour'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                    <?php endfor; ?>
                                 </select>
-                                <select class="input-mini" name="start_minute">
-                                    <option value="0" selected="">00</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                    <option value="32">32</option>
-                                    <option value="33">33</option>
-                                    <option value="34">34</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                    <option value="44">44</option>
-                                    <option value="45">45</option>
-                                    <option value="46">46</option>
-                                    <option value="47">47</option>
-                                    <option value="48">48</option>
-                                    <option value="49">49</option>
-                                    <option value="50">50</option>
-                                    <option value="51">51</option>
-                                    <option value="52">52</option>
-                                    <option value="53">53</option>
-                                    <option value="54">54</option>
-                                    <option value="55">55</option>
-                                    <option value="56">56</option>
-                                    <option value="57">57</option>
-                                    <option value="58">58</option>
-                                    <option value="59">59</option>
-                                </select>                                                        
+                                <select name="start_minute" class="input-mini">
+                                    <?php for ($i = 0; $i < 60; $i++): ?>
+                                        <option <?php if (isset($_POST['start_minute']) && $_POST['start_minute'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                    <?php endfor; ?>
+                                </select>       
+
                                 <label class="checkbox inline">
-                                    <input type="checkbox" value="1" name="display_start_time">
+                                    <input type="checkbox" value="1" name="display_start_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
                             </div>
@@ -147,104 +75,27 @@
                             <p class="end-date-title">Event end</p>
 
                             <div data-date-format="mm/dd/yyyy" class="input-append date dp3">
-                                <input type="text" value="09-03-2013" name="end_date" class="input-mini ico ico-calendar datetimepicker">
+                                <input type="text" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y'); ?>" name="end_date" class="input-mini ico ico-calendar datetimepicker">
 
-                                <select id="time_hour" class="input-mini" name="end_hour">
-                                    <option value="0" selected="">00</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
+                                <select name="end_hour" class="input-mini" id="time_hour">
+                                    <?php for ($i = 0; $i < 24; $i++): ?>
+                                        <option <?php if (isset($_POST['end_hour']) && $_POST['end_hour'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                    <?php endfor; ?>
                                 </select>
-                                <select id="time_min" class="input-mini" name="end_minute">
-                                    <option value="0" selected="">00</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                    <option value="32">32</option>
-                                    <option value="33">33</option>
-                                    <option value="34">34</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                    <option value="44">44</option>
-                                    <option value="45">45</option>
-                                    <option value="46">46</option>
-                                    <option value="47">47</option>
-                                    <option value="48">48</option>
-                                    <option value="49">49</option>
-                                    <option value="50">50</option>
-                                    <option value="51">51</option>
-                                    <option value="52">52</option>
-                                    <option value="53">53</option>
-                                    <option value="54">54</option>
-                                    <option value="55">55</option>
-                                    <option value="56">56</option>
-                                    <option value="57">57</option>
-                                    <option value="58">58</option>
-                                    <option value="59">59</option>
-                                </select>                                                     
+                                <select name="end_minute" class="input-mini" id="time_min">
+                                    <?php for ($i = 0; $i < 60; $i++): ?>
+                                        <option <?php if (isset($_POST['end_minute']) && $_POST['end_minute'] == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                    <?php endfor; ?>
+                                </select>                    
+
                                 <label class="checkbox inline">
-                                    <input type="checkbox" value="1" name="display_end_time">
+                                    <input type="checkbox" value="1" name="display_end_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
-                                <label class="checkbox inline">
-                                    <input type="checkbox" name="is_repeat" value="1">
+<!--                                <label class="checkbox inline">
+                                    <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
                                     Yes, This is event repeat
-                                </label>
+                                </label>-->
                             </div>
 
                         </div>
@@ -267,7 +118,7 @@
                     <label class="control-label pull-left">Event Description</label>
                     <div class="controls-group clearfix text">
                         <div class="controls pull-left">
-                            <textarea class="tinymce" name="description" rows="10" cols="93" id="description" ></textarea>
+                            <textarea class="tinymce" name="description" rows="10" cols="93" id="description" ><?php if (isset($_POST['description'])) echo $_POST['description']; ?></textarea>
                         </div>          
                     </div>
                 </div>                                        
@@ -283,8 +134,8 @@
                     <label class="control-label pull-left" for="select01">This event will public and registered.</label>
                     <div class="controls pull-left">
                         <select class="input-mini" name="published">
-                            <option value="1" selected="">Yes</option>
-                            <option value="0">No</option>
+                            <option <?php if (isset($_POST['published']) && $_POST['published']) echo 'selected'; ?> value="1">Yes</option>
+                            <option <?php if (isset($_POST['published']) && !$_POST['published']) echo 'selected'; ?> value="0">No</option>
                         </select>
                     </div>
                 </div>
@@ -293,10 +144,18 @@
                     <label class="control-label pull-left">Select categories for your event</label>
                     <div class="controls pull-left">
                         <select class="input-medium" name="primary_cate">
+
                             <option value="0">Primary category</option>                                                    
+                            <?php foreach ($categories as $k => $v): ?>                
+                                <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <select class="input-medium" name="second_cate">
+
                             <option value="0">Secondary category</option>                                                    
+                            <?php foreach ($categories as $k => $v): ?>                
+                                <option <?php if (isset($_POST['second_cate']) && $_POST['second_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -305,7 +164,7 @@
                     <label class="control-label pull-left" for="optionsCheckbox">The number of tickets remaining</label>
                     <div class="controls pull-left">
                         <label class="checkbox">
-                            <input type="checkbox" name="show_tickets" value="1">
+                            <input type="checkbox" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?>>
                             Show number of tickets remaining on the registration page
                         </label>
                     </div>

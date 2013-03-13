@@ -78,6 +78,7 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
+        'token_time' => 1,
         'ppp'=>20,
         'lang'=>'en',
         'ticket_tax' =>0.1,

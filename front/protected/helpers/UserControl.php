@@ -26,8 +26,8 @@ class UserControl {
             self::$fetch = true;            
             return false;
         } else {
-            $AdminModel = new AdminModel();          
-            self::$instance = $AdminModel->get_by_secret_key($secret_key);
+            $UserModel = new UserModel();          
+            self::$instance = $UserModel->get_by_secret_key($secret_key);
         }
         self::$fetch = true;
     }
@@ -52,9 +52,17 @@ class UserControl {
         return self::$instance['password'];
     }
     
-    public static function getTitle(){
+    public static function getEmail(){
         self::FetchUserInstance();
-        return self::$instance['title'];
+        return self::$instance['email'];
+    }
+    public static function getFirstname(){
+        self::FetchUserInstance();
+        return self::$instance['firstname'];
+    }
+    public static function getLastname(){
+        self::FetchUserInstance();
+        return self::$instance['lastname'];
     }
     
     public static function getRole(){

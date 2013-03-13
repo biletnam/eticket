@@ -29,28 +29,28 @@ class EventController extends Controller {
     
     
     public function actionCreate() {  
-        //HelperGlobal::require_login();
+        HelperGlobal::require_login();
         
         Yii::app()->params['page'] = 'Create Event';
         $this->render('create',$this->viewData);  
     }  
     
     public function actionEdit() {  
-        //HelperGlobal::require_login();
+        HelperGlobal::require_login();
         
         Yii::app()->params['page'] = '';
         $this->render('edit',$this->viewData);  
     } 
     
     public function actionInfo() {  
-        //HelperGlobal::require_login();
+        HelperGlobal::require_login();
         
         Yii::app()->params['page'] = 'Event Detail';
         $this->render('event',$this->viewData);  
     }  
     
     public function actionRegister_to_event() {  
-        //HelperGlobal::require_login();
+        HelperGlobal::require_login();
         
         Yii::app()->params['page'] = 'Payment Ticket';
         $this->render('payment_ticket',$this->viewData);  

@@ -11,27 +11,27 @@ class EventModel extends CFormModel {
 
         $page = ($page - 1) * $ppp;
         $custom = "";
-        $order_by = "ve.date_added DESC";
+        $order_by = "ee.date_added DESC";
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND ve.title like :title";
+            $custom.= " AND ee.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
 
         if (isset($args['deleted'])) {
-            $custom.= " AND ve.deleted = :deleted";
+            $custom.= " AND ee.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
 
         if (isset($args['search_title']) && $args['search_title'] != "") {
-            $custom.= " AND (ve.title like :search_title)";
+            $custom.= " AND (ee.title like :search_title)";
             $params[] = array('name' => ':search_title', 'value' => "%$args[search_title]%", 'type' => PDO::PARAM_STR);
         }
 
         if (isset($args['search_cate']) && $args['search_cate'] != "") {
 
-            $custom.= " AND ve.id IN (SELECT event_id 
+            $custom.= " AND ee.id IN (SELECT event_id 
                                     FROM etk_event_category
                                     WHERE category_id = :category_id)";
             $params[] = array('name' => ':category_id', 'value' => $args['search_cate'], 'type' => PDO::PARAM_STR);
@@ -39,50 +39,51 @@ class EventModel extends CFormModel {
 
 
         if (isset($args['search_city']) && $args['search_city'] != "") {
-            $custom.= " AND (vl.city like :search_city)";
+            $custom.= " AND (el.city_title like :search_city)";
             $params[] = array('name' => ':search_city', 'value' => "%$args[search_city]%", 'type' => PDO::PARAM_STR);
         }
 
         if (isset($args['date']) && $args['date'] == "today") {         
-            $custom.= " AND DATE(ve.start_time)=DATE(NOW())";
+            $custom.= " AND DATE(ee.start_time)=DATE(NOW())";
         }
         
         if (isset($args['date']) && $args['date'] == "tomorrow") {         
-            $custom.= " AND DATE(ve.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
+            $custom.= " AND DATE(ee.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
         }
         
         if (isset($args['date']) && $args['date'] == "week") {         
-            $custom.= " AND YEAR(NOW()) = YEAR(ve.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ve.start_time)";
+            $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ee.start_time)";
         }
         
         if (isset($args['date']) && $args['date'] == "year") {         
-            $custom.= " AND YEAR(NOW()) = YEAR(ve.start_time)";
+            $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time)";
         }
         
         
 
 
         if (isset($args['published'])) {
-            $custom.= " AND ve.published = :published";
+            $custom.= " AND ee.published = :published";
             $params[] = array('name' => ':published', 'value' => $args['published'], 'type' => PDO::PARAM_INT);
         }
 
         if (isset($args['is_today']) && $args['is_today']) {
 
-            $order_by = "ve.start_time ASC";
+            $order_by = "ee.start_time ASC";
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 
-        $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
-
-                FROM etk_events ve
+        $sql = "SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
                 LEFT JOIN etk_users va
-                ON va.id = ve.id
-                LEFT JOIN etk_locations vl
-                ON vl.id = ve.location_id
+                ON va.id = ee.id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
                 WHERE 1
                 $custom
-                GROUP BY ve.id
+                GROUP BY ee.id
                 ORDER BY $order_by
                 LIMIT :page,:ppp";
 
@@ -101,17 +102,17 @@ class EventModel extends CFormModel {
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND ve.title like :title";
+            $custom.= " AND ee.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
 
         if (isset($args['deleted'])) {
-            $custom.= " AND ve.deleted = :deleted";
+            $custom.= " AND ee.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
 
         if (isset($args['published'])) {
-            $custom.= " AND ve.published = :published";
+            $custom.= " AND ee.published = :published";
             $params[] = array('name' => ':published', 'value' => $args['published'], 'type' => PDO::PARAM_INT);
         }
 
@@ -121,7 +122,7 @@ class EventModel extends CFormModel {
         }
 
         $sql = "SELECT count(*) as total
-                FROM etk_events ve
+                FROM etk_events ee
                 WHERE 1
                 $custom
                 ";
@@ -134,21 +135,21 @@ class EventModel extends CFormModel {
     }
     
     public function get_popular_events(){
-        $sql = "SELECT vt.total_ticket,ve.*,va.email as author,vl.title as location, vl.address,vl.city
-                FROM etk_events ve
+        $sql = "SELECT vt.total_ticket,ee.*,va.email as author,el.title as location, el.address,el.city
+                FROM etk_events ee
                 LEFT JOIN etk_users va
-                ON va.id = ve.id
-                LEFT JOIN etk_locations vl
-                ON vl.id = ve.location_id
+                ON va.id = ee.id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
                 LEFT JOIN (SELECT count(*) as total_ticket,event_id
                             FROM etk_tickets vt,etk_ticket_types vtt
                             WHERE vtt.id = vt.ticket_type_id
                             GROUP BY event_id) vt
-                ON vt.event_id = ve.id
+                ON vt.event_id = ee.id
                 
-                WHERE ve.deleted = 0
-                AND ve.disabled = 0
-                AND ve.published = 1
+                WHERE ee.deleted = 0
+                AND ee.disabled = 0
+                AND ee.published = 1
                 AND DATE(start_time) >= DATE(NOW())
                 
                 ORDER BY vt.total_ticket DESC
@@ -159,14 +160,14 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,vl.city
-                FROM etk_events ve
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city
+                FROM etk_events ee
                 LEFT JOIN etk_users va
-                ON va.id = ve.user_id
-                LEFT JOIN etk_locations vl
-                ON vl.id = ve.location_id
-                WHERE ve.id = :id
-                AND ve.deleted = 0
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                WHERE ee.id = :id
+                AND ee.deleted = 0
                 ";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
@@ -174,14 +175,14 @@ class EventModel extends CFormModel {
     }
     
     public function get_by_slug($slug){
-        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,vl.city
-                FROM etk_events ve
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city
+                FROM etk_events ee
                 LEFT JOIN etk_users va
-                ON va.id = ve.user_id
-                LEFT JOIN etk_locations vl
-                ON vl.id = ve.location_id
-                WHERE ve.slug = :slug
-                AND ve.deleted = 0
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                WHERE ee.slug = :slug
+                AND ee.deleted = 0
                 ";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":slug", $slug, PDO::PARAM_INT);

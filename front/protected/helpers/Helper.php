@@ -314,16 +314,12 @@ class Helper {
     }
 
     public static function cities() {
-        return array('Hồ Chí Minh',
-            'Hà Nội',
-            'Đà Nẵng',
-            'Huế',
-            'Nha Trang',
-            'Đà Lạt');
+        $CityModel = new CityModel();
+        return $CityModel->gets_all_cities();
     }
 
     public static function ticket_types() {
-        return array('free' => 'Miễn phí', 'paid' => 'Tính phí');
+        return array('free' => 'Free', 'paid' => 'Paid');
     }
 
     public static function _types($key) {

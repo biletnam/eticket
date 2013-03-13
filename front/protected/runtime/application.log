@@ -7,3 +7,845 @@ Stack trace:
 REQUEST_URI=/eticket/front/images/logo.png
 HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
 ---
+2013/03/13 08:23:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/13 08:23:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/13 08:23:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin/
+---
+2013/03/13 08:23:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin/
+---
+2013/03/13 08:23:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:41:08 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\front\protected\views\user\signup.php:4)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(39): UserController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/signup
+in D:\xampp\htdocs\eticket\front\protected\views\user\signup.php (4)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (39)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 08:41:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:41:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:51:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:51:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:52:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup?email=admin&pwd1=admin&pwd2=&firstname=&lastname=
+---
+2013/03/13 08:53:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin/
+---
+2013/03/13 08:53:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signin/
+---
+2013/03/13 08:53:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:53:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:53:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:59:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 08:59:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 08:59:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 08:59:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:03:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:03:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:05:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = vl.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (97)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:05:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = vl.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(97): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:06:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = ve.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (97)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:06:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = ve.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(97): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:06:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = ve.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (97)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:06:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.city_id
+                WHERE 1
+                 AND ve.deleted = 0 AND ve.pu' at line 9. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.title as city_title
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                LEFT JOIN ec.id = ve.city_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(97): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:10:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:10:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:13:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:13:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'firstname' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (20)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (85)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (36)
+2013/03/13 09:13:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'firstname' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(20): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(85): UserModel->add('thanhtung228@gm...', '$P$DAtUSEXVSN/Y...', 'jV0HcNNgp', 'T??ng', 'Nguy???n', '1', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(36): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:14:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_id' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (20)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (85)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (36)
+2013/03/13 09:14:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_id' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(20): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(85): UserModel->add('thanhtung228@gm...', '$P$D9p8SwrymIU1...', '5dpajEuln', 'T??ng', 'Nguy???n', '1', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(36): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:16:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:16:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ve
+                LEFT JOIN etk_users va
+                ON va.id = ve.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published
+                GROUP BY ve.id
+                ORDER BY ve.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:22:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:22:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:22:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:22:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:22:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:22:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:22:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:22:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:22:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (95)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/13 09:22:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vl.city' in 'field list'. The SQL statement executed was: SELECT ee.*,va.email as author,vl.title as location, vl.address,vl.city
+
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations vl
+                ON vl.id = ee.location_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.published = :published
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(95): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('home')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/home/
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/13 09:23:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/home/
+---
+2013/03/13 09:23:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/home/
+---
+2013/03/13 09:28:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/home/
+---
+2013/03/13 09:28:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/home/
+---
+2013/03/13 09:28:57 [error] [php] include(AdminModel.php): failed to open stream: No such file or directory (D:\xampp\htdocs\eticket\framework\YiiBase.php:423)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php(29): spl_autoload_call()
+#1 D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php(13): FetchUserInstance()
+#2 D:\xampp\htdocs\eticket\front\protected\helpers\HelperGlobal.php(14): LoggedIn()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(32): require_login()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionCreate()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/create
+in D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php (29)
+in D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php (13)
+in D:\xampp\htdocs\eticket\front\protected\helpers\HelperGlobal.php (14)
+2013/03/13 09:29:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/logo.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('images/logo.png')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/images/logo.png
+HTTP_REFERER=http://localhost/eticket/front/home/
+---

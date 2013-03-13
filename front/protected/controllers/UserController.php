@@ -3,13 +3,16 @@
 class UserController extends Controller {
     
     private $viewData;
+    private $validator;
     private $message = array('success' => true, 'error' => array());
+    private $UserModel;
     
     public function init() {
-        parent::init();
-        
-        /* @var $EventModel EventModel */
-        //$this->EventModel = new EventModel();
+        /* @var $validator FormValidator */
+        $this->validator = new FormValidator();
+
+        /* @var $UserModel UserModel */
+        $this->UserModel = new UserModel();
     }
     
     /**
@@ -28,9 +31,63 @@ class UserController extends Controller {
     }   
     
     public function actionSignup() {  
+        
+        if ($_POST)
+            $this->do_signup();
+        
+        $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = 'Register';
         $this->render('signup',$this->viewData); 
     }  
+    
+    private function do_signup() {
+        $pattern = '/^[A-Za-z0-9]+(?:[_][A-Za-z0-9]+)*$/';
+        $special_char = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+        $email = trim($_POST['email']);
+        $pwd1 = trim($_POST['pwd1']);
+        $pwd2 = trim($_POST['pwd2']);
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
+        $is_session = isset($_POST['remember']) ? false : true;
+        $city_id = trim($_POST['city']);
+        $client = isset($_POST['client'])? 'waiting' : 'customer';
+
+        if ($this->validator->is_empty_string($email))
+            $this->message['error'][] = "Email cannot be blank.";
+        if (!$this->validator->is_email($email))
+            $this->message['error'][] = "Email is not correct.";
+        if ($this->UserModel->is_existed_email($email))
+            $this->message['error'][] = "Email is exists.";
+        if ($this->validator->is_empty_string($pwd1))
+            $this->message['error'][] = "Password cannot be blank.";
+        if (strlen($pwd1) < 6 || strlen($pwd1) > 20)
+            $this->message['error'][] = "Password must be length 6-20 characters";
+        if ($pwd1 != $pwd2)
+            $this->message['error'][] = "Password is not match.";
+        if ($this->validator->is_empty_string($firstname))
+            $this->message['error'][] = "Firstname cannot be blank.";
+        if (preg_match($special_char, $firstname))
+            $this->message['error'][] = "Firstname must not contains any speacial characters.";
+        if ($this->validator->is_empty_string($lastname))
+            $this->message['error'][] = "Lastname cannot be blank.";
+        if (preg_match($special_char, $lastname))
+            $this->message['error'][] = "Lastname must not contains any speacial characters.";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        $hasher = new PasswordHash(10, TRUE);
+        $password = $hasher->HashPassword($pwd1);
+        $secret_key = Ultilities::base32UUID();
+
+        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client);
+        HelperApp::add_cookie('secret_key', $secret_key, $is_session);
+        $this->redirect(Yii::app()->request->baseUrl . "/home/");
+    }
+    
+    
     
     public function actionSignin() {  
         Yii::app()->params['page'] = 'Login';

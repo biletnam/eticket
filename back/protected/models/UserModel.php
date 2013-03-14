@@ -22,7 +22,7 @@ class UserModel extends CFormModel {
         }
         
         $sql = "SELECT *
-                FROM vsk_users
+                FROM etk_users
                 WHERE 1
                 $custom
                 ORDER BY date_added DESC
@@ -52,7 +52,7 @@ class UserModel extends CFormModel {
         }
         
         $sql = "SELECT count(*) as total
-                FROM vsk_users
+                FROM etk_users
                 WHERE 1
                 $custom
                 ";
@@ -66,7 +66,7 @@ class UserModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT *
-                FROM vsk_users
+                FROM etk_users
                 WHERE id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);
@@ -80,7 +80,7 @@ class UserModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_users set ' . $custom . ' where id = :id';
+        $sql = 'update etk_users set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

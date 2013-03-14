@@ -24,8 +24,8 @@ class FaqModel extends CFormModel {
         
 
         $sql = "SELECT vf.*,vc.title as category_name
-                FROM vsk_faqs vf
-                LEFT JOIN vsk_categories vc
+                FROM etk_faqs vf
+                LEFT JOIN etk_categories vc
                 ON vc.id = vf.category_id
                 WHERE 1
                 $custom
@@ -59,7 +59,7 @@ class FaqModel extends CFormModel {
         
 
         $sql = "SELECT count(*) as total
-                FROM vsk_faqs vf
+                FROM etk_faqs vf
                 WHERE 1
                 $custom
                 ";
@@ -73,8 +73,8 @@ class FaqModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT vf.*,vc.title as category_name
-                FROM vsk_faqs vf
-                LEFT JOIN vsk_categories vc
+                FROM etk_faqs vf
+                LEFT JOIN etk_categories vc
                 ON vc.id = vf.category_id
                 WHERE vf.id = :id
                 ";
@@ -90,7 +90,7 @@ class FaqModel extends CFormModel {
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO vsk_faqs(category_id,title,slug,date_added,description,disabled) VALUES(:category_id,:title,:slug,:date_added,:description,:disabled)";
+        $sql = "INSERT INTO etk_faqs(category_id,title,slug,date_added,description,disabled) VALUES(:category_id,:title,:slug,:date_added,:description,:disabled)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":category_id", $category_id,PDO::PARAM_INT);
         $command->bindParam(":title", $title);
@@ -103,7 +103,7 @@ class FaqModel extends CFormModel {
     }
 
     private function check_exist_slug($slug) {
-        $sql = 'SELECT count(slug) as count FROM vsk_faqs WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+        $sql = 'SELECT count(slug) as count FROM etk_faqs WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];
@@ -115,7 +115,7 @@ class FaqModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_faqs set ' . $custom . ' where id = :id';
+        $sql = 'update etk_faqs set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

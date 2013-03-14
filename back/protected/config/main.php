@@ -82,7 +82,7 @@ return array(
         'lang'=>'vn',
         'ticket_tax' =>0.1,
         'regx_number' => '/^\d+$/',
-        'upload_dir'=>'D:\xampp\htdocs\eticket\upload\\',
+        'upload_dir'=>'D:/xampp/htdocs/eticket/upload/',
         'upload_url'=>"/eticket/upload/",
     ),
 );

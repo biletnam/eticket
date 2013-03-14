@@ -47,10 +47,10 @@ class TicketModel extends CFormModel {
         }
 
         $sql = "SELECT vt.*,vtt.title as ticket_type_name,ve.title as event_name,vtt.event_id
-                FROM vsk_tickets vt
-                LEFT JOIN vsk_ticket_types vtt
+                FROM etk_tickets vt
+                LEFT JOIN etk_ticket_types vtt
                 ON vtt.id = vt.ticket_type_id
-                LEFT JOIN vsk_events ve
+                LEFT JOIN etk_events ve
                 ON ve.id = vtt.event_id
                 WHERE 1
                 $custom
@@ -108,10 +108,10 @@ class TicketModel extends CFormModel {
         }
 
         $sql = "SELECT count(*) as total
-                FROM vsk_tickets vt
-                LEFT JOIN vsk_ticket_types vtt
+                FROM etk_tickets vt
+                LEFT JOIN etk_ticket_types vtt
                 ON vtt.id = vt.ticket_type_id
-                LEFT JOIN vsk_events ve
+                LEFT JOIN etk_events ve
                 ON ve.id = vtt.event_id
                 WHERE 1
                 $custom
@@ -126,8 +126,8 @@ class TicketModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT vtt.*,ve.user_id as author_id
-                FROM vsk_ticket_types vtt
-                LEFT JOIN vsk_events ve
+                FROM etk_ticket_types vtt
+                LEFT JOIN etk_events ve
                 ON ve.id = vtt.event_id
                 WHERE vtt.deleted = 0
                 AND vtt.id = :id
@@ -143,14 +143,14 @@ class TicketModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_ticket set ' . $custom . ' where id = :id';
+        $sql = 'update etk_tickets set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }
 
     public function add($args){
         $time = time();
-        $sql = "INSERT INTO vsk_ticket_types(event_id,type,title,quantity,price,tax,ticket_status,description,hide_description,sale_start,sale_end,minimum,maximum,service_fee,date_added) VALUES(:event_id,:type,:title,:quantity,:price,:tax,:ticket_status,:description,:hide_description,:sale_start,:sale_end,:minimum,:maximum,:service_fee,:date_added)";
+        $sql = "INSERT INTO etk_ticket_types(event_id,type,title,quantity,price,tax,ticket_status,description,hide_description,sale_start,sale_end,minimum,maximum,service_fee,date_added) VALUES(:event_id,:type,:title,:quantity,:price,:tax,:ticket_status,:description,:hide_description,:sale_start,:sale_end,:minimum,:maximum,:service_fee,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":event_id", $args['event_id']);
         $command->bindParam(":type", $args['type']);

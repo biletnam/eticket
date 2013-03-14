@@ -1,6 +1,6 @@
 <?php
 
-class CategoryModel extends CFormModel {
+class PageModel extends CFormModel {
 
     public function __construct() {
         
@@ -12,25 +12,26 @@ class CategoryModel extends CFormModel {
         $params = array();
         
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND vc.title like :title";            
+            $custom.= " AND sp.title like :title";            
             $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
         }
         
+        if(isset($args['post_type'])){
+            $custom.= " AND sp.post_type = :post_type";
+            $params[] = array('name' => ':post_type', 'value' => $args['post_type'],'type'=>PDO::PARAM_STR);
+        }
+        
         if(isset($args['deleted'])){
-            $custom.= " AND vc.deleted = :deleted";
+            $custom.= " AND sp.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
         }
         
-        if(isset($args['type'])){
-            $custom.= " AND vc.type = :type";
-            $params[] = array('name' => ':type', 'value' => $args['type'],'type'=>PDO::PARAM_STR);
-        }
 
         $sql = "SELECT *
-                FROM etk_categories vc
+                FROM etk_posts sp
                 WHERE 1
                 $custom
-                ORDER BY vc.title ASC
+                ORDER BY sp.title ASC
                 LIMIT :page,:ppp";
         
         $command = Yii::app()->db->createCommand($sql);
@@ -49,22 +50,23 @@ class CategoryModel extends CFormModel {
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND vc.title like :title";
+            $custom.= " AND sp.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
         }
         
+        if(isset($args['post_type'])){
+            $custom.= " AND sp.post_type = :post_type";
+            $params[] = array('name' => ':post_type', 'value' => $args['post_type'],'type'=>PDO::PARAM_STR);
+        }
+        
         if(isset($args['deleted'])){
-            $custom.= " AND vc.deleted = :deleted";
+            $custom.= " AND sp.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
         }
         
-        if(isset($args['type'])){
-            $custom.= " AND vc.type = :type";
-            $params[] = array('name' => ':type', 'value' => $args['type'],'type'=>PDO::PARAM_STR);
-        }
 
         $sql = "SELECT count(*) as total
-                FROM etk_categories vc
+                FROM etk_posts sp
                 WHERE 1
                 $custom
                 ";
@@ -78,7 +80,7 @@ class CategoryModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT *
-                FROM etk_categories
+                FROM etk_posts
                 WHERE id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);
@@ -86,30 +88,30 @@ class CategoryModel extends CFormModel {
         return $command->queryRow();
     }
 
-    public function add($title, $slug,$type,$img,$thumbnail,$description,$disabled) {
+    public function add($user_id,$title, $slug,$content,$img,$thumbnail,$post_type) {
 
         $count_slug = $this->check_exist_slug($slug);
         if ($count_slug > 0)
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO etk_categories(title,slug,type,date_added,img,thumbnail,description,disabled) VALUES(:title,:slug,:type,:date_added,:img,:thumbnail,:description,:disabled)";
+        $sql = "INSERT INTO etk_posts(user_id,title,slug,content,img,thumbnail,date_added,post_type) VALUES(:user_id,:title,:slug,:content,:img,:thumbnail,:date_added,:post_type)";
         $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":user_id", $user_id);
         $command->bindParam(":title", $title);
         $command->bindParam(":slug", $slug);
-        $command->bindParam(":type", $type);
         $command->bindParam(":date_added", $time);
+        $command->bindParam(":content", $content);
         $command->bindParam(":img", $img);
         $command->bindParam(":thumbnail", $thumbnail);
-        $command->bindParam(":description", $description);
-        $command->bindParam(":disabled", $disabled,PDO::PARAM_INT);
+        $command->bindParam(":post_type", $post_type);
         $command->execute();
         
         return Yii::app()->db->lastInsertID;
     }
 
     private function check_exist_slug($slug) {
-        $sql = 'SELECT count(slug) as count FROM etk_categories WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+        $sql = 'SELECT count(slug) as count FROM etk_posts WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];
@@ -121,7 +123,7 @@ class CategoryModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update etk_categories set ' . $custom . ' where id = :id';
+        $sql = 'update etk_posts set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

@@ -17,8 +17,8 @@ class LogModel extends CFormModel {
         }
         
         $sql = "SELECT vl.*,va.title as author,va.role
-                FROM vsk_logs vl
-                LEFT JOIN vsk_admins va
+                FROM etk_logs vl
+                LEFT JOIN etk_admins va
                 ON vl.admin_id = va.id
                 WHERE 1
                 $custom
@@ -46,8 +46,8 @@ class LogModel extends CFormModel {
         }
         
         $sql = "SELECT count(*) as total
-                FROM vsk_logs vl
-                LEFT JOIN vsk_admins va
+                FROM etk_logs vl
+                LEFT JOIN etk_admins va
                 ON vl.admin_id = va.id
                 WHERE 1
                 $custom
@@ -62,7 +62,7 @@ class LogModel extends CFormModel {
     
     public function add($admin_id,$controller,$method,$ip,$description = ''){
         $time = time();
-        $sql = "INSERT INTO vsk_logs(admin_id,access_controller,access_method,description,admin_ip,date_added) VALUES(:admin_id,:access_controller,:access_method,:description,:admin_ip,:date_added)";
+        $sql = "INSERT INTO etk_logs(admin_id,access_controller,access_method,description,admin_ip,date_added) VALUES(:admin_id,:access_controller,:access_method,:description,:admin_ip,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":admin_id", $admin_id);
         $command->bindParam(":access_controller", $controller);

@@ -17,6 +17,14 @@ class HelperApp {
         );
         return $array;
     }
+    public static function get_page_sizes() {
+        $array = array(
+            'large' => array('w' => 940, 'h' => 300, 'crop' => true),
+            'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
+            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
+        );
+        return $array;
+    }
 
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();

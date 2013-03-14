@@ -17,7 +17,7 @@ class AdminModel extends CFormModel {
         }
         
         $sql = "SELECT *
-                FROM vsk_admins
+                FROM etk_admins
                 WHERE 1
                 $custom
                 ORDER BY title ASC
@@ -42,7 +42,7 @@ class AdminModel extends CFormModel {
         }
         
         $sql = "SELECT count(*) as total
-                FROM vsk_admins
+                FROM etk_admins
                 WHERE 1
                 $custom
                 ";
@@ -56,7 +56,7 @@ class AdminModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT *
-                FROM vsk_admins
+                FROM etk_admins
                 WHERE id = :id
                 AND disabled = 0
                 AND deleted = 0";
@@ -67,7 +67,7 @@ class AdminModel extends CFormModel {
 
     public function get_by_secret_key($secret_key) {
         $sql = "SELECT *
-                FROM vsk_admins
+                FROM etk_admins
                 WHERE secret_key = :secret_key
                 AND disabled = 0
                 AND deleted = 0";
@@ -78,7 +78,7 @@ class AdminModel extends CFormModel {
 
     public function get_by_title($title) {
         $sql = "SELECT *
-                FROM vsk_admins
+                FROM etk_admins
                 WHERE title = :title
                 AND disabled = 0
                 AND deleted = 0";
@@ -93,7 +93,7 @@ class AdminModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_admins set ' . $custom . ' where id = :id';
+        $sql = 'update etk_admins set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

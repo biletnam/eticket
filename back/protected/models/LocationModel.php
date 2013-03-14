@@ -22,7 +22,7 @@ class LocationModel extends CFormModel {
         }
 
         $sql = "SELECT *
-                FROM vsk_locations vc
+                FROM etk_locations vc
                 WHERE 1
                 $custom
                 ORDER BY vc.title ASC
@@ -39,7 +39,7 @@ class LocationModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT *
-                FROM vsk_locations
+                FROM etk_locations
                 WHERE id = :id";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
@@ -52,7 +52,7 @@ class LocationModel extends CFormModel {
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO vsk_locations(title,slug,city,address,date_added) VALUES(:title,:slug,:city,:address,:date_added)";
+        $sql = "INSERT INTO etk_locations(title,slug,city,address,date_added) VALUES(:title,:slug,:city,:address,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":title", $title);
         $command->bindParam(":slug", $slug);
@@ -64,7 +64,7 @@ class LocationModel extends CFormModel {
     }
 
     private function check_exist_slug($slug) {
-        $sql = 'SELECT count(slug) as count FROM vsk_locations WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+        $sql = 'SELECT count(slug) as count FROM etk_locations WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];

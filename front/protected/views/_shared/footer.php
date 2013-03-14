@@ -44,18 +44,27 @@
                 </span>
                 <span class="grid_3 footer-contact-us">
                     <h6 class="ai">Contact Us</h6>
-                    <form method="post">
+                    <form class="form-contact_us" method="post" action="<?php echo HelperUrl::baseUrl() ?>page/Contact_us_ajax">
                         <div class="controls-group">
-                            <input class="ai" type="text" name="your_name" placeholder="Name:"/>
+                            <input class="ai yourname" type="text" name="your_name" placeholder="Name:"/>
                         </div>
                         <div class="controls-group">
-                            <input class="ai" type="text" name="email" placeholder="Email:"/>
+                            <input class="ai email" type="text" name="email" placeholder="Email:"/>
                         </div>
                         <div class="controls-group">
-                            <textarea class="ai" name="message" placeholder="Message:"></textarea>
+                            <textarea class="ai message" name="message" placeholder="Message:"></textarea>
                         </div>
                         <div class="form-actions clearfix">
-                            <input class="ai pull-right" type="submit" value="Submit"/>
+                            <input class="ai pull-right btn-send-email" type="submit" value="Submit"/>
+                        </div>
+                        <div class="alert alert-error hide">
+                            <strong>Error!</strong>
+                            <p class="error-message">
+
+                            </p>
+                        </div>
+                        <div class="alert alert-success hide" style="padding-right: 10px;margin-bottom: 0;margin-top:9px">
+                            <p style="margin-bottom: 0">Thank you for your submitting.</p>
                         </div>
                     </form>
                 </span>

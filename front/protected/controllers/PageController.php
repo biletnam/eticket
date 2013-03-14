@@ -103,19 +103,58 @@ class PageController extends Controller {
             $this->message['error'][] = "Email is not correct.";
         if ($this->validator->is_empty_string($message))
             $this->message['error'][] = "Please enter your message.";
-        
+
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             return false;
         }
-        
+
         $to = "ntnhanbk@gmail.com";
         $subject = "New Message";
         $from = $email;
         @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
-        
-        $msg = "Email was sent to admin";
-        $this->redirect(HelperUrl::baseUrl()."page/contact_us/?s=1&msg=$msg");
+
+        $msg = "Email was sent to admin.";
+        $this->redirect(HelperUrl::baseUrl() . "page/contact_us/?s=1&msg=$msg");
+    }
+
+    public function actionContact_us_ajax() {
+        if ($_POST) {
+            $yourname = trim($_POST['yourname']);
+            $email = trim($_POST['email']);
+            $message = trim($_POST['message']);
+
+            if ($this->validator->is_empty_string($yourname)){
+                $this->message['error'][] = "Please enter your name.";
+                $this->message['yourname'] = 'error';
+            }
+            if ($this->validator->is_empty_string($email)){
+                $this->message['error'][] = "Please enter your email.";
+                $this->message['email'] = 'error';
+            }
+            if (!$this->validator->is_email($email)){
+                $this->message['error'][] = "Email is not correct.";
+                $this->message['email'] = 'error';
+            }
+            if ($this->validator->is_empty_string($message)){
+                $this->message['error'][] = "Please enter your message.";
+                $this->message['yourmessage'] = 'error';
+            }
+
+            if (count($this->message['error']) > 0) {
+                $this->message['success'] = false;
+                echo json_encode($this->message);
+                die;
+            }
+
+            $to = "ntnhanbk@gmail.com";
+            $subject = "New Message";
+            $from = $email;
+            @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
+
+            echo json_encode($this->message);
+            die;
+        }
     }
 
 }

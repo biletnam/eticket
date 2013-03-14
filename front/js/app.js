@@ -5,7 +5,45 @@ $(document).ready(function(){
     bind_user();
     bind_category();
     bind_event();
+    contact_form();
 });
+
+function contact_form(){
+    $('.btn-send-email').click(function(){
+        var ele = $(this);
+        var parent = ele.parents('.form-contact_us');
+
+        var url = parent.attr('action');
+        var data = {
+            yourname : $('.yourname').val(),
+            email : $('.email').val(),
+            message : $('.message').val()
+        };
+        $.post(url, data ,function(respone) {   
+                $('.form-contact_us .alert').hide();
+                if(respone.success){
+                    $('.yourname,.email,.message').css('border','none')
+                    $('.form-contact_us .alert-success').fadeIn();
+                    
+                }else{
+                    /*var error = "";
+                    $.each(respone.error, function(k,v){
+                        error += v+'<br/>';
+                    });
+                    $('.form-contact_us .error-message').html(error);
+                    $('.form-contact_us .alert-error').fadeIn();*/
+                    if(respone.yourname =='error')
+                        $('.yourname').css('border','1px solid red');
+                    if(respone.email =='error')
+                        $('.email').css('border','1px solid red');
+                    if(respone.yourmessage =='error')
+                        $('.message').css('border','1px solid red');
+                }
+            }
+            ,'json');
+        return false;
+    });
+}
 
 function init(){
     $('.alert .close').click(function(){

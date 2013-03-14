@@ -7,6 +7,7 @@ class UserController extends Controller {
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
     private $CityModel;
+    private $EventModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -17,6 +18,9 @@ class UserController extends Controller {
 
         /* @var $CityModel CityModel */
         $this->CityModel = new CityModel();
+
+        /* @var $EventModel EventModel */
+        $this->EventModel = new EventModel();
     }
 
     /**
@@ -233,7 +237,7 @@ class UserController extends Controller {
                 $this->account_setting($type);
                 break;
             case "manage_event":
-                $this->manage_event($type);
+                $this->manage_event($type,$p);
                 break;
             case "paid_event":
                 $this->paid_event($type);
@@ -297,16 +301,32 @@ class UserController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }
 
-    private function manage_event($type) {
+    private function manage_event($type,$p = 1) {
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_manage_event();
-
-
+        
+    
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        $s = isset($_GET['s']) ? $_GET['s'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+        $args = array('user_id' => UserControl::getId(),'s' => $s, 'deleted' => 0);
+        
+        $events = $this->EventModel->gets($args);
+        $total = $this->EventModel->counts($args);
+        
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'Management Event';
         Yii::app()->params['is_tab'] = 'manage_event';
+   
+        
+        
+        $this->viewData['total'] = $total;
+        $this->viewData['events'] = $events;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/index/p/", $total, $p) : "";
+
+        
         $this->render('manage_event', $this->viewData);
     }
 
@@ -385,14 +405,14 @@ class UserController extends Controller {
         Yii::app()->params['page'] = "My Profile";
         $this->render('view-profile', $this->viewData);
     }
-    
-     public function actionLoginfacebook() {
+
+    public function actionLoginfacebook() {
         $app_id = "104204896436938";
         $app_secret = "d6a281b62853338ba8d41fdf4c5df216";
         $my_url = HelperUrl::baseUrl(true) . "user/loginfacebook/";
         session_start();
-        
-  
+
+
         $code = $_REQUEST["code"];
         if (empty($code)) {
             $_SESSION['state'] = md5(uniqid(rand(), TRUE)); // CSRF protection

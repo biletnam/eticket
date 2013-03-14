@@ -17,6 +17,11 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
+        
+         if (isset($args['user_id']) && $args['user_id'] != "") {
+            $custom.= " AND ee.user_id = :user_id";
+            $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
+        }
 
         if (isset($args['deleted'])) {
             $custom.= " AND ee.deleted = :deleted";
@@ -99,6 +104,11 @@ class EventModel extends CFormModel {
 
         $custom = "";
         $params = array();
+
+         if (isset($args['user_id']) && $args['user_id'] != "") {
+            $custom.= " AND ee.user_id = :user_id";
+            $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
+        }
 
         if (isset($args['s']) && $args['s'] != "") {
             $custom.= " AND ee.title like :title";

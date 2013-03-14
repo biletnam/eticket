@@ -1,23 +1,29 @@
-<div class="page-event-detail page-event-register">
+<?php $total=0?>
+<div class="page-event-detail">
     <div class="container_12">
         <div class="clearfix">
             <div class="grid_12">
                 <div class="event-header clearfix border border-radius">
                     <div class="pull-left event-header-title">
-                        <h1><span class="summary">Kings Mountain Marathon 2013</span></h1>
+                        <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
                             Adventure Geek Productions<br/>
-                            Saturday, April 27, 2013 from 8:00 AM to 2:00 PM (EDT)<br/>
-                            Clover, SC
+
+                            <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
+                            <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>
+
+                            <?php echo $event['city_title'] ?><br/>
+
                         </h2>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="http://placehold.it/420x107"/>
+                        <img alt="" src="<?php HelperApp::get_thumbnail($event['thumbnail']) ?>"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container_12">
         <div class="clearfix">
             <div class="grid_8">
@@ -36,29 +42,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            Main Event
-                                            <p>Price will go up at any time, as event nears. All ages.</p>
-                                        </td>
-                                        <td>$29.99</td>
-                                        <td>$6.89</td>
-                                        <td>2</td>
-                                        <td>$166.82</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Main Event
-                                            <p>Price will go up at any time, as event nears. All ages.</p>
-                                        </td>
-                                        <td>$29.99</td>
-                                        <td>$6.89</td>
-                                        <td>2</td>
-                                        <td>$166.82</td>
-                                    </tr>
+                                    <?php foreach ($ticket_types as $k => $t): ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $t['title']; ?>
+                                                <p>Price will go up at any time, as event nears. All ages.</p>
+                                            </td>
+
+                                            <td>$<?php echo $t['price'] ?></td>
+                                            <td>$<?php echo $t['tax'] ?></td>
+                                            <td><?php echo $t['number_ticket']?></td>
+                                            <?php $total += ($t['price']+ $t['tax'])*$t['number_ticket']?>
+                                            <td>$<?php echo ($t['price']+ $t['tax'])*$t['number_ticket']?></td>
+                                        </tr>
+
+
+                                    <?php endforeach; ?>
                                     <tr>
                                         <td colspan="4" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
-                                        <td class="text-bold">$266.82</td>
+                                        <td class="text-bold">$<?php echo $total?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -255,17 +257,20 @@
             </div>
             <div class="grid_4 sidebar-event">
                 <article class="event where border border-radius box-shadow-bottom">
-                    <div class="heading">Thời gian &amp; Địa điểm</div>
+                    <div class="heading">Time &amp; Place</div>
                     <div class="event-body">
                         <div class="vcard">
                             <iframe width="270" scrolling="no" height="250" frameborder="0" src="http://maps.google.com/maps?q=4+Ph%E1%BA%A1m+Ng%E1%BB%8Dc+Th%E1%BA%A1ch%2C+B%E1%BA%BFn+Ngh%C3%A9.+Q.1;&amp;iwloc=near&amp;z=15&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br>        
                             <br/>
                         </div>
                         <div class="vcard">
-                            <h6>Kings Mountain Marathon & Half Marahon</h6>
-                            <p>4 Phạm Ngọc Thạch, Bến Nghé. Q.1, Hồ Chí Minh</p>
+                            <h6><?php echo $event['location'] ?></h6>
+                            <p><?php echo $event['address']?>, <?php echo $event['city_title']?></p>
                         </div>
-                        <div class="date">Thursday, 07/03/2013 12:00 am - Friday, 08/03/2013 12:00 am</div>
+                      
+                        
+                         <?php echo date('l, d/m/Y g:i a',  strtotime($event['start_time'])).' - '?><br/>
+                        <?php echo date('l, d/m/Y g:i a',  strtotime($event['end_time']))?>
                     </div>
                 </article>
                 <article class="event hosted border border-radius box-shadow-bottom">
@@ -275,7 +280,10 @@
                         <a class="contact-host btn-style clearfix">
                             <i class="icon ico-hosted"></i>
                             Contact the Host
-                        </a>   
+                        </a>
+
+                      
+
                     </div>
                 </article>
             </div>

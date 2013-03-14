@@ -3216,3 +3216,299 @@ Stack trace:
 REQUEST_URI=/eticket/front/event/css/content.css
 HTTP_REFERER=http://localhost/eticket/front/event/create
 ---
+2013/03/14 14:06:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/14 14:06:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:17:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/14 14:17:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:17:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:19:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:20:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:25:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:25:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:30:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:30:41 [error] [php] Undefined index: file (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:396)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/make_profile
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (396)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (385)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/14 14:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:30:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:30:59 [error] [php] Undefined index: file (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:396)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/make_profile
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (396)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (385)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/14 14:31:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:31:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:32:37 [error] [php] Undefined index: files (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:396)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/make_profile
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (396)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (385)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/14 14:32:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:32:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:33:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:33:18 [error] [php] Undefined index: file (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:396)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/make_profile
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (396)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (385)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/14 14:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:33:50 [error] [php] Undefined index: description (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:397)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/make_profile
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (397)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (385)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/14 14:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:34:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/14 14:34:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---

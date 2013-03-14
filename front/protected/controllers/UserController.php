@@ -7,6 +7,7 @@ class UserController extends Controller {
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
     private $CityModel;
+    private $OrganizerModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -17,6 +18,9 @@ class UserController extends Controller {
 
         /* @var $CityModel CityModel */
         $this->CityModel = new CityModel();
+        
+        /* @var $OrganizerModel OrganizerModel */
+        $this->OrganizerModel = new OrganizerModel();
     }
 
     /**
@@ -92,6 +96,7 @@ class UserController extends Controller {
         $secret_key = Ultilities::base32UUID();
 
         $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $city_id, $client);
+        $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
         $this->redirect(HelperUrl::baseUrl() . "home/");
     }
@@ -373,10 +378,49 @@ class UserController extends Controller {
     }
 
     public function actionMake_profile() {
+        HelperGlobal::require_login();
+        $organizer = $this->OrganizerModel->get_by_user(UserControl::getId());
 
+        if($_POST)
+            $this->do_make_profile($organizer);
+        
+        $this->viewData['organizer'] = $organizer;
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "Make Profile";
         $this->render('make-profile', $this->viewData);
+    }
+    
+    private function do_make_profile($organizer){
+        
+        $title = trim($_POST['title']);
+        $file = $_FILES['file'];
+        $description = trim($_POST['description']);
+        if ($this->validator->is_empty_string($title))
+            $this->message['error'][] = "Please enter Organizer name.";
+        
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension";
+
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
+            $this->message['error'][] = "Image's size does not correct.";
+        
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+        
+        $img = $organizer['img'];
+        $thumbnail = $organizer['thumbnail'];
+
+        if (!$this->validator->is_empty_string($file['name'])) {
+            $resize = HelperApp::resize_images($file, HelperApp::get_organizer_sizes());
+            $img = $resize['img'];
+            $thumbnail = $resize['thumbnail'];
+        }
+
+        $this->OrganizerModel->update(array('title' => $title,'last_modified' => time(),'img'=>$img,'thumbnail'=>$thumbnail,'description'=>$description,'id' => $organizer['id']));
+        $this->redirect(HelperUrl::baseUrl() . "user/make_profile/?s=1");
+        
     }
 
     public function actionView_profile($s = 'current') {

@@ -10,39 +10,39 @@ class TicketModel extends CFormModel {
         $page = ($page - 1) * $ppp;
         $custom = "";
         $params = array();
-        
+
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND vc.title like :title";            
-            $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
+            $custom.= " AND vc.title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['deleted'])){
+
+        if (isset($args['deleted'])) {
             $custom.= " AND et.deleted = :deleted";
-            $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['type'])){
+
+        if (isset($args['type'])) {
             $custom.= " AND ett.type = :type";
-            $params[] = array('name' => ':type', 'value' => $args['type'],'type'=>PDO::PARAM_STR);
+            $params[] = array('name' => ':type', 'value' => $args['type'], 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['event_id'])){
+
+        if (isset($args['event_id'])) {
             $custom.= " AND ett.event_id = :event_id";
-            $params[] = array('name' => ':event_id', 'value' => $args['event_id'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':event_id', 'value' => $args['event_id'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['ticket_type_id'])){
+
+        if (isset($args['ticket_type_id'])) {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
-            $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['status'])){
+
+        if (isset($args['status'])) {
             $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['check_date_expired'])){
-            
+
+        if (isset($args['check_date_expired'])) {
+
             $custom.= " AND (vt.status = 1 OR (vt.status = 0 AND vt.date_expired > UNIX_TIMESTAMP()) )";
         }
 
@@ -56,13 +56,13 @@ class TicketModel extends CFormModel {
                 $custom
                 ORDER BY et.date_added DESC
                 LIMIT :page,:ppp";
-        
+
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":page", $page, PDO::PARAM_INT);
         $command->bindParam(":ppp", $ppp, PDO::PARAM_INT);
-        foreach ($params as $a)        
+        foreach ($params as $a)
             $command->bindParam($a['name'], $a['value'], $a['type']);
-        
+
 
         return $command->queryAll();
     }
@@ -73,37 +73,37 @@ class TicketModel extends CFormModel {
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND vc.title like :title";            
-            $params[] = array('name' => ':title', 'value' => "%$args[s]%",'type'=>PDO::PARAM_STR);
+            $custom.= " AND vc.title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['deleted'])){
+
+        if (isset($args['deleted'])) {
             $custom.= " AND et.deleted = :deleted";
-            $params[] = array('name' => ':deleted', 'value' => $args['deleted'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['type'])){
+
+        if (isset($args['type'])) {
             $custom.= " AND ett.type = :type";
-            $params[] = array('name' => ':type', 'value' => $args['type'],'type'=>PDO::PARAM_STR);
+            $params[] = array('name' => ':type', 'value' => $args['type'], 'type' => PDO::PARAM_STR);
         }
-        
-        if(isset($args['event_id'])){
+
+        if (isset($args['event_id'])) {
             $custom.= " AND ett.event_id = :event_id";
-            $params[] = array('name' => ':event_id', 'value' => $args['event_id'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':event_id', 'value' => $args['event_id'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['ticket_type_id'])){
+
+        if (isset($args['ticket_type_id'])) {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
-            $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['status'])){
+
+        if (isset($args['status'])) {
             $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'],'type'=>PDO::PARAM_INT);
+            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
         }
-        
-        if(isset($args['check_date_expired'])){
-            
+
+        if (isset($args['check_date_expired'])) {
+
             $custom.= " AND (et.status = 1 OR (et.status = 0 AND et.date_expired > UNIX_TIMESTAMP()) )";
         }
 
@@ -148,7 +148,7 @@ class TicketModel extends CFormModel {
         return $command->execute($args);
     }
 
-    public function add($args){
+    public function add($args) {
         $time = time();
         $sql = "INSERT INTO etk_ticket_types(event_id,type,title,quantity,price,tax,ticket_status,description,hide_description,sale_start,sale_end,minimum,maximum,service_fee,date_added) VALUES(:event_id,:type,:title,:quantity,:price,:tax,:ticket_status,:description,:hide_description,:sale_start,:sale_end,:minimum,:maximum,:service_fee,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
@@ -167,9 +167,11 @@ class TicketModel extends CFormModel {
         $command->bindParam(":maximum", $args['maximum']);
         $command->bindParam(":service_fee", $args['service_fee']);
         $command->bindParam(":date_added", $time);
-        
+
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }
-    
+
+  
+
 }

@@ -45,13 +45,13 @@ class EventController extends Controller {
     public function actionIndex() {
         $this->render('index', $this->viewData);
     }
-    
+
     public function actionSearch_location($s = "") {
         if ($this->validator->is_empty_string($s))
             return null;
 
         $locations = $this->LocationModel->gets(array('deleted' => 0, 's' => $s));
-        
+
         $tmp = array();
         foreach ($locations as $v)
             $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['city_id']);
@@ -101,7 +101,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a primary category.";
-        if($primary_cate == $second_cate)
+        if ($primary_cate == $second_cate)
             $this->message['error'][] = "Primary category and Second category must be different.";
         if ($this->validator->is_empty_string($location))
             $this->message['error'][] = "Please enter the location.";
@@ -162,8 +162,7 @@ class EventController extends Controller {
             'description' => $description,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets));
-            //'is_repeat' => $is_repeat));
-
+        //'is_repeat' => $is_repeat));
         //add new event category
         $this->EventModel->add_event_category($event_id, $primary_cate, 1);
         if ($second_cate)
@@ -195,7 +194,7 @@ class EventController extends Controller {
         Yii::app()->params['page'] = '';
         $this->render('edit', $this->viewData);
     }
-    
+
     private function do_edit($event) {
         $title = trim($_POST['title']);
         $file = $_FILES['file'];
@@ -227,7 +226,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a primary category.";
-        if($primary_cate == $second_cate)
+        if ($primary_cate == $second_cate)
             $this->message['error'][] = "Primary category and Second category must be different.";
         if ($this->validator->is_empty_string($location))
             $this->message['error'][] = "Please enter the location.";
@@ -285,8 +284,7 @@ class EventController extends Controller {
             'description' => $description,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets));
-            //'is_repeat' => $is_repeat));
-
+        //'is_repeat' => $is_repeat));
         //delete old event category
         $this->EventModel->delete_event_category($event['id']);
 
@@ -297,7 +295,7 @@ class EventController extends Controller {
 
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event[id]/?s=1");
     }
-    
+
     public function actionRemove_thumb($id) {
         HelperGlobal::require_login();
         $event = $this->EventModel->get($id);
@@ -315,8 +313,7 @@ class EventController extends Controller {
         $this->EventModel->update(array('img' => '', 'thumbnail' => '', 'id' => $id));
         echo json_encode($this->message);
     }
-    
-    
+
     public function actionAdd_ticket_type() {
         HelperGlobal::require_login();
         $event_id = $_POST['event_id'];
@@ -417,7 +414,7 @@ class EventController extends Controller {
         $this->message['error'][] = "New ticket has been added successfully.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
     }
-    
+
     public function actionEdit_ticket_type($id = 0) {
 
         HelperGlobal::require_login();
@@ -546,18 +543,45 @@ class EventController extends Controller {
         $this->message['error'][] = "You delete ticket <strong>$ticket_type[title]</strong>.";
         echo json_encode(array('message' => $this->message));
     }
-    
 
-    public function actionInfo() {
+    public function actionInfo($id = 4) {
         HelperGlobal::require_login();
 
+        $event = $this->EventModel->get($id);
+        if (count($event) == 0)
+            $this->load_404();
+
+        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
+
         Yii::app()->params['page'] = 'Event Detail';
+
+        $this->viewData['ticket_types'] = $ticket_types;
+        $this->viewData['event'] = $event;
         $this->render('event', $this->viewData);
     }
 
-    public function actionRegister_to_event() {
+    public function actionRegister_to_event($event) {
         HelperGlobal::require_login();
+    
+        $event = $this->EventModel->get_by_slug($event);
+        
 
+        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
+
+        for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
+            $ticket_types_id = $_POST[$i];
+            $number_ticket = $_POST['number_tichket_' . $i];
+
+            foreach ($ticket_types as $k=>$t)
+                if ($t['id'] == $ticket_types_id) 
+                    $ticket_types[$k]['number_ticket'] = $number_ticket;
+        }
+        
+     
+
+
+        $this->viewData['ticket_types'] = $ticket_types;
+        $this->viewData['event'] = $event;
         Yii::app()->params['page'] = 'Payment Ticket';
         $this->render('payment_ticket', $this->viewData);
     }

@@ -139,5 +139,17 @@ class TicketTypeModel extends CFormModel {
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }
+    
+      public function gets_by_event($id) {
+        $sql = "SELECT * FROM etk_ticket_types ett
+                WHERE ett.event_id = :id
+                AND ett.deleted = 0
+                AND ett.quantity != 0";
+        
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
+       
+        return $command->queryAll();
+    }
 
 }

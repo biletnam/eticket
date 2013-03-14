@@ -4,15 +4,19 @@
             <div class="grid_12">
                 <div class="event-header clearfix border border-radius">
                     <div class="pull-left event-header-title">
-                        <h1><span class="summary">Kings Mountain Marathon 2013</span></h1>
+                        <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
                             Adventure Geek Productions<br/>
-                            Saturday, April 27, 2013 from 8:00 AM to 2:00 PM (EDT)<br/>
-                            Clover, SC
+                            
+                            <?php echo '<b>From:</b> '.date('l,g:ia F j, Y',  strtotime($event['start_time']))?><br/>
+                            <?php echo '<b>To:</b> '.date('l,g:ia F j, Y',  strtotime($event['end_time']))?><br/>
+                            
+                            <?php echo $event['city_title'] ?><br/>
+                           
                         </h2>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="http://placehold.it/420x107"/>
+                        <img alt="" src="<?php HelperApp::get_thumbnail($event['thumbnail'])?>"/>
                     </div>
                 </div>
             </div>
@@ -22,7 +26,9 @@
         <div class="clearfix">
             <div class="grid_8">
                 <article class="event event-box  ticket-info border border-radius box-shadow-bottom">
-                    <form method="POST" action="<?php echo HelperUrl::baseUrl() ?>event/register_to_event">
+                    <form method="POST" action="<?php echo HelperUrl::baseUrl() ?>event/register_to_event/event/<?php echo $event['slug']?>">
+                        <input type="hidden" name="count_ticket_type" value="<?php echo count($ticket_types);?>">
+                        
                         <div class="heading">Ticket Information</div>
                         <div class="ticket">
                             <table width="100%" class="table ticket_table" id="ticket_table">
@@ -36,23 +42,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($ticket_types as $k=>$t):?>
                                     <tr>
                                         <td>
-                                            Main Event
+                                            <?php echo $t['title'];?>
                                             <p>Price will go up at any time, as event nears. All ages.</p>
                                         </td>
                                         <td>
-                                            Mar 16, 2013
+                                           
+                                            <?php echo date('M j, Y',strtotime($t['sale_end']))?>
+                                   
                                         </td>
-                                        <td>$29.99</td>
-                                        <td>$6.89</td>
+                                        <td>$<?php echo $t['price']?></td>
+                                        <td>$<?php echo $t['tax']?></td>
                                         <td>
-                                            <select>
-                                                <option>1</option>
-                                                <option>2</option>
+                                            <input type="hidden" name="<?php echo $k+1 ?>" value="<?php echo $t['id']?>">
+                                            <select name="number_tichket_<?php echo $k+1?>">
+                                                
+                                                <?php for($i=$t['minimum'];$i<=($t['maximum'] < $t['minimum'] ? $t['minimum'] : $t['maximum']);$i++):?>
+                                                 <option value='0'>0</option>
+                                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                                                <?php endfor;?>
+                                        
                                             </select>
                                         </td>
                                     </tr>
+                                    <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
@@ -66,17 +81,7 @@
                     <div class="heading">Event Detail</div>
                     <div class="event-body">
                         <section class="description"> <!-- class description is SEO, not css -->
-                            <p><strong>Kings Mountain Marathon & Half Marahon</strong></p>
-                            <p><strong>Date: April 27, 2013</strong></p>
-                            <p><strong>Start Time: 8:00 AM</strong></p>
-
-                            <p>A Historic Challenge for 400 Brave Adventurers</p>
-
-                            <p>It was a little army and a little battle, but it was of mighty portent.</p>
-
-                            <p>In 1780, atop Kings Mountain the Patriot Militia toppled the Royal Loyalists in the Revolutionary War. When the smoke cleared on the mountain’s steep western ridge, the Patriot Militia stood victorious.</p>
-
-                            <p>“This is a place of inspiring memories. Here less than a thousand men, inspired by the urge of freedom, defeated a</p>
+                            <?php echo $event['description'];?>
                         </section>
                     </div>
                 </article>
@@ -84,17 +89,20 @@
             </div>
             <div class="grid_4 sidebar-event">
                 <article class="event where border border-radius box-shadow-bottom">
-                    <div class="heading">Thời gian &amp; Địa điểm</div>
+                    <div class="heading">Time &amp; Place</div>
                     <div class="event-body">
                         <div class="vcard">
                             <iframe width="270" scrolling="no" height="250" frameborder="0" src="http://maps.google.com/maps?q=4+Ph%E1%BA%A1m+Ng%E1%BB%8Dc+Th%E1%BA%A1ch%2C+B%E1%BA%BFn+Ngh%C3%A9.+Q.1;&amp;iwloc=near&amp;z=15&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br>        
                             <br/>
                         </div>
                         <div class="vcard">
-                            <h6>Kings Mountain Marathon & Half Marahon</h6>
-                            <p>4 Phạm Ngọc Thạch, Bến Nghé. Q.1, Hồ Chí Minh</p>
+                            <h6><?php echo $event['location'] ?></h6>
+                            <p><?php echo $event['address']?>, <?php echo $event['city_title']?></p>
                         </div>
-                        <div class="date">Thursday, 07/03/2013 12:00 am - Friday, 08/03/2013 12:00 am</div>
+                      
+                        
+                         <?php echo date('l, d/m/Y g:i a',  strtotime($event['start_time'])).' - '?><br/>
+                        <?php echo date('l, d/m/Y g:i a',  strtotime($event['end_time']))?>
                     </div>
                 </article>
                 <article class="event hosted border border-radius box-shadow-bottom">
@@ -106,66 +114,66 @@
                             Contact the Host
                         </a>
 
-<!--                        
-                        <div class="panel_icon clearfix">
-                            <span class="sprite friend pull-left ">&nbsp;</span>
-                            <a class="" href="#">
-                                View other Friends4Growth (Sponsored by Singapore Management University) events 
-                            </a>
-                        </div>
-
-                        <div class="panel_icon clearfix">
-                            <span class="sprite subcribe pull-left ">&nbsp;</span>
-                            <a class="add_calendar" href="#">
-                                Subscribe to receive notifications of future events by this host
-                            </a>
-                        </div>
-
-                        <ul class="other-calendar">
-                            <li>
-                                <div class="panel_icon clearfix">
-                                    <span class="sprite xml pull-left ">&nbsp;</span>
-                                    <a href="#" class="ico-outlook">View XML Feed</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite rss-c pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Subscribe to RSS Feed</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite atom pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Subscribe to Atom Feed</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite google pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Add to Google</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite yahoo pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Add to My yahoo!</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite aol pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Add to My AOL</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="panel_icon add_calendar clearfix">
-                                    <span class="sprite msn pull-left ">&nbsp;</span>
-                                    <a href="#" class="">Add to My MSN</a>
-                                </div>
-                            </li>
-                        </ul>-->
+                        <!--                        
+                                                <div class="panel_icon clearfix">
+                                                    <span class="sprite friend pull-left ">&nbsp;</span>
+                                                    <a class="" href="#">
+                                                        View other Friends4Growth (Sponsored by Singapore Management University) events 
+                                                    </a>
+                                                </div>
                         
+                                                <div class="panel_icon clearfix">
+                                                    <span class="sprite subcribe pull-left ">&nbsp;</span>
+                                                    <a class="add_calendar" href="#">
+                                                        Subscribe to receive notifications of future events by this host
+                                                    </a>
+                                                </div>
+                        
+                                                <ul class="other-calendar">
+                                                    <li>
+                                                        <div class="panel_icon clearfix">
+                                                            <span class="sprite xml pull-left ">&nbsp;</span>
+                                                            <a href="#" class="ico-outlook">View XML Feed</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite rss-c pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Subscribe to RSS Feed</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite atom pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Subscribe to Atom Feed</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite google pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Add to Google</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite yahoo pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Add to My yahoo!</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite aol pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Add to My AOL</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="panel_icon add_calendar clearfix">
+                                                            <span class="sprite msn pull-left ">&nbsp;</span>
+                                                            <a href="#" class="">Add to My MSN</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>-->
+
                     </div>
                 </article>
             </div>

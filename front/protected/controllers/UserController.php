@@ -385,5 +385,60 @@ class UserController extends Controller {
         Yii::app()->params['page'] = "My Profile";
         $this->render('view-profile', $this->viewData);
     }
+    
+     public function actionLoginfacebook() {
+        $app_id = "104204896436938";
+        $app_secret = "d6a281b62853338ba8d41fdf4c5df216";
+        $my_url = HelperUrl::baseUrl(true) . "user/loginfacebook/";
+        session_start();
+        
+  
+        $code = $_REQUEST["code"];
+        if (empty($code)) {
+            $_SESSION['state'] = md5(uniqid(rand(), TRUE)); // CSRF protection
+            $dialog_url = "https://www.facebook.com/dialog/oauth?client_id="
+                    . $app_id . "&redirect_uri=" . urlencode($my_url) . "&state="
+                    . $_SESSION['state'] . "&scope=read_stream,email,publish_actions";
+
+            header("Location: " . $dialog_url);
+        }
+
+        if ($_SESSION['state'] && ($_SESSION['state'] === $_REQUEST['state'])) {
+
+            $token_url = "https://graph.facebook.com/oauth/access_token?"
+                    . "client_id=" . $app_id . "&redirect_uri=" . urlencode($my_url)
+                    . "&client_secret=" . $app_secret . "&code=" . $code;
+
+            $response = file_get_contents($token_url);
+            $params = null;
+            parse_str($response, $params);
+
+            $_SESSION['access_token'] = $params['access_token'];
+
+            $graph_url = "https://graph.facebook.com/me?access_token="
+                    . $params['access_token'];
+
+            $user_info = json_decode(file_get_contents($graph_url));
+
+            $this->checkloginfacebook($user_info);
+        } else {
+            echo("The state does not match. You may be a victim of CSRF.");
+        }
+    }
+
+    private function checkloginfacebook($user_info) {
+
+        $user = $this->UserModel->get_by_email($user_info->email);
+        if (!$user) {
+            $secret_key = Ultilities::base32UUID();
+            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name);
+            HelperApp::add_cookie('secret_key', $secret_key, $is_session);
+            $this->redirect(Yii::app()->request->baseUrl . "/home/");
+        } else {
+            HelperApp::add_cookie('secret_key', $user['secret_key'], $is_session);
+            $url = isset($_GET['return']) ? $_GET['return'] : Yii::app()->request->baseUrl . "/home/";
+            $this->redirect($url);
+        }
+    }
 
 }

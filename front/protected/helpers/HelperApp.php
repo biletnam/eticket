@@ -240,7 +240,7 @@ class HelperApp {
         return $uploaded_items;
     }
     
-    public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@vesukien.vn') {
+    public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@eticket.com') {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
@@ -248,12 +248,26 @@ class HelperApp {
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
-                "From: VeSuKien.vn <$from>\r\n" .
+                "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 
         @mail($to, $subject, $message, $header);
     }
     
+    public static function email_contact($to, $subject,$name, $message,$from, $footer = true ) {
+        if ($footer)
+            $message .= '';
+        //$subject =  $subject;
+
+        $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From: $name <$from>\r\n" .
+                "Reply-to: $to" .
+                "Date: " . date("r") . "\r\n";
+
+        @mail($to, $subject, $message, $header);
+    }
    
 }

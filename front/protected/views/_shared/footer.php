@@ -7,11 +7,11 @@
                     <h6 class="ai">Main Links</h6>
                     <ul>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">E-Ticket</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Site Map</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>page/index/s/about-us">About Us</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>page/index/s/services">Services</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>page/index/s/e-ticket">E-Ticket</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>page/contact_us">Contact Us</a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>page/index/s/site-map">Site Map</a></li>
                     </ul>
                 </span>
                 <span class="grid_3 social-icon">

@@ -3512,3 +3512,99 @@ Stack trace:
 REQUEST_URI=/eticket/front/user/css/content.css
 HTTP_REFERER=http://localhost/eticket/front/user/make_profile
 ---
+2013/03/14 15:05:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('s')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('s')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/s/about-us')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/s/about-us
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/14 15:05:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('s')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('s')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/s/about-us')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/s/about-us
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/14 15:07:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('s')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('s')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/s/about-us')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/s/about-us
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/14 15:07:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('s')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('s')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/s/about-us')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/s/about-us
+---
+2013/03/14 15:09:48 [error] [exception.CException] exception 'CException' with message 'PageController cannot find the requested view "index".' in D:\xampp\htdocs\eticket\framework\web\CController.php:879
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\PageController.php(49): CController->render('index', Array)
+#2 [internal function]: PageController->actionIndex('e-ticket')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(PageController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(PageController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('index')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/index/s/e-...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/front/page/index/s/e-ticket
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/14 15:09:55 [error] [exception.CException] exception 'CException' with message 'PageController cannot find the requested view "index".' in D:\xampp\htdocs\eticket\framework\web\CController.php:879
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\PageController.php(49): CController->render('index', Array)
+#2 [internal function]: PageController->actionIndex('e-ticket')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(PageController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(PageController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('index')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/index/s/e-...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/front/page/index/s/e-ticket
+---
+2013/03/14 15:10:05 [error] [exception.CException] exception 'CException' with message 'PageController and its behaviors do not have a method or closure named "load_about_us".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\controllers\PageController.php(42): CComponent->__call('load_about_us', Array)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\PageController.php(42): PageController->load_about_us('about-us')
+#2 [internal function]: PageController->actionIndex('about-us')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(PageController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(PageController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('index')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/index/s/ab...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/front/page/index/s/about-us
+HTTP_REFERER=http://localhost/eticket/front/
+---

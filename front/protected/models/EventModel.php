@@ -39,8 +39,8 @@ class EventModel extends CFormModel {
 
 
         if (isset($args['search_city']) && $args['search_city'] != "") {
-            $custom.= " AND (el.city_title like :search_city)";
-            $params[] = array('name' => ':search_city', 'value' => "%$args[search_city]%", 'type' => PDO::PARAM_STR);
+            $custom.= " AND (ec.id = :search_city)";
+            $params[] = array('name' => ':search_city', 'value' => $args['search_city'], 'type' => PDO::PARAM_INT);
         }
 
         if (isset($args['date']) && $args['date'] == "today") {         
@@ -86,7 +86,7 @@ class EventModel extends CFormModel {
                 GROUP BY ee.id
                 ORDER BY $order_by
                 LIMIT :page,:ppp";
-
+        //echo $sql;die;
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":page", $page, PDO::PARAM_INT);
         $command->bindParam(":ppp", $ppp, PDO::PARAM_INT);
@@ -111,6 +111,44 @@ class EventModel extends CFormModel {
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
 
+        if (isset($args['search_title']) && $args['search_title'] != "") {
+            $custom.= " AND (ee.title like :search_title)";
+            $params[] = array('name' => ':search_title', 'value' => "%$args[search_title]%", 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['search_cate']) && $args['search_cate'] != "") {
+
+            $custom.= " AND ee.id IN (SELECT event_id 
+                                    FROM etk_event_category
+                                    WHERE category_id = :category_id)";
+            $params[] = array('name' => ':category_id', 'value' => $args['search_cate'], 'type' => PDO::PARAM_STR);
+        }
+
+
+        if (isset($args['search_city']) && $args['search_city'] != "") {
+            $custom.= " AND (ec.id = :search_city)";
+            $params[] = array('name' => ':search_city', 'value' => $args['search_city'], 'type' => PDO::PARAM_INT);
+        }
+
+        if (isset($args['date']) && $args['date'] == "today") {         
+            $custom.= " AND DATE(ee.start_time)=DATE(NOW())";
+        }
+        
+        if (isset($args['date']) && $args['date'] == "tomorrow") {         
+            $custom.= " AND DATE(ee.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
+        }
+        
+        if (isset($args['date']) && $args['date'] == "week") {         
+            $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ee.start_time)";
+        }
+        
+        if (isset($args['date']) && $args['date'] == "year") {         
+            $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time)";
+        }
+        
+        
+
+
         if (isset($args['published'])) {
             $custom.= " AND ee.published = :published";
             $params[] = array('name' => ':published', 'value' => $args['published'], 'type' => PDO::PARAM_INT);
@@ -118,11 +156,18 @@ class EventModel extends CFormModel {
 
         if (isset($args['is_today']) && $args['is_today']) {
 
+            $order_by = "ee.start_time ASC";
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 
         $sql = "SELECT count(*) as total
                 FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
                 WHERE 1
                 $custom
                 ";

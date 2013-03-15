@@ -562,4 +562,56 @@ class EventController extends Controller {
         $this->render('payment_ticket', $this->viewData);
     }
 
+    
+    public function actionSearch($p = 1) {
+
+        $s = isset($_GET['title']) ? $_GET['title'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+
+        $cate = isset($_GET['cate']) ? $_GET['cate'] : "";
+        $date = isset($_GET['date']) ? $_GET['date'] : "";
+        $city = isset($_GET['city']) ? $_GET['city'] : "";
+        //$city = strlen($city) > 2 ? $city : "";
+//        $price = isset($_GET['price']) ? $_GET['price'] : "";
+//        $cid = isset($_GET['cid']) ? $_GET['cid'] : "";
+//        $oid = isset($_GET['oid']) ? $_GET['oid'] : "";
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        if($city == 0){ 
+            $args = array('search_title' => $s, 'search_cate' => $cate, 'date' => $date);
+        }else{
+            $args = array('search_title' => $s, 'search_city' => $city, 'search_cate' => $cate, 'date' => $date);
+        }
+        $events = $this->EventModel->gets($args, $p, $ppp);
+        $total = $this->EventModel->counts($args);
+
+        //print_r($events);die;
+
+        $event_categories = $this->CategoryModel->gets(array('deleted' => 0, 'type' => 'event'));
+        $event_city = $this->LocationModel->gets(array('deleted' => 0));
+
+//        if ($s || $city)
+//            $this->KeywordModel->add($s, $city, 0, time());
+
+        $this->viewData['events'] = $events;
+        $this->viewData['total'] = $total;
+        $this->viewData['event_categories'] = $event_categories;
+        $this->viewData['event_city'] = $event_city;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/search/p/", $total, $p) : "";
+        $this->viewData['query_string'] = $this->get_query_string();
+        Yii::app()->params['page'] = "Find Events";
+        $this->render('search', $this->viewData);
+    }
+
+    private function get_query_string() {
+        $queryString = Yii::app()->request->queryString;
+        $queryString = explode('&', $queryString);
+        $params = array();
+        foreach ($queryString as $k => $v) {
+            $tmp = explode('=', $v);
+            if (count($tmp) != 2)
+                continue;
+            $params[$tmp[0]] = $tmp[1];
+        }
+        return $params;
+    }
 }

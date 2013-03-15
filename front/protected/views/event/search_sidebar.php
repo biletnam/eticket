@@ -1,31 +1,27 @@
-<aside class="sidebar span3">
+<aside class="sidebar">
     <div class="sidebar-wrap">
         <div id="filter_date" class="filter">
-            <h3>Ngày</h3>
+            <h3>Date</h3>
             <ul>
-                <li class="active">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search">Tất cả</a>
-                    <span>(68340)</span>
+                <li>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search">All</a>
+<!--                    <span>(68340)</span>-->
                 </li>
                 <li class="">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=today">Hôm nay</a>
-                    <span>(2314)</span>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=today">Today</a>
+                    
                 </li>
                 <li class="">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=tomorrow">Ngày mai</a>
-                    <span>(2771)</span>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=tomorrow">Tomorrow</a>
+                    
                 </li>
                 <li class="">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=week">Trong tuần</a>
-                    <span>(12552)</span>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=week">This Week</a>
+                    
                 </li>
-<!--                <li class="">
-                    <a href="#">Cuối tuần</a>
-                    <span>(5231)</span>
-                </li>-->
                 <li class="">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=month">Trong tháng</a>
-                    <span>(32789)</span>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search?date=month">This Month</a>
+                    
                 </li>
             </ul>
         </div>
@@ -63,16 +59,16 @@
 
 
         <div id="filter_category" class="filter">
-            <h3>Lĩnh vực</h3>
+            <h3>Category</h3>
             <ul>
-                <li class="active">
-                    <a href="<?php echo Yii::app()->baseUrl?>/event/search">Tất Cả</a>
-                    <span>(68340)</span>
+                <li>
+                    <a href="<?php echo Yii::app()->baseUrl?>/event/search">All Categories</a>
+                    
                 </li>
                 <?php foreach ($event_categories as $k => $e): ?>
                     <li class="">
                         <a href="<?php echo Yii::app()->baseUrl?>/event/search?cate=<?php echo $e['id']?>"><?php echo $e['title'] ?></a>
-                        <span>(68340)</span>
+                        
                     </li>
                 <?php endforeach; ?>
 
@@ -83,12 +79,12 @@
 
 
         <div id="filter_city" class="filter">
-            <h3>Tỉnh / Thành phố</h3>
+            <h3>Location</h3>
             <ul>
                 <?php foreach ($cities as $k => $c): ?>
                     <li class="">
-                        <a href="<?php echo Yii::app()->baseUrl?>/event/search?city=<?php echo $c?>"><?php echo $c; ?></a>
-                        <span>(2583)</span>
+                        <a href="<?php echo Yii::app()->baseUrl?>/event/search?city=<?php echo $c['id']?>"><?php echo $c['title']; ?></a>
+                        
                     </li>
                 <?php endforeach; ?>
 

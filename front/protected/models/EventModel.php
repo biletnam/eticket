@@ -5,7 +5,6 @@ class EventModel extends CFormModel {
     public function __construct() {
         
     }
-    
 
     public function gets($args, $page = 1, $ppp = 20) {
 
@@ -17,6 +16,11 @@ class EventModel extends CFormModel {
         if (isset($args['s']) && $args['s'] != "") {
             $custom.= " AND ee.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['user_id']) && $args['user_id'] != "") {
+            $custom.= " AND ee.user_id = :user_id";
+            $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
         }
 
         if (isset($args['deleted'])) {
@@ -43,23 +47,23 @@ class EventModel extends CFormModel {
             $params[] = array('name' => ':search_city', 'value' => $args['search_city'], 'type' => PDO::PARAM_INT);
         }
 
-        if (isset($args['date']) && $args['date'] == "today") {         
+        if (isset($args['date']) && $args['date'] == "today") {
             $custom.= " AND DATE(ee.start_time)=DATE(NOW())";
         }
-        
-        if (isset($args['date']) && $args['date'] == "tomorrow") {         
+
+        if (isset($args['date']) && $args['date'] == "tomorrow") {
             $custom.= " AND DATE(ee.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
         }
-        
-        if (isset($args['date']) && $args['date'] == "week") {         
+
+        if (isset($args['date']) && $args['date'] == "week") {
             $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ee.start_time)";
         }
-        
-        if (isset($args['date']) && $args['date'] == "year") {         
+
+        if (isset($args['date']) && $args['date'] == "year") {
             $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time)";
         }
-        
-        
+
+
 
 
         if (isset($args['published'])) {
@@ -100,6 +104,11 @@ class EventModel extends CFormModel {
 
         $custom = "";
         $params = array();
+
+        if (isset($args['user_id']) && $args['user_id'] != "") {
+            $custom.= " AND ee.user_id = :user_id";
+            $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
+        }
 
         if (isset($args['s']) && $args['s'] != "") {
             $custom.= " AND ee.title like :title";
@@ -178,8 +187,8 @@ class EventModel extends CFormModel {
         $count = $command->queryRow();
         return $count['total'];
     }
-    
-    public function get_popular_events(){
+
+    public function get_popular_events() {
         $sql = "SELECT vt.total_ticket,ee.*,va.email as author,el.title as location, el.address,el.city
                 FROM etk_events ee
                 LEFT JOIN etk_users va
@@ -199,7 +208,7 @@ class EventModel extends CFormModel {
                 
                 ORDER BY vt.total_ticket DESC
                 LIMIT 3";
-        
+
         $command = Yii::app()->db->createCommand($sql);
         return $command->queryAll();
     }
@@ -220,30 +229,32 @@ class EventModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $this->_parse_events($command->queryRow());
     }
-    
-    public function get_by_slug($slug){
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city
+
+    public function get_by_slug($slug) {
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
                 WHERE ee.slug = :slug
                 AND ee.deleted = 0
                 ";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":slug", $slug, PDO::PARAM_INT);
+        $command->bindParam(":slug", $slug);
         return $this->_parse_events($command->queryRow());
     }
-    
-    private function _parse_events($events){
-        if(!$events)
+
+    private function _parse_events($events) {
+        if (!$events)
             return $events;
-        if(isset($events[0]))
-            foreach($events as $k=>$v)
-                $events[$k]['categories'] = $this->get_event_category ($v['id']);
+        if (isset($events[0]))
+            foreach ($events as $k => $v)
+                $events[$k]['categories'] = $this->get_event_category($v['id']);
         else
-            $events['categories'] = $this->get_event_category ($events['id']);
+            $events['categories'] = $this->get_event_category($events['id']);
         return $events;
     }
 
@@ -257,18 +268,18 @@ class EventModel extends CFormModel {
         $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added) 
                                     VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":user_id", $args['user_id'],PDO::PARAM_INT);
+        $command->bindParam(":user_id", $args['user_id'], PDO::PARAM_INT);
         $command->bindParam(":title", $args['title']);
         $command->bindParam(":slug", $args['slug']);
-        $command->bindParam(":location_id", $args['location_id'],PDO::PARAM_INT);
+        $command->bindParam(":location_id", $args['location_id'], PDO::PARAM_INT);
         $command->bindParam(":start_time", $args['start_time']);
         $command->bindParam(":end_time", $args['end_time']);
         $command->bindParam(":display_start_time", $args['display_start_time']);
         $command->bindParam(":display_end_time", $args['display_end_time']);
         $command->bindParam(":description", $args['description']);
         $command->bindParam(":published", $args['published']);
-        $command->bindParam(":show_tickets", $args['show_tickets'],PDO::PARAM_INT);
-        $command->bindParam(":is_repeat", $args['is_repeat'],PDO::PARAM_INT);
+        $command->bindParam(":show_tickets", $args['show_tickets'], PDO::PARAM_INT);
+        $command->bindParam(":is_repeat", $args['is_repeat'], PDO::PARAM_INT);
         $command->bindParam(":img", $args['img']);
         $command->bindParam(":thumbnail", $args['thumbnail']);
         $command->bindParam(":date_added", $time);
@@ -293,17 +304,17 @@ class EventModel extends CFormModel {
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }
-    
-    public function add_event_category($event_id,$category_id,$is_primary){
+
+    public function add_event_category($event_id, $category_id, $is_primary) {
         $sql = "INSERT INTO etk_event_category(event_id,category_id,is_primary) VALUES(:event_id,:category_id,:is_primary)";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(':event_id', $event_id,PDO::PARAM_INT);
-        $command->bindParam(':category_id', $category_id,PDO::PARAM_INT);
-        $command->bindParam(':is_primary', $is_primary,PDO::PARAM_BOOL);
+        $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $command->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+        $command->bindParam(':is_primary', $is_primary, PDO::PARAM_BOOL);
         return $command->execute();
     }
-    
-    public function get_event_category($event_id){
+
+    public function get_event_category($event_id) {
         $sql = "SELECT vc.*,vec.is_primary
                 FROM etk_event_category vec
                 LEFT JOIN etk_categories vc
@@ -312,20 +323,58 @@ class EventModel extends CFormModel {
                 AND vc.deleted = 0
                 AND vc.disabled = 0";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(':event_id', $event_id,PDO::PARAM_INT);
+        $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $categories = $command->queryAll();
         $tmp = array();
-        foreach($categories as $v){
+        foreach ($categories as $v) {
             $type = $v['is_primary'] ? "primary" : "second";
             $tmp[$type] = $v;
         }
         return $tmp;
     }
-    
-    public function delete_event_category($event_id){
+
+    public function delete_event_category($event_id) {
         $sql = "DELETE FROM etk_event_category WHERE event_id = :event_id";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(':event_id', $event_id,PDO::PARAM_INT);
+        $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         return $command->execute();
     }
+
+    public function get_image_published() {
+        $sql = "SELECT * FROM etk_events ee
+                WHERE ee.img != '' AND ee.deleted = 0  AND ee.published = 1
+                LIMIT 0,9";
+        $command = Yii::app()->db->createCommand($sql);
+        return $command->queryAll();
+    }
+
+    public function add_gallery($event_id, $img, $thumbnail) {
+        $time = time();
+        $sql = "INSERT INTO etk_event_gallery(event_id,img,thumbnail,date_added) VALUES(:event_id,:img,:thumbnail,:date_added)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $command->bindParam(':img', $img, PDO::PARAM_STR);
+        $command->bindParam(':thumbnail', $thumbnail, PDO::PARAM_STR);
+        $command->bindParam(':date_added', $time, PDO::PARAM_INT);
+        return $command->execute();
+    }
+
+    public function gets_gallery($id) {
+        $sql = "SELECT *
+                FROM etk_event_gallery
+                WHERE event_id = :id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':id', $id, PDO::PARAM_INT);
+        return $command->queryAll();
+    }
+
+    public function delete_gallery($id) {
+        $sql = 'DELETE FROM etk_event_gallery
+              WHERE id = :id';
+
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':id', $id, PDO::PARAM_INT);
+        return $command->execute();
+    }
+
 }

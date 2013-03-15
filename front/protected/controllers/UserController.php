@@ -7,7 +7,12 @@ class UserController extends Controller {
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
     private $CityModel;
+
     private $OrganizerModel;
+
+    private $EventModel;
+    private $TicketModel;
+
 
     public function init() {
         /* @var $validator FormValidator */
@@ -18,9 +23,18 @@ class UserController extends Controller {
 
         /* @var $CityModel CityModel */
         $this->CityModel = new CityModel();
+
         
         /* @var $OrganizerModel OrganizerModel */
         $this->OrganizerModel = new OrganizerModel();
+
+
+        /* @var $EventModel EventModel */
+        $this->EventModel = new EventModel();
+
+        /* @var $TicketModel TicketModel */
+        $this->TicketModel = new TicketModel();
+
     }
 
     /**
@@ -238,7 +252,7 @@ class UserController extends Controller {
                 $this->account_setting($type);
                 break;
             case "manage_event":
-                $this->manage_event($type);
+                $this->manage_event($type, $p);
                 break;
             case "paid_event":
                 $this->paid_event($type);
@@ -302,34 +316,72 @@ class UserController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }
 
-    private function manage_event($type) {
+    private function manage_event($type, $p = 1) {
         HelperGlobal::require_login();
-        if ($_POST)
-            $this->do_manage_event();
 
+        if ($_POST)
+            $this->send_email();
+
+
+        $ppp = Yii::app()->getParams()->itemAt('ppp');
+        $s = isset($_GET['s']) ? $_GET['s'] : "";
+        $s = strlen($s) > 2 ? $s : "";
+        $args = array('user_id' => UserControl::getId(), 's' => $s, 'deleted' => 0);
+
+        $events = $this->EventModel->gets($args);
+        $total = $this->EventModel->counts($args);
 
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'Management Event';
         Yii::app()->params['is_tab'] = 'manage_event';
+
+
+
+        $this->viewData['total'] = $total;
+        $this->viewData['events'] = $events;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/index/p/", $total, $p) : "";
+
+
         $this->render('manage_event', $this->viewData);
     }
 
-    private function do_manage_event() {
+    private function send_email() {
+        $emails = $_POST['email'];
+        $message = $_POST['message'];
+        $subject = $_POST['subject'];
+
+        $email = explode(';', $emails);
+        foreach ($email as $k => $e) {
+            HelperApp::email($e, $subject, $message);
+        }
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
     }
 
     private function paid_event($type) {
+
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_paid_event();
 
+        $args = array('deleted' => 0, 'user_id' => UserControl::getId());
+
+        $ticket_paids = $this->TicketModel->gets($args);
 
         $this->viewData['message'] = $this->message;
-        $this->viewData['type'] = $type;
+        $this->viewData['ticket_paids'] = $ticket_paids;
         Yii::app()->params['page'] = "Management Paid Event's ticket";
         Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);
+    }
+
+    public function actionTicket($id) {
+        $this->layout = 'account';
+        $ticket_type = $this->TicketModel->get($id);
+        $this->viewData['ticket_type'] = $ticket_type;
+
+        Yii::app()->params['page'] = "Management Paid Event's ticket";
+        $this->render('ticket', $this->viewData);
     }
 
     private function do_paid_event() {
@@ -428,6 +480,61 @@ class UserController extends Controller {
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "My Profile";
         $this->render('view-profile', $this->viewData);
+    }
+
+    public function actionLoginfacebook() {
+        $app_id = "104204896436938";
+        $app_secret = "d6a281b62853338ba8d41fdf4c5df216";
+        $my_url = HelperUrl::baseUrl(true) . "user/loginfacebook/";
+        session_start();
+
+
+        $code = $_REQUEST["code"];
+        if (empty($code)) {
+            $_SESSION['state'] = md5(uniqid(rand(), TRUE)); // CSRF protection
+            $dialog_url = "https://www.facebook.com/dialog/oauth?client_id="
+                    . $app_id . "&redirect_uri=" . urlencode($my_url) . "&state="
+                    . $_SESSION['state'] . "&scope=read_stream,email,publish_actions";
+
+            header("Location: " . $dialog_url);
+        }
+
+        if ($_SESSION['state'] && ($_SESSION['state'] === $_REQUEST['state'])) {
+
+            $token_url = "https://graph.facebook.com/oauth/access_token?"
+                    . "client_id=" . $app_id . "&redirect_uri=" . urlencode($my_url)
+                    . "&client_secret=" . $app_secret . "&code=" . $code;
+
+            $response = file_get_contents($token_url);
+            $params = null;
+            parse_str($response, $params);
+
+            $_SESSION['access_token'] = $params['access_token'];
+
+            $graph_url = "https://graph.facebook.com/me?access_token="
+                    . $params['access_token'];
+
+            $user_info = json_decode(file_get_contents($graph_url));
+
+            $this->checkloginfacebook($user_info);
+        } else {
+            echo("The state does not match. You may be a victim of CSRF.");
+        }
+    }
+
+    private function checkloginfacebook($user_info) {
+
+        $user = $this->UserModel->get_by_email($user_info->email);
+        if (!$user) {
+            $secret_key = Ultilities::base32UUID();
+            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name);
+            HelperApp::add_cookie('secret_key', $secret_key, $is_session);
+            $this->redirect(Yii::app()->request->baseUrl . "/home/");
+        } else {
+            HelperApp::add_cookie('secret_key', $user['secret_key'], $is_session);
+            $url = isset($_GET['return']) ? $_GET['return'] : Yii::app()->request->baseUrl . "/home/";
+            $this->redirect($url);
+        }
     }
 
 }

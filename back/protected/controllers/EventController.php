@@ -57,6 +57,8 @@ class EventController extends Controller {
 
         $events = $this->EventModel->gets($args, $p, $ppp);
         $total = $this->EventModel->counts($args);
+        
+    
 
         $this->viewData['events'] = $events;
         $this->viewData['total'] = $total;

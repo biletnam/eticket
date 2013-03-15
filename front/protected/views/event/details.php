@@ -56,24 +56,14 @@
                                         <td>$<?php echo $t['price']?></td>
                                         <td>$<?php echo $t['tax']?></td>
                                         <td>
-                                            <input type="hidden" name="<?php echo $k+1 ?>" value="<?php echo $t['id']?>">
-                                            <select name="number_tichket_<?php echo $k+1?>">
-                                                
-                                                <?php for($i=$t['minimum'];$i<=($t['maximum'] < $t['minimum'] ? $t['minimum'] : $t['maximum']);$i++):?>
-                                                 <option value='0'>0</option>
-                                                <option value="<?php echo $i?>"><?php echo $i?></option>
-                                                <?php endfor;?>
-                                        
-                                            </select>
+                                            <?php echo $t['ticket_available']."/".$t['quantity']?>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="ticket-button clearfix">
-                            <input type="submit" class="btn pull-right" value="Order now">
-                        </div>
+                 
                     </form>
                 </article>
 
@@ -113,66 +103,6 @@
                             <i class="icon ico-hosted"></i>
                             Contact the Host
                         </a>
-
-                        <!--                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite friend pull-left ">&nbsp;</span>
-                                                    <a class="" href="#">
-                                                        View other Friends4Growth (Sponsored by Singapore Management University) events 
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite subcribe pull-left ">&nbsp;</span>
-                                                    <a class="add_calendar" href="#">
-                                                        Subscribe to receive notifications of future events by this host
-                                                    </a>
-                                                </div>
-                        
-                                                <ul class="other-calendar">
-                                                    <li>
-                                                        <div class="panel_icon clearfix">
-                                                            <span class="sprite xml pull-left ">&nbsp;</span>
-                                                            <a href="#" class="ico-outlook">View XML Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite rss-c pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to RSS Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite atom pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to Atom Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite google pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to Google</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite yahoo pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My yahoo!</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite aol pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My AOL</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite msn pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My MSN</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>-->
 
                     </div>
                 </article>

@@ -35,15 +35,15 @@
                     <div class="border-style">&nbsp;</div>
                     <div class="cleafix">
                         <div class="event-thumbnail pull-left">
-                            <a href="#">
-                                <img src="<?php echo HelperApp::get_thumbnail($v['thumbnail']); ?>"/>
+                            <a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $v['slug']?>">
+                                <img src="<?php echo HelperApp::get_thumbnail($v['thumbnail'],'home_thumbnail'); ?>"/>
                             </a>
                         </div>
                         <div class="event-summary pull-left">
                             <div>
                                 <p><?php echo Helper::string_truncate(strip_tags($v['description']),100) ?></p>
                             </div>
-                            <a class="bebasneue" href="#">Get A Ticket</a>
+                            <a class="bebasneue" href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $v['slug']?>">Get A Ticket</a>
                         </div>
                     </div>
                 </li>

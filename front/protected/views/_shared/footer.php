@@ -1,3 +1,4 @@
+<?php $gallerys = HelperGlobal::get_publish(); ?>
 <footer class="footer">
     <div class="city-land">&nbsp;</div>
     <div class="footer-main">
@@ -31,15 +32,11 @@
                 <span class="grid_3 footer-gallery">
                     <h6 class="ai">Gallery</h6>
                     <ul class="clearfix">
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
-                        <li><a href="#"><img src="http://placehold.it/63x58"/></a></li>
+
+                        <?php foreach ($gallerys as $g): ?>
+                        <li><a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $g['slug']?>"><img src="<?php echo HelperApp::get_thumbnail($g['thumbnail'], 'small') ?>"/></a></li>
+                        <?php endforeach; ?>
+
                     </ul>
                 </span>
                 <span class="grid_3 footer-contact-us">
@@ -80,7 +77,8 @@
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/libs.js"></script>
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/flexslider.js"></script>
 
-<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>/js/tiny_mce/tiny_mce.js"></script>      
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>/js/tiny_mce/tiny_mce.js"></script>    
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/app.js?v=04032013"></script>
 
 </body>

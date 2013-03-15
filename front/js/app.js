@@ -5,7 +5,10 @@ $(document).ready(function(){
     bind_user();
     bind_category();
     bind_event();
+
     contact_form();
+
+    delete_gallery();
 });
 
 function contact_form(){
@@ -49,6 +52,11 @@ function init(){
     $('.alert .close').click(function(){
         $('.alert').fadeOut('slow');
     });
+    $(".fancybox").fancybox();
+    
+    $('.btn-invite').fancybox({
+        
+    });
     
     $("table .delete-row").click(function(){
         if(!confirm("Are you sure delete this item?")) return false;
@@ -66,6 +74,24 @@ function init(){
         yearRange: "c-1:c+1"
     });
 
+}
+
+function delete_gallery(){
+    
+    $('.gallery .btn-delete').click(function(e){
+        
+              e.preventDefault();
+       var ele = $(this);
+       var url = ele.attr('href');
+       var id = ele.attr('value');
+       
+       $.post(url,function(){
+           $('#gallery_'+id).fadeOut('slow');
+       });
+       
+    });
+    
+    return false;
 }
 
 function bind_user(){
@@ -289,7 +315,7 @@ function bind_event(){
         var parent = ele.parents('#event_form');
         $(".image-default.thumbnail",parent).remove();        
         ele.remove();
-       $(".waiting",parent).show();
+        $(".waiting",parent).show();
         $.get(ele.attr('href'),"",function(response){           
             if(response.success){
                 $(".image-default.waiting",parent).remove();

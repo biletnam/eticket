@@ -3,7 +3,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th width="200px">EVENT NAME</th>
+                <th width="180px">EVENT NAME</th>
                 <th>DATE</th>
                 <th>STATUS</th>
                 <th>SOLD</th>
@@ -11,84 +11,55 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach ($events as $e): ?>
             <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
+                <td class="text-bold"> <a href="<?php echo HelperUrl::baseUrl()?>event/details/s/<?php echo $e['slug']?>"><?php echo $e['title']?> </a></td>
+                <td><?php echo date('M j, Y',strtotime($e['start_time']))?></td>
                 <td>Live</td>
                 <td>2/20</td>
                 <td>
                     <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
+                        <a class="btn-style btn-primary" href="<?php echo HelperUrl::baseUrl()?>event/edit/id/<?php echo $e['id']?>"> Edit </a>
+                        <a class="btn-style" href="<?php echo HelperUrl::baseUrl()?>event/details/s/<?php echo $e['slug']?>">View</a>
+                        <a class="btn-style btn-invite"  href="#invite_<?php echo $e['id']?>">Invite</a>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
-                <td>Live</td>
-                <td>2/20</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
+            
+        <div id="invite_<?php echo $e['id']?>" style="display: none">
+            <form class="form-style" method="post">
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Email</label>
+                    <div class="controls pull-left">
+                        <input type="text" class="input-medium" name="email"/>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
-                <td>Live</td>
-                <td>2/20</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
+                </div>
+                
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Subject</label>
+                    <div class="controls pull-left">
+                        <input type="text" class="input-medium" name="subject"/>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
-                <td>Live</td>
-                <td>2/20</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
+                </div>
+                
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Message</label>
+                    <div class="controls pull-left">
+                        <textarea class="input-medium" name="message"></textarea>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
-                <td>Live</td>
-                <td>2/20</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
+                </div>
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">&nbsp;</label>
+                    <div class="controls pull-left">
+                        <input type="submit" class="btn" value="Send"/>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>Apr 18, 2013</td>
-                <td>Live</td>
-                <td>2/20</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Edit</a>
-                        <a class="btn-style" href="#">View</a>
-                        <a class="btn-style" href="#">Invite</a>
-                    </div>
-                </td>
-            </tr>
+                </div>
+            </form>
+        </div>
+            
+            <?php endforeach; ?>
+            
+           
         </tbody>
     </table>
 </section>

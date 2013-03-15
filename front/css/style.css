@@ -447,7 +447,7 @@ nav ul li{float:left;margin-left:28px}
             .home .events ul li h6{font-size: 24px;line-height: 36px;margin-bottom: 0;font-weight: normal;color:#5f5d5d}
             .home .events ul li .event-thumbnail{width: 80px;margin-right: 10px;padding-top: 12px}
             
-            .home .events ul li .event-summary{font-size: 9px;font-style: italic;width: 115px;line-height:13.5px ;padding-top: 12px;background: url('../img/small_kube_event.png') center 5px no-repeat;}
+            .home .events ul li .event-summary{font-size: 9px;font-style: italic;width: 115px;line-height:13.5px ;min-height: 80px;padding-top: 12px;background: url('../img/small_kube_event.png') center 5px no-repeat;}
                 .home .events ul li .event-summary a{font-size: 24px;color:#5f5d5d;font-style: normal}
                 
 .footer{}
@@ -617,7 +617,7 @@ i{display: inline-block;position: relative}
 .user-bar-main > li{float:right;position: relative;color:#fff}
     .user-bar-main > li > a{color:#fff;padding:7px 25px;display: inline-block}
     .user-bar-main > li.user-actions:hover >ul{display: block;}
-    .user-bar-main > li.user-actions > ul{display: none;position: absolute;width: 160px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-62px;padding: 10px 0;}
+    .user-bar-main > li.user-actions > ul{display: none;position: absolute;z-index: 100;width: 160px;background-color: #fff;box-shadow: 0 0 3px 1px #000;border-radius: 2px;left:-62px;padding: 10px 0;}
     .user-bar-main > li.user-actions > ul li:hover{background-color: #1B1A1A}
     .user-bar-main > li.user-actions > ul li:hover a{color:#fff}
     .user-bar-main > li.user-actions > ul li:hover i.icon-setting{background-position: -4px -437px;}
@@ -881,3 +881,44 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
     #search_results .paging {margin-top: 10px;text-align: center;}
     .paging .result-count {font-size: 12px;}
     #filter_city ul{border-bottom: none}
+    
+/*********FAQ*********/
+.main{position: relative}
+.articles .main{width: 619px}
+.articles .wrap{overflow: hidden;position: relative;}
+.articles .main .support-assist {background-color: #F0F0F0;border-radius: 0 0 0 5px; bottom: 0;padding: 15px 40px;position: absolute; width: 539px;}
+    .articles .main .support-assist h4 {color: #313131;font-size: 18px;font-style: italic;font-weight: 600; margin-bottom: 5px;}
+    .articles .main .support-assist p {color: #666666;}
+    .articles .main .support-assist a{color:#0088CC}
+    
+    .articles #welcome {background: url("../img/pattern_ridge_divider_transparent.png") repeat-x scroll left bottom transparent;padding-bottom: 12px;}    
+        .articles #welcome > div {padding: 18px 30px;}
+            #search_container h2 {border: medium none;color: #333333;font-size: 26px;line-height: 39px;font-weight: bold;}
+            #support-search input[type="text"] {width: 420px;}
+
+
+        .articles #welcome #intro { border-top: 1px solid #E8E8E8;}
+            #intro h3 {margin-bottom: 10px;font-size: 18px;line-height: 27px;}
+            .intro-left{width: 226px;margin-right: 10px}
+            .intro-right{width: 321px}
+            #intro article > nav > a {border-left: 1px solid #CCCCCC;margin-left: 5px;padding-left: 5px;}
+            #intro article > nav > a:first-child {border-left: 0 none;margin-left: 0;padding-left: 0;}
+    
+    .articles .main .main-content {padding: 20px 30px 125px;}
+    .articles .main .main-content .list {margin-bottom: 10px;}
+        .articles .main .main-content .list .span6{float:left;width: 273px;margin-left: 11px}
+        .articles .main .main-content .list .span6:first-child{margin-left: 0;}
+        .articles .main .main-content .list h3 {font-style: italic;font-size: 18px;line-height: 27px}
+        .articles .main .main-content .list ul li {list-style-image: url("../img/bullet_arrow.png");margin-left: 15px;margin-top: 8px;}
+        .articles .main .main-content .list a.view-all {display: block;font-size: 11px;font-weight: bold;letter-spacing: 1px;margin-top: 10px;padding-left: 15px;}
+        
+        .entry-content .block-heading h3{color: #313131;font-size: 30px;font-style: italic;margin-bottom: 15px;line-height: 45px;}
+        .entry-content a{color:#0088CC}
+        
+     
+    .breadcrumbs {color: #666666;font-size: 12px;margin-bottom: 10px; position: relative;}  
+    .breadcrumbs > ul > li {background: url("../img/bullet_arrow_grayscale.png") no-repeat scroll left center transparent;display: block;float: left;margin-right: 8px;padding-left: 15px;}
+    .breadcrumbs > ul > li:first-child {background-image: none;padding-left: 0;}
+    .breadcrumbs > ul > li a{color:#0088CC}
+        
+.articles .sidebar{width:280px; background-color: #F5F5F5;border-left: 1px solid #DDDDDD;border-radius: 0 5px 5px 0; margin-bottom: -9999px;margin-left: 0;padding: 20px 19px 9999px;}    

@@ -16,7 +16,7 @@
                 <td><?php echo $t['total_ticket']?></td>
                 <td>
                     <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
+                        <a class="btn-style btn-primary" href="<?php echo HelperUrl::baseUrl()?>user/ticket/<?php echo $t['ticket_type_id']?>">Detail</a>
                     </div>
                 </td>
             </tr>

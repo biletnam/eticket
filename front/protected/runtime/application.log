@@ -4688,3 +4688,32 @@ Stack trace:
 REQUEST_URI=/eticket/front/event/delete_gallery/id/2
 HTTP_REFERER=http://localhost/eticket/front/event/gallery/s/photo
 ---
+2013/03/15 16:30:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+---
+2013/03/15 16:46:12 [error] [php] Undefined variable: t (D:\xampp\htdocs\eticket\front\protected\views\user\ticket.php:32)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(373): UserController->render()
+#3 unknown(0): UserController->actionTicket()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/ticket/31
+in D:\xampp\htdocs\eticket\front\protected\views\user\ticket.php (32)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (373)
+in D:\xampp\htdocs\eticket\front\index.php (14)

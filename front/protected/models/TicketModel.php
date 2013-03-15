@@ -140,7 +140,7 @@ class TicketModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ett.*,ee.user_id as author_id
+        $sql = "SELECT ett.*,ee.user_id as author_id,ee.title as event_title
                 FROM etk_ticket_types ett
                 LEFT JOIN etk_events ee
                 ON ee.id = ett.event_id

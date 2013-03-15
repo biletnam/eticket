@@ -17,6 +17,8 @@ class HelperApp {
         );
         return $array;
     }
+    
+   
 
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();

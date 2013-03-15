@@ -8,6 +8,7 @@ $ticket_status = Helper::ticket_status();
             <ul class="clearfix">
                 <li><a class="<?php if ($type == "general") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white"></i>Event Information</a></li>
                 <li><a class="<?php if ($type == "ticket") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket"></i>Ticket</a></li>
+                <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/s/<?php echo $event['slug'];?>"><i class="icon icon-ticket"></i>Gallery</a></li>
             </ul>
         </div>
     </div>

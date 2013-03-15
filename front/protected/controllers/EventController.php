@@ -296,6 +296,40 @@ class EventController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event[id]/?s=1");
     }
 
+    public function actionGallery($s) {
+        $event = $this->EventModel->get_by_slug($s);
+        $gallerys = $this->EventModel->gets_gallery($event['id']);
+        
+ 
+     
+
+        if ($_FILES)
+            $this->upload_gallery($event);
+           $this->viewData['event'] = $event;
+           $this->viewData['gallerys'] = $gallerys;
+        
+        $this->render('gallery', $this->viewData);
+    }
+
+    private function upload_gallery($event) {
+        for ($i = 1; $i <= 5; $i++) {
+            $image[$i] = $_FILES['file_' . $i];
+            if (!$this->validator->is_empty_string($image[$i]['name'])) {
+                $resize = HelperApp::resize_images($image[$i], HelperApp::get_gallery_sizes());
+                $img = $resize['img'];
+                $thumbnail = $resize['thumbnail'];
+                $this->EventModel->add_gallery($event['id'], $img,$thumbnail);
+            }
+        }
+        $this->redirect(HelperUrl::baseUrl() . "event/gallery/s/".$event['slug']);
+    }
+    
+    public function actionDelete_gallery($id){
+   
+        $this->EventModel->delete_gallery($id);
+        
+    }
+
     public function actionRemove_thumb($id) {
         HelperGlobal::require_login();
         $event = $this->EventModel->get($id);
@@ -562,12 +596,12 @@ class EventController extends Controller {
 
     public function actionRegister_to_event($event) {
         HelperGlobal::require_login();
-        
+
 //        if($_POST)
 //            $this->do_register();
-    
+
         $event = $this->EventModel->get_by_slug($event);
-        
+
 
         $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
 
@@ -575,12 +609,12 @@ class EventController extends Controller {
             $ticket_types_id = $_POST[$i];
             $number_ticket = $_POST['number_tichket_' . $i];
 
-            foreach ($ticket_types as $k=>$t)
-                if ($t['id'] == $ticket_types_id) 
+            foreach ($ticket_types as $k => $t)
+                if ($t['id'] == $ticket_types_id)
                     $ticket_types[$k]['number_ticket'] = $number_ticket;
         }
-        
-     
+
+
 
 
         $this->viewData['ticket_types'] = $ticket_types;
@@ -588,22 +622,20 @@ class EventController extends Controller {
         Yii::app()->params['page'] = 'Payment Ticket';
         $this->render('payment_ticket', $this->viewData);
     }
-    
-    public function actionDo_register(){
-         for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
+
+    public function actionDo_register() {
+        for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
             $ticket_types_id = $_POST[$i];
             $number_ticket = $_POST['number_tichket_' . $ticket_types_id];
 
-            for($j=1;$j<=$number_ticket;$j++){
-                $args = array('ticket_type_id'=>$ticket_types_id,'user_id'=>  UserControl::getId(),'contact_fullname'=>  UserControl::getFirstname(),'contact_email'=>  UserControl::getEmail()); 
-               $this->TicketModel->add_ticket($args); 
+            for ($j = 1; $j <= $number_ticket; $j++) {
+                $args = array('ticket_type_id' => $ticket_types_id, 'user_id' => UserControl::getId(), 'contact_fullname' => UserControl::getFirstname(), 'contact_email' => UserControl::getEmail());
+                $this->TicketModel->add_ticket($args);
             }
-
         }
-        
     }
-    
-      public function actionDetails($s){
+
+    public function actionDetails($s) {
         HelperGlobal::require_login();
 
         $event = $this->EventModel->get_by_slug($s);
@@ -611,22 +643,19 @@ class EventController extends Controller {
             $this->load_404();
 
         $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
-        
-        foreach($ticket_types as $k=>$t){
+
+        foreach ($ticket_types as $k => $t) {
             $count_tikect_sold = $this->TicketModel->ticket_sold($t['id']);
             $ticket_types[$k]['ticket_available'] = ($t['quantity'] - $count_tikect_sold);
-            
-            
         }
-        
-        
+
+
 
         Yii::app()->params['page'] = 'Event Detail';
 
         $this->viewData['ticket_types'] = $ticket_types;
         $this->viewData['event'] = $event;
         $this->render('details', $this->viewData);
-        
     }
 
 }

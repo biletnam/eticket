@@ -5,6 +5,7 @@ $(document).ready(function(){
     bind_user();
     bind_category();
     bind_event();
+    delete_gallery();
 });
 
 function init(){
@@ -33,6 +34,24 @@ function init(){
         yearRange: "c-1:c+1"
     });
 
+}
+
+function delete_gallery(){
+    
+    $('.gallery .btn-delete').click(function(e){
+        
+              e.preventDefault();
+       var ele = $(this);
+       var url = ele.attr('href');
+       var id = ele.attr('value');
+       
+       $.post(url,function(){
+           $('#gallery_'+id).fadeOut('slow');
+       });
+       
+    });
+    
+    return false;
 }
 
 function bind_user(){

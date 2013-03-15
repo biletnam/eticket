@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/text.css" />
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/960.css" />
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/style.css" />
+        <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/custom.css" />
         <link href="<?php echo HelperUrl::baseUrl(); ?>/css/themes/start/jquery.ui.all.css" rel="stylesheet"/>
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/flex_slider.css" type="text/css" media="screen" />
          <link rel="stylesheet" type="text/css" href="<?php echo HelperUrl::baseUrl(); ?>js/fancybox/jquery.fancybox.css" />

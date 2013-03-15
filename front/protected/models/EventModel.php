@@ -303,4 +303,33 @@ class EventModel extends CFormModel {
         return $command->queryAll();
     }
 
+    public function add_gallery($event_id, $img, $thumbnail) {
+        $time = time();
+        $sql = "INSERT INTO etk_event_gallery(event_id,img,thumbnail,date_added) VALUES(:event_id,:img,:thumbnail,:date_added)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $command->bindParam(':img', $img, PDO::PARAM_STR);
+        $command->bindParam(':thumbnail', $thumbnail, PDO::PARAM_STR);
+        $command->bindParam(':date_added', $time, PDO::PARAM_INT);
+        return $command->execute();
+    }
+
+    public function gets_gallery($id) {
+        $sql = "SELECT *
+                FROM etk_event_gallery
+                WHERE event_id = :id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':id', $id, PDO::PARAM_INT);
+        return $command->queryAll();
+    }
+
+    public function delete_gallery($id) {
+        $sql = 'DELETE FROM etk_event_gallery
+              WHERE id = :id';
+
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':id', $id, PDO::PARAM_INT);
+        return $command->execute();
+    }
+
 }

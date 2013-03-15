@@ -19,6 +19,15 @@ class HelperApp {
         );
         return $array;
     }
+    
+     public static function get_gallery_sizes() {
+        $array = array(
+            'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
+            'small' => array('w' => 100, 'h' => 100, 'crop' => true)
+        );
+        return $array;
+    }
+    
     public static function get_avatar_sizes() {
         $array = array(            
             'thumbnail' => array('w' => 250, 'h' => 250, 'crop' => true),

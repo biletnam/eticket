@@ -156,5 +156,10 @@ class PageController extends Controller {
             die;
         }
     }
+    
+    public function actionHow_it_work(){
+        Yii::app()->params['page'] = "How it work";
+        $this->render('how_it_work');
+    }
 
 }

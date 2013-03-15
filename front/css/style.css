@@ -922,3 +922,59 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
     .breadcrumbs > ul > li a{color:#0088CC}
         
 .articles .sidebar{width:280px; background-color: #F5F5F5;border-left: 1px solid #DDDDDD;border-radius: 0 5px 5px 0; margin-bottom: -9999px;margin-left: 0;padding: 20px 19px 9999px;}    
+
+/********HOW IT WORK********/
+.header-how-it-work{text-align: center;padding-bottom: 20px;border-bottom:  1px solid #ECEAEA}
+    .header-how-it-work a{display: inline-block;color:#707070;font-size: 16px;line-height: 24px;width: 193px;margin-left: 5px}
+        .header-how-it-work .button-title{display: block}
+        .header-how-it-work .button-block{text-align: center;background-color: #dededf;border-radius: 5px;display: block;padding: 10px 0;}
+        .header-how-it-work .button-content{background-color: #afb1b2;padding:4px 10px;border-radius: 50%;color:#fff;font-size: 20px;font-weight: bold;display: inline-block}
+        
+    .header-how-it-work a:hover {color:#1172b0}
+    .header-how-it-work a:hover .button-block{
+        background-repeat: repeat-x;
+                background-color: #0068c7;
+                 background-image: linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                background-image: -o-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                background-image: -moz-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                background-image: -webkit-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                background-image: -ms-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+
+                background-image: -webkit-gradient(
+                        linear,
+                        left bottom,
+                        left top,
+                        color-stop(0, rgb(0,103,199)),
+                        color-stop(1, rgb(7,150,246))
+                );
+    }
+    .header-how-it-work a:hover .button-content{background-color: #4fb5ff}
+    .block-how-heading{margin:20px 0}
+        .block-how-heading .left{width: 35px;margin-top:3px;
+                                 background-repeat: repeat-x;
+                    background-color: #0068c7;
+                     background-image: linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                    background-image: -o-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                    background-image: -moz-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                    background-image: -webkit-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+                    background-image: -ms-linear-gradient(bottom, rgb(0,103,199) 0%, rgb(7,150,246) 100%);
+
+                    background-image: -webkit-gradient(
+                            linear,
+                            left bottom,
+                            left top,
+                            color-stop(0, rgb(0,103,199)),
+                            color-stop(1, rgb(7,150,246))
+                    );
+                    color:#fff;font-weight: bold;font-size: 20px;border-radius: 50%;
+                    text-align: center;margin-right: 15px;
+                    padding:8px 0
+        }
+        .block-how-heading .right{width: 835px}
+            .block-how-heading .right h6{font-weight: bold;line-height: 21px;font-size: 14px;color:#058ceb;margin-bottom: 0}
+            .block-how-heading .right p{font-size: 12px;}
+        .block-how-content{margin-left: -15px}    
+            .block-how-content > div{width: 289px;margin-left: 15px}
+            .block-how-content > div p{margin:5px 0 0}
+    
+.footer-how-it-work{margin-top:-1px}

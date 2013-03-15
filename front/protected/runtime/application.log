@@ -1,0 +1,31 @@
+2013/03/15 17:14:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/15 17:14:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/15 17:14:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---

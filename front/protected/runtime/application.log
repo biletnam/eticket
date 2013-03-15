@@ -29,3 +29,41 @@ Stack trace:
 REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
 HTTP_REFERER=http://localhost/eticket/front/css/style.css
 ---
+2013/03/15 17:17:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/15 17:18:43 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_gallery' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_event_gallery
+                WHERE event_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (368)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (301)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 17:18:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_gallery' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_event_gallery
+                WHERE event_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(368): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(301): EventModel->gets_gallery('14')
+#3 [internal function]: EventController->actionGallery('event-new')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/s...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/gallery/s/event-new
+HTTP_REFERER=http://localhost/eticket/front/event/edit/id/14/?s=1&msg=%20You%20have%20created%20event%20%3Cstrong%3EEvent%20New%3C/strong%3E
+---

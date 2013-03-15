@@ -16,7 +16,7 @@
                         </h2>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="<?php HelperApp::get_thumbnail($event['thumbnail'])?>"/>
+                        <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'])?>"/>
                     </div>
                 </div>
             </div>
@@ -58,9 +58,9 @@
                                         <td>
                                             <input type="hidden" name="<?php echo $k+1 ?>" value="<?php echo $t['id']?>">
                                             <select name="number_tichket_<?php echo $k+1?>">
-                                                
+                                                  <option value='0'>0</option>
                                                 <?php for($i=$t['minimum'];$i<=($t['maximum'] < $t['minimum'] ? $t['minimum'] : $t['maximum']);$i++):?>
-                                                 <option value='0'>0</option>
+                                               
                                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                                                 <?php endfor;?>
                                         

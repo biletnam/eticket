@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-03-15 17:13:48
+Date: 2013-03-15 17:26:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -127,13 +127,14 @@ CREATE TABLE `etk_events` (
   PRIMARY KEY (`id`),
   KEY `title` (`title`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_events
 -- ----------------------------
 INSERT INTO `etk_events` VALUES ('12', '3', 'Rockstorm', 'cuoi-tuan-chup-hinh', '22', '2013-03-13 00:00:00', '2013-03-15 00:00:00', '1', '1', null, '1363164726', '', null, '<p>cuối tuần đi chụp hình ăn chơi đê</p>', null, null, '1', '1', '0', '0', '0');
 INSERT INTO `etk_events` VALUES ('13', '3', 'Nghe Rock', 'nghe-rock', '23', '2013-03-13 18:00:00', '2013-03-28 23:00:00', '1', '1', null, '1363168165', '', null, '<p>Đi nghe rock</p>', null, null, '1', '1', '0', '0', null);
+INSERT INTO `etk_events` VALUES ('14', '5', 'Event New', 'event-new', '2', '2013-03-15 00:00:00', '2013-03-29 00:00:00', '0', '0', null, '1363342716', '7XDlHmf9b.jpg', 'a:5:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"277x140-7XDlHmf9b.jpg\";s:5:\"width\";i:277;s:6:\"height\";i:140;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"63x58-7XDlHmf9b.jpg\";s:5:\"width\";i:63;s:6:\"height\";i:58;}s:4:\"edit\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"97x94-7XDlHmf9b.jpg\";s:5:\"width\";i:97;s:6:\"height\";i:94;}s:14:\"home_thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"80x80-7XDlHmf9b.jpg\";s:5:\"width\";i:80;s:6:\"height\";i:80;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"7XDlHmf9b.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '<p>Test Test Test</p>', null, null, '1', '1', '0', '0', null);
 
 -- ----------------------------
 -- Table structure for `etk_event_category`
@@ -164,6 +165,35 @@ INSERT INTO `etk_event_category` VALUES ('12', '2', '1');
 INSERT INTO `etk_event_category` VALUES ('12', '4', '0');
 INSERT INTO `etk_event_category` VALUES ('13', '2', '0');
 INSERT INTO `etk_event_category` VALUES ('13', '3', '1');
+INSERT INTO `etk_event_category` VALUES ('14', '2', '0');
+INSERT INTO `etk_event_category` VALUES ('14', '3', '1');
+
+-- ----------------------------
+-- Table structure for `etk_event_gallery`
+-- ----------------------------
+DROP TABLE IF EXISTS `etk_event_gallery`;
+CREATE TABLE `etk_event_gallery` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `event_id` int(10) DEFAULT NULL,
+  `img` varchar(225) DEFAULT NULL,
+  `thumbnail` text,
+  `deleted` tinyint(1) DEFAULT '0',
+  `disabled` tinyint(1) DEFAULT '0',
+  `date_added` int(11) DEFAULT NULL,
+  `last_modified` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of etk_event_gallery
+-- ----------------------------
+INSERT INTO `etk_event_gallery` VALUES ('2', '15', 'iQAyYPfc9.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-iQAyYPfc9.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"50x50-iQAyYPfc9.jpg\";s:5:\"width\";i:50;s:6:\"height\";i:50;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"iQAyYPfc9.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363335620', '0');
+INSERT INTO `etk_event_gallery` VALUES ('3', '15', 'eknNE3kjz.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-eknNE3kjz.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"50x50-eknNE3kjz.jpg\";s:5:\"width\";i:50;s:6:\"height\";i:50;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"eknNE3kjz.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363335620', '0');
+INSERT INTO `etk_event_gallery` VALUES ('6', '14', '9no8OLYVL.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-9no8OLYVL.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-9no8OLYVL.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"9no8OLYVL.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363342788', '0');
+INSERT INTO `etk_event_gallery` VALUES ('7', '14', '3sThTdLMh.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-3sThTdLMh.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-3sThTdLMh.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"3sThTdLMh.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363342788', '0');
+INSERT INTO `etk_event_gallery` VALUES ('8', '14', '4L7pIfeeh.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-4L7pIfeeh.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-4L7pIfeeh.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"4L7pIfeeh.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363342789', '0');
+INSERT INTO `etk_event_gallery` VALUES ('9', '14', '8QSLSdlSl.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-8QSLSdlSl.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-8QSLSdlSl.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"8QSLSdlSl.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363342789', '0');
+INSERT INTO `etk_event_gallery` VALUES ('10', '14', '2ujODIWrj.jpg', 'a:3:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-2ujODIWrj.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-2ujODIWrj.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"2ujODIWrj.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}', '0', '0', '1363342812', '0');
 
 -- ----------------------------
 -- Table structure for `etk_event_metas`
@@ -617,12 +647,13 @@ CREATE TABLE `etk_organizers` (
   `img` varchar(20) DEFAULT NULL,
   `thumbnail` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_organizers
 -- ----------------------------
 INSERT INTO `etk_organizers` VALUES ('1', '4', 'ABC', null, '<p>Hi Hi hi</p>', '1363245404', '1363246656', '0', '0', '0', 'cUMpgSLhb.jpg', 'a:4:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"300x300-cUMpgSLhb.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:300;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-cUMpgSLhb.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"mini\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"50x50-cUMpgSLhb.jpg\";s:5:\"width\";i:50;s:6:\"height\";i:50;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"cUMpgSLhb.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;}}');
+INSERT INTO `etk_organizers` VALUES ('2', '5', null, null, null, '1363342649', null, '0', '0', '0', null, null);
 
 -- ----------------------------
 -- Table structure for `etk_posts`
@@ -708,7 +739,7 @@ CREATE TABLE `etk_ticket_types` (
   `last_modified` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_ticket_types
@@ -728,6 +759,8 @@ INSERT INTO `etk_ticket_types` VALUES ('27', '12', 'free', 'Member', '10', '0.00
 INSERT INTO `etk_ticket_types` VALUES ('28', '12', 'free', 'Member', '10', '0.00', '0.00', '1', '', '1', '2013-03-13 16:12:00', '2013-04-01 16:12:00', '1', '0', '0', '0', '1363165959', '1363166485');
 INSERT INTO `etk_ticket_types` VALUES ('29', '12', 'paid', 'Vip', '10', '2.00', '2.00', '1', '', '1', '2013-03-13 16:14:00', '2013-04-13 16:14:00', '1', '0', '0', '1', '1363166136', null);
 INSERT INTO `etk_ticket_types` VALUES ('30', '12', 'paid', 'Vip', '20', '15.00', '30.00', '1', '', '1', '2013-03-13 16:31:00', '2013-04-13 16:31:00', '1', '0', '0', '0', '1363167123', null);
+INSERT INTO `etk_ticket_types` VALUES ('31', '14', 'free', 'Free', '100', '0.00', '0.00', '1', 'Free ticket', '1', '2013-03-15 17:20:00', '2013-04-15 17:20:00', '1', '0', '0', '0', '1363342856', null);
+INSERT INTO `etk_ticket_types` VALUES ('32', '14', 'paid', 'Vip', '50', '30.00', '150.00', '1', 'Vip ticket', '1', '2013-03-15 17:20:00', '2013-04-15 17:20:00', '1', '5', '0', '0', '1363342893', null);
 
 -- ----------------------------
 -- Table structure for `etk_tokens`
@@ -786,7 +819,7 @@ CREATE TABLE `etk_users` (
   `role` varchar(50) DEFAULT 'customer',
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_users
@@ -795,6 +828,7 @@ INSERT INTO `etk_users` VALUES ('1', '1', 'stefengratz@gmail.com', '$P$DBZgE5/JL
 INSERT INTO `etk_users` VALUES ('2', '1', 'ntnhanbk@gmail.com', '$P$DKP8Z8ZlHR.EYNpVuWC56F3UeACfgt.', '20bDmd6xn', 'Nhan', 'Nguyen', '', '', null, null, '', '', '1349452662', '0', '', null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer');
 INSERT INTO `etk_users` VALUES ('3', '2', 'thanhtung228@gmail.com', '$P$DNE7rGyvrJ6sRmlJ4QXPTATNXcYY7a.', '4cYfyWvOd', 'Tùng', 'Nguyễn Thanh', null, null, null, null, 'iCkXWVOZf.jpg', 'a:4:{s:9:\"thumbnail\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"250x250-iCkXWVOZf.jpg\";s:5:\"width\";i:250;s:6:\"height\";i:250;}s:5:\"small\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:21:\"100x100-iCkXWVOZf.jpg\";s:5:\"width\";i:100;s:6:\"height\";i:100;}s:4:\"mini\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:19:\"50x50-iCkXWVOZf.jpg\";s:5:\"width\";i:50;s:6:\"height\";i:50;}s:4:\"full\";a:4:{s:6:\"folder\";s:8:\"2013/03/\";s:8:\"filename\";s:13:\"iCkXWVOZf.jpg\";s:5:\"width\";i:960;s:6:\"height\";i:960;}}', '1363140994', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer');
 INSERT INTO `etk_users` VALUES ('4', '1', 'test@test.com', '$P$D8zMsbT1hYcfvVgveWLvQk5K7pP.xx1', 'f4iKFOybz', 'Steven', 'Stifler', null, null, null, null, '', '', '1363245404', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer');
+INSERT INTO `etk_users` VALUES ('5', '1', 'tung@gmail.com', '$P$DQ3E/7JyPmKZvvatu5paxSKMhQ7GaP1', 'aZJyXB14h', 'Tung', 'Nguyen', null, null, null, null, '', '', '1363342649', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer');
 
 -- ----------------------------
 -- Table structure for `etk_user_metas`

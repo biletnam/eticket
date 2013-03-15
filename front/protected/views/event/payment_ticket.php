@@ -18,7 +18,7 @@
                         </h2>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="<?php HelperApp::get_thumbnail($event['thumbnail']) ?>"/>
+                        <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail']) ?>"/>
                     </div>
                 </div>
             </div>

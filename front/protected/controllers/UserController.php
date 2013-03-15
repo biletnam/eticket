@@ -350,6 +350,7 @@ class UserController extends Controller {
     }
 
     private function paid_event($type) {
+        
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_paid_event();

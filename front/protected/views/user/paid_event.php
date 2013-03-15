@@ -12,7 +12,7 @@
             <?php foreach($ticket_paids as $t) :?>
             <tr>
                 <td><a href="#"><?php echo $t['ticket_type_name']?></a></td>
-                <td class="text-bold"><a href="#"><?php echo $t['event_name']?></a></td>
+                <td class="text-bold"><a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $t['event_slug']?>"><?php echo $t['event_name']?></a></td>
                 <td><?php echo $t['total_ticket']?></td>
                 <td>
                     <div>

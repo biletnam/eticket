@@ -34,7 +34,7 @@
                     <ul class="clearfix">
 
                         <?php foreach ($gallerys as $g): ?>
-                            <li><a href="#"><img src="<?php echo HelperApp::get_thumbnail($g['thumbnail'], 'small') ?>"/></a></li>
+                        <li><a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $g['slug']?>"><img src="<?php echo HelperApp::get_thumbnail($g['thumbnail'], 'small') ?>"/></a></li>
                         <?php endforeach; ?>
 
                     </ul>

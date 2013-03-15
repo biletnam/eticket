@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/style.css" />
         <link href="<?php echo HelperUrl::baseUrl(); ?>/css/themes/start/jquery.ui.all.css" rel="stylesheet"/>
         <link rel="stylesheet" href="<?php echo HelperUrl::baseUrl(); ?>css/flex_slider.css" type="text/css" media="screen" />
+         <link rel="stylesheet" type="text/css" href="<?php echo HelperUrl::baseUrl(); ?>js/fancybox/jquery.fancybox.css" />
 
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

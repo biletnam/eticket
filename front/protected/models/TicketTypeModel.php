@@ -118,7 +118,8 @@ class TicketTypeModel extends CFormModel {
 
     public function add($args) {
         $time = time();
-        $sql = "INSERT INTO etk_ticket_types(event_id,type,title,quantity,price,tax,ticket_status,description,hide_description,sale_start,sale_end,minimum,maximum,service_fee,date_added) VALUES(:event_id,:type,:title,:quantity,:price,:tax,:ticket_status,:description,:hide_description,:sale_start,:sale_end,:minimum,:maximum,:service_fee,:date_added)";
+        $sql = "INSERT INTO etk_ticket_types(event_id,type,title,quantity,price,tax,ticket_status,description,hide_description,sale_start,sale_end,minimum,maximum,service_fee,date_added) 
+            VALUES(:event_id,:type,:title,:quantity,:price,:tax,:ticket_status,:description,:hide_description,:sale_start,:sale_end,:minimum,:maximum,:service_fee,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":event_id", $args['event_id']);
         $command->bindParam(":type", $args['type']);
@@ -133,22 +134,23 @@ class TicketTypeModel extends CFormModel {
         $command->bindParam(":sale_end", $args['sale_end']);
         $command->bindParam(":minimum", $args['minimum']);
         $command->bindParam(":maximum", $args['maximum']);
+      
         $command->bindParam(":service_fee", $args['service_fee']);
         $command->bindParam(":date_added", $time);
 
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }
-    
-      public function gets_by_event($id) {
+
+    public function gets_by_event($id) {
         $sql = "SELECT * FROM etk_ticket_types ett
                 WHERE ett.event_id = :id
                 AND ett.deleted = 0
                 AND ett.quantity != 0";
-        
+
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
-       
+
         return $command->queryAll();
     }
 

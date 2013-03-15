@@ -1,4 +1,5 @@
-<?php $total=0?>
+
+<?php $total = 0 ?>
 <div class="page-event-detail">
     <div class="container_12">
         <div class="clearfix">
@@ -28,7 +29,9 @@
         <div class="clearfix">
             <div class="grid_8">
                 <article class="event event-box  ticket-info border border-radius box-shadow-bottom">
-                    <form method="POST" action="<?php echo HelperUrl::baseUrl() ?>event/register_to_event">
+                    <form method="POST" action="<?php echo HelperUrl::baseUrl() ?>event/do_register">
+                        <input type="hidden" name="count_ticket_type" value="<?php echo count($ticket_types) ?>">
+                        <input type="hidden" name="event_id" value="<?php echo $event['id'] ?>">
                         <div class="heading">Ticket Information</div>
                         <div class="ticket">
                             <table width="100%" class="table ticket_table" id="ticket_table">
@@ -43,27 +46,37 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($ticket_types as $k => $t): ?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $t['title']; ?>
-                                                <p>Price will go up at any time, as event nears. All ages.</p>
-                                            </td>
+                                    <input type="hidden" name="<?php echo $k + 1 ?>" value="<?php echo $t['id'] ?>">
+                                    <input type="hidden" name="number_tichket_<?php echo $t['id'] ?>" value="<?php echo $t['number_ticket'] ?>">
 
-                                            <td>$<?php echo $t['price'] ?></td>
-                                            <td>$<?php echo $t['tax'] ?></td>
-                                            <td><?php echo $t['number_ticket']?></td>
-                                            <?php $total += ($t['price']+ $t['tax'])*$t['number_ticket']?>
-                                            <td>$<?php echo ($t['price']+ $t['tax'])*$t['number_ticket']?></td>
-                                        </tr>
-
-
-                                    <?php endforeach; ?>
                                     <tr>
-                                        <td colspan="4" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
-                                        <td class="text-bold">$<?php echo $total?></td>
+                                        <td>
+                                            <?php echo $t['title']; ?>
+                                            <p>Price will go up at any time, as event nears. All ages.</p>
+                                        </td>
+
+                                        <td>$<?php echo $t['price'] ?></td>
+                                        <td>$<?php echo $t['tax'] ?></td>
+                                        <td><?php echo $t['number_ticket'] ?></td>
+                                        <?php $total += ($t['price'] + $t['tax']) * $t['number_ticket'] ?>
+                                        <td>$<?php echo ($t['price'] + $t['tax']) * $t['number_ticket'] ?></td>
                                     </tr>
+
+
+                                <?php endforeach; ?>
+                                <tr>
+                                    <td colspan="4" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
+                                    <td class="text-bold">$<?php echo $total ?></td>
+                                </tr>
                                 </tbody>
+
+                              
                             </table>
+                            
+                              <div class="actions clearfix">
+                                    <input type="submit" class="btn pull-right" value="Pay Now"/>
+                                </div>
+                            
                         </div>
                     </form>
                 </article>
@@ -265,12 +278,12 @@
                         </div>
                         <div class="vcard">
                             <h6><?php echo $event['location'] ?></h6>
-                            <p><?php echo $event['address']?>, <?php echo $event['city_title']?></p>
+                            <p><?php echo $event['address'] ?>, <?php echo $event['city_title'] ?></p>
                         </div>
-                      
-                        
-                         <?php echo date('l, d/m/Y g:i a',  strtotime($event['start_time'])).' - '?><br/>
-                        <?php echo date('l, d/m/Y g:i a',  strtotime($event['end_time']))?>
+
+
+                        <?php echo date('l, d/m/Y g:i a', strtotime($event['start_time'])) . ' - ' ?><br/>
+                        <?php echo date('l, d/m/Y g:i a', strtotime($event['end_time'])) ?>
                     </div>
                 </article>
                 <article class="event hosted border border-radius box-shadow-bottom">
@@ -282,7 +295,7 @@
                             Contact the Host
                         </a>
 
-                      
+
 
                     </div>
                 </article>

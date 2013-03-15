@@ -13,8 +13,9 @@ class HelperApp {
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true),
-            'edit' => array('w' => 97, 'h' => 94, 'crop' => true)
+            'small' => array('w' => 63, 'h' => 58, 'crop' => true),
+            'edit' => array('w' => 97, 'h' => 94, 'crop' => true),
+            'home_thumbnail' => array('w' => 80, 'h' => 80, 'crop' => true),
         );
         return $array;
     }
@@ -232,7 +233,7 @@ class HelperApp {
         return $uploaded_items;
     }
     
-    public static function email($to, $subject, $message, $footer = true, $from = 'no-reply@vesukien.vn') {
+    public static function email($to, $subject, $message, $footer = true, $from = 'ntnhanbk@gmail.com') {
         if ($footer)
             $message .= '';
         //$subject =  $subject;

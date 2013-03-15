@@ -562,6 +562,9 @@ class EventController extends Controller {
 
     public function actionRegister_to_event($event) {
         HelperGlobal::require_login();
+        
+//        if($_POST)
+//            $this->do_register();
     
         $event = $this->EventModel->get_by_slug($event);
         
@@ -584,6 +587,46 @@ class EventController extends Controller {
         $this->viewData['event'] = $event;
         Yii::app()->params['page'] = 'Payment Ticket';
         $this->render('payment_ticket', $this->viewData);
+    }
+    
+    public function actionDo_register(){
+         for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
+            $ticket_types_id = $_POST[$i];
+            $number_ticket = $_POST['number_tichket_' . $ticket_types_id];
+
+            for($j=1;$j<=$number_ticket;$j++){
+                $args = array('ticket_type_id'=>$ticket_types_id,'user_id'=>  UserControl::getId(),'contact_fullname'=>  UserControl::getFirstname(),'contact_email'=>  UserControl::getEmail()); 
+               $this->TicketModel->add_ticket($args); 
+            }
+
+        }
+        
+    }
+    
+      public function actionDetails($s){
+        HelperGlobal::require_login();
+
+        $event = $this->EventModel->get_by_slug($s);
+        if (count($event) == 0)
+            $this->load_404();
+
+        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
+        
+        foreach($ticket_types as $k=>$t){
+            $count_tikect_sold = $this->TicketModel->ticket_sold($t['id']);
+            $ticket_types[$k]['ticket_available'] = ($t['quantity'] - $count_tikect_sold);
+            
+            
+        }
+        
+        
+
+        Yii::app()->params['page'] = 'Event Detail';
+
+        $this->viewData['ticket_types'] = $ticket_types;
+        $this->viewData['event'] = $event;
+        $this->render('details', $this->viewData);
+        
     }
 
 }

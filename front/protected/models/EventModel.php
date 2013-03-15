@@ -17,8 +17,8 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
-        
-         if (isset($args['user_id']) && $args['user_id'] != "") {
+
+        if (isset($args['user_id']) && $args['user_id'] != "") {
             $custom.= " AND ee.user_id = :user_id";
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
         }
@@ -105,7 +105,7 @@ class EventModel extends CFormModel {
         $custom = "";
         $params = array();
 
-         if (isset($args['user_id']) && $args['user_id'] != "") {
+        if (isset($args['user_id']) && $args['user_id'] != "") {
             $custom.= " AND ee.user_id = :user_id";
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
         }
@@ -184,8 +184,6 @@ class EventModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $this->_parse_events($command->queryRow());
     }
-
-   
 
     public function get_by_slug($slug) {
         $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
@@ -295,6 +293,14 @@ class EventModel extends CFormModel {
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         return $command->execute();
+    }
+
+    public function get_image_published() {
+        $sql = "SELECT * FROM etk_events ee
+                WHERE ee.img != '' AND ee.deleted = 0  AND ee.published = 1
+                LIMIT 0,9";
+        $command = Yii::app()->db->createCommand($sql);
+        return $command->queryAll();
     }
 
 }

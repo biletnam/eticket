@@ -8,6 +8,7 @@ class UserController extends Controller {
     private $UserModel;
     private $CityModel;
     private $EventModel;
+    private $TicketModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -21,6 +22,9 @@ class UserController extends Controller {
 
         /* @var $EventModel EventModel */
         $this->EventModel = new EventModel();
+        
+         /* @var $TicketModel TicketModel */
+        $this->TicketModel = new TicketModel();
     }
 
     /**
@@ -303,8 +307,9 @@ class UserController extends Controller {
 
     private function manage_event($type,$p = 1) {
         HelperGlobal::require_login();
+        
         if ($_POST)
-            $this->do_manage_event();
+            $this->send_email();
         
     
         $ppp = Yii::app()->getParams()->itemAt('ppp');
@@ -329,8 +334,18 @@ class UserController extends Controller {
         
         $this->render('manage_event', $this->viewData);
     }
+    
+  
 
-    private function do_manage_event() {
+    private function send_email() {
+        $emails = $_POST['email'];
+        $message = $_POST['message'];
+        $subject = $_POST['subject'];
+        
+        $email = explode(';',$emails);
+        foreach($email as $k=>$e){
+           HelperApp::email($e, $subject, $message);
+        }
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
     }
 
@@ -339,9 +354,12 @@ class UserController extends Controller {
         if ($_POST)
             $this->do_paid_event();
 
-
+        $args = array('deleted' => 0,'user_id'=>UserControl::getId());
+        
+        $ticket_paids = $this->TicketModel->gets($args);
+        
         $this->viewData['message'] = $this->message;
-        $this->viewData['type'] = $type;
+        $this->viewData['ticket_paids'] = $ticket_paids;
         Yii::app()->params['page'] = "Management Paid Event's ticket";
         Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);

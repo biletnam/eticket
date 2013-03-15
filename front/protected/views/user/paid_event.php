@@ -9,76 +9,19 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach($ticket_paids as $t) :?>
             <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
+                <td><a href="#"><?php echo $t['ticket_type_name']?></a></td>
+                <td class="text-bold"><a href="#"><?php echo $t['event_name']?></a></td>
+                <td><?php echo $t['total_ticket']?></td>
                 <td>
                     <div>
                         <a class="btn-style btn-primary" href="#">Detail</a>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">Ticket 1</a></td>
-                <td class="text-bold"><a href="#">Holiday summer event</a></td>
-                <td>2</td>
-                <td>
-                    <div>
-                        <a class="btn-style btn-primary" href="#">Detail</a>
-                    </div>
-                </td>
-            </tr>
+            <?php endforeach;?>
+            
         </tbody>
     </table>
 </section>

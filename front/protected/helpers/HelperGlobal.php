@@ -117,5 +117,11 @@ class HelperGlobal {
         $LogModel = new LogModel();
         $LogModel->add($admin_id, $controller, $method, Yii::app()->request->userHostAddress, serialize($description));
     }
+    
+    public static function get_publish(){
+        $EventModel = new EventModel();
+        $publishs = $EventModel->get_image_published();
+        return $publishs;
+    }
 
 }

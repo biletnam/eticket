@@ -13,7 +13,7 @@ class HelperApp {
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
+            'small' => array('w' => 63, 'h' => 58, 'crop' => true)
         );
         return $array;
     }

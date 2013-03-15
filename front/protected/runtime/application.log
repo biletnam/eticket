@@ -3845,3 +3845,551 @@ REQUEST_URI=/eticket/front/
 in D:\xampp\htdocs\eticket\front\protected\views\home\index.php (38)
 in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (34)
 in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 09:00:53 [error] [exception.CException] exception 'CException' with message 'TicketModel and its behaviors do not have a method or closure named "get_by_user".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(346): CComponent->__call('get_by_user', Array)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(346): TicketModel->get_by_user('4')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#3 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:04:02 [error] [php] Undefined variable: s (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:346)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (346)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 09:04:05 [error] [php] Undefined variable: s (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:346)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (346)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 09:04:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (74)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 09:04:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(74): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:05:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (74)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 09:05:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(74): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:05:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (74)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 09:05:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND ee.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(74): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:05:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (74)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 09:05:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(74): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:05:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (74)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 09:05:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ee.title' in 'field list'. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ve
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(74): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 09:09:31 [error] [exception.CException] exception 'CException' with message 'UserController cannot find the requested view "index".' in D:\xampp\htdocs\eticket\framework\web\CController.php:879
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(42): CController->render('index', NULL)
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionIndex()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user')
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/eticket/front/user/
+---
+2013/03/15 09:09:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 10:12:59 [error] [php] Undefined index: count_ticket_type (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:574)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/register_to_event/event/cuoi-tuan-chup-hinh?
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (574)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 10:16:38 [error] [php] Use of undefined constant j - assumed 'j' (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:597)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/do_register
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (597)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/15 10:17:34 [error] [exception.CException] exception 'CException' with message 'TicketModel and its behaviors do not have a method or closure named "add_tickets".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(599): CComponent->__call('add_tickets', Array)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(599): TicketModel->add_tickets(Array)
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionDo_register()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('do_register')
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/do_regist...')
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/eticket/front/event/do_register
+HTTP_REFERER=http://localhost/eticket/front/event/register_to_event/event/cuoi-tuan-chup-hinh
+---
+2013/03/15 10:30:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY et.ticket_type_id
+                LIMIT 0,20' at line 10. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                GROUP BY et.ticket_type_id
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (75)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 10:30:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY et.ticket_type_id
+                LIMIT 0,20' at line 10. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                GROUP BY et.ticket_type_id
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(75): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+---
+2013/03/15 10:30:30 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY et.ticket_type_id
+                LIMIT 0,20' at line 10. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                GROUP BY et.ticket_type_id
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php (75)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (348)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (247)
+2013/03/15 10:30:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY et.ticket_type_id
+                LIMIT 0,20' at line 10. The SQL statement executed was: SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+                WHERE 1
+                 AND et.user_id = :user_id AND et.deleted = :deleted
+                ORDER BY et.date_added DESC
+                GROUP BY et.ticket_type_id
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketModel.php(75): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(348): TicketModel->gets(Array)
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(247): UserController->paid_event('paid_event')
+#4 [internal function]: UserController->actionAccount('paid_event', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/paid_event
+HTTP_REFERER=http://localhost/eticket/front/user/account
+---
+2013/03/15 10:35:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+---
+2013/03/15 10:39:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 10:39:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+---
+2013/03/15 10:39:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 10:49:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 11:02:52 [error] [php] unserialize(): Error at offset 0 of 5 bytes (D:\xampp\htdocs\eticket\front\protected\helpers\HelperApp.php:158)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(131): require()
+#1 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): HomeController->renderInternal()
+#2 D:\xampp\htdocs\eticket\front\protected\views\layouts\home.php(5): HomeController->renderFile()
+#3 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(127): require()
+#4 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): HomeController->renderInternal()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(785): HomeController->renderFile()
+#6 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(34): HomeController->render()
+#7 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(287): HomeController->runAction()
+#10 D:\xampp\htdocs\eticket\framework\web\CController.php(266): HomeController->runActionWithFilters()
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): HomeController->run()
+#12 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#13 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/
+in D:\xampp\htdocs\eticket\front\protected\helpers\HelperApp.php (158)
+in D:\xampp\htdocs\eticket\front\protected\views\_shared\footer.php (37)
+in D:\xampp\htdocs\eticket\front\protected\views\layouts\home.php (5)
+2013/03/15 11:12:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 13:34:11 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/front/event/info
+---
+2013/03/15 13:34:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/15 14:03:25 [error] [exception.CException] exception 'CException' with message 'UserController and its behaviors do not have a method or closure named "send_email".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(312): CComponent->__call('send_email', Array)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(312): UserController->send_email()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(244): UserController->manage_event('manage_event', 1)
+#3 [internal function]: UserController->actionAccount('manage_event', 1, '')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/user/account/type/manage_event?email=thanh%40gmail.com%3Bnguyen%40yahoo.com%3Bhoang%40to.com&massage=Alo
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event?email=thanh%40gmail.com%3Bnguyen%40yahoo.com%3Bhoang%40to.com&massage=Alo
+---
+2013/03/15 14:03:55 [error] [php] Undefined index: message (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:342)
+Stack trace:
+#0 unknown(0): UserController->actionAccount()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/manage_event?email=thanh%40gmail.com%3Bnguyen%40yahoo.com%3Bhoang%40to.com&massage=Alo
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (342)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (312)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (244)

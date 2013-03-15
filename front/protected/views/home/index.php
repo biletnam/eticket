@@ -36,7 +36,7 @@
                     <div class="cleafix">
                         <div class="event-thumbnail pull-left">
                             <a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $v['slug']?>">
-                                <img src="<?php echo HelperApp::get_thumbnail($v['thumbnail']); ?>"/>
+                                <img src="<?php echo HelperApp::get_thumbnail($v['thumbnail'],'home_thumbnail'); ?>"/>
                             </a>
                         </div>
                         <div class="event-summary pull-left">

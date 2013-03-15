@@ -11,6 +11,11 @@ function init(){
     $('.alert .close').click(function(){
         $('.alert').fadeOut('slow');
     });
+    $(".fancybox").fancybox();
+    
+    $('.btn-invite').fancybox({
+        
+    });
     
     $("table .delete-row").click(function(){
         if(!confirm("Are you sure delete this item?")) return false;
@@ -251,7 +256,7 @@ function bind_event(){
         var parent = ele.parents('#event_form');
         $(".image-default.thumbnail",parent).remove();        
         ele.remove();
-       $(".waiting",parent).show();
+        $(".waiting",parent).show();
         $.get(ele.attr('href'),"",function(response){           
             if(response.success){
                 $(".image-default.waiting",parent).remove();

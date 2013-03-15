@@ -544,10 +544,10 @@ class EventController extends Controller {
         echo json_encode(array('message' => $this->message));
     }
 
-    public function actionInfo($id = 4) {
+    public function actionInfo($s) {
         HelperGlobal::require_login();
 
-        $event = $this->EventModel->get($id);
+        $event = $this->EventModel->get_by_slug($s);
         if (count($event) == 0)
             $this->load_404();
 

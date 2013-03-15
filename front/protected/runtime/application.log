@@ -3828,3 +3828,20 @@ Stack trace:
 REQUEST_URI=/eticket/front/event/css/content.css
 HTTP_REFERER=http://localhost/eticket/front/event/create
 ---
+2013/03/14 17:18:26 [error] [php] Undefined index: slug (D:\xampp\htdocs\eticket\front\protected\views\home\index.php:38)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): HomeController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): HomeController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(34): HomeController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): HomeController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): HomeController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): HomeController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/
+in D:\xampp\htdocs\eticket\front\protected\views\home\index.php (38)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (34)
+in D:\xampp\htdocs\eticket\front\index.php (14)

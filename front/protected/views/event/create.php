@@ -20,10 +20,10 @@ $cities = Helper::cities();
                     </div>
                 </div>
                 <div class="controls-group clearfix">
-                    <label for="location" class="control-label pull-left">Location<span class="required">*</span></label>
-                    <div class="controls pull-left">
+                    <label for="location" class="control-label pull-left ">Location<span class="required">*</span></label>
+                    <div class="controls pull-left event-location">
                         <input type="text" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>" name="location" class="input-xxlarge span11" id="add_location">
-                        <img src="/vsk_old/front/img/ajax-big-roller.gif" class="loading-location hide">
+                        <img src="<?php echo HelperUrl::baseUrl()?>img/ajax-big-roller.gif" class="loading-location hide">
                     </div>
                 </div>
                 <div class="controls-group clearfix">

@@ -75,7 +75,12 @@ class EventController extends Controller {
     }
 
     public function actionCreate() {
+        
+        
+        
         HelperGlobal::require_login();
+        if(UserControl::getRole()!='client')
+            $this->load_404();
         if ($_POST)
             $this->do_create();
 
@@ -116,19 +121,19 @@ class EventController extends Controller {
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
-            $this->message['error'][] = "Please select a primary category.";
+            $this->message['error'][] = "Please select a Primary category.";
         if ($primary_cate == $second_cate)
             $this->message['error'][] = "Primary category and Second category must be different.";
         if ($this->validator->is_empty_string($location))
-            $this->message['error'][] = "Please enter the location.";
+            $this->message['error'][] = "Please enter the Location.";
         if ($this->validator->is_empty_string($address))
-            $this->message['error'][] = "Please enter the address.";
+            $this->message['error'][] = "Please enter the Address.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date starts incorrect.";
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Please enter Event Detail.";
+            $this->message['error'][] = "Please enter Event Description.";
 
         //$this->validate_tickets();
 

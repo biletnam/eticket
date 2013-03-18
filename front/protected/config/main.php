@@ -85,10 +85,10 @@ return array(
         'ticket_tax' =>0.1,
         'regx_number' => '/^\d+$/',
         'business'=>'nhanng_1346818305_biz@htmlfivemedia.com',
-        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/eticket/upload/',
+//        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/eticket/upload/',
+//        'upload_url'=>"/eticket/upload/",
+        'upload_dir'=>'D:/xampp/htdocs/eticket/upload/',
         'upload_url'=>"/eticket/upload/",
-        //'upload_dir'=>'D:/xampp/htdocs/eticket/upload/',
-        //'upload_url'=>"/eticket/upload/",
      ),
     
 );

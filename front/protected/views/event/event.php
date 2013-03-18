@@ -118,77 +118,7 @@
                         <?php echo date('l, d/m/Y g:i a', strtotime($event['end_time'])) ?>
                     </div>
                 </article>
-                <article class="event hosted border border-radius box-shadow-bottom">
-                    <div class="heading">Hosted By</div>
-                    <div class="event-body">
-                        <h2>Friends4Growth (Sponsored by Singapore Management University)</h2>
-                        <a class="contact-host btn-style clearfix">
-                            <i class="icon ico-hosted"></i>
-                            Contact the Host
-                        </a>
-
-                        <!--                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite friend pull-left ">&nbsp;</span>
-                                                    <a class="" href="#">
-                                                        View other Friends4Growth (Sponsored by Singapore Management University) events 
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite subcribe pull-left ">&nbsp;</span>
-                                                    <a class="add_calendar" href="#">
-                                                        Subscribe to receive notifications of future events by this host
-                                                    </a>
-                                                </div>
-                        
-                                                <ul class="other-calendar">
-                                                    <li>
-                                                        <div class="panel_icon clearfix">
-                                                            <span class="sprite xml pull-left ">&nbsp;</span>
-                                                            <a href="#" class="ico-outlook">View XML Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite rss-c pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to RSS Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite atom pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to Atom Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite google pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to Google</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite yahoo pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My yahoo!</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite aol pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My AOL</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite msn pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My MSN</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>-->
-
-                    </div>
-                </article>
+                
             </div>
         </div>
     </div>

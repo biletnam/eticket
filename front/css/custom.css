@@ -2,3 +2,6 @@
 .gallery li{float:left;width: 160px;margin-left: 19px;padding:5px;border:1px solid #dedede;position: relative}
 .gallery li:hover .btn-delete{display: inline-block}
 .gallery li .btn-delete{display: none;z-index: 5;position: absolute;right:10px;top:10px}
+
+.event-location {position: relative}
+.event-location img{position: absolute}

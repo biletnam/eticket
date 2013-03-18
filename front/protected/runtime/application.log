@@ -112,6 +112,7 @@ Stack trace:
 REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
 HTTP_REFERER=http://localhost/eticket/front/css/style.css
 ---
+<<<<<<< HEAD
 2013/03/18 08:31:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CController.php:484
 Stack trace:
 #0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CController.php(271): CController->missingAction('css')
@@ -625,4 +626,35 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/eticket/front/user/css/content.css
 HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+=======
+2013/03/18 14:02:53 [error] [php] Undefined index: code (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:492)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/loginfacebook
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (492)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 14:05:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/event/search
+---
+2013/03/18 14:05:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+>>>>>>> 18-3-Thanh-Nguyen
 ---

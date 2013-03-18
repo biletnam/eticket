@@ -6,6 +6,8 @@ $(document).ready(function(){
     bind_category();
     bind_event();
     bind_status_event();
+    delete_gallery();
+    bind_search_user();
 });
 
 function init(){
@@ -43,6 +45,25 @@ function init(){
         var navigate = ele.hasClass('btn-continue') ? index+1 : index-1;
         $(".nav.nav-tabs li:eq("+navigate+") > a").trigger('click');
     });
+}
+
+function delete_gallery(){
+    
+    $('.gallery .btn-delete').click(function(e){
+              e.preventDefault();
+              
+                if(!confirm("Are you sure delete this photo?")) return false;
+       var ele = $(this);
+       var url = ele.attr('href');
+       var id = ele.attr('value');
+       
+       $.post(url,function(){
+           $('#gallery_'+id).fadeOut('slow');
+       });
+       
+    });
+    
+    return false;
 }
 
 function bind_status_event(){
@@ -121,6 +142,13 @@ function bind_category(){
     $(".category-type").change(function(){
         var ele = $(this);
         window.location = baseUrl+"/category/index/type/"+ ele.val();
+    });
+}
+
+function bind_search_user(){
+    $(".user-type").change(function(){
+        var ele = $(this);
+        window.location = baseUrl+"/user/index/role/"+ ele.val();
     });
 }
 

@@ -24,6 +24,8 @@ class CategoryController extends Controller {
 
     public function actionIndex($type ='all',$p = 1) {
         
+
+        
         $this->CheckPermission();
         
         $ppp = Yii::app()->getParams()->itemAt('ppp');
@@ -32,7 +34,7 @@ class CategoryController extends Controller {
         
         $args = array('s' => $s, 'deleted' => 0);
         if($type != "all")
-            $args['type'] = $type;
+            $args['role'] = $type;
 
         $categories = $this->CategoryModel->gets($args, $p, $ppp);
         $total_category = $this->CategoryModel->counts($args);

@@ -4,7 +4,7 @@
     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/">Event</a> <span class="divider">/</span> </li>
     <li class="active">All</li>
 </ul>
-<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/event/add/" class="btn btn-primary">Add an new event</a></p> 
+
 <?php $this->renderFile(Yii::app()->basePath . "/views/_shared/paging.php", array('total' => $total, 'paging' => $paging)); ?>
 <table class="table table-bordered table-striped table-center">
     <thead>

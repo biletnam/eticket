@@ -18,9 +18,13 @@ $ticket_status = Helper::ticket_status();
     <li class="<?php if ($type == "ticket") echo 'active' ?>">
         <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/edit/id/<?php echo $event['id'] ?>/type/ticket">Ticket</a>
     </li>
+    <li class="<?php if ($type == "gallery") echo 'active' ?>">
+        <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/gallery/id/<?php echo $event['id'] ?>/">Gallery</a>
+    </li>
     <li class="<?php if ($type == "seo") echo 'active' ?>">
         <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/seo/id/<?php echo $event['id'] ?>/">SEO</a>
     </li>
+  
 </ul>
 
 <?php if ($type == "general"): ?>
@@ -41,7 +45,7 @@ $ticket_status = Helper::ticket_status();
         </div>
 
         <div class="control-group">
-            <label class="control-label">Upload the logo for your event</label>
+            <label class="control-label">Upload the logo for event</label>
             <div class="controls">
                 <input type="file" name="file"/>
                 <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
@@ -242,10 +246,10 @@ $ticket_status = Helper::ticket_status();
                     <td class="ticket_quantity"><input type="text" placeholder="0" name="ticket_quantity" class="input-mini quantity ticket-quantity" value="<?php echo htmlspecialchars($v['quantity']); ?>"></td>
 
                     <?php if ($v['type'] == "paid"): ?>
-                    <td class="ticket_fee"><input type="text" placeholder="0 VNĐ" name="ticket_fee" class="input-mini ticket-fee" value="<?php echo htmlspecialchars(number_format($v['price'],0,'','')); ?>"></td>
-                        <td><span class="price ticket-tax"><?php echo number_format($v['tax']) ?> VNĐ</span></td>
+                    <td class="ticket_fee"><input type="text" placeholder="0" name="ticket_fee" class="input-mini ticket-fee" value="<?php echo htmlspecialchars(number_format($v['price'],0,'','')); ?>"></td>
+                        <td><span class="price ticket-tax"><?php echo '$'.number_format($v['tax']) ?> </span></td>
                         <?php $total = $v['service_fee'] ? $v['price'] * $v['quantity'] + $v['tax'] : $v['price'] * $v['quantity']; ?>
-                        <td><span class="price ticket-total"><?php echo number_format($total) ?> VNĐ</span></td>
+                        <td><span class="price ticket-total"><?php echo '$'.number_format($total) ?> </span></td>
                     <?php else: ?>
                         <td class="ticket_fee" class="input-mini">Free</td>
                     <?php endif; ?>
@@ -423,9 +427,9 @@ $ticket_status = Helper::ticket_status();
                 <input type="hidden" name="ticket_id" value="" class="ticket-id"/>
                 <td class="ticket_name"><input type="text" name="ticket_name" class="input-small ticket-name"></td>
                 <td class="ticket_quantity"><input type="text" placeholder="0" name="ticket_quantity" class="input-mini quantity ticket-quantity"></td>
-                <td class="ticket_fee"><input type="text" placeholder="0 VNĐ" name="ticket_fee" class="input-mini ticket-fee"></td>
-                <td><span class="price ticket-tax">0.00 VNĐ</span></td>
-                <td><span class="price ticket-total">0.00 VNĐ</span></td>
+                <td class="ticket_fee"><input type="text" placeholder="0" name="ticket_fee" class="input-mini ticket-fee"></td>
+                <td><span class="price ticket-tax">0.00</span></td>
+                <td><span class="price ticket-total">0.00</span></td>
                 <td>
                     <select class="ticket-status input-small" name="ticket_status">
                         <?php foreach ($ticket_status as $k => $v): ?>

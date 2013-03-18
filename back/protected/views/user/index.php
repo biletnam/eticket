@@ -3,7 +3,17 @@
     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/">User</a> <span class="divider">/</span> </li>
     <li class="active">All</li>
 </ul>
-
+<br/>
+<p>
+    <span>Type:</span>
+    <select class="span2 user-type" style="margin: 0">
+        <option value="all">All</option>
+       
+        <option  value="customer" <?php echo ($role == 'customer')?  'selected' : '' ?>>Customer</option>
+        <option  value="client" <?php echo ($role == 'client')?  'selected' : '' ?>>Client</option>
+        
+    </select>
+</p>
 <table class="table table-bordered table-striped table-center" id="users">
     <thead>
         <tr>                 
@@ -27,8 +37,8 @@
                     <a href="<?php echo Yii::app()->request->baseUrl; ?>/user/edit/id/<?php echo $v['id'] ?>"><?php echo $v['email'] ?></a>
                     <span class="label label-important label-banned <?php if(!$v['banned']) echo 'hide'; ?>">Banned</span>
                     
-                    <?php if($v['fullname'] != ""): ?>
-                    <br/><?php echo $v['fullname']; ?>
+                    <?php if($v['firstname'] != ""): ?>
+                    <br/><?php echo $v['firstname'].' '.$v['lastname']; ?>
                     <?php endif;?>
                 </td>
                 <td><?php echo date("d-m-Y H:i", $v['date_added']); ?></td>

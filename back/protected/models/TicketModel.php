@@ -46,12 +46,15 @@ class TicketModel extends CFormModel {
             $custom.= " AND (vt.status = 1 OR (vt.status = 0 AND vt.date_expired > UNIX_TIMESTAMP()) )";
         }
 
-        $sql = "SELECT vt.*,vtt.title as ticket_type_name,ve.title as event_name,vtt.event_id
+        $sql = "SELECT vt.*,vtt.title as ticket_type_name,ve.title as event_name,vtt.event_id,eu.email as user_email
                 FROM etk_tickets vt
                 LEFT JOIN etk_ticket_types vtt
                 ON vtt.id = vt.ticket_type_id
                 LEFT JOIN etk_events ve
                 ON ve.id = vtt.event_id
+                LEFT JOIN etk_users eu
+                ON vt.user_id = eu.id
+                
                 WHERE 1
                 $custom
                 ORDER BY vt.date_added DESC

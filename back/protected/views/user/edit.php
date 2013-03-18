@@ -27,15 +27,30 @@
     </div>
     
     <div class="control-group">
-        <label class="control-label">Full Name</label>
+            <label class="control-label">Upload the avatar</label>
+            <div class="controls">
+                <input type="file" name="file"/>
+                <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
+            </div>
+        </div>
+    
+    <div class="control-group">
+        <label class="control-label">First Name</label>
         <div class="controls">
-            <input type="text" name="fullname" class=" input-xlarge" value="<?php echo isset($_POST['fullname']) ? htmlspecialchars($_POST['fullname']) : $user['fullname']; ?>">
+            <input type="text" name="firstname" class=" input-xlarge" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : $user['firstname']; ?>">
+        </div>
+    </div>
+    
+     <div class="control-group">
+        <label class="control-label">Last Name</label>
+        <div class="controls">
+            <input type="text" name="lastname" class=" input-xlarge" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : $user['lastname']; ?>">
         </div>
     </div>
     
     
     
-    <div class="control-group">
+ <?php /*   <div class="control-group">
         <label class="control-label">Birth Date</label>
         <div class="controls">
             <select class="input-small" name="day">
@@ -57,17 +72,17 @@
                 <?php endfor;?>
             </select>
         </div>
-    </div>
+    </div>*/?>
     
     <div class="control-group">
         <label class="control-label">Gender</label>
         <div class="controls">
             <label class="radio">
-                <input type="radio" name="gender" value="Nam" <?php if(isset($_POST['gender']) && $_POST['gender'] == "Nam") echo 'checked';else if($user['gender'] == "Nam") echo 'checked'; ?>>
+                <input type="radio" name="gender" value="Male" <?php if(isset($_POST['gender']) && $_POST['gender'] == "Male") echo 'checked';else if($user['gender'] == "Male") echo 'checked'; ?>>
                 Male
             </label>
             <label class="radio">
-                <input type="radio" name="gender" value="Nữ" <?php if(isset($_POST['gender']) && $_POST['gender'] == "Nữ") echo 'checked';else if($user['gender'] == "Nữ") echo 'checked'; ?>>
+                <input type="radio" name="gender" value="Female" <?php if(isset($_POST['gender']) && $_POST['gender'] == "Female") echo 'checked';else if($user['gender'] == "Female") echo 'checked'; ?>>
                 Female
             </label>
         </div>
@@ -86,13 +101,7 @@
             <input type="text" name="cell_phone" class=" input-xlarge" value="<?php echo isset($_POST['cell_phone']) ? htmlspecialchars($_POST['cell_phone']) : $user['cell_phone']; ?>">
         </div>
     </div>
-    
-    <div class="control-group">
-        <label class="control-label">Paypal account</label>
-        <div class="controls">
-            <input type="text" name="paypal_account" class=" input-xlarge" value="<?php echo isset($_POST['paypal_account']) ? htmlspecialchars($_POST['paypal_account']) : $user['paypal_account']; ?>">
-        </div>
-    </div>    
+  
     
     <div class="control-group">
         <label class="control-label">Lock</label>

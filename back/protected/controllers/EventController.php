@@ -525,11 +525,11 @@ class EventController extends Controller {
 
     public function actionDelete($id) {
         $this->CheckPermission();
-        $category = $this->CategoryModel->get($id);
+        $category = $this->EventModel->get($id);
         if (!$category)
             return;
 
-        $this->CategoryModel->update(array('deleted' => 1, 'id' => $id));
+        $this->EventModel->update(array('deleted' => 1, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
     }
 
@@ -629,7 +629,7 @@ class EventController extends Controller {
 
 
         if ($note == '') {
-            $note = "Vi phạm";
+            $note = "Disabled";
         }
         @HelperApp::email($user_email, 'Event was deleted', $note);
 

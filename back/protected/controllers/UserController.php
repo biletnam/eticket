@@ -78,34 +78,52 @@ class UserController extends Controller {
     }
 
     private function do_edit($user) {
-        $fullname = trim($_POST['fullname']);
-        $day = $_POST['day'];
-        $month = $_POST['month'];
-        $year = $_POST['year'];
-        $gender = isset($_POST['gender']) ? trim($_POST['gender']) : null;
-        $birthday = $user['birthday'];
+        $lastname = trim($_POST['lastname']);
+        $firstname = trim($_POST['firstname']);
+        $file = $_FILES['file'];
 
-        if ($this->validator->is_empty_string($fullname))
-            $this->message['error'][] = "Please enter full name.";
-        if (($day || $month || $year ) && !$this->validator->is_valid_date($day, $month, $year))
-            $this->message['error'][] = "Birth date does not correct.";
+        $gender = isset($_POST['gender']) ? trim($_POST['gender']) : null;
+
+
+        if ($this->validator->is_empty_string($firstname))
+            $this->message['error'][] = "Please enter first name.";
+//        if (($day || $month || $year ) && !$this->validator->is_valid_date($day, $month, $year))
+//            $this->message['error'][] = "Birth date does not correct.";
+
+
+
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
+            $this->message['error'][] = "Image's size does not correct.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             return false;
         }
 
-        if ($day && $month && $year)
-            $birthday = "$year-$month-$day";
+//        if ($day && $month && $year)
+//            $birthday = "$year-$month-$day";
+
+        $img = $user['img'];
+        $thumbnail = $user['thumbnail'];
+
+        // check if has thumbnail
+        if (!$this->validator->is_empty_string($file['name'])) {
+            $resize = HelperApp::resize_images($file, HelperApp::get_avatar_sizes(), $user['img']);
+            $img = $resize['img'];
+            $thumbnail = $resize['thumbnail'];
+        }
 
         $this->UserModel->update(array('id' => $user['id'],
-            'fullname' => $fullname,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
             'home_phone' => trim($_POST['home_phone']),
             'cell_phone' => trim($_POST['cell_phone']),
             'gender' => $gender,
-            'birthday' => $birthday,
-            'paypal_account' => trim($_POST['paypal_account']),
-            'banned' => $_POST['banned']
+            'banned' => $_POST['banned'],
+            'img'=>$img,
+            'thumbnail'=>$thumbnail
         ));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $user, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/user/edit/id/$user[id]?s=1");

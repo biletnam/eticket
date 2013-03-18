@@ -27,8 +27,8 @@
                     <a href="<?php echo Yii::app()->request->baseUrl; ?>/user/edit/id/<?php echo $v['id'] ?>"><?php echo $v['email'] ?></a>
                     <span class="label label-important label-banned <?php if(!$v['banned']) echo 'hide'; ?>">Banned</span>
                     
-                    <?php if($v['fullname'] != ""): ?>
-                    <br/><?php echo $v['fullname']; ?>
+                    <?php if($v['firstname'] != ""): ?>
+                    <br/><?php echo $v['firstname'].' '.$v['lastname']; ?>
                     <?php endif;?>
                 </td>
                 <td><?php echo date("d-m-Y H:i", $v['date_added']); ?></td>

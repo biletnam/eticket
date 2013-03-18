@@ -27,12 +27,14 @@ class EventModel extends CFormModel {
         }
         
 
-        $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+        $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,ec.title as city
                 FROM etk_events ve
                 LEFT JOIN etk_users va
                 ON va.id = ve.user_id
                 LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+		ON ec.id = vl.city_id
                 WHERE 1
                 $custom
                 ORDER BY ve.date_added DESC
@@ -77,12 +79,14 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,vl.city
+        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,ec.title as city
                 FROM etk_events ve
                 LEFT JOIN etk_users va
                 ON va.id = ve.user_id
                 LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = vl.city_id
                 WHERE ve.id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);

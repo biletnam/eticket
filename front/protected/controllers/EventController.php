@@ -729,7 +729,7 @@ class EventController extends Controller {
         }
 
         //update order information
-
+        
         $this->OrderModel->update(array(
             'firstname' => $firstname,
             'lastname' => $lastname,
@@ -741,17 +741,16 @@ class EventController extends Controller {
             'id' => $order['id']
         ));
 
-
+        $order = $this->OrderModel->get($order['id']);
         // if this order does not use payment then insert to database normally
-        if ($order['use_payment'] == 0) {
-
+        if ($order['use_payment'] == 0) {            
             foreach ($order_details as $k => $v) {
 
                 for ($i = 0; $i < $v['quantity']; $i++) {
                     $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
                 }
             }
-
+            
             $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
             $this->email_register_event($order, $order_details);
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]?iok=1&msg=Thank you for joining our event.");
@@ -902,14 +901,13 @@ class EventController extends Controller {
         foreach($order_details as $k=>$v){
             $url = urlencode(HelperUrl::baseUrl(true)."event/attend/eid/$order[event_id]/did/$v[id]");
             $message.= ($k + 1).'. '.$v['title'];
-            $message.= '<br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data='.$url.'&amp;size=100x100" alt="'.$v['title'].'" title="'.$v['title'].'" />';
+            $message.= '<br/><br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data='.$url.'&amp;size=100x100" alt="'.$v['title'].'" title="'.$v['title'].'" /> <br/> <br/>';
         }
         
         $message.= '<br/><br/>
                     
                     
                     ';
-        
         HelperApp::email($order['email'], "Register event ".$event['title'], $message);
     }
 
@@ -950,6 +948,21 @@ class EventController extends Controller {
         $this->viewData['query_string'] = $this->get_query_string();
         Yii::app()->params['page'] = "Find Events";
         $this->render('search', $this->viewData);
+    }
+    
+    public function actionAttend($eid,$did){
+        $event = $this->EventModel->get($eid);
+        
+        if(!$event){
+            echo "PERMISSION DENIED";
+            die;
+        }
+        
+        $message = '<h2>Permission Accepted</h2> <br/><br/>
+                    <h3>Event: '.$event['title'].' </h3>
+                    ';
+        
+        echo $message;
     }
 
     private function get_query_string() {

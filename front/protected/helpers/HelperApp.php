@@ -264,7 +264,7 @@ class HelperApp {
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 
-        @mail($to, $subject, $message, $header);
+         @mail($to, $subject, $message, $header);
     }
     
     public static function email_contact($to, $subject,$name, $message,$from, $footer = true ) {

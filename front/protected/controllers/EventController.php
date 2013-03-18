@@ -604,16 +604,26 @@ class EventController extends Controller {
         if ($_POST)
             $this->do_add_event_token($event);
 
-        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
+        $ticket_types = $this->TicketTypeModel->gets(array('deleted'=>0,'event_id'=>$event['id']),1,100);
+        
+        foreach($ticket_types as $k=>$v){
+            $tmp_quantity = $this->TicketTypeModel->get_tmp_quantity($v['id']);
+            $total_paid_ticket = (int)$v['total_ticket'] == 0 ? 0 : $v['total_ticket'];
+            $remaining = $v['quantity'] - $tmp_quantity - $total_paid_ticket;
+            $v['remaining'] = $remaining;
+            $v['total_ticket'] = $total_paid_ticket;            
+            $ticket_types[$k] = $v;
+        }
 
         Yii::app()->params['page'] = 'Event Detail';
 
         $this->viewData['ticket_types'] = $ticket_types;
+        //print_r($ticket_types);die;
         $this->viewData['event'] = $event;
         $this->viewData['message'] = $this->message;
         $this->render('event', $this->viewData);
     }
-
+    
     private function do_add_event_token($event) {
 
         HelperGlobal::require_login();
@@ -743,6 +753,7 @@ class EventController extends Controller {
             }
 
             $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
+            $this->email_register_event($order, $order_details);
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]?iok=1&msg=Thank you for joining our event.");
         } else {
             //if this order use payment then process to paypal
@@ -868,10 +879,38 @@ class EventController extends Controller {
                 }
 
                 $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
+                $this->email_register_event($order, $order_details);
             }
         }
         fclose($fp);
         exit();
+    }
+    
+    private function email_register_event($order,$order_details){
+        $event = $this->EventModel->get($order['event_id']);
+        
+        
+        $message = 'Dear '.$order['firstname'].', <br/><br/>
+                    
+                    Thank you for joining our event: '.$event['title'].' <br/><br/>
+                    We hope you enjoyt it. <br/>
+                    
+                    Here are the qrcodes for attending our events: <br/><br/>
+                    
+                    
+                    ';
+        foreach($order_details as $k=>$v){
+            $url = urlencode(HelperUrl::baseUrl(true)."event/attend/eid/$order[event_id]/did/$v[id]");
+            $message.= ($k + 1).'. '.$v['title'];
+            $message.= '<br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data='.$url.'&amp;size=100x100" alt="'.$v['title'].'" title="'.$v['title'].'" />';
+        }
+        
+        $message.= '<br/><br/>
+                    
+                    
+                    ';
+        
+        HelperApp::email($order['email'], "Register event ".$event['title'], $message);
     }
 
     public function actionSearch($p = 1) {
@@ -924,29 +963,6 @@ class EventController extends Controller {
             $params[$tmp[0]] = $tmp[1];
         }
         return $params;
-    }
-
-    public function actionDetails($s) {
-        HelperGlobal::require_login();
-
-        $event = $this->EventModel->get_by_slug($s);
-        if (count($event) == 0)
-            $this->load_404();
-
-        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
-
-        foreach ($ticket_types as $k => $t) {
-            $count_tikect_sold = $this->TicketModel->ticket_sold($t['id']);
-            $ticket_types[$k]['ticket_available'] = ($t['quantity'] - $count_tikect_sold);
-        }
-
-
-
-        Yii::app()->params['page'] = 'Event Detail';
-
-        $this->viewData['ticket_types'] = $ticket_types;
-        $this->viewData['event'] = $event;
-        $this->render('details', $this->viewData);
     }
 
 }

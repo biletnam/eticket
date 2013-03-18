@@ -43,15 +43,6 @@ class TicketModel extends CFormModel {
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
         }
 
-        if (isset($args['status'])) {
-            $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['check_date_expired'])) {
-
-            $custom.= " AND (vt.status = 1 OR (vt.status = 0 AND vt.date_expired > UNIX_TIMESTAMP()) )";
-        }
 
         $sql = "SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket,ee.slug as event_slug
                 FROM etk_tickets et
@@ -110,16 +101,6 @@ class TicketModel extends CFormModel {
         if (isset($args['ticket_type_id'])) {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['status'])) {
-            $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['check_date_expired'])) {
-
-            $custom.= " AND (et.status = 1 OR (et.status = 0 AND et.date_expired > UNIX_TIMESTAMP()) )";
         }
 
         $sql = "SELECT count(*) as total

@@ -1,6 +1,6 @@
 <div class="page-event-detail">
     <div class="container_12">
-        
+
         <?php echo Helper::print_info(); ?>
         <?php echo Helper::print_warning(); ?>
     </div>
@@ -59,15 +59,23 @@
                                             </td>
                                             <td>$<?php echo $t['price'] ?></td>
                                             <td>$<?php echo $t['tax'] ?></td>
-                                            <td>                                                
-                                                <select name="ticket_type[<?php echo $t['id']; ?>]">
-                                                    <option value='0'>0</option>
-                                                    <?php for ($i = $t['minimum']; $i <= ($t['maximum'] < $t['minimum'] ? $t['minimum'] : $t['maximum']); $i++): ?>
+                                            <td>                             
+                                                <?php if ((int) $t['remaining'] == 0 && (int)$t['total_ticket'] > 0): ?>
+                                                SOLD OUT
+                                                <?php else: ?>
+                                                    <?php 
+                                                    
+                                                    $remaining = $t['remaining'] > (int)$t['minimum'] ? $t['remaining'] : (int)$t['minimum'];
+                                                    ?>
+                                                    <select name="ticket_type[<?php echo $t['id']; ?>]">
+                                                        <option value='0'>0</option>
+                                                        <?php for ($i = $t['minimum']; $i <= $remaining; $i++): ?>
 
-                                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                                                    <?php endfor; ?>
+                                                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                                        <?php endfor; ?>
 
-                                                </select>
+                                                    </select>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

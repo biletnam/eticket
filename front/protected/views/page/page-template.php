@@ -5,7 +5,7 @@
                 <article class="border border-radius form-style">
                     <div class="page-thumbnail">
                         <?php if($page['thumbnail']): ?>
-                        <img src="<?php echo HelperApp::get_thumbnail($page['thumbnail'],'full') ?>"/>
+                        <img src="<?php echo HelperApp::get_thumbnail($page['thumbnail'],'large') ?>"/>
                         <br/><br/>
                         <?php endif; ?>
                     </div>

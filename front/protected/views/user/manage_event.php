@@ -6,21 +6,21 @@
                 <th width="180px">EVENT NAME</th>
                 <th>DATE</th>
                 <th>STATUS</th>
-                <th>SOLD</th>
+                
                 <th>QUICK LINKS</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($events as $e): ?>
             <tr>
-                <td class="text-bold"> <a href="<?php echo HelperUrl::baseUrl()?>event/details/s/<?php echo $e['slug']?>"><?php echo $e['title']?> </a></td>
+                <td class="text-bold"> <a href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $e['slug']?>"><?php echo $e['title']?> </a></td>
                 <td><?php echo date('M j, Y',strtotime($e['start_time']))?></td>
-                <td>Live</td>
-                <td>2/20</td>
+                <td><?php echo !$e['disabled'] ? "Live" : "Disabled"; ?></td>
+                
                 <td>
                     <div>
                         <a class="btn-style btn-primary" href="<?php echo HelperUrl::baseUrl()?>event/edit/id/<?php echo $e['id']?>"> Edit </a>
-                        <a class="btn-style" href="<?php echo HelperUrl::baseUrl()?>event/details/s/<?php echo $e['slug']?>">View</a>
+                        <a class="btn-style" href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $e['slug']?>">View</a>
                         <a class="btn-style btn-invite"  href="#invite_<?php echo $e['id']?>">Invite</a>
                     </div>
                 </td>

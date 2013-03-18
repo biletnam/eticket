@@ -10,7 +10,8 @@ class TicketModel extends CFormModel {
         $page = ($page - 1) * $ppp;
         $custom = "";
         $params = array();
-
+        $group_by = "";
+        $sql_count = "";
 
         if (isset($args['user_id']) && $args['user_id'] != "") {
             $custom.= " AND et.user_id = :user_id";
@@ -42,9 +43,14 @@ class TicketModel extends CFormModel {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
         }
+        
+        if(isset($args['group_ticket'])){
+            $group_by = "GROUP BY et.ticket_type_id";
+            $sql_count = "count(et.id) as total_ticket,";
+        }
 
 
-        $sql = "SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket,ee.slug as event_slug
+        $sql = "SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,$sql_count ee.slug as event_slug
                 FROM etk_tickets et
                 LEFT JOIN etk_ticket_types ett
                 ON ett.id = et.ticket_type_id
@@ -52,7 +58,7 @@ class TicketModel extends CFormModel {
                 ON ee.id = ett.event_id
                 WHERE 1
                 $custom
-                GROUP BY et.ticket_type_id
+                $group_by
                 ORDER BY et.date_added DESC
                 
                 LIMIT :page,:ppp";

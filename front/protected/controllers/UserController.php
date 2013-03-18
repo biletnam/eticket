@@ -10,6 +10,7 @@ class UserController extends Controller {
     private $OrganizerModel;
     private $EventModel;
     private $TicketModel;
+    private $OrderModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -31,6 +32,9 @@ class UserController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
+        
+        /* @var $OrderModel OrderModel */
+        $this->OrderModel = new OrderModel();
     }
 
     /**
@@ -281,8 +285,8 @@ class UserController extends Controller {
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file, 1048576))
             $this->message['error'][] = "Image or size is not correct.";
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(250, 250, $file['tmp_name']))
-            $this->message['error'][] = "Minimum image size is 250x250px.";
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
+            $this->message['error'][] = "Minimum image size is 300x300px.";
         if ($this->validator->is_empty_string($firstname) || $this->validator->has_speacial_character($firstname))
             $this->message['error'][] = "Firstname can not be blank and not contains any speacial characters.";
         if ($this->validator->is_empty_string($lastname) || $this->validator->has_speacial_character($lastname))
@@ -332,8 +336,6 @@ class UserController extends Controller {
         Yii::app()->params['page'] = 'Management Event';
         Yii::app()->params['is_tab'] = 'manage_event';
 
-
-
         $this->viewData['total'] = $total;
         $this->viewData['events'] = $events;
         $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/index/p/", $total, $p) : "";
@@ -354,21 +356,40 @@ class UserController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/manage_event/?s=1");
     }
 
-    private function paid_event($type) {
+    private function paid_event($p = 1) {
 
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_paid_event();
-
-        $args = array('deleted' => 0, 'user_id' => UserControl::getId());
-
-        $ticket_paids = $this->TicketModel->gets($args);
+        
+        $args = array('user_id'=>  UserControl::getId(),'status'=>'completed');
+        $orders = $this->OrderModel->gets($args);
+        $total = $this->OrderModel->counts($args);
 
         $this->viewData['message'] = $this->message;
-        $this->viewData['ticket_paids'] = $ticket_paids;
+        $this->viewData['orders'] = $orders;
+        $this->viewData['total'] = $total;
         Yii::app()->params['page'] = "Paid Event's ticket";
         Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);
+    }
+    
+    public function actionOrder($id = 0){
+        HelperGlobal::require_login();
+        $this->layout = 'account';
+        $order = $this->OrderModel->get($id);
+        if(!$order ||$order['user_id'] != UserControl::getId())
+            $this->load_404 ();
+        
+        $order_details = $this->OrderModel->get_details($id);
+        
+        Yii::app()->params['page'] = "Order #$id";
+        Yii::app()->params['is_tab'] = 'paid_event';
+        
+        $this->viewData['order'] = $order;
+        $this->viewData['order_details'] = $order_details;
+        
+        $this->render('order-detail',$this->viewData);
     }
 
     public function actionTicket($id) {
@@ -476,13 +497,14 @@ class UserController extends Controller {
     }
 
     public function actionView_profile($s = 'current', $u = '',$p = 1) {
-
+        
         if ($u == '')
             $this->load_404();
         
         $ppp = 10;
         $list_events = $this->EventModel->get_all_by_user($u,$p, $ppp);
         $user = $this->UserModel->get($u);
+        
         $total = $this->EventModel->count_all_by_user($u);
         
         if($user['id'] == UserControl::getId())

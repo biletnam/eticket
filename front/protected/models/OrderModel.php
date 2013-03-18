@@ -11,13 +11,25 @@ class OrderModel extends CFormModel {
         $custom = "";
         $params = array();
         
-        if (ietket($args['user_id'])) {
+        if (isset($args['user_id'])) {
             $custom.= " AND etko.user_id = :user_id";            
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'],'type'=>PDO::PARAM_STR);
         }
+        
+        if (isset($args['event_id'])) {
+            $custom.= " AND etko.event_id = :event_id";            
+            $params[] = array('name' => ':event_id', 'value' => $args['event_id'],'type'=>PDO::PARAM_STR);
+        }
+        
+        if (isset($args['status'])) {
+            $custom.= " AND etko.status = :status";            
+            $params[] = array('name' => ':status', 'value' => $args['status'],'type'=>PDO::PARAM_STR);
+        }
 
-        $sql = "SELECT etko.*
+        $sql = "SELECT etko.*,ee.title as event_title,ee.slug as event_slug
                 FROM etk_orders etko
+                LEFT JOIN etk_events ee
+                ON ee.id = etko.event_id
                 WHERE 1
                 $custom
                 ORDER BY etko.date_added DESC
@@ -38,9 +50,19 @@ class OrderModel extends CFormModel {
         $custom = "";
         $params = array();
 
-        if (ietket($args['user_id'])) {
+        if (isset($args['user_id'])) {
             $custom.= " AND etko.user_id = :user_id";            
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'],'type'=>PDO::PARAM_STR);
+        }
+        
+        if (isset($args['event_id'])) {
+            $custom.= " AND etko.event_id = :event_id";            
+            $params[] = array('name' => ':event_id', 'value' => $args['event_id'],'type'=>PDO::PARAM_STR);
+        }
+        
+        if (isset($args['status'])) {
+            $custom.= " AND etko.status = :status";            
+            $params[] = array('name' => ':status', 'value' => $args['status'],'type'=>PDO::PARAM_STR);
         }
 
         $sql = "SELECT count(*) as total
@@ -117,23 +139,6 @@ class OrderModel extends CFormModel {
         $sql = 'update etk_orders set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
-    }
-    
-     public function get_order_detail($order_id) {
-        $sql = "SELECT sod.*,sp.title as product_title,sp.slug as product_slug,etk.id as store_id, etk.title as store_title
-                FROM etk_orders_details sod
-                LEFT JOIN etk_product sp
-                ON sod.product_id = sp.id
-                LEFT JOIN etk_stores etk
-                ON sp.store_id = etk.id
-                WHERE 1
-                AND sod.order_id = :order_id
-                ORDER BY sp.title ASC
-                ";
-        
-        $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":order_id", $order_id, PDO::PARAM_INT);
-        return $command->queryAll();
     }
     
 }

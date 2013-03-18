@@ -7,7 +7,7 @@
                 Current Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini" name="oldpwd" value=""/>
+                <input type="password" class="input-medium" name="oldpwd" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">
@@ -15,7 +15,7 @@
                 New Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini" name="pwd1" value=""/>
+                <input type="password" class="input-medium" name="pwd1" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">
@@ -23,7 +23,7 @@
                 Confirm Password
             </label>
             <div class="controls pull-left">
-                <input type="password" class="input-mini" name="pwd2" value=""/>
+                <input type="password" class="input-medium" name="pwd2" value=""/>
             </div>
         </div>
         <div class="controls-group clearfix">

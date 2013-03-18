@@ -14,8 +14,18 @@
             <label class="control-label pull-left">Image</label>
             <div class="controls pull-left">
                 <input type="file" name="file"/>
+                
             </div>
         </div>
+        
+        <div class="controls-group clearfix">
+            <label class="control-label pull-left"></label>
+            <div class="controls pull-left">
+                
+                We accept JPG|PNG file only. Minimum size 300x300px, maximum 1MB
+            </div>
+        </div>
+        
         <div class="controls-group clearfix">
             <label class="control-label pull-left">Email</label>
             <div class="controls pull-left">

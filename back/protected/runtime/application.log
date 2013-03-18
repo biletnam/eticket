@@ -4003,3 +4003,329 @@ Stack trace:
 REQUEST_URI=/eticket/back/event/delete_gallery/id/18
 HTTP_REFERER=http://localhost/eticket/back/event/gallery/id/14?s=1
 ---
+2013/03/18 10:04:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "location".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('location')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('location')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/location')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/back/event/location
+---
+2013/03/18 10:05:05 [error] [exception.CException] exception 'CException' with message 'LocationModel and its behaviors do not have a method or closure named "counts".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(34): CComponent->__call('counts', Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(34): LocationModel->counts(Array)
+#2 [internal function]: LocationController->actionIndex('all', 1)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/back/location
+---
+2013/03/18 10:06:30 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT count(*) as total
+                FROM etk_locations vc
+                WHERE 1
+                 AND vc.deleted = :deleted
+                ORDER BY vc.title ASC
+              .
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (64)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (34)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:06:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT count(*) as total
+                FROM etk_locations vc
+                WHERE 1
+                 AND vc.deleted = :deleted
+                ORDER BY vc.title ASC
+              ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(64): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(34): LocationModel->counts(Array)
+#3 [internal function]: LocationController->actionIndex('all', 1)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/location
+---
+2013/03/18 10:06:59 [error] [exception.CException] exception 'CException' with message 'LocationController cannot find the requested view "index".' in D:\xampp\htdocs\eticket\framework\web\CController.php:879
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(40): CController->render('index', Array)
+#2 [internal function]: LocationController->actionIndex('all', 1)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/back/location
+---
+2013/03/18 10:07:16 [error] [php] Undefined index: city (D:\xampp\htdocs\eticket\back\protected\views\location\index.php:32)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(40): LocationController->render()
+#3 unknown(0): LocationController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location
+in D:\xampp\htdocs\eticket\back\protected\views\location\index.php (32)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (40)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:14:23 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\back\protected\views\location\add.php:26)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(50): LocationController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): LocationController->actionAdd()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/add/
+in D:\xampp\htdocs\eticket\back\protected\views\location\add.php (26)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (50)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:17:08 [error] [php] Array to string conversion (D:\xampp\htdocs\eticket\back\protected\views\location\add.php:27)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(53): LocationController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): LocationController->actionAdd()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/add/
+in D:\xampp\htdocs\eticket\back\protected\views\location\add.php (27)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (53)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:36:53 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city' in 'field list'. The SQL statement executed was: INSERT INTO etk_locations(title,slug,city,address,date_added) VALUES(:title,:slug,:city,:address,:date_added).
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (94)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (70)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (47)
+2013/03/18 10:36:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city' in 'field list'. The SQL statement executed was: INSERT INTO etk_locations(title,slug,city,address,date_added) VALUES(:title,:slug,:city,:address,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(94): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(70): LocationModel->add('Park Center', 'park-center', '2', 'Park')
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(47): LocationController->do_add()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): LocationController->actionAdd()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('add')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/add')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/back/location/add/
+HTTP_REFERER=http://localhost/eticket/back/location/add/
+---
+2013/03/18 10:37:12 [error] [exception.CException] exception 'CException' with message 'Property "LocationController.CategoryModel" is not defined.' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(77): CComponent->__get('CategoryModel')
+#1 [internal function]: LocationController->actionEdit('24')
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/edit/i...')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+HTTP_REFERER=http://localhost/eticket/back/location/add/
+---
+2013/03/18 10:42:43 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\back\protected\views\location\edit.php:26)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(81): LocationController->render()
+#3 unknown(0): LocationController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+in D:\xampp\htdocs\eticket\back\protected\views\location\edit.php (26)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (81)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:46:46 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\back\protected\views\location\edit.php:26)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(83): LocationController->render()
+#3 unknown(0): LocationController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+in D:\xampp\htdocs\eticket\back\protected\views\location\edit.php (26)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (83)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:46:47 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\back\protected\views\location\edit.php:26)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(83): LocationController->render()
+#3 unknown(0): LocationController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+in D:\xampp\htdocs\eticket\back\protected\views\location\edit.php (26)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (83)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:46:47 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\back\protected\views\location\edit.php:26)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): LocationController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): LocationController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(83): LocationController->render()
+#3 unknown(0): LocationController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+in D:\xampp\htdocs\eticket\back\protected\views\location\edit.php (26)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (83)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 10:50:12 [error] [exception.CException] exception 'CException' with message 'Property "LocationController.CategoryModel" is not defined.' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(101): CComponent->__get('CategoryModel')
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(77): LocationController->do_edit(Array)
+#2 [internal function]: LocationController->actionEdit('24')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/edit/i...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+HTTP_REFERER=http://localhost/eticket/back/location/edit/id/24/?s=1
+---
+2013/03/18 10:50:42 [error] [exception.CException] exception 'CException' with message 'LocationModel and its behaviors do not have a method or closure named "update".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(101): CComponent->__call('update', Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(101): LocationModel->update(Array)
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(77): LocationController->do_edit(Array)
+#3 [internal function]: LocationController->actionEdit('24')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/edit/i...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+HTTP_REFERER=http://localhost/eticket/back/location/edit/id/24/?s=1
+---
+2013/03/18 10:51:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_location' doesn't exist. The SQL statement executed was: update etk_location set title = :title, city_id = :city_id, address = :address, last_modified = :last_modified, id = :id where id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (125)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (101)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (77)
+2013/03/18 10:51:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_location' doesn't exist. The SQL statement executed was: update etk_location set title = :title, city_id = :city_id, address = :address, last_modified = :last_modified, id = :id where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(125): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(101): LocationModel->update(Array)
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(77): LocationController->do_edit(Array)
+#3 [internal function]: LocationController->actionEdit('24')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/edit/i...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+HTTP_REFERER=http://localhost/eticket/back/location/edit/id/24/?s=1
+---
+2013/03/18 10:51:42 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'last_modified' in 'field list'. The SQL statement executed was: update etk_locations set title = :title, city_id = :city_id, address = :address, last_modified = :last_modified, id = :id where id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (125)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (101)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (77)
+2013/03/18 10:51:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'last_modified' in 'field list'. The SQL statement executed was: update etk_locations set title = :title, city_id = :city_id, address = :address, last_modified = :last_modified, id = :id where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(125): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(101): LocationModel->update(Array)
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(77): LocationController->do_edit(Array)
+#3 [internal function]: LocationController->actionEdit('24')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/edit/i...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/location/edit/id/24/?s=1
+HTTP_REFERER=http://localhost/eticket/back/location/edit/id/24/?s=1
+---

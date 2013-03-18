@@ -14,7 +14,7 @@
             <th>Category</th>            
             <th>Location</th>
             <th>Time</th>
-            <th>Album</th>
+   
             <th class="row-action"></th>
         </tr>
     </thead>

@@ -7,12 +7,9 @@ class UserController extends Controller {
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
     private $CityModel;
-
     private $OrganizerModel;
-
     private $EventModel;
     private $TicketModel;
-
 
     public function init() {
         /* @var $validator FormValidator */
@@ -24,7 +21,7 @@ class UserController extends Controller {
         /* @var $CityModel CityModel */
         $this->CityModel = new CityModel();
 
-        
+
         /* @var $OrganizerModel OrganizerModel */
         $this->OrganizerModel = new OrganizerModel();
 
@@ -34,7 +31,6 @@ class UserController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
-
     }
 
     /**
@@ -78,7 +74,7 @@ class UserController extends Controller {
         $is_session = isset($_POST['remember']) ? false : true;
         $city_id = trim($_POST['city']);
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
-       
+
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email cannot be blank.";
         if (!$this->validator->is_email($email))
@@ -377,7 +373,7 @@ class UserController extends Controller {
 
     public function actionTicket($id) {
         $this->layout = 'account';
-        $ticket_type = $this->TicketModel->get_ticket_by_user(UserControl::getId(),$id);
+        $ticket_type = $this->TicketModel->get_ticket_by_user(UserControl::getId(), $id);
         $this->viewData['ticket_type'] = $ticket_type;
 
         Yii::app()->params['page'] = "Ticket Detail";
@@ -432,36 +428,40 @@ class UserController extends Controller {
 
     public function actionMake_profile() {
         HelperGlobal::require_login();
+        
+        if(UserControl::getRole()!='client')
+            $this->load_404 ();
+        
         $organizer = $this->OrganizerModel->get_by_user(UserControl::getId());
 
-        if($_POST)
+        if ($_POST)
             $this->do_make_profile($organizer);
-        
+
         $this->viewData['organizer'] = $organizer;
         $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = "Make Profile";
         $this->render('make-profile', $this->viewData);
     }
-    
-    private function do_make_profile($organizer){
-        
+
+    private function do_make_profile($organizer) {
+
         $title = trim($_POST['title']);
         $file = $_FILES['file'];
         $description = trim($_POST['description']);
         if ($this->validator->is_empty_string($title))
             $this->message['error'][] = "Please enter Organizer name.";
-        
+
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension";
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
-        
+
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             return false;
         }
-        
+
         $img = $organizer['img'];
         $thumbnail = $organizer['thumbnail'];
 
@@ -471,15 +471,32 @@ class UserController extends Controller {
             $thumbnail = $resize['thumbnail'];
         }
 
-        $this->OrganizerModel->update(array('title' => $title,'last_modified' => time(),'img'=>$img,'thumbnail'=>$thumbnail,'description'=>$description,'id' => $organizer['id']));
+        $this->OrganizerModel->update(array('title' => $title, 'last_modified' => time(), 'img' => $img, 'thumbnail' => $thumbnail, 'description' => $description, 'id' => $organizer['id']));
         $this->redirect(HelperUrl::baseUrl() . "user/make_profile/?s=1");
-        
     }
 
-    public function actionView_profile($s = 'current') {
+    public function actionView_profile($s = 'current', $u = '',$p = 1) {
 
+        if ($u == '')
+            $this->load_404();
+        
+        $ppp = 10;
+        $list_events = $this->EventModel->get_all_by_user($u,$p, $ppp);
+        $user = $this->UserModel->get($u);
+        $total = $this->EventModel->count_all_by_user($u);
+        
+        if($user['id'] == UserControl::getId())
+            $page_title = 'My Profile';
+        else
+            $page_title = $user['firstname'].' '. $user['lastname']. "'s Profile";
+        
+        $this->viewData['user'] = $user;
+        $this->viewData['list_events']=$list_events;
         $this->viewData['message'] = $this->message;
-        Yii::app()->params['page'] = "My Profile";
+        $this->viewData['total'] = $total;
+        $this->viewData['current_tab'] = $s;
+        Yii::app()->params['page'] = $page_title;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, HelperUrl::baseUrl() . "user/view_profile/s/$s/u/$u/p/", $total, $p) : "";
         $this->render('view-profile', $this->viewData);
     }
 

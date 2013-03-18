@@ -1,6 +1,6 @@
 
 <?php $total = 0 ?>
-<div class="page-event-detail">
+<div class="page-event-detail page-event-register">
     <div class="container_12">
         <div class="clearfix">
             <div class="grid_12">
@@ -8,7 +8,7 @@
                     <div class="pull-left event-header-title">
                         <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
-                            Adventure Geek Productions<br/>
+                            <b>Author: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo $event['firstname']. ' ' . $event['lastname'] ?></a><br/>
 
                             <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
                             <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>

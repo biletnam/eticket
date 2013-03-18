@@ -34,11 +34,13 @@ class UserModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT *
-                FROM etk_users
-                WHERE id = :id
-                AND disabled = 0
-                AND banned = 0";
+        $sql = "SELECT eu.* , eo.title as organizer_title, eo.description as organizer_description, eo.thumbnail as organizer_thumbnail
+                FROM etk_users eu
+                LEFT JOIN etk_organizers eo
+                ON eo.user_id = eu.id
+                WHERE eu.id = :id
+                AND eu.disabled = 0
+                AND eu.banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();

@@ -238,3 +238,271 @@ Stack trace:
 REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
 HTTP_REFERER=http://localhost/eticket/front/css/style.css
 ---
+2013/03/18 10:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 10:57:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 11:49:58 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'disabled' in where clause is ambiguous. The SQL statement executed was: SELECT eu.* , eo.title as organizer_title, eo.description as organizer_description, eo.thumbnail as organizer_thumbnail
+                FROM etk_users eu
+                LEFT JOIN etk_organizers eo
+                ON eo.user_id = eu.id
+                WHERE eu.id = :id
+                AND disabled = 0
+                AND banned = 0.
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (46)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (480)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 11:49:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'disabled' in where clause is ambiguous. The SQL statement executed was: SELECT eu.* , eo.title as organizer_title, eo.description as organizer_description, eo.thumbnail as organizer_thumbnail
+                FROM etk_users eu
+                LEFT JOIN etk_organizers eo
+                ON eo.user_id = eu.id
+                WHERE eu.id = :id
+                AND disabled = 0
+                AND banned = 0' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(46): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(480): UserModel->get('5')
+#3 [internal function]: UserController->actionView_profile('current', '5')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('view_profile')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/view_profi...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/user/view_profile/s/current/u/5
+---
+2013/03/18 11:51:46 [error] [php] Undefined index: title (D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php:7)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(487): UserController->render()
+#3 unknown(0): UserController->actionView_profile()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/view_profile/s/current/u/5
+in D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php (7)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (487)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 11:52:20 [error] [php] Undefined index: title (D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php:8)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(487): UserController->render()
+#3 unknown(0): UserController->actionView_profile()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/view_profile/s/current/u/5
+in D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php (8)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (487)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 11:52:54 [error] [php] Undefined index: description (D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php:9)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(487): UserController->render()
+#3 unknown(0): UserController->actionView_profile()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/view_profile/s/current/u/5
+in D:\xampp\htdocs\eticket\front\protected\views\user\view-profile.php (9)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (487)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 11:59:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 12:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 12:02:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 13:14:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE ee.user_id = :user_id
+                AND ee.deleted = 0
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (269)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (480)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 13:14:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE ee.user_id = :user_id
+                AND ee.deleted = 0
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(269): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(480): EventModel->get_all_by_user('5', 1, 20)
+#3 [internal function]: UserController->actionView_profile('current', '5', 1)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('view_profile')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/view_profi...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/user/view_profile/s/current/u/5
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/event-new
+---
+2013/03/18 13:26:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/18 13:26:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/18 13:46:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/18 13:49:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 13:49:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 14:06:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/18 14:08:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---

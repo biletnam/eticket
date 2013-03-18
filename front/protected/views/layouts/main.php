@@ -13,7 +13,7 @@
                                 <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signout"><i class="icon icon-logout"></i> Log out</a></li> 
                             </ul>
                         </li>
-                        <li><a href="<?php echo HelperUrl::baseUrl() ?>user/make_profile">My Profile</a>|</li>
+                        <li><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo UserControl::getId() ?>">My Profile</a>|</li>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
                     <?php else: ?>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signup">Register</a></li>

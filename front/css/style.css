@@ -687,6 +687,7 @@ i{display: inline-block;position: relative}
                             .organize-list-events .col-center a{color:#4c4b4c;font-weight: bold;font-size: 14px}
                             .organize-list-events .col-center p{margin-bottom: 0}
                         .organize-list-events .col-right{float:left;width: 75px;margin-top: 30px;}
+            .organize-list-events-wrap .pagination{text-align: center}            
 .page-account-setting{}
     .user-avatar{width: 100px;padding:3px;}
 
@@ -992,3 +993,9 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
     .page-detail-ticket table{}
     .page-detail-ticket table td{padding:3px}
     .icon-back{background-position: -5px -662px;width: 14px;height: 14px;top:3px}
+    
+/*****Page 404*****/    
+.page-404{}
+    .page-404 h1{font-size: 30px;line-height: 45px}
+    .page-404 h5{font-size: 20px;line-height: 30px}
+.error{background-color: #ffb9b9 !important}    

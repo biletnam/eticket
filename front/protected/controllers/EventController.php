@@ -579,7 +579,7 @@ class EventController extends Controller {
     }
 
     public function actionInfo($s) {
-        HelperGlobal::require_login();
+        //HelperGlobal::require_login();
 
         $event = $this->EventModel->get_by_slug($s);
         if (count($event) == 0)

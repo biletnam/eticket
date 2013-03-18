@@ -42,11 +42,11 @@ function contact_form(){
                     $('.form-contact_us .error-message').html(error);
                     $('.form-contact_us .alert-error').fadeIn();*/
                     if(respone.yourname =='error')
-                        $('.yourname').css('border','1px solid red');
+                        $('.yourname').addClass('error');
                     if(respone.email =='error')
-                        $('.email').css('border','1px solid red');
+                        $('.email').addClass('error');
                     if(respone.yourmessage =='error')
-                        $('.message').css('border','1px solid red');
+                        $('.message').addClass('error');
                 }
             }
             ,'json');

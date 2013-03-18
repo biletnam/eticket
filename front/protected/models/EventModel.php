@@ -231,7 +231,7 @@ class EventModel extends CFormModel {
     }
 
     public function get_by_slug($slug) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as city_id,ec.title as city_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
@@ -245,6 +245,49 @@ class EventModel extends CFormModel {
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":slug", $slug);
         return $this->_parse_events($command->queryRow());
+    }
+    
+    public function get_all_by_user($user_id, $page = 1, $ppp = 20){
+        $page = ($page - 1) * $ppp;
+
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE ee.user_id = :user_id
+                AND ee.deleted = 0
+                GROUP BY ee.id
+                ORDER BY ee.date_added DESC
+                LIMIT :page,:ppp
+                ";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":user_id", $user_id);
+        $command->bindParam(":page", $page, PDO::PARAM_INT);
+        $command->bindParam(":ppp", $ppp, PDO::PARAM_INT);
+        return $this->_parse_events($command->queryAll());
+    }
+    public function count_all_by_user($user_id){
+
+        $sql = "SELECT count(*) as total
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.user_id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE ee.user_id = :user_id
+                AND ee.deleted = 0
+                ORDER BY ee.date_added DESC
+                ";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":user_id", $user_id);
+        $count = $command->queryRow();
+        return $count['total'];
     }
 
     private function _parse_events($events) {

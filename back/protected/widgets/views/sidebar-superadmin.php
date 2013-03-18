@@ -4,6 +4,7 @@
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/category/"><i class="icon-th"></i>Categories</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/"><i class="icon-map-marker"></i>Events</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/pending"><i class="icon-map-marker"></i>Event Pending</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/ticket/"><i class="icon-map-marker"></i>Tickets</a></li>
         
           <li><a href="<?php echo Yii::app()->request->baseUrl ?>/organizer"><i class="icon-map-marker"></i>Organizer</a></li>
         

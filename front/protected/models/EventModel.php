@@ -27,6 +27,11 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
+        
+        if (isset($args['disabled'])) {
+            $custom.= " AND ee.disabled = :disabled";
+            $params[] = array('name' => ':disabled', 'value' => $args['disabled'], 'type' => PDO::PARAM_INT);
+        }
 
         if (isset($args['search_title']) && $args['search_title'] != "") {
             $custom.= " AND (ee.title like :search_title)";
@@ -109,6 +114,7 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.user_id = :user_id";
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
         }
+        
 
         if (isset($args['s']) && $args['s'] != "") {
             $custom.= " AND ee.title like :title";
@@ -118,6 +124,10 @@ class EventModel extends CFormModel {
         if (isset($args['deleted'])) {
             $custom.= " AND ee.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
+        }
+        if (isset($args['disabled'])) {
+            $custom.= " AND ee.disabled = :disabled";
+            $params[] = array('name' => ':disabled', 'value' => $args['disabled'], 'type' => PDO::PARAM_INT);
         }
 
         if (isset($args['search_title']) && $args['search_title'] != "") {
@@ -214,7 +224,7 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,va.firstname,va.lastname,el.title as location, el.address,ec.id as city_id,ec.title as city_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
@@ -331,7 +341,7 @@ class EventModel extends CFormModel {
     }
 
     private function check_exist_slug($slug) {
-        $sql = 'SELECT count(slug) as count FROM etk_categories WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+        $sql = 'SELECT count(slug) as count FROM etk_events WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];
@@ -385,7 +395,7 @@ class EventModel extends CFormModel {
 
     public function get_image_published() {
         $sql = "SELECT * FROM etk_events ee
-                WHERE ee.img != '' AND ee.deleted = 0  AND ee.published = 1
+                WHERE ee.img != '' AND ee.deleted = 0  AND ee.published = 1 AND ee.disabled=0
                 LIMIT 0,9";
         $command = Yii::app()->db->createCommand($sql);
         return $command->queryAll();

@@ -10,6 +10,11 @@
             </tr>
         </thead>
         <tbody>
+            <?php if(count($orders)<1):?>
+            <tr>
+                <td colspan="5">No orders found.</td>
+            </tr>
+            <?php endif;?>
             <?php foreach ($orders as $t) : ?>
                 <tr>
                     <td>#<?php echo $t['id']; ?></td>

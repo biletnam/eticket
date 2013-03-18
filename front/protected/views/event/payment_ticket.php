@@ -81,7 +81,17 @@
                     <div class="event-body">
                         <form class="form-style" method="post">
                             <div class="alert clearfix countdown">
-                                <div class="pull-left timer">14:03</div>
+                                
+                                <?php
+                                $expired_time = $token['date_expired'] - time();
+                                $minute = 0;
+                                $second = 0;
+                                
+                                $minute = (int)($expired_time / 60);
+                                $second = (int)($expired_time % 60);
+                                
+                                ?>
+                                <div class="pull-left timer"><?php echo $minute.":".$second; ?></div>
                                 <div class="pull-left notification">
                                     <p>Please complete registration within 15:00 minutes.<br/>
                                         After 15:00 minutes, the reservation we're holding will be released to others.</p>

@@ -14,7 +14,9 @@
                             </ul>
                         </li>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo UserControl::getId() ?>">My Profile</a>|</li>
-                        <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
+                        <?php if (UserControl::getRole() && UserControl::getRole() == 'client'): ?>
+                            <li><a href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event">My Events</a>|</li>
+                        <?php endif; ?>
                     <?php else: ?>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signup">Register</a></li>
                         <li><a href="<?php echo HelperUrl::baseUrl() ?>user/signin">Log in</a>|</li>

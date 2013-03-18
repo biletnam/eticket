@@ -30,7 +30,7 @@
                     </ul>
                 </span>
                 <span class="grid_3 footer-gallery">
-                    <h6 class="ai">Gallery</h6>
+                    <h6 class="ai">Events</h6>
                     <ul class="clearfix">
 
                         <?php foreach ($gallerys as $g): ?>

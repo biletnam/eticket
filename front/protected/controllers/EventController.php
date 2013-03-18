@@ -118,7 +118,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter Event Title.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(100, 100, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a Primary category.";
@@ -245,7 +245,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter Event Title.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(100, 100, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a primary category.";
@@ -319,8 +319,8 @@ class EventController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event[id]/?s=1");
     }
 
-    public function actionGallery($s) {
-        $event = $this->EventModel->get_by_slug($s);
+    public function actionGallery($id) {
+        $event = $this->EventModel->get($id);
         $gallerys = $this->EventModel->gets_gallery($event['id']);
 
 
@@ -344,7 +344,7 @@ class EventController extends Controller {
                 $this->EventModel->add_gallery($event['id'], $img, $thumbnail);
             }
         }
-        $this->redirect(HelperUrl::baseUrl() . "event/gallery/s/" . $event['slug']);
+        $this->redirect(HelperUrl::baseUrl() . "event/gallery/id/" . $event['id']);
     }
 
     public function actionDelete_gallery($id) {
@@ -658,7 +658,7 @@ class EventController extends Controller {
         }
 
         $token = Ultilities::base32UUID();
-        $event_token_id = $this->EventModel->add_event_token($order_id, $token, time(), time() + 3600, "");
+        $event_token_id = $this->EventModel->add_event_token($order_id, $token, time(), time() + 900, "");
         $this->OrderModel->update(array('total' => $total, 'id' => $order_id));
         $this->redirect(HelperUrl::baseUrl() . "event/register/?order_id=$order_id&token=$token");
     }
@@ -691,7 +691,7 @@ class EventController extends Controller {
 
         if ($_POST)
             $this->do_register($event, $order, $order_details, $token);
-
+        
         $this->viewData['cities'] = $this->CityModel->gets_all_cities();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;

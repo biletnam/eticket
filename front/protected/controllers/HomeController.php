@@ -28,7 +28,7 @@ class HomeController extends Controller {
     public function actionIndex() {  
         //$events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1), 1, 5);
 
-        $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1), 1, 5);
+        $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0), 1, 12);
         $this->viewData['events'] = $events;
         $this->layout = 'home';
         $this->render('index',$this->viewData);

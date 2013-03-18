@@ -10,13 +10,14 @@
             </tr>
         </thead>
         <tbody>
+       
             <?php foreach ($order_details as $t) : ?>
                 <tr>
                     <td><?php echo $t['title'] ?></td>
                     <td><?php echo $t['quantity']; ?></td>
                     <td>$<?php echo $t['fee'] ?></td>
                     <td>$<?php echo $t['total']; ?></td>
-                    
+
                 </tr>
             <?php endforeach; ?>
 

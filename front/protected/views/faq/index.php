@@ -67,7 +67,7 @@
 
                 </div>
                 <div class="span4 sidebar right pull-left">
-                    Sidebar
+                    &nbsp;
                 </div>
             </div>
         </section>

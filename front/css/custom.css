@@ -4,4 +4,4 @@
 .gallery li .btn-delete{display: none;z-index: 5;position: absolute;right:10px;top:10px}
 
 .event-location {position: relative}
-.event-location img{position: absolute}
+.event-location img{position: absolute;top:-3px;right: -40px}

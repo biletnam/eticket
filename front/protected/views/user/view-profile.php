@@ -43,6 +43,13 @@
                 </div>
                 <div class="organize-list-events">
                     <ul>
+                        <?php if(count($list_events)<1):?>
+                        <li>
+                            <section class="clearfix">
+                                No events found.
+                            </section>
+                        </li>
+                        <?php endif;?>
                         <?php foreach ($list_events as $e): ?>
                             <li>
                                 <section class="clearfix">
@@ -65,7 +72,7 @@
                                             </time>
                                         </h6>
                                         <p>
-                                            <?php echo Helper::string_truncate($e['description'], 100) ?>
+                                            <?php echo Helper::string_truncate(strip_tags($e['description']), 100) ?>
                                         </p>
                                     </div>
                                     <div class="col-right">

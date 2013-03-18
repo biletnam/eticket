@@ -108,7 +108,7 @@ $cities = Helper::cities();
                     <label for="title" class="control-label pull-left">Upload the photo for your event:</label>
                     <div class="controls pull-left">
                         <img src="<?php echo HelperUrl::baseUrl() ?>img/default_upload_logo.gif" class="image-default">
-                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300x300 px</p>
+                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 100x100px</p>
                         <input type="file" name="file" class="fileupload customfile-input">
                     </div>
                     <!--

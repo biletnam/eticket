@@ -8,7 +8,7 @@ $ticket_status = Helper::ticket_status();
             <ul class="clearfix">
                 <li><a class="<?php if ($type == "general") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white"></i>Event Information</a></li>
                 <li><a class="<?php if ($type == "ticket") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket"></i>Ticket</a></li>
-                <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/s/<?php echo $event['slug'];?>"><i class="icon icon-ticket"></i>Gallery</a></li>
+                <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li>
             </ul>
         </div>
     </div>
@@ -120,7 +120,7 @@ $ticket_status = Helper::ticket_status();
                                             <img class="image-default waiting hide" src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" />
                                             <img class="image-default thumbnail" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'edit'); ?>" />
                                         <?php endif; ?>
-                                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 300 x 300 px.</p>
+                                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 100x100px.</p>
                                         <input class="fileupload customfile-input" class="input-xlarge" name="file" type="file">
                                          <?php if ($event['img'] != ""): ?>
                                         <div class="controls pull-left" style="margin-top: 10px"><a href="<?php echo HelperUrl::baseUrl() ?>event/remove_thumb/id/<?php echo $event['id'] ?>" class="btn-style remove-event-thumb">Remove</a></div>

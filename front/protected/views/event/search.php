@@ -31,6 +31,11 @@ $cities = Helper::cities();
                     </div>
                     <div class="list-result">
                         <ul>
+                            <?php if(count($events)<1):?>
+                            <li class="clearfix">
+                                No events found.
+                            </li>
+                            <?php endif;?>
                             <?php foreach ($events as $e): ?>
                                 <li class="clearfix">
                                     <div class="date">

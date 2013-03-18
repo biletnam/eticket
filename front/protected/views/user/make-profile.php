@@ -15,9 +15,10 @@
                                 <p>Organizer logo</p>
                                 <div class="clearfix">
                                     <img class="organizer-logo pull-left" src="<?php echo HelperApp::get_thumbnail($organizer['thumbnail']); ?>" alt="" class="pull-left"/>
+                    
                                     <div class="note-image">
                                         <div>Your image must be JPG, GIF, or PNG format and not exceed 1MB. It will be resized to make its width 300px.</div>
-                                        <br/>
+                                        <br/>  
                                         <input name="file" type="file"/>
                                     </div>
                                 </div>

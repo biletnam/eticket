@@ -35,7 +35,7 @@
                  <?php if (UserControl::getRole() && UserControl::getRole() == 'client'): ?>
                 <li <?php if (Yii::app()->params['is_tab'] == 'manage_event'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event"><i class="icon icon-event"></i>Management Event</a></li>
                 <?php endif;?>
-                <li <?php if (Yii::app()->params['is_tab'] == "paid_event"): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/paid_event"><i class="icon icon-refresh"></i>Paid Event's Ticket</a></li>
+                <li <?php if (Yii::app()->params['is_tab'] == "paid_event"): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/paid_event"><i class="icon icon-refresh"></i>Event's Orders</a></li>
                 <li><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/signout"><i class="icon icon-logout"></i>Log Out</a></li>
             </ul>
         </div>

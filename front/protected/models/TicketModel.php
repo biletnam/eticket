@@ -151,6 +151,23 @@ class TicketModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();
     }
+    
+    public function get_ticket_by_user($user_id,$id) {
+        $sql = "SELECT ett.*,ee.user_id as author_id,ee.title as event_title,count(et.id) as total_ticket
+                FROM etk_ticket_types ett
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+		LEFT JOIN etk_tickets et
+		ON et.ticket_type_id = ett.id
+                WHERE ett.deleted = 0
+                AND ett.id = :id
+                AND et.user_id = :user_id
+                ";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        return $command->queryRow();
+    }
 
     public function update($args) {
         $keys = array_keys($args);

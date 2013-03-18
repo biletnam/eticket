@@ -985,3 +985,10 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
 .footer-how-it-work{margin-top:-1px;text-align: center}
     .footer-how-it-work a{display: inline-block;color:#0786e5;font-weight: bold;font-size: 28px;line-height: 42px;padding:20px 0}
     .icon-create-event{background-position: -3px -584px;width: 41px;height: 29px;top:5px}
+    
+/********Page Detail Ticket*********/   
+.text-right{text-align: right}
+.page-detail-ticket{}
+    .page-detail-ticket table{}
+    .page-detail-ticket table td{padding:3px}
+    .icon-back{background-position: -5px -662px;width: 14px;height: 14px;top:3px}

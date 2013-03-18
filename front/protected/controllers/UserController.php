@@ -377,7 +377,7 @@ class UserController extends Controller {
 
     public function actionTicket($id) {
         $this->layout = 'account';
-        $ticket_type = $this->TicketModel->get($id);
+        $ticket_type = $this->TicketModel->get_ticket_by_user(UserControl::getId(),$id);
         $this->viewData['ticket_type'] = $ticket_type;
 
         Yii::app()->params['page'] = "Ticket Detail";

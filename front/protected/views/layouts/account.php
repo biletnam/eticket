@@ -31,7 +31,7 @@
                 <li <?php if (Yii::app()->params['is_tab'] == 'setting'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/setting"><i class="icon icon-user"></i>Account Setting</a></li>
                 <li <?php if (Yii::app()->params['is_tab'] == 'change_password'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/change_password"><i class="icon icon-setting"></i>Change Password</a></li>
                 <li <?php if (Yii::app()->params['is_tab'] == 'manage_event'): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/manage_event"><i class="icon icon-event"></i>Management Event</a></li>
-                <li <?php if(Yii::app()->params['is_tab'] == "paid_event"): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/paid_event"><i class="icon icon-refresh"></i>Management Paid Event's Ticket</a></li>
+                <li <?php if(Yii::app()->params['is_tab'] == "paid_event"): ?>class="active"<?php endif; ?>><a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>user/account/type/paid_event"><i class="icon icon-refresh"></i>Paid Event's Ticket</a></li>
                 <li><a class="btn-style" href="<?php echo HelperUrl::baseUrl()?>user/signout"><i class="icon icon-logout"></i>Log Out</a></li>
             </ul>
         </div>

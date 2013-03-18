@@ -370,7 +370,7 @@ class UserController extends Controller {
 
         $this->viewData['message'] = $this->message;
         $this->viewData['ticket_paids'] = $ticket_paids;
-        Yii::app()->params['page'] = "Management Paid Event's ticket";
+        Yii::app()->params['page'] = "Paid Event's ticket";
         Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);
     }
@@ -380,7 +380,8 @@ class UserController extends Controller {
         $ticket_type = $this->TicketModel->get($id);
         $this->viewData['ticket_type'] = $ticket_type;
 
-        Yii::app()->params['page'] = "Management Paid Event's ticket";
+        Yii::app()->params['page'] = "Ticket Detail";
+        Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('ticket', $this->viewData);
     }
 

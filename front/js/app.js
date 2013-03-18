@@ -11,6 +11,12 @@ $(document).ready(function(){
     delete_gallery();
 });
 
+function goToByScroll(id){
+    $('html,body').animate({
+        scrollTop: $("#"+id).offset().top
+    },'slow');
+}
+
 function contact_form(){
     $('.btn-send-email').click(function(){
         var ele = $(this);
@@ -72,6 +78,13 @@ function init(){
         changeMonth:true,
         changeYear:true,
         yearRange: "c-1:c+1"
+    });
+    
+    $('.header-how-it-work a').click(function(){
+        var ele = $(this);
+        var index = ele.index()+ 1;
+        goToByScroll("block"+index);
+        return false;
     });
 
 }

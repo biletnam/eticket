@@ -432,6 +432,7 @@ nav ul li{float:left;margin-left:28px}
         .header .menu ul{}
             .header .menu ul li{}
                 .header .menu ul li a{font-family:'Roboto Condensed';font-size: 18px;line-height: 27px;text-transform: uppercase;color:#161616;text-shadow: 1px 1px #d6d6d6  }
+                .header .menu ul li.last{margin-left: 25px}
                 .header .menu ul li.last a{background-color: #1b1a1a;color:#fff;padding:0 5px;text-shadow: none;border:1px solid #d1d1d1}
         .header .header-logo-fb{display: inline-block;padding-top: 52px;padding-left: 15px;}
         
@@ -949,6 +950,9 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
                 );
     }
     .header-how-it-work a:hover .button-content{background-color: #4fb5ff}
+    
+    .block-how{border-bottom: 1px solid #ECEAEA;padding-bottom: 20px}
+    .block-how:last-child{border-bottom: none}
     .block-how-heading{margin:20px 0}
         .block-how-heading .left{width: 35px;margin-top:3px;
                                  background-repeat: repeat-x;
@@ -976,5 +980,8 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
         .block-how-content{margin-left: -15px}    
             .block-how-content > div{width: 289px;margin-left: 15px}
             .block-how-content > div p{margin:5px 0 0}
+            
     
-.footer-how-it-work{margin-top:-1px}
+.footer-how-it-work{margin-top:-1px;text-align: center}
+    .footer-how-it-work a{display: inline-block;color:#0786e5;font-weight: bold;font-size: 28px;line-height: 42px;padding:20px 0}
+    .icon-create-event{background-position: -3px -584px;width: 41px;height: 29px;top:5px}

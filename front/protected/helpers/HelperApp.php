@@ -2,7 +2,8 @@
 
 class HelperApp {
 
-    public static function get_category_sizes() {
+    
+   public static function get_category_sizes() {
         $array = array(
             'thumbnail' => array('w' => 260, 'h' => 140, 'crop' => true),
             'small' => array('w' => 50, 'h' => 50, 'crop' => true)
@@ -44,8 +45,7 @@ class HelperApp {
             'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
         );
         return $array;        
-    }
-    
+    } 
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();
         $cookie->Add($name, $value);

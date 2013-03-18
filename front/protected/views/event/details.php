@@ -95,17 +95,7 @@
                         <?php echo date('l, d/m/Y g:i a',  strtotime($event['end_time']))?>
                     </div>
                 </article>
-                <article class="event hosted border border-radius box-shadow-bottom">
-                    <div class="heading">Hosted By</div>
-                    <div class="event-body">
-                        <h2>Friends4Growth (Sponsored by Singapore Management University)</h2>
-                        <a class="contact-host btn-style clearfix">
-                            <i class="icon ico-hosted"></i>
-                            Contact the Host
-                        </a>
-
-                    </div>
-                </article>
+              
             </div>
         </div>
     </div>

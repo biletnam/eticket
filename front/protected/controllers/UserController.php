@@ -567,7 +567,7 @@ class UserController extends Controller {
         $user = $this->UserModel->get_by_email($user_info->email);
         if (!$user) {
             $secret_key = Ultilities::base32UUID();
-            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name);
+            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name,'',1,'customer');
             HelperApp::add_cookie('secret_key', $secret_key, $is_session);
             $this->redirect(Yii::app()->request->baseUrl . "/home/");
         } else {

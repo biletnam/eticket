@@ -6,7 +6,7 @@ class UserModel extends CFormModel {
         
     }
 
-    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client) {
+    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client='customer') {
         $time = time();
         $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)";
         $command = Yii::app()->db->createCommand($sql);

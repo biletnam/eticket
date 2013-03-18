@@ -1,0 +1,540 @@
+2013/03/18 14:52:23 [error] [php] Undefined index: code (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:510)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/loginfacebook
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (510)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 14:53:15 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_orders_details' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 14:53:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_orders_details' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('32')
+#3 [internal function]: EventController->actionInfo('event-new')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ev...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/event-new
+HTTP_REFERER=http://localhost/eticket/front/page/index/s/site-map
+---
+2013/03/18 14:56:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/event/search
+---
+2013/03/18 14:56:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/18 14:57:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/18 14:57:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/18 14:59:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 14:59:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 14:59:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:00:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:04:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/event/create
+---
+2013/03/18 15:13:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:14:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:15:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/event/search
+---
+2013/03/18 15:15:18 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_orders_details' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:15:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_orders_details' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:12 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:13 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:15 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:15 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:15 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:15 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:16 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:18:20 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php (168)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (610)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/18 15:18:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_event_tokens' doesn't exist. The SQL statement executed was: SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\TicketTypeModel.php(168): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(610): TicketTypeModel->get_tmp_quantity('34')
+#3 [internal function]: EventController->actionInfo('title')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('info')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/info/s/ti...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/front/event/info/s/title
+HTTP_REFERER=http://localhost/eticket/front/
+---
+2013/03/18 15:27:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:27:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:28:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/18 15:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/event/search
+---
+2013/03/18 15:36:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---

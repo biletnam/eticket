@@ -10,39 +10,27 @@ class HelperApp {
         return $array;
     }
 
+      
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
-        );
-        return $array;
-    }
-    public static function get_page_sizes() {
-        $array = array(
-            'large' => array('w' => 940, 'h' => 300, 'crop' => true),
-            'thumbnail' => array('w' => 277, 'h' => 140, 'crop' => true),
-            'small' => array('w' => 50, 'h' => 50, 'crop' => true)
+            'small' => array('w' => 63, 'h' => 58, 'crop' => true),
+            'edit' => array('w' => 97, 'h' => 94, 'crop' => true),
+            'home_thumbnail' => array('w' => 80, 'h' => 80, 'crop' => true),
+            'profile' => array('w' => 96, 'h' => 84, 'crop' => true)
         );
         return $array;
     }
     
-     public static function get_avatar_sizes() {
-        $array = array(            
-            'thumbnail' => array('w' => 250, 'h' => 250, 'crop' => true),
-            'small' => array('w' => 100, 'h' => 100, 'crop' => true),
-            'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
-        );
-        return $array;        
-    }
-    
-         public static function get_gallery_sizes() {
+     public static function get_gallery_sizes() {
         $array = array(
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true)
         );
         return $array;
     }
-        public static function get_organizer_sizes() {
+    
+    public static function get_avatar_sizes() {
         $array = array(            
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true),
@@ -50,6 +38,14 @@ class HelperApp {
         );
         return $array;        
     }
+    public static function get_organizer_sizes() {
+        $array = array(            
+            'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
+            'small' => array('w' => 100, 'h' => 100, 'crop' => true),
+            'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
+        );
+        return $array;        
+    } 
 
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();

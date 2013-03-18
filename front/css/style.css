@@ -837,7 +837,7 @@ i{display: inline-block;position: relative}
 }    
     
 /**********SEARCH*********/    
-.find-magu{border-radius: 5px;}
+.find-magu{border-radius: 5px;background-color: #F7F7F7}
 aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;width: 220px;background-color: #F7F7F7;}
     div.sidebar-wrap { min-height: 100px; padding: 20px 15px;}
     #filter_date > h3 {background-image: url("../img/filter_icon_date-trans.png");}

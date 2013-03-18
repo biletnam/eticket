@@ -5,6 +5,8 @@
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/"><i class="icon-map-marker"></i>Events</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/pending"><i class="icon-map-marker"></i>Event Pending</a></li>
         
+          <li><a href="<?php echo Yii::app()->request->baseUrl ?>/organizer"><i class="icon-map-marker"></i>Organizer</a></li>
+        
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location"><i class="icon-map-marker"></i>Location</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location/city"><i class="icon-map-marker"></i>City</a></li>
         

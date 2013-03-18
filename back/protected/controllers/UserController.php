@@ -26,16 +26,20 @@ class UserController extends Controller {
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex($p = 1) {
+    public function actionIndex($role = 'all', $p = 1) {
         $this->CheckPermission();
         $ppp = Yii::app()->getParams()->itemAt('ppp');
         $s = isset($_GET['s']) ? $_GET['s'] : "";
         $s = strlen($s) > 2 ? $s : "";
         $args = array('s' => $s);
 
+        if ($role != "all")
+            $args['role'] = $role;
+
         $users = $this->UserModel->gets($args, $p, $ppp);
         $total = $this->UserModel->counts($args);
-
+        
+        $this->viewData['role'] = $role;
         $this->viewData['users'] = $users;
         $this->viewData['total'] = $total;
         $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/user/index/p/", $total, $p) : "";
@@ -122,8 +126,8 @@ class UserController extends Controller {
             'cell_phone' => trim($_POST['cell_phone']),
             'gender' => $gender,
             'banned' => $_POST['banned'],
-            'img'=>$img,
-            'thumbnail'=>$thumbnail
+            'img' => $img,
+            'thumbnail' => $thumbnail
         ));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $user, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/user/edit/id/$user[id]?s=1");

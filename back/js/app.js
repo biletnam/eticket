@@ -7,6 +7,7 @@ $(document).ready(function(){
     bind_event();
     bind_status_event();
     delete_gallery();
+    bind_search_user();
 });
 
 function init(){
@@ -141,6 +142,13 @@ function bind_category(){
     $(".category-type").change(function(){
         var ele = $(this);
         window.location = baseUrl+"/category/index/type/"+ ele.val();
+    });
+}
+
+function bind_search_user(){
+    $(".user-type").change(function(){
+        var ele = $(this);
+        window.location = baseUrl+"/user/index/role/"+ ele.val();
     });
 }
 

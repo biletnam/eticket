@@ -78,7 +78,7 @@ class UserController extends Controller {
         $is_session = isset($_POST['remember']) ? false : true;
         $city_id = trim($_POST['city']);
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
-
+       
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email cannot be blank.";
         if (!$this->validator->is_email($email))

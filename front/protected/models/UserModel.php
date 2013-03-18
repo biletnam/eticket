@@ -6,9 +6,9 @@ class UserModel extends CFormModel {
         
     }
 
-    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id) {
+    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client) {
         $time = time();
-        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added)";
+        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":email", $email);
         $command->bindParam(":password", $password);
@@ -16,6 +16,7 @@ class UserModel extends CFormModel {
         $command->bindParam(":firstname", $firstname);
         $command->bindParam(":lastname", $lastname);
         $command->bindParam(":city_id", $city_id);
+        $command->bindParam(":role", $client);
         $command->bindParam(":date_added", $time);
         $command->execute();
         return Yii::app()->db->lastInsertID;

@@ -23,15 +23,46 @@ class Helper {
     public static function print_success($message = array()) {
         if (isset($message['success']) && !$message['success'])
             return "";
-        $html = "";
+        $html = "";     
         if ((isset($_GET['s']) && $_GET['s'] == 1)) {
             $message = isset($_GET['msg']) ? $_GET['msg'] : "Update successfully.";
             $html.= '<div class="alert alert-success">';
             $html.='<button type = "button" class = "close" data-dismiss = "alert">×</button>';
             $html.='<h4>Congratulations!</h4>';
             $html.= $message;
-            $html.= '</div>';
-        }
+            $html.= '</div>';                       
+        }   
+        return $html;
+    }
+    
+    public static function print_info($message = array()) {
+        if (isset($message['success']) && !$message['success'])
+            return "";
+        $html = "";     
+        if ((isset($_GET['iok']) && $_GET['iok'] == 1)) {
+            $message = isset($_GET['msg']) ? $_GET['msg'] : "Information.";
+            $html.= '<div class="alert alert-info">';
+            $html.='<button type = "button" class = "close" data-dismiss = "alert">×</button>';
+            $html.='<h4>Note!</h4>';
+            $html.= $message;
+            $html.= '</div>';                       
+        }   
+        return $html;
+    }
+    
+    
+    public static function print_warning($message = array()) {
+        if (isset($message['success']) && !$message['success'])
+            return "";
+        $html = "";     
+        if ((isset($_GET['wok']) && $_GET['wok'] == 1)) {
+            $message = isset($_GET['msg']) ? $_GET['msg'] : "Warning.";
+            $html.= '<div class="alert alert-warning">';
+            $html.='<button type = "button" class = "close" data-dismiss = "alert">×</button>';
+            $html.='<h4>Warning!</h4>';
+            $html.= $message;
+            $html.= '</div>';                       
+        }   
         return $html;
     }
 

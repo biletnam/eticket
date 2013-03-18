@@ -43,15 +43,6 @@ class TicketModel extends CFormModel {
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
         }
 
-        if (isset($args['status'])) {
-            $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['check_date_expired'])) {
-
-            $custom.= " AND (vt.status = 1 OR (vt.status = 0 AND vt.date_expired > UNIX_TIMESTAMP()) )";
-        }
 
         $sql = "SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,count(et.id) as total_ticket,ee.slug as event_slug
                 FROM etk_tickets et
@@ -110,16 +101,6 @@ class TicketModel extends CFormModel {
         if (isset($args['ticket_type_id'])) {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['status'])) {
-            $custom.= " AND et.status = :status";
-            $params[] = array('name' => ':status', 'value' => $args['status'], 'type' => PDO::PARAM_INT);
-        }
-
-        if (isset($args['check_date_expired'])) {
-
-            $custom.= " AND (et.status = 1 OR (et.status = 0 AND et.date_expired > UNIX_TIMESTAMP()) )";
         }
 
         $sql = "SELECT count(*) as total
@@ -187,17 +168,17 @@ class TicketModel extends CFormModel {
         return Yii::app()->db->lastInsertID;
     }
 
-    public function add_ticket($args) {
+    public function add_ticket($ticket_type_id, $user_id, $visitor_firstname, $visitor_lastname, $visitor_email, $visitor_cellphone) {
         $time = time();
-        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,contact_fullname,contact_email,visitor_fullname,visitor_email,date_added) VALUES (:ticket_type_id,:user_id,:contact_fullname,:contact_email,:visitor_fullname,:visitor_email,:date_added)";
+        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,visitor_firstname,visitor_lastname,visitor_email,visitor_cellphone,date_added) VALUES (:ticket_type_id,:user_id,:visitor_firstname,:visitor_lastname,:visitor_email,:visitor_cellphone,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":ticket_type_id", $args['ticket_type_id'], PDO::PARAM_INT);
-        $command->bindParam(":user_id", $args['user_id'], PDO::PARAM_INT);
-        $command->bindParam(":contact_fullname", $args['contact_fullname']);
-        $command->bindParam(":contact_email", $args['contact_email']);
+        $command->bindParam(":ticket_type_id", $ticket_type_id, PDO::PARAM_INT);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 
-        $command->bindParam(":visitor_fullname", $args['contact_fullname']);
-        $command->bindParam(":visitor_email", $args['contact_email']);
+        $command->bindParam(":visitor_firstname", $visitor_firstname);
+        $command->bindParam(":visitor_lastname", $visitor_lastname);
+        $command->bindParam(":visitor_cellphone", $visitor_cellphone);
+        $command->bindParam(":visitor_email", $visitor_email);
 
         $command->bindParam(":date_added", $time, PDO::PARAM_INT);
 

@@ -16,7 +16,7 @@ $ticket_status = Helper::ticket_status();
         <div class="grid_12 page-create-ticket">
             <?php if ($type == "general"): ?>
                 <form class="form-style form-create-event border form-create-magu" method="post" enctype="multipart/form-data" id="event_form">
-                    <input type="hidden" name="location_id" value="<?php if (isset($_POST['location_id'])) echo $_POST['location_id']; ?>"/>
+                    <input type="hidden" name="location_id" value="<?php if (isset($_POST['location_id'])) echo $_POST['location_id'];else echo $event['location_id']; ?>"/>
                     <div class="row-fluid content">
                         <?php echo Helper::print_error($message); ?>
                         <?php echo Helper::print_success($message); ?>

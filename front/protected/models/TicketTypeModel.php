@@ -35,8 +35,7 @@ class TicketTypeModel extends CFormModel {
                 FROM etk_ticket_types ett
                 LEFT JOIN (SELECT count(*) as total_ticket,ticket_type_id
                             FROM etk_tickets 
-                            WHERE deleted = 0
-                            AND (status = 1 OR (status = 0 AND date_expired > UNIX_TIMESTAMP()) )
+                            WHERE deleted = 0                            
                             GROUP BY ticket_type_id) et
                 ON et.ticket_type_id = ett.id
                 WHERE 1
@@ -153,5 +152,20 @@ class TicketTypeModel extends CFormModel {
 
         return $command->queryAll();
     }
+    
+    
+    public function get_tmp_quantity($id) {
+        $sql = "SELECT SUM(eod.quantity) as tmp_quantity
+                FROM etk_orders_details eod,etk_orders eo,etk_event_tokens eet
+                WHERE eod.order_id = eo.id
+                AND eet.order_id = eo.id
+                AND eet.date_expired > UNIX_TIMESTAMP()
+                AND eo.`status` != 'completed'
+                AND eod.ticket_type_id = :id";
 
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
+        $total = $command->queryRow();
+        return $total['tmp_quantity'];
+    }
 }

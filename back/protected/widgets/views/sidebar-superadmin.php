@@ -4,6 +4,10 @@
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/category/"><i class="icon-th"></i>Categories</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/"><i class="icon-map-marker"></i>Events</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/event/pending"><i class="icon-map-marker"></i>Event Pending</a></li>
+        
+        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location"><i class="icon-map-marker"></i>Location</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location/city"><i class="icon-map-marker"></i>City</a></li>
+        
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/faq/"><i class="icon-info-sign"></i>FAQs</a></li>
 
         <li class="nav-header"></i>SYSTEM</li>

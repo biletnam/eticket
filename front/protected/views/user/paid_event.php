@@ -2,7 +2,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-
+                <th>ID</th>
                 <th width="220px">EVENT</th>
                 <th>AMOUNT</th>
                 <th>DATE ADDED</th>
@@ -12,6 +12,7 @@
         <tbody>
             <?php foreach ($orders as $t) : ?>
                 <tr>
+                    <td>#<?php echo $t['id']; ?></td>
                     <td class="text-bold"><a href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $t['event_slug'] ?>"><?php echo $t['event_title'] ?></a></td>
 
                     <td>$<?php echo $t['total'] ?></td>

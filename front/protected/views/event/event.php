@@ -105,7 +105,7 @@
                     <div class="heading">Time &amp; Place</div>
                     <div class="event-body">
                         <div class="vcard">
-                            <iframe width="270" scrolling="no" height="250" frameborder="0" src="http://maps.google.com/maps?q=4+Ph%E1%BA%A1m+Ng%E1%BB%8Dc+Th%E1%BA%A1ch%2C+B%E1%BA%BFn+Ngh%C3%A9.+Q.1;&amp;iwloc=near&amp;z=15&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br>        
+                            <iframe width="270" scrolling="no" height="250" frameborder="0" src="http://maps.google.com/maps?q=<?php echo urlencode($event['address']); ?>;&amp;iwloc=near&amp;z=15&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br>        
                             <br/>
                         </div>
                         <div class="vcard">
@@ -118,77 +118,7 @@
                         <?php echo date('l, d/m/Y g:i a', strtotime($event['end_time'])) ?>
                     </div>
                 </article>
-                <article class="event hosted border border-radius box-shadow-bottom">
-                    <div class="heading">Hosted By</div>
-                    <div class="event-body">
-                        <h2>Friends4Growth (Sponsored by Singapore Management University)</h2>
-                        <a class="contact-host btn-style clearfix">
-                            <i class="icon ico-hosted"></i>
-                            Contact the Host
-                        </a>
-
-                        <!--                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite friend pull-left ">&nbsp;</span>
-                                                    <a class="" href="#">
-                                                        View other Friends4Growth (Sponsored by Singapore Management University) events 
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="panel_icon clearfix">
-                                                    <span class="sprite subcribe pull-left ">&nbsp;</span>
-                                                    <a class="add_calendar" href="#">
-                                                        Subscribe to receive notifications of future events by this host
-                                                    </a>
-                                                </div>
-                        
-                                                <ul class="other-calendar">
-                                                    <li>
-                                                        <div class="panel_icon clearfix">
-                                                            <span class="sprite xml pull-left ">&nbsp;</span>
-                                                            <a href="#" class="ico-outlook">View XML Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite rss-c pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to RSS Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite atom pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Subscribe to Atom Feed</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite google pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to Google</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite yahoo pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My yahoo!</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite aol pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My AOL</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="panel_icon add_calendar clearfix">
-                                                            <span class="sprite msn pull-left ">&nbsp;</span>
-                                                            <a href="#" class="">Add to My MSN</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>-->
-
-                    </div>
-                </article>
+                
             </div>
         </div>
     </div>

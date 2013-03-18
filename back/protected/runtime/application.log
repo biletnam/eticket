@@ -4739,3 +4739,305 @@ REQUEST_URI=/eticket/back/location/edit/id/24
 in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (105)
 in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (79)
 in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:27:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vc.title' in 'where clause'. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                WHERE 1
+                 AND vc.title like :title AND deleted = :deleted 
+                 ORDER BY title ASC
+                LIMIT :page,:ppp;.
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (139)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (126)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:27:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vc.title' in 'where clause'. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                WHERE 1
+                 AND vc.title like :title AND deleted = :deleted 
+                 ORDER BY title ASC
+                LIMIT :page,:ppp;' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(139): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php(126): LocationModel->get_cities(Array, 1, 20)
+#3 [internal function]: LocationController->actionCity(1)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocationController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocationController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('city')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('location/city')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/location/city?s=rom
+HTTP_REFERER=http://localhost/eticket/back/location/city?s=la
+---
+2013/03/18 11:41:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vc.title' in 'order clause'. The SQL statement executed was: SELECT eo.*,eu.email
+                FROM etk_organizers eo
+                LEFT JOIN etk_users eu
+                ON eu.id = eo.user_id
+                WHERE 1
+                 AND eo.deleted = :deleted
+                ORDER BY vc.title ASC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (39)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (29)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:41:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vc.title' in 'order clause'. The SQL statement executed was: SELECT eo.*,eu.email
+                FROM etk_organizers eo
+                LEFT JOIN etk_users eu
+                ON eu.id = eo.user_id
+                WHERE 1
+                 AND eo.deleted = :deleted
+                ORDER BY vc.title ASC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php(39): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(29): OrganizerModel->gets(Array, 1, 20)
+#3 [internal function]: OrganizerController->actionIndex(1)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(OrganizerController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(OrganizerController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('organizer')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/organizer
+---
+2013/03/18 11:42:19 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:42:49 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:42:50 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:42:50 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:42:50 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:42:50 [error] [php] Undefined index: total (D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php:71)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (71)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:43:04 [error] [php] Undefined variable: organizers (D:\xampp\htdocs\eticket\back\protected\views\organizer\index.php:20)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): OrganizerController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): OrganizerController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(36): OrganizerController->render()
+#3 unknown(0): OrganizerController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\views\organizer\index.php (20)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (36)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:44:10 [error] [php] Undefined variable: v (D:\xampp\htdocs\eticket\back\protected\views\organizer\index.php:11)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): OrganizerController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): OrganizerController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(36): OrganizerController->render()
+#3 unknown(0): OrganizerController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer
+in D:\xampp\htdocs\eticket\back\protected\views\organizer\index.php (11)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (36)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:47:02 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: SELECT eo.*,eu.email
+                FROM etk_organizers eo
+                LEFT JOIN etk_users eu
+                ON eu.id = eo.user_id
+                WHERE id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (82)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (41)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:47:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: SELECT eo.*,eu.email
+                FROM etk_organizers eo
+                LEFT JOIN etk_users eu
+                ON eu.id = eo.user_id
+                WHERE id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php(82): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(41): OrganizerModel->get('2')
+#3 [internal function]: OrganizerController->actionEdit('2')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(OrganizerController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(OrganizerController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('organizer/edit/...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/organizer/edit/id/2
+HTTP_REFERER=http://localhost/eticket/back/organizer
+---
+2013/03/18 11:47:39 [error] [php] Undefined variable: location (D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php:42)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer/edit/id/2
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (42)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:48:06 [error] [php] Undefined variable: event (D:\xampp\htdocs\eticket\back\protected\views\organizer\edit.php:9)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): OrganizerController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): OrganizerController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(49): OrganizerController->render()
+#3 unknown(0): OrganizerController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer/edit/id/2
+in D:\xampp\htdocs\eticket\back\protected\views\organizer\edit.php (9)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (49)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:52:38 [error] [php] Undefined variable: category (D:\xampp\htdocs\eticket\back\protected\views\organizer\edit.php:19)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): OrganizerController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): OrganizerController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(49): OrganizerController->render()
+#3 unknown(0): OrganizerController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): OrganizerController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): OrganizerController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): OrganizerController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/organizer/edit/id/1
+in D:\xampp\htdocs\eticket\back\protected\views\organizer\edit.php (19)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (49)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 11:56:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'description' in 'field list'. The SQL statement executed was: update etk_locations set title = :title, description = :description, img = :img, thumbnail = :thumbnail, id = :id where id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php (120)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (77)
+in D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php (45)
+2013/03/18 11:56:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'description' in 'field list'. The SQL statement executed was: update etk_locations set title = :title, description = :description, img = :img, thumbnail = :thumbnail, id = :id where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\OrganizerModel.php(120): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(77): OrganizerModel->update(Array)
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\OrganizerController.php(45): OrganizerController->do_edit(Array)
+#3 [internal function]: OrganizerController->actionEdit('1')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(OrganizerController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(OrganizerController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('organizer/edit/...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/organizer/edit/id/1
+HTTP_REFERER=http://localhost/eticket/back/organizer/edit/id/1
+---

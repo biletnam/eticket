@@ -109,7 +109,7 @@ class LocationModel extends CFormModel {
         $params = array();
 
         if (isset($args['s']) && $args['s'] != "") {
-            $custom.= " AND vc.title like :title";
+            $custom.= " AND title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
 
@@ -143,6 +143,10 @@ class LocationModel extends CFormModel {
 
         $custom = "";
         $params = array();
+        if (isset($args['s']) && $args['s'] != "") {
+            $custom.= " AND title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
+        }
 
         if (isset($args['deleted'])) {
             $custom.= " AND deleted = :deleted";

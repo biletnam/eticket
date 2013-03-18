@@ -1,5 +1,10 @@
 <div class="page-event-detail">
     <div class="container_12">
+        
+        <?php echo Helper::print_info(); ?>
+        <?php echo Helper::print_warning(); ?>
+    </div>
+    <div class="container_12">
         <div class="clearfix">
             <div class="grid_12">
                 <div class="event-header clearfix border border-radius">

@@ -139,23 +139,23 @@ class EventModel extends CFormModel {
             $params[] = array('name' => ':search_city', 'value' => $args['search_city'], 'type' => PDO::PARAM_INT);
         }
 
-        if (isset($args['date']) && $args['date'] == "today") {         
+        if (isset($args['date']) && $args['date'] == "today") {
             $custom.= " AND DATE(ee.start_time)=DATE(NOW())";
         }
-        
-        if (isset($args['date']) && $args['date'] == "tomorrow") {         
+
+        if (isset($args['date']) && $args['date'] == "tomorrow") {
             $custom.= " AND DATE(ee.start_time)=DATE(NOW() + INTERVAL 1 DAY)";
         }
-        
-        if (isset($args['date']) && $args['date'] == "week") {         
+
+        if (isset($args['date']) && $args['date'] == "week") {
             $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time) AND WEEKOFYEAR(NOW()) = WEEKOFYEAR(ee.start_time)";
         }
-        
-        if (isset($args['date']) && $args['date'] == "year") {         
+
+        if (isset($args['date']) && $args['date'] == "year") {
             $custom.= " AND YEAR(NOW()) = YEAR(ee.start_time)";
         }
-        
-        
+
+
 
 
         if (isset($args['published'])) {
@@ -375,6 +375,29 @@ class EventModel extends CFormModel {
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(':id', $id, PDO::PARAM_INT);
         return $command->execute();
+    }
+
+    public function add_event_token($order_id, $token, $date_added, $date_expired, $content) {
+
+        $sql = "INSERT INTO etk_event_tokens(order_id,token,date_added,date_expired,content) VALUES(:order_id,:token,:date_added,:date_expired,:content)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':order_id', $order_id, PDO::PARAM_INT);        
+        $command->bindParam(':token', $token, PDO::PARAM_STR);
+        $command->bindParam(':date_added', $date_added, PDO::PARAM_STR);
+        $command->bindParam(':date_expired', $date_expired, PDO::PARAM_STR);
+        $command->bindParam(':content', $content, PDO::PARAM_STR);
+        $command->execute();
+        return Yii::app()->db->lastInsertID;
+    }
+
+    public function get_event_token($token) {
+        $sql = "SELECT *
+                FROM etk_event_tokens
+                WHERE token = :token
+                AND date_expired > UNIX_TIMESTAMP()";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(':token', $token);
+        return $command->queryRow();
     }
 
 }

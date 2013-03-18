@@ -10,6 +10,8 @@ class EventController extends Controller {
     private $LocationModel;
     private $TicketTypeModel;
     private $TicketModel;
+    private $OrderModel;
+    private $CityModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -29,6 +31,12 @@ class EventController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
+
+        /* @var $OrderModel OrderModel */
+        $this->OrderModel = new OrderModel();
+
+        /* @var $CityModel CityModel */
+        $this->CityModel = new CityModel();
     }
 
     /**
@@ -186,6 +194,8 @@ class EventController extends Controller {
                 $this->do_edit($event);
         }
 
+
+
         $this->viewData['ticket_types'] = $this->TicketTypeModel->gets(array('deleted' => 0, 'event_id' => $id), 1, 200);
         $this->viewData['categories'] = $this->CategoryModel->gets(array('deleted' => 0, 'type' => 'event'), 1, 200);
         $this->viewData['message'] = $this->message;
@@ -265,7 +275,7 @@ class EventController extends Controller {
         //check if have location then get that location, add new location otherwise
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
-            if ($loc['title'] != $location || $loc['city'] != $city)
+            if ($loc['title'] != $location || $loc['city_id'] != $city)
                 $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
         }
         else
@@ -299,15 +309,15 @@ class EventController extends Controller {
     public function actionGallery($s) {
         $event = $this->EventModel->get_by_slug($s);
         $gallerys = $this->EventModel->gets_gallery($event['id']);
-        
- 
-     
+
+
+
 
         if ($_FILES)
             $this->upload_gallery($event);
-           $this->viewData['event'] = $event;
-           $this->viewData['gallerys'] = $gallerys;
-        
+        $this->viewData['event'] = $event;
+        $this->viewData['gallerys'] = $gallerys;
+
         $this->render('gallery', $this->viewData);
     }
 
@@ -318,16 +328,15 @@ class EventController extends Controller {
                 $resize = HelperApp::resize_images($image[$i], HelperApp::get_gallery_sizes());
                 $img = $resize['img'];
                 $thumbnail = $resize['thumbnail'];
-                $this->EventModel->add_gallery($event['id'], $img,$thumbnail);
+                $this->EventModel->add_gallery($event['id'], $img, $thumbnail);
             }
         }
-        $this->redirect(HelperUrl::baseUrl() . "event/gallery/s/".$event['slug']);
+        $this->redirect(HelperUrl::baseUrl() . "event/gallery/s/" . $event['slug']);
     }
-    
-    public function actionDelete_gallery($id){
-   
+
+    public function actionDelete_gallery($id) {
+
         $this->EventModel->delete_gallery($id);
-        
     }
 
     public function actionRemove_thumb($id) {
@@ -579,11 +588,13 @@ class EventController extends Controller {
     }
 
     public function actionInfo($s) {
-        HelperGlobal::require_login();
 
         $event = $this->EventModel->get_by_slug($s);
-        if (count($event) == 0)
+        if (!$event)
             $this->load_404();
+
+        if ($_POST)
+            $this->do_add_event_token($event);
 
         $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
 
@@ -594,37 +605,134 @@ class EventController extends Controller {
         $this->render('event', $this->viewData);
     }
 
-    public function actionRegister_to_event($event) {
+    private function do_add_event_token($event) {
+
         HelperGlobal::require_login();
 
-//        if($_POST)
-//            $this->do_register();
+        $ticket_types = $_POST['ticket_type'];
+        $tmp = array();
+        $use_payment = false;
+        foreach ($ticket_types as $k => $v) {
+            $type = $this->TicketTypeModel->get($k);
+            if (!$type || $type['event_id'] != $event['id'] || $v < 1)
+                continue;
 
-        $event = $this->EventModel->get_by_slug($event);
+            if ($v['type'] == "paid")
+                $use_payment = true;
 
-
-        $ticket_types = $this->TicketTypeModel->gets_by_event($event['id']);
-
-        for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
-            $ticket_types_id = $_POST[$i];
-            $number_ticket = $_POST['number_tichket_' . $i];
-
-            foreach ($ticket_types as $k => $t)
-                if ($t['id'] == $ticket_types_id)
-                    $ticket_types[$k]['number_ticket'] = $number_ticket;
+            $tmp[] = array('type' => $type, 'quantity' => $v);
         }
 
+        if (!$tmp)
+            $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]");
 
+        $order_id = $this->OrderModel->add(UserControl::getId(), $event['id'], Yii::app()->request->userHostAddress, Yii::app()->request->userAgent, $use_payment);
+        $total = 0;
+        foreach ($tmp as $k => $v) {
+            $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
+            $total += ($v['quantity'] * $v['type']['price']) + $v['type']['tax'];
+        }
 
+        $token = Ultilities::base32UUID();
+        $event_token_id = $this->EventModel->add_event_token($order_id, $token, time(), time() + 3600, "");
+        $this->OrderModel->update(array('total' => $total, 'id' => $order_id));
+        $this->redirect(HelperUrl::baseUrl() . "event/register/?order_id=$order_id&token=$token");
+    }
 
-        $this->viewData['ticket_types'] = $ticket_types;
+    public function actionRegister() {
+        HelperGlobal::require_login();
+
+        $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : 0;
+        $token = isset($_GET['token']) ? $_GET['token'] : "";
+
+        $token = $this->EventModel->get_event_token($token);
+        $order = $this->OrderModel->get($order_id);
+
+        if (!$token || !$order || $order['user_id'] != UserControl::getId())
+            $this->load_404();
+
+        $event = $this->EventModel->get($order['event_id']);
+
+        if (!$event)
+            $this->load_404();
+
+        $order_details = $this->OrderModel->get_details($order_id);
+
+        if ($_POST)
+            $this->do_register($event, $order, $order_details);
+
+        $this->viewData['cities'] = $this->CityModel->gets_all_cities();
+        $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
+        $this->viewData['order'] = $order;
+        $this->viewData['token'] = $token;
+        $this->viewData['message'] = $this->message;
         Yii::app()->params['page'] = 'Payment Ticket';
         $this->render('payment_ticket', $this->viewData);
     }
 
+    private function do_register($event, $order, $order_details) {
 
-    
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
+        $email = trim($_POST['email']);
+        $phone = trim($_POST['phone']);
+        $address = trim($_POST['address']);
+        $city = $_POST['city_id'];
+        $zipcode = trim($_POST['zipcode']);
+
+        if ($this->validator->is_empty_string($firstname))
+            $this->message['error'][] = "First name cannot be blank.";
+        if ($this->validator->is_empty_string($lastname))
+            $this->message['error'][] = "Last name cannot be blank.";
+        if ($this->validator->is_empty_string($email))
+            $this->message['error'][] = "Email cannot be blank.";
+        if ($this->validator->is_email($email))
+            $this->message['error'][] = "Email is not correct format.";
+        if ($this->validator->is_empty_string($phone))
+            $this->message['error'][] = "Phone cannot be blank.";
+
+        if ($this->validator->is_empty_string($address))
+            $this->message['error'][] = "Address cannot be blank.";
+        if ($this->validator->is_empty_string($zipcode))
+            $this->message['error'][] = "Zipcode cannot be blank.";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        //update order information
+
+        $this->OrderModel->update(array(
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'phone' => $phone,
+            'address' => $address,
+            'zipcode' => $zipcode,
+            'city_id' => $city,
+            'email' => $email,
+            'id' => $order['id']
+        ));
+
+
+        // if this order does not use payment then insert to database normally
+        if ($order['use_payment'] == 0) {
+
+            foreach ($order_details as $k => $v) {
+
+                for ($i = 0; $i < $v['quantity']; $i++) {
+                    $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                }
+            }
+            
+            $this->OrderModel->update(array('status'=>'completed'));
+            $this->redirect(HelperUrl::baseUrl()."event/info/s/$event[slug]?s=1&msg=Thank you for joining our event.");
+        } else {
+            //if this order use payment then process to paypal
+        }
+    }
+
     public function actionSearch($p = 1) {
 
         $s = isset($_GET['title']) ? $_GET['title'] : "";
@@ -638,9 +746,9 @@ class EventController extends Controller {
 //        $cid = isset($_GET['cid']) ? $_GET['cid'] : "";
 //        $oid = isset($_GET['oid']) ? $_GET['oid'] : "";
         $ppp = Yii::app()->getParams()->itemAt('ppp');
-        if($city == 0){ 
+        if ($city == 0) {
             $args = array('search_title' => $s, 'search_cate' => $cate, 'date' => $date);
-        }else{
+        } else {
             $args = array('search_title' => $s, 'search_city' => $city, 'search_cate' => $cate, 'date' => $date);
         }
         $events = $this->EventModel->gets($args, $p, $ppp);
@@ -675,18 +783,6 @@ class EventController extends Controller {
             $params[$tmp[0]] = $tmp[1];
         }
         return $params;
-    }
-
-    public function actionDo_register() {
-        for ($i = 1; $i <= $_POST['count_ticket_type']; $i++) {
-            $ticket_types_id = $_POST[$i];
-            $number_ticket = $_POST['number_tichket_' . $ticket_types_id];
-
-            for ($j = 1; $j <= $number_ticket; $j++) {
-                $args = array('ticket_type_id' => $ticket_types_id, 'user_id' => UserControl::getId(), 'contact_fullname' => UserControl::getFirstname(), 'contact_email' => UserControl::getEmail());
-                $this->TicketModel->add_ticket($args);
-            }
-        }
     }
 
     public function actionDetails($s) {

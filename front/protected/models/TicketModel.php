@@ -187,17 +187,17 @@ class TicketModel extends CFormModel {
         return Yii::app()->db->lastInsertID;
     }
 
-    public function add_ticket($args) {
+    public function add_ticket($ticket_type_id, $user_id, $visitor_firstname, $visitor_lastname, $visitor_email, $visitor_cellphone) {
         $time = time();
-        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,contact_fullname,contact_email,visitor_fullname,visitor_email,date_added) VALUES (:ticket_type_id,:user_id,:contact_fullname,:contact_email,:visitor_fullname,:visitor_email,:date_added)";
+        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,visitor_firstname,visitor_lastname,visitor_email,visitor_cellphone,date_added) VALUES (:ticket_type_id,:user_id,:visitor_firstname,:visitor_lastname,:visitor_email,:visitor_cellphone,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":ticket_type_id", $args['ticket_type_id'], PDO::PARAM_INT);
-        $command->bindParam(":user_id", $args['user_id'], PDO::PARAM_INT);
-        $command->bindParam(":contact_fullname", $args['contact_fullname']);
-        $command->bindParam(":contact_email", $args['contact_email']);
+        $command->bindParam(":ticket_type_id", $ticket_type_id, PDO::PARAM_INT);
+        $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 
-        $command->bindParam(":visitor_fullname", $args['contact_fullname']);
-        $command->bindParam(":visitor_email", $args['contact_email']);
+        $command->bindParam(":visitor_firstname", $visitor_firstname);
+        $command->bindParam(":visitor_lastname", $visitor_lastname);
+        $command->bindParam(":visitor_cellphone", $visitor_cellphone);
+        $command->bindParam(":visitor_email", $visitor_email);
 
         $command->bindParam(":date_added", $time, PDO::PARAM_INT);
 

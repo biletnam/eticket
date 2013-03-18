@@ -11,6 +11,12 @@ $(document).ready(function(){
     delete_gallery();
 });
 
+function goToByScroll(id){
+    $('html,body').animate({
+        scrollTop: $("#"+id).offset().top
+    },'slow');
+}
+
 function contact_form(){
     $('.btn-send-email').click(function(){
         var ele = $(this);
@@ -36,11 +42,11 @@ function contact_form(){
                     $('.form-contact_us .error-message').html(error);
                     $('.form-contact_us .alert-error').fadeIn();*/
                     if(respone.yourname =='error')
-                        $('.yourname').css('border','1px solid red');
+                        $('.yourname').addClass('error');
                     if(respone.email =='error')
-                        $('.email').css('border','1px solid red');
+                        $('.email').addClass('error');
                     if(respone.yourmessage =='error')
-                        $('.message').css('border','1px solid red');
+                        $('.message').addClass('error');
                 }
             }
             ,'json');
@@ -72,6 +78,13 @@ function init(){
         changeMonth:true,
         changeYear:true,
         yearRange: "c-1:c+1"
+    });
+    
+    $('.header-how-it-work a').click(function(){
+        var ele = $(this);
+        var index = ele.index()+ 1;
+        goToByScroll("block"+index);
+        return false;
     });
 
 }

@@ -8,19 +8,19 @@
                     <div class="controls-group clearfix">
                         <label class="control-label pull-left">Name</label>
                         <div class="controls pull-left">
-                            <input type="text" class="input-medium" name="yourname"/>
+                            <input type="text" class="input-medium" name="yourname" value="<?php if(isset($_POST['yourname'])) echo $_POST['yourname'] ?>"/>
                         </div>
                     </div>
                     <div class="controls-group clearfix">
                         <label class="control-label pull-left">Email</label>
                         <div class="controls pull-left">
-                            <input type="text" class="input-medium" name="email"/>
+                            <input type="text" class="input-medium" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email'] ?>"/>
                         </div>
                     </div>
                     <div class="controls-group clearfix">
                         <label class="control-label pull-left">Message</label>
                         <div class="controls pull-left">
-                            <input type="text" class="input-medium" name="message"/>
+                            <textarea class="input-medium" name="message"><?php if(isset($_POST['message'])) echo $_POST['message'] ?></textarea>
                         </div>
                     </div>
                     <div class="controls-group clearfix">

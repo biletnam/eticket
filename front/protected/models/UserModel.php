@@ -6,9 +6,9 @@ class UserModel extends CFormModel {
         
     }
 
-    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id) {
+    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client) {
         $time = time();
-        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:date_added)";
+        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":email", $email);
         $command->bindParam(":password", $password);
@@ -16,6 +16,7 @@ class UserModel extends CFormModel {
         $command->bindParam(":firstname", $firstname);
         $command->bindParam(":lastname", $lastname);
         $command->bindParam(":city_id", $city_id);
+        $command->bindParam(":role", $client);
         $command->bindParam(":date_added", $time);
         $command->execute();
         return Yii::app()->db->lastInsertID;
@@ -33,11 +34,13 @@ class UserModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT *
-                FROM etk_users
-                WHERE id = :id
-                AND disabled = 0
-                AND banned = 0";
+        $sql = "SELECT eu.* , eo.title as organizer_title, eo.description as organizer_description, eo.thumbnail as organizer_thumbnail
+                FROM etk_users eu
+                LEFT JOIN etk_organizers eo
+                ON eo.user_id = eu.id
+                WHERE eu.id = :id
+                AND eu.disabled = 0
+                AND eu.banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();

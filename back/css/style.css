@@ -41,3 +41,8 @@
 
 .table-ticket .loading td{text-align: center;}
 .table-ticket .loading img{vertical-align: middle}
+
+.gallery{list-style: none;margin-left: -20px}
+    .gallery li{float:left;margin-left: 20px;width: 100px;padding:3px;border: 1px solid #dedede;position: relative}
+    .gallery li .btn-delete{position: absolute;top:5px;right: 5px;display: none;z-index: 10}
+    .gallery li:hover .btn-delete{display: block}

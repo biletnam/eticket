@@ -14,6 +14,7 @@
             <th>Category</th>            
             <th>Location</th>
             <th>Time</th>
+            <th>Album</th>
             <th class="row-action"></th>
         </tr>
     </thead>
@@ -40,6 +41,9 @@
                     <p>Start: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['start_time'])); ?></span></p>
                     <p>End: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['end_time'])); ?></span></p>
                 </td>
+                
+               
+                
                 <td>
                     <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>">Edit</a>
                     <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/event/delete/id/".$v['id']; ?>">Delete</a>

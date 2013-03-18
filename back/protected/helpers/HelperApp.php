@@ -34,6 +34,22 @@ class HelperApp {
         );
         return $array;        
     }
+    
+         public static function get_gallery_sizes() {
+        $array = array(
+            'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
+            'small' => array('w' => 100, 'h' => 100, 'crop' => true)
+        );
+        return $array;
+    }
+        public static function get_organizer_sizes() {
+        $array = array(            
+            'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
+            'small' => array('w' => 100, 'h' => 100, 'crop' => true),
+            'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
+        );
+        return $array;        
+    }
 
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();

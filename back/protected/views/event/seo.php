@@ -17,6 +17,9 @@
     <li class="<?php if ($type == "ticket") echo 'active' ?>">
         <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/edit/id/<?php echo $event['id'] ?>/type/ticket">Ticket</a>
     </li>    
+    <li class="<?php if ($type == "gallery") echo 'active' ?>">
+        <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/gallery/id/<?php echo $event['id'] ?>/">Gallery</a>
+    </li>
     <li class="<?php if ($type == "seo") echo 'active' ?>">
         <a href="<?php echo Yii::app()->request->baseUrl; ?>/event/seo/id/<?php echo $event['id'] ?>/">SEO</a>
     </li>

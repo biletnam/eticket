@@ -57,8 +57,8 @@ class EventController extends Controller {
 
         $events = $this->EventModel->gets($args, $p, $ppp);
         $total = $this->EventModel->counts($args);
-        
-    
+
+
 
         $this->viewData['events'] = $events;
         $this->viewData['total'] = $total;
@@ -178,9 +178,9 @@ class EventController extends Controller {
         //$this->add_ticket_types($event_id);
 
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
-        
-        
-        
+
+
+
         $this->redirect(Yii::app()->request->baseUrl . "/event/edit/id/$event_id/?s=1");
     }
 
@@ -642,6 +642,42 @@ class EventController extends Controller {
 
         echo json_encode($this->message);
         die;
+    }
+
+    public function actionGallery($id) {
+        $event = $this->EventModel->get($id);
+        $gallerys = $this->EventModel->gets_gallery($event['id']);
+
+
+
+
+        if ($_FILES)
+            $this->upload_gallery($event);
+        $this->viewData['type'] = 'gallery';
+        $this->viewData['event'] = $event;
+        $this->viewData['gallerys'] = $gallerys;
+        $this->viewData['message'] = $this->message;
+
+        $this->render('gallery', $this->viewData);
+    }
+
+    private function upload_gallery($event) {
+        for ($i = 1; $i <= 5; $i++) {
+            $image[$i] = $_FILES['file_' . $i];
+            if (!$this->validator->is_empty_string($image[$i]['name'])) {
+                $resize = HelperApp::resize_images($image[$i], HelperApp::get_gallery_sizes());
+                $img = $resize['img'];
+                $thumbnail = $resize['thumbnail'];
+                $this->EventModel->add_gallery($event['id'], $img, $thumbnail);
+            }
+        }
+      $this->redirect(Yii::app()->request->baseUrl . "/event/gallery/id/$event[id]?s=1");
+    }
+    
+      public function actionDelete_gallery($id){
+   
+        $this->EventModel->delete_gallery($id);
+        
     }
 
 }

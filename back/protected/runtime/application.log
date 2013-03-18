@@ -3865,3 +3865,141 @@ REQUEST_URI=/eticket/back/user/pending
 in D:\xampp\htdocs\eticket\back\protected\views\user\pending.php (30)
 in D:\xampp\htdocs\eticket\back\protected\controllers\UserController.php (148)
 in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 09:30:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/i...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/14/type/general
+---
+2013/03/18 09:31:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/i...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/14/type/general
+---
+2013/03/18 09:31:02 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/i...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/14/type/general
+---
+2013/03/18 09:31:42 [error] [exception.CException] exception 'CException' with message 'EventModel and its behaviors do not have a method or closure named "gets_gallery".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(649): CComponent->__call('gets_gallery', Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(649): EventModel->gets_gallery('14')
+#2 [internal function]: EventController->actionGallery('14')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/i...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/14/type/general
+---
+2013/03/18 09:32:03 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\back\protected\views\event\gallery.php:10)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(659): EventController->render()
+#3 unknown(0): EventController->actionGallery()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+in D:\xampp\htdocs\eticket\back\protected\views\event\gallery.php (10)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (659)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 09:32:55 [error] [php] Undefined variable: type (D:\xampp\htdocs\eticket\back\protected\views\event\gallery.php:14)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(660): EventController->render()
+#3 unknown(0): EventController->actionGallery()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+in D:\xampp\htdocs\eticket\back\protected\views\event\gallery.php (14)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (660)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/18 09:35:08 [error] [exception.CException] exception 'CException' with message 'EventModel and its behaviors do not have a method or closure named "add_gallery".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(671): CComponent->__call('add_gallery', Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(671): EventModel->add_gallery('14', 'aa7o2tPOR.jpg', 'a:3:{s:9:"thumb...')
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(655): EventController->upload_gallery(Array)
+#3 [internal function]: EventController->actionGallery('14')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/i...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/event/gallery/id/14/
+HTTP_REFERER=http://localhost/eticket/back/event/gallery/id/14/
+---
+2013/03/18 09:35:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\eticket\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('gallery')
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/gallery/s...')
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#7 {main}
+REQUEST_URI=/eticket/back/event/gallery/s/event-new
+HTTP_REFERER=http://localhost/eticket/back/event/gallery/id/14/
+---
+2013/03/18 09:49:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "delete_gallery".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('delete_gallery')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('delete_gallery')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/delete_ga...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/back/event/delete_gallery/id/18
+HTTP_REFERER=http://localhost/eticket/back/event/gallery/id/14?s=1
+---

@@ -26,7 +26,7 @@
                 <div class="controls pull-left">
                     <input class="btn" type="submit" value="Submit"/>
                     <a class="btn-signup-fb" href="<?php echo HelperUrl::baseUrl()?>user/loginfacebook">
-                        <img src="<?php echo HelperUrl::baseUrl() ?>images/sign_up_fb.png" alt=""/>
+                        <img src="<?php echo HelperUrl::baseUrl() ?>images/bt_fb.png" alt=""/>
                     </a>
                 </div>
             </div>

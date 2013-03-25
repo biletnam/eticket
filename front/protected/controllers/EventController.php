@@ -654,8 +654,10 @@ class EventController extends Controller {
         $order_id = $this->OrderModel->add(UserControl::getId(), $event['id'], Yii::app()->request->userHostAddress, Yii::app()->request->userAgent, $use_payment);
         $total = 0;
         foreach ($tmp as $k => $v) {
-            $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
-            $total += ($v['quantity'] * $v['type']['price']) + $v['type']['tax'];
+            //$this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
+            //$total += ($v['quantity'] * $v['type']['price']) + $v['type']['tax'];
+            $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) * 1.1);
+            $total += ($v['quantity'] * $v['type']['price']) * 1.1;
         }
 
         $token = Ultilities::base32UUID();

@@ -52,7 +52,7 @@
                                             </td>
 
                                             <td>$<?php echo $t['price'] ?></td>
-                                            <td>$<?php echo $t['fee'] ?></td>
+                                            <td>$<?php echo $t['price']*0.1//$t['fee'] ?></td>
                                             <td><?php echo $t['quantity'] ?></td>                                        
                                             <td>$<?php echo $t['total']; ?></td>
                                         </tr>

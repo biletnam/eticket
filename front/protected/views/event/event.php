@@ -60,7 +60,7 @@
 
                                             </td>
                                             <td>$<?php echo $t['price'] ?></td>
-                                            <td>$<?php echo $t['tax'] ?></td>
+                                            <td>$<?php echo $t['price']*0.1 ?></td>
                                             <td>                             
                                                 <?php if ((int) $t['remaining'] == 0 && (int)$t['total_ticket'] > 0): ?>
                                                 SOLD OUT

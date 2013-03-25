@@ -21,10 +21,10 @@ class LocationModel extends CFormModel {
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
 
-        $sql = "SELECT vc.*,ec.title as city
+        $sql = "SELECT vc.*,ec.title as country
                 FROM etk_locations vc
-                   LEFT JOIN etk_cities ec
-                    on vc.city_id = ec.id
+                   LEFT JOIN etk_countries ec
+                    on vc.country_id = ec.id
                 WHERE 1
                 $custom
                 ORDER BY vc.title ASC
@@ -78,17 +78,17 @@ class LocationModel extends CFormModel {
         return $command->queryRow();
     }
 
-    public function add($title, $slug, $city, $address) {
+    public function add($title, $slug, $country, $address) {
         $count_slug = $this->check_exist_slug($slug);
         if ($count_slug > 0)
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO etk_locations(title,slug,city_id,address,date_added) VALUES(:title,:slug,:city_id,:address,:date_added)";
+        $sql = "INSERT INTO etk_locations(title,slug,country_id,address,date_added) VALUES(:title,:slug,:country_id,:address,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":title", $title);
         $command->bindParam(":slug", $slug);
-        $command->bindParam(":city_id", $city);
+        $command->bindParam(":country_id", $country);
         $command->bindParam(":address", $address);
         $command->bindParam(":date_added", $time);
         $command->execute();
@@ -101,8 +101,21 @@ class LocationModel extends CFormModel {
         $row = $command->queryRow();
         return $row['count'];
     }
+    
+    public function update($args) {
 
-    public function get_cities($args, $page = 1, $ppp = 10) {
+        $keys = array_keys($args);
+        $custom = '';
+        foreach ($keys as $k)
+            $custom .= $k . ' = :' . $k . ', ';
+        $custom = substr($custom, 0, strlen($custom) - 2);
+        $sql = 'update etk_locations set ' . $custom . ' where id = :id';
+        $command = Yii::app()->db->createCommand($sql);
+        return $command->execute($args);
+    }
+    
+
+    public function get_countries($args, $page = 1, $ppp = 10) {
 
         $page = ($page - 1) * $ppp;
         $custom = "";
@@ -121,7 +134,7 @@ class LocationModel extends CFormModel {
 
 
         $sql = "SELECT *
-                FROM etk_cities
+                FROM etk_countries
                 WHERE 1
                 $custom 
                  ORDER BY title ASC
@@ -139,7 +152,7 @@ class LocationModel extends CFormModel {
         return $command->queryAll();
     }
 
-    public function count_cities($args) {
+    public function count_countries($args) {
 
         $custom = "";
         $params = array();
@@ -153,7 +166,7 @@ class LocationModel extends CFormModel {
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
         $sql = "SELECT count(*) as total
-                FROM etk_cities
+                FROM etk_countries
                 WHERE 1
                 $custom 
                ";
@@ -169,25 +182,13 @@ class LocationModel extends CFormModel {
         return $count['total'];
     }
 
-    public function update($args) {
-
-        $keys = array_keys($args);
-        $custom = '';
-        foreach ($keys as $k)
-            $custom .= $k . ' = :' . $k . ', ';
-        $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update etk_locations set ' . $custom . ' where id = :id';
-        $command = Yii::app()->db->createCommand($sql);
-        return $command->execute($args);
-    }
-
-    public function add_city($title, $slug) {
-        $count_slug = $this->check_exist_slug_city($slug);
+    public function add_country($title, $slug) {
+        $count_slug = $this->check_exist_slug_country($slug);
         if ($count_slug > 0)
             $slug = $slug . "-" . $count_slug;
 
 
-        $sql = "INSERT INTO etk_cities(title,slug) VALUES(:title,:slug)";
+        $sql = "INSERT INTO etk_countries(title,slug) VALUES(:title,:slug)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":title", $title);
         $command->bindParam(":slug", $slug);
@@ -196,30 +197,30 @@ class LocationModel extends CFormModel {
         return Yii::app()->db->lastInsertID;
     }
 
-    private function check_exist_slug_city($slug) {
-        $sql = 'SELECT count(slug) as count FROM etk_cities WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
+    private function check_exist_slug_country($slug) {
+        $sql = 'SELECT count(slug) as count FROM etk_countries WHERE slug REGEXP "^' . $slug . '(-[[:digit:]]+)?$"';
         $command = Yii::app()->db->createCommand($sql);
         $row = $command->queryRow();
         return $row['count'];
     }
 
-    public function get_city($id) {
+    public function get_country($id) {
         $sql = "SELECT *
-                FROM etk_cities
+                FROM etk_countries
                 WHERE id = :id";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();
     }
 
-    public function update_city($args) {
+    public function update_country($args) {
 
         $keys = array_keys($args);
         $custom = '';
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update etk_cities set ' . $custom . ' where id = :id';
+        $sql = 'update etk_countries set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

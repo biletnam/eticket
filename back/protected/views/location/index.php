@@ -29,7 +29,7 @@
               
                 <td>
                   
-                    <span class="label label-success"><?php echo $v['city'] ?></span>
+                    <span class="label label-success"><?php echo $v['country'] ?></span>
                 </td>
       
                 

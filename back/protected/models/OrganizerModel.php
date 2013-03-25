@@ -82,17 +82,17 @@ class OrganizerModel extends CFormModel {
         return $command->queryRow();
     }
 
-    public function add($title, $slug, $city, $address) {
+    public function add($title, $slug, $country, $address) {
         $count_slug = $this->check_exist_slug($slug);
         if ($count_slug > 0)
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO etk_locations(title,slug,city_id,address,date_added) VALUES(:title,:slug,:city_id,:address,:date_added)";
+        $sql = "INSERT INTO etk_locations(title,slug,country_id,address,date_added) VALUES(:title,:slug,:country_id,:address,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":title", $title);
         $command->bindParam(":slug", $slug);
-        $command->bindParam(":city_id", $city);
+        $command->bindParam(":country_id", $country);
         $command->bindParam(":address", $address);
         $command->bindParam(":date_added", $time);
         $command->execute();

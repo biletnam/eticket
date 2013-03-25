@@ -33,8 +33,8 @@ class EventModel extends CFormModel {
                 ON va.id = ve.user_id
                 LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
-                LEFT JOIN etk_cities ec
-		ON ec.id = vl.city_id
+                LEFT JOIN etk_countries ec
+		ON ec.id = vl.country_id
                 WHERE 1
                 $custom
                 ORDER BY ve.date_added DESC
@@ -85,8 +85,8 @@ class EventModel extends CFormModel {
                 ON va.id = ve.user_id
                 LEFT JOIN etk_locations vl
                 ON vl.id = ve.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = vl.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = vl.country_id
                 WHERE ve.id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);

@@ -1,10 +1,10 @@
 
 <ul class="breadcrumb">
     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
-    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/location/city">City</a> <span class="divider">/</span> </li>
+    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/location/country">Country</a> <span class="divider">/</span> </li>
     <li class="active">Add</li>
 </ul>
-<legend>Add city</legend>
+<legend>Add country</legend>
 
 
 <?php echo Helper::print_error($message); ?>
@@ -21,7 +21,6 @@
 
 
             <div class="form-actions">        
-                <!--<button type="button" class="btn btn-continue">Tiếp tục &raquo;</button> -->
                 <button style="margin-left: 50px" type="submit" class="btn btn-primary">Save</button>
             </div>
 

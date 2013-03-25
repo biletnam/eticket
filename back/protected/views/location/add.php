@@ -22,9 +22,9 @@
             <div class="control-group">
                 <label class="control-label">City</label>
                 <div class="controls">
-                    <select name="city">
-                        <?php foreach ($cities as $k => $v): ?>
-                            <option <?php if (isset($_POST['city']) && $_POST['city'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
+                    <select name="country">
+                        <?php foreach ($countries as $k => $v): ?>
+                            <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -38,7 +38,6 @@
             </div>
 
             <div class="form-actions">        
-                <!--<button type="button" class="btn btn-continue">Tiếp tục &raquo;</button> -->
                 <button style="margin-left: 50px" type="submit" class="btn btn-primary">Save</button>
             </div>
 

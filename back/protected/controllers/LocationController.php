@@ -16,7 +16,7 @@ class LocationController extends Controller {
         $this->LocationModel = new LocationModel();
     }
 
-    public function actionIndex( $p = 1) {
+    public function actionIndex($p = 1) {
 
         $this->CheckPermission();
 
@@ -32,7 +32,7 @@ class LocationController extends Controller {
         $this->viewData['location'] = $location;
         $this->viewData['total'] = $total;
         $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/location/index/p/", $total, $p) : "";
-        
+
         $this->render('index', $this->viewData);
     }
 
@@ -42,16 +42,16 @@ class LocationController extends Controller {
         if ($_POST)
             $this->do_add();
 
-        $cities = $this->LocationModel->get_cities(array('deleted'=>0),1,200);
+        $countries = $this->LocationModel->get_countries(array('deleted' => 0), 1, 200);
 
-        $this->viewData['cities'] = $cities;
+        $this->viewData['countries'] = $countries;
         $this->viewData['message'] = $this->message;
         $this->render('add', $this->viewData);
     }
 
     private function do_add() {
         $title = trim($_POST['title']);
-        $city = $_POST['city'];
+        $country = $_POST['country'];
         $address = trim($_POST['address']);
 
         if ($this->validator->is_empty_string($title))
@@ -63,7 +63,7 @@ class LocationController extends Controller {
             return false;
         }
 
-        $location_id = $this->LocationModel->add($title, Helper::create_slug($title), $city, $address);
+        $location_id = $this->LocationModel->add($title, Helper::create_slug($title), $country, $address);
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/location/edit/id/$location_id/?s=1");
     }
@@ -76,9 +76,9 @@ class LocationController extends Controller {
         if ($_POST)
             $this->do_edit($location);
 
-        $cities = $this->LocationModel->get_cities(array('deleted'=>0),1,200);
+        $countries = $this->LocationModel->get_countries(array('deleted' => 0), 1, 200);
 
-        $this->viewData['cities'] = $cities;
+        $this->viewData['countries'] = $countries;
         $this->viewData['message'] = $this->message;
         $this->viewData['location'] = $location;
         $this->render('edit', $this->viewData);
@@ -86,7 +86,7 @@ class LocationController extends Controller {
 
     private function do_edit($location) {
         $title = trim($_POST['title']);
-        $city = $_POST['city'];
+        $country = $_POST['country'];
         $address = trim($_POST['address']);
 
         if ($this->validator->is_empty_string($title))
@@ -98,7 +98,7 @@ class LocationController extends Controller {
             return false;
         }
 
-        $this->LocationModel->update(array('title' => $title, 'city_id' => $city, 'address' => $address, 'id' => $location['id']));
+        $this->LocationModel->update(array('title' => $title, 'country_id' => $$country, 'address' => $address, 'id' => $location['id']));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $location, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/location/edit/id/$location[id]/?s=1");
     }
@@ -112,8 +112,9 @@ class LocationController extends Controller {
         $this->LocationModel->update(array('deleted' => 1, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Deleted', 'Data' => array('id' => $id)));
     }
-    
-     public function actionCity( $p = 1) {
+
+
+    public function actionCountry($p = 1) {
 
         $this->CheckPermission();
 
@@ -123,30 +124,30 @@ class LocationController extends Controller {
 
         $args = array('s' => $s, 'deleted' => 0);
 
-        $cities = $this->LocationModel->get_cities($args, $p, $ppp);
-        $total = $this->LocationModel->count_cities($args);
+        $countries = $this->LocationModel->get_countries($args, $p, $ppp);
+        $total = $this->LocationModel->count_countries($args);
 
-        $this->viewData['cities'] = $cities;
+        $this->viewData['countries'] = $countries;
         $this->viewData['total'] = $total;
-        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/location/city/p/", $total, $p) : "";
-    
-        $this->render('city', $this->viewData);
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/location/country/p/", $total, $p) : "";
+
+        $this->render('country', $this->viewData);
     }
-    
-        public function actionAdd_city() {
+
+    public function actionAdd_country() {
 
         $this->CheckPermission();
         if ($_POST)
-            $this->do_add_city();
+            $this->do_add_country();
 
-      
+
         $this->viewData['message'] = $this->message;
-        $this->render('add_city', $this->viewData);
+        $this->render('add_country', $this->viewData);
     }
 
-    private function do_add_city() {
+    private function do_add_country() {
         $title = trim($_POST['title']);
-       
+
         if ($this->validator->is_empty_string($title))
             $this->message['error'][] = "Please enter city title.";
 
@@ -156,27 +157,27 @@ class LocationController extends Controller {
             return false;
         }
 
-        $location_id = $this->LocationModel->add_city($title, Helper::create_slug($title));
+        $location_id = $this->LocationModel->add_country($title, Helper::create_slug($title));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
-        $this->redirect(Yii::app()->request->baseUrl . "/location/edit_city/id/$location_id/?s=1");
+        $this->redirect(Yii::app()->request->baseUrl . "/location/edit_country/id/$location_id/?s=1");
     }
-    
-    public function actionEdit_city($id = "") {
+
+    public function actionEdit_country($id = "") {
         $this->CheckPermission();
-        $city = $this->LocationModel->get_city($id);
-        if (!$city)
+        $country = $this->LocationModel->get_country($id);
+        if (!$country)
             $this->load_404();
         if ($_POST)
-            $this->do_edit_city($city);
+            $this->do_edit_country($country);
 
         $this->viewData['message'] = $this->message;
-        $this->viewData['city'] = $city;
-        $this->render('edit_city', $this->viewData);
+        $this->viewData['country'] = $country;
+        $this->render('edit_country', $this->viewData);
     }
 
-    private function do_edit_city($city) {
+    private function do_edit_country($country) {
         $title = trim($_POST['title']);
-     
+
         if ($this->validator->is_empty_string($title))
             $this->message['error'][] = "Please enter city title.";
 
@@ -186,18 +187,18 @@ class LocationController extends Controller {
             return false;
         }
 
-        $this->LocationModel->update_city(array('title' => $title,'deleted'=>$_POST['deleted'],'id'=>$city['id']));
-        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $city, 'New data' => $_POST));
-        $this->redirect(Yii::app()->request->baseUrl . "/location/edit_city/id/$city[id]/?s=1");
+        $this->LocationModel->update_country(array('title' => $title, 'deleted' => $_POST['deleted'], 'id' => $country['id']));
+        HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $country, 'New data' => $_POST));
+        $this->redirect(Yii::app()->request->baseUrl . "/location/edit_country/id/$country[id]/?s=1");
     }
 
-    public function actionDelete_city($id) {
+    public function actionDelete_country($id) {
         $this->CheckPermission();
-        $city = $this->LocationModel->get_city($id);
-        if (!$city)
+        $country = $this->LocationModel->get_country($id);
+        if (!$country)
             return;
 
-        $this->LocationModel->update_city(array('deleted' => 1, 'id' => $id));
+        $this->LocationModel->update_country(array('deleted' => 1, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Deleted', 'Data' => array('id' => $id)));
     }
 

@@ -281,5 +281,6 @@ class HelperApp {
 
         @mail($to, $subject, $message, $header);
     }
-   
+    
+ 
 }

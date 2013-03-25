@@ -195,7 +195,7 @@ class UserController extends Controller {
         $to = $email;
         $subject = "Recovery Password";
         $message = 'Hello <strong>' . $user['firstname'] . ' ' . $user['lastname'] . '</strong>, <br /><br />
-                    Has requested get back password at Eticket website.
+                    Has requested get back password at 360 Island Events website.
                     If this is you, please click on the link below to continue.
                     If not, please ignore this email.<br/><br />
                     <a href="' . $forgot_url . '">' . $forgot_url . '</a><br/><br/>                   

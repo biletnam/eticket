@@ -8,7 +8,7 @@
                         <?php $this->renderPartial('search'); ?>
 
                         <div id="intro">
-                            <h3>New to eTicket?</h3>
+                            <h3>New to  360 Island Events?</h3>
                             <section class="row-fluid clearfix">
                                 <div class="span5 intro-left pull-left">
                                     <img src="<?php echo HelperUrl::baseUrl() ?>/images/thumb_feature_tutorial.jpg" alt="">

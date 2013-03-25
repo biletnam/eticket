@@ -11134,3 +11134,42 @@ Stack trace:
 REQUEST_URI=/eticket/front/ticket/print
 HTTP_REFERER=http://localhost/eticket/front/event/search
 ---
+2013/03/19 14:27:40 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.vsk_events' doesn't exist. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+                FROM vsk_events ve
+                LEFT JOIN vsk_users va
+                ON va.id = ve.id
+                LEFT JOIN vsk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published AND DATE(start_time) >= DATE(NOW())
+                ORDER BY ve.start_time ASC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\_front\protected\models\EventModel.php (54)
+in D:\xampp\htdocs\eticket\_front\protected\controllers\HomeController.php (45)
+in D:\xampp\htdocs\eticket\_front\index.php (17)
+2013/03/19 14:27:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.vsk_events' doesn't exist. The SQL statement executed was: SELECT ve.*,va.email as author,vl.title as location, vl.address,vl.city
+                FROM vsk_events ve
+                LEFT JOIN vsk_users va
+                ON va.id = ve.id
+                LEFT JOIN vsk_locations vl
+                ON vl.id = ve.location_id
+                WHERE 1
+                 AND ve.deleted = :deleted AND ve.published = :published AND DATE(start_time) >= DATE(NOW())
+                ORDER BY ve.start_time ASC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\_front\protected\models\EventModel.php(54): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\_front\protected\controllers\HomeController.php(45): EventModel->gets(Array, 1, 5)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\_front\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/_front/
+HTTP_REFERER=http://localhost/eticket/
+---

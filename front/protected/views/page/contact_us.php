@@ -20,7 +20,7 @@
                     <div class="controls-group clearfix">
                         <label class="control-label pull-left">Message</label>
                         <div class="controls pull-left">
-                            <textarea class="input-medium" name="message"><?php if(isset($_POST['message'])) echo $_POST['message'] ?></textarea>
+                            <textarea style="height: 200px" class="input-medium" name="message"><?php if(isset($_POST['message'])) echo $_POST['message'] ?></textarea>
                         </div>
                     </div>
                     <div class="controls-group clearfix">

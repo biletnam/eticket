@@ -79,8 +79,9 @@ class EventController extends Controller {
         
         
         HelperGlobal::require_login();
-        if(UserControl::getRole()!='client')
-            $this->load_404();
+//        if(UserControl::getRole()!='client' && UserControl::LoggedIn())
+//            $this->load_404();
+        
         if ($_POST)
             $this->do_create();
 
@@ -588,7 +589,7 @@ class EventController extends Controller {
         $cannot_delete = $this->TicketModel->counts(array('deleted' => 0, 'ticket_type_id' => $ticket_type['id'], 'check_date_expired' => 1));
 
         if ($cannot_delete) {
-            $this->message['error'][] = "You cannot delete this ticket because it's ordered. Please contact the administrator of eTicket to refer this problem.";
+            $this->message['error'][] = "You cannot delete this ticket because it's ordered. Please contact the administrator of 360 Island Events to refer this problem.";
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;

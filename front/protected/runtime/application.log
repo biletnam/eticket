@@ -912,3 +912,121 @@ REQUEST_URI=/eticket/front/event/register/?order_id=18&token=hYp3jHmND
 in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (12)
 in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (702)
 in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/19 14:31:22 [error] [php] Undefined index: code (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:532)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/loginfacebook
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (532)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/19 14:34:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/03/19 14:46:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:46:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:46:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:47:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:47:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 14:47:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 16:56:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 16:56:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 16:56:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+---
+2013/03/19 16:57:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ico/favicon.ico".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('ico/favicon.ico')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/ico/favicon.ico?v=3
+HTTP_REFERER=http://localhost/eticket/front/
+---

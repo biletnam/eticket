@@ -63,7 +63,7 @@ html[xmlns] .slides {display: block;}
 	cursor: pointer;
 	text-indent: -9999px;
 	/*background: rgba(0, 0, 0, 0.65);*/
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#b3000000',GradientType=0 ); /* IE6-8 */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#b3000000',GradientType=0 ); /* IE6-8 */
 	
 	*bottom: 50px;
 	-webkit-transition: all 0.1s ease-in-out;

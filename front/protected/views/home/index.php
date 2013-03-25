@@ -7,11 +7,11 @@
         <ul class="slides">
 
             <li>
-                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner.png" alt="" />
+                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner_3.png" alt="" />
             </li>
 
             <li>
-                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner_1.png" alt="" />
+                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner_2.png" alt="" />
             </li>
         </ul>
     </div>

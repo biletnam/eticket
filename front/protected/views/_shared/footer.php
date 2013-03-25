@@ -79,6 +79,7 @@
 
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>/js/tiny_mce/tiny_mce.js"></script>    
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/jquery.html5-placeholder-shim.js"></script>
 <script type="text/javascript" src="<?php echo HelperUrl::baseUrl(); ?>js/app.js?v=04032013"></script>
 
 </body>

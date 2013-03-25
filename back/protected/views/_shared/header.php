@@ -11,7 +11,7 @@
 
         <title>eTicket</title>
         <script>
-            var baseUrl = '<?php echo Yii::app()->request->baseUrl; ?>';
+            var baseUrl = '<?php echo HelperUrl::baseUrl() ?>';
             var ticketTax = '<?php echo Yii::app()->getParams()->itemAt('ticket_tax'); ?>';
         </script>
     </head>

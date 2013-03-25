@@ -156,7 +156,9 @@ function bind_event(){
     
     var cache = {},lastXhr;
     $('#event_form #add_location').keyup(function() {
+        
         var str = $.trim($(this).val());
+  
         if(str.length == 0)
             return false;
         $("#event_form .loading-location").show();
@@ -169,7 +171,7 @@ function bind_event(){
                     return;
                 }
 
-                lastXhr = $.getJSON(baseUrl+'/event/search_location/s/' + str + '/', request, function( data, status, xhr ) {
+                lastXhr = $.getJSON(baseUrl+'event/search_location/s/' + str + '/', request, function( data, status, xhr ) {
                     cache[ term ] = data;
                     if ( xhr === lastXhr ) {
                         response( data );
@@ -181,14 +183,14 @@ function bind_event(){
                 $("#event_form .loading-location").hide();
                 $("#event_form #add_location").val( ui.item.title );
                 $("#event_form input[name=address]").val(ui.item.address);
-                $("#event_form select[name=city]").val(ui.item.city);
+                $("#event_form select[name=country]").val(ui.item.country);
                 return false;
             },
             select: function(event, ui) { 
                 $("#event_form .loading-location").hide();
                 $("#event_form #add_location").val( ui.item.title );
                 $("#event_form input[name=address]").val(ui.item.address);
-                $("#event_form select[name=city]").val(ui.item.city);
+                $("#event_form select[name=country]").val(ui.item.country);
                 $("#event_form input[name=location_id]").val(ui.item.value);
                 return false;
             },

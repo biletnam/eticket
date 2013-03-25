@@ -27,7 +27,7 @@ class EventModel extends CFormModel {
         }
 
 
-        $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,ec.title as city
+        $sql = "SELECT ve.*,va.email as author,vl.title as location, vl.address,ec.title as country,ec.id as country_id,vl.city_title as city_title
                 FROM etk_events ve
                 LEFT JOIN etk_users va
                 ON va.id = ve.user_id
@@ -79,7 +79,7 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,ec.title as city
+        $sql = "SELECT ve.*,va.email as author,va.id as author_id,vl.title as location, vl.address,ec.title as country,ec.id as country_id,vl.city_title as city_title
                 FROM etk_events ve
                 LEFT JOIN etk_users va
                 ON va.id = ve.user_id

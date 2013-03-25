@@ -1,5 +1,5 @@
 <?php
-$cities = Helper::cities();
+$countries = Helper::countries();
 $ticket_status = Helper::ticket_status();
 ?>
 <ul class="breadcrumb">
@@ -84,13 +84,20 @@ $ticket_status = Helper::ticket_status();
                 <input type="text" class="input-xxlarge" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : htmlspecialchars($event['address']); ?>">
             </div>
         </div>
+        
+        <div class="control-group">
+            <label class="control-label">City</label>
+            <div class="controls">
+                <input type="text" class="input-xxlarge" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : htmlspecialchars($event['city_title']); ?>">
+            </div>
+        </div>
 
         <div class="control-group">
-            <label class="control-label">Ciy</label>
+            <label class="control-label">Country</label>
             <div class="controls">
-                <select name="city">
-                    <?php foreach ($cities as $k => $v): ?>
-                        <option <?php if (isset($_POST['city']) && $_POST['city'] == $v) echo 'selected'; else if ($event['city'] == $v) echo 'selected'; ?> value="<?php echo $v; ?>"><?php echo $v; ?></option>
+                <select name="country">
+                    <?php foreach ($countries as $k => $v): ?>
+                        <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; else if ($event['country_id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -376,8 +383,8 @@ $ticket_status = Helper::ticket_status();
                       <tr>
                       <td colspan="8">
                       <div class="tickets-footer">
-                      <div class="clearfix" id="event_capacity_container">
-                      <div class="span3" id="event_capacity_label">Tổng số vé
+                      <div class="clearfix" id="event_capacountry_container">
+                      <div class="span3" id="event_capacountry_label">Tổng số vé
                       <input type="text" readonly="" class="input-mini total-ticket disabled" name="total_ticket" value="<?php if (isset($_POST['total_ticket'])) echo $_POST['total_ticket'] ?>">
                       </div>
                       <!--

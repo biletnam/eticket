@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     <a href="<?php echo Yii::app()->request->baseUrl ?>/location/id/<?php echo $v['location_id'] ?>"><?php echo $v['location'] ?></a><br/>
-                    <span class="label label-success"><?php echo $v['city'] ?></span>
+                    <span class="label label-success"><?php echo $v['country'] ?></span>
                 </td>
                 <td>
                     <p>Start: <span class="label"><?php echo date('d-m-Y H:i',strtotime($v['start_time'])); ?></span></p>

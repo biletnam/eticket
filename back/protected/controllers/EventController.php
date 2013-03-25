@@ -87,7 +87,7 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
-        $city = trim($_POST['city']);
+        $country = trim($_POST['country']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -149,10 +149,10 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
 
         //add new event
         $event_id = $this->EventModel->add(array('user_id' => UserControl::getId(),
@@ -397,9 +397,10 @@ class EventController extends Controller {
             return null;
 
         $locations = $this->LocationModel->gets(array('deleted' => 0, 's' => $s));
+
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['city']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country']);
         echo json_encode($tmp);
     }
 
@@ -432,6 +433,7 @@ class EventController extends Controller {
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
         $city = trim($_POST['city']);
+        $country = trim($_POST['country']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -491,11 +493,15 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+        
+        //echo $location_id;die;
 
+        $this->LocationModel->update(array('country_id' => $country,'city_title' => $city,'id' => $location_id));
+        
         //update event
         $this->EventModel->update(array('id' => $event['id'],
             'title' => $title,

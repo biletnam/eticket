@@ -5251,3 +5251,265 @@ REQUEST_URI=/eticket/back/location/edit/id/32/?s=1
 in D:\xampp\htdocs\eticket\back\protected\views\location\edit.php (27)
 in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (84)
 in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/25 16:14:48 [error] [php] Undefined index: city (D:\xampp\htdocs\eticket\back\protected\views\event\index.php:38)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(67): EventController->render()
+#3 unknown(0): EventController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/
+in D:\xampp\htdocs\eticket\back\protected\views\event\index.php (38)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (67)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/25 16:15:14 [error] [php] Undefined index: city (D:\xampp\htdocs\eticket\back\protected\views\event\edit.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(423): EventController->render()
+#3 unknown(0): EventController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/edit/id/21
+in D:\xampp\htdocs\eticket\back\protected\views\event\edit.php (93)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (423)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/25 16:21:10 [error] [php] include(CountryModell.php): failed to open stream: No such file or directory (D:\xampp\htdocs\eticket\framework\YiiBase.php:423)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\helpers\Helper.php(122): spl_autoload_call()
+#1 D:\xampp\htdocs\eticket\back\protected\views\event\edit.php(2): countries()
+#2 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(127): require()
+#3 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): EventController->renderInternal()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#6 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(423): EventController->render()
+#7 unknown(0): EventController->actionEdit()
+#8 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#12 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#13 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#14 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#15 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/edit/id/21
+in D:\xampp\htdocs\eticket\back\protected\helpers\Helper.php (122)
+in D:\xampp\htdocs\eticket\back\protected\views\event\edit.php (2)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (423)
+2013/03/25 16:21:21 [error] [php] include(CountryModel.php): failed to open stream: No such file or directory (D:\xampp\htdocs\eticket\framework\YiiBase.php:423)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\helpers\Helper.php(122): spl_autoload_call()
+#1 D:\xampp\htdocs\eticket\back\protected\views\event\edit.php(2): countries()
+#2 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(127): require()
+#3 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): EventController->renderInternal()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#6 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(423): EventController->render()
+#7 unknown(0): EventController->actionEdit()
+#8 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#12 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#13 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#14 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#15 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/edit/id/21
+in D:\xampp\htdocs\eticket\back\protected\helpers\Helper.php (122)
+in D:\xampp\htdocs\eticket\back\protected\views\event\edit.php (2)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (423)
+2013/03/25 16:22:57 [error] [php] Array to string conversion (D:\xampp\htdocs\eticket\back\protected\views\event\edit.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(423): EventController->render()
+#3 unknown(0): EventController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/edit/id/21
+in D:\xampp\htdocs\eticket\back\protected\views\event\edit.php (93)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (423)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/25 16:23:43 [error] [php] Array to string conversion (D:\xampp\htdocs\eticket\back\protected\views\event\edit.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(423): EventController->render()
+#3 unknown(0): EventController->actionEdit()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/event/edit/id/21
+in D:\xampp\htdocs\eticket\back\protected\views\event\edit.php (93)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (423)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/25 16:49:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Tor
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:52:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Tor
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:52:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Andrew+Richard+Designs+a
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:53:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Torr
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:55:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Tpr
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:55:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=T
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:55:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Tor
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:55:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Tor
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:57:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Andrew+Richard+Designsa+
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 16:57:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NaN".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('NaN')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/back/NaN/?term=Andrew+Richard+Designsa+a
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 17:07:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: update etk_locations set country_id = :country_id, city_title = :city_title where id = :id.
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (115)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (501)
+in D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php (415)
+2013/03/25 17:07:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: update etk_locations set country_id = :country_id, city_title = :city_title where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php(115): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(501): LocationModel->update(Array)
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\EventController.php(415): EventController->do_edit(Array)
+#3 [internal function]: EventController->actionEdit('21', 'general')
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('edit')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/edit/id/2...')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/event/edit/id/21
+HTTP_REFERER=http://localhost/eticket/back/event/edit/id/21
+---
+2013/03/25 17:21:27 [error] [php] Missing argument 5 for LocationModel::add(), called in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php on line 66 and defined (D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php:81)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): LocationController->actionAdd()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/add/
+in D:\xampp\htdocs\eticket\back\protected\models\LocationModel.php (81)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (66)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (43)
+2013/03/25 17:24:30 [error] [php] Undefined index: city (D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php:54)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): LocationController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): LocationController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): LocationController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/location/add/
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (54)
+in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (43)
+in D:\xampp\htdocs\eticket\back\index.php (14)

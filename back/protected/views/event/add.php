@@ -1,5 +1,5 @@
 <?php
-$cities = Helper::cities();
+$countries = Helper::countries();
 $ticket_status = Helper::ticket_status();
 $ticket_types = Helper::ticket_types();
 ?>
@@ -78,9 +78,9 @@ $ticket_types = Helper::ticket_types();
             <div class="control-group">
                 <label class="control-label">City</label>
                 <div class="controls">
-                    <select name="city">
-                        <?php foreach ($cities as $k => $v): ?>
-                            <option <?php if (isset($_POST['city']) && $_POST['city'] == $v) echo 'selected'; ?> value="<?php echo $v; ?>"><?php echo $v; ?></option>
+                    <select name="country">
+                        <?php foreach ($countries as $k => $v): ?>
+                            <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['id']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

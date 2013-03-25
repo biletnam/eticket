@@ -18,9 +18,16 @@
                     <input type="text" class="input-xxlarge" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>">
                 </div>
             </div>
-
+        
             <div class="control-group">
                 <label class="control-label">City</label>
+                <div class="controls">
+                    <input type="text" class="input-xxlarge" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']); ?>">
+                </div>
+            </div>
+        
+            <div class="control-group">
+                <label class="control-label">Country</label>
                 <div class="controls">
                     <select name="country">
                         <?php foreach ($countries as $k => $v): ?>

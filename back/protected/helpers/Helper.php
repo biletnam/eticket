@@ -118,13 +118,9 @@ class Helper {
         return array('faq'=>'Faq','event'=>'Event');
     }
     
-    public static function cities(){
-        return array('Hồ Chí Minh',
-                    'Hà Nội',
-                    'Đà Nẵng',
-                    'Huế',
-                    'Nha Trang',
-                    'Đà Lạt');
+   public static function countries() {
+        $CountryModel = new CountryModel();
+        return $CountryModel->gets_all_countries();
     }
     
     public static function ticket_types(){

@@ -11,7 +11,7 @@
         <tr>          
             
             <th>Title</th>
-            <th>City</th>            
+            <th>Country</th>            
             
             <th class="row-action"></th>
         </tr>

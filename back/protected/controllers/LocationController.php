@@ -51,6 +51,7 @@ class LocationController extends Controller {
 
     private function do_add() {
         $title = trim($_POST['title']);
+        $city = trim($_POST['city']);
         $country = $_POST['country'];
         $address = trim($_POST['address']);
 
@@ -63,7 +64,7 @@ class LocationController extends Controller {
             return false;
         }
 
-        $location_id = $this->LocationModel->add($title, Helper::create_slug($title), $country, $address);
+        $location_id = $this->LocationModel->add($title, Helper::create_slug($title), $country,$city, $address);
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Add', 'Data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/location/edit/id/$location_id/?s=1");
     }
@@ -86,6 +87,7 @@ class LocationController extends Controller {
 
     private function do_edit($location) {
         $title = trim($_POST['title']);
+        $city = trim($_POST['city']);
         $country = $_POST['country'];
         $address = trim($_POST['address']);
 
@@ -98,7 +100,7 @@ class LocationController extends Controller {
             return false;
         }
 
-        $this->LocationModel->update(array('title' => $title, 'country_id' => $$country, 'address' => $address, 'id' => $location['id']));
+        $this->LocationModel->update(array('title' => $title, 'country_id' => $$country, 'city_title' => $city ,'address' => $address, 'id' => $location['id']));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Edit', 'Old data' => $location, 'New data' => $_POST));
         $this->redirect(Yii::app()->request->baseUrl . "/location/edit/id/$location[id]/?s=1");
     }

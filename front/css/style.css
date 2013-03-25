@@ -449,7 +449,7 @@ nav ul li{float:left;margin-left:28px}
             .home .events ul li .event-thumbnail{width: 80px;margin-right: 10px;padding-top: 12px}
                 .home .events ul li .event-thumbnail a{display: block;padding:3px;border:1px solid #DBDCDD}
             
-            .home .events ul li .event-summary{font-size: 9px;font-style: italic;width: 115px;line-height:13.5px ;min-height: 80px;padding-top: 12px;background: url('../img/small_kube_event.png') center 5px no-repeat;}
+            .home .events ul li .event-summary{font-size: 9px;font-style: italic;width: 115px;line-height:13.5px ;height: 80px;padding-top: 12px;background: url('../img/small_kube_event.png') center 5px no-repeat;font-family: Georgia;overflow: hidden;}
                 .home .events ul li .event-summary a{font-size: 24px;color:#5f5d5d;font-style: normal}
                 
 .footer{}

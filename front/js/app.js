@@ -284,6 +284,7 @@ function bind_event(){
                 }
 
                 lastXhr = $.getJSON(baseUrl+'/event/search_location/s/' + str + '/', request, function( data, status, xhr ) {
+                    console.log(data);
                     cache[ term ] = data;
                     if ( xhr === lastXhr ) {
                         response( data );
@@ -295,15 +296,17 @@ function bind_event(){
                 $("#event_form .loading-location").hide();
                 $("#event_form #add_location").val( ui.item.title );
                 $("#event_form input[name=address]").val(ui.item.address);
-                $("#event_form select[name=city]").val(ui.item.city);
+                $("#event_form select[name=country]").val(ui.item.country);
+                $("#event_form input[name=city]").val(ui.item.city);
                 return false;
             },
             select: function(event, ui) { 
                 $("#event_form .loading-location").hide();
                 $("#event_form #add_location").val( ui.item.title );
                 $("#event_form input[name=address]").val(ui.item.address);
-                $("#event_form select[name=city]").val(ui.item.city);
+                $("#event_form select[name=country]").val(ui.item.country);
                 $("#event_form input[name=location_id]").val(ui.item.value);
+                $("#event_form input[name=city]").val(ui.item.city);
                 return false;
             },
             change: function(event, ui) { 

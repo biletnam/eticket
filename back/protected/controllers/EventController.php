@@ -400,7 +400,7 @@ class EventController extends Controller {
 
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'],'city'=>$v['city_title']);
         echo json_encode($tmp);
     }
 

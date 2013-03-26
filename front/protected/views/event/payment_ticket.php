@@ -51,8 +51,7 @@
                                                 <?php echo $t['title']; ?>
                                             </td>
 
-                                            <td>$
-                                                <?php 
+                                            <td>$<?php 
 //                                                if($t['service_fee'])
 //                                                    echo $t['price']*1.1;
 //                                                else

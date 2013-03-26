@@ -42,7 +42,7 @@
                         </div>
                         <div class="event-summary pull-left">
                             <div>
-                                <p><?php echo Helper::string_truncate(strip_tags($v['description']),90) ?></p>
+                                <p><?php echo Helper::string_truncate(strip_tags($v['description']),80) ?></p>
                             </div>
                             <a class="bebasneue" href="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $v['slug']?>">Get A Ticket</a>
                         </div>

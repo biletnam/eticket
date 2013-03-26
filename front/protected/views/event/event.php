@@ -58,8 +58,7 @@
                                                 <?php echo date('M j, Y', strtotime($t['sale_end'])) ?>
 
                                             </td>
-                                            <td>$
-                                                <?php 
+                                            <td>$<?php 
                                                 if($t['service_fee'])
                                                     echo $t['price']*1.1;
                                                 else

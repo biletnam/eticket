@@ -1174,3 +1174,287 @@ REQUEST_URI=/eticket/front/event/info/s/memory-ball-2013
 in D:\xampp\htdocs\eticket\front\protected\views\event\event.php (21)
 in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (630)
 in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:40:21 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT so.*,sc.title as city_title
+                FROM etk_orders so
+                LEFT JOIN etk_cities sc
+                ON sc.id = so.city_id
+                WHERE so.id = :id
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php (90)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (676)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:40:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT so.*,sc.title as city_title
+                FROM etk_orders so
+                LEFT JOIN etk_cities sc
+                ON sc.id = so.city_id
+                WHERE so.id = :id
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php(90): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(676): OrderModel->get('25')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('register')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/register')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/memory-ball-2013
+---
+2013/03/26 10:41:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\CityModel.php (14)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (698)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:41:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\CityModel.php(14): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(698): CityModel->gets_all_cities()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('register')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/register')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/memory-ball-2013
+---
+2013/03/26 10:43:04 [error] [php] Undefined index: city_title (D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php:17)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(705): EventController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (17)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (705)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:43:22 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php:153)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(705): EventController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (153)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (705)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:50:22 [error] [php] Undefined index: city_title (D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php:274)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(705): EventController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (274)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (705)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:52:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\CityModel.php (14)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (271)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (252)
+2013/03/26 10:52:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\CityModel.php(14): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(271): CityModel->gets_all_cities()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(252): UserController->account_setting('setting')
+#4 [internal function]: UserController->actionAccount('setting', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account
+HTTP_REFERER=http://localhost/eticket/front/event/register/?order_id=25&token=30fjAHApL
+---
+2013/03/26 10:53:22 [error] [php] Undefined index: city (D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php:152)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(705): EventController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (152)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (705)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 11:09:26 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sc.id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON sc.id = so.city_id
+                WHERE so.id = :id
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php (90)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (676)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 11:09:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sc.id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON sc.id = so.city_id
+                WHERE so.id = :id
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php(90): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(676): OrderModel->get('25')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('register')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/register')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/memory-ball-2013
+---
+2013/03/26 11:10:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'so.city_id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON ec.id = so.city_id
+                WHERE so.id = :id
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php (90)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (676)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 11:10:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'so.city_id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON ec.id = so.city_id
+                WHERE so.id = :id
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php(90): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(676): OrderModel->get('25')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('register')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/register')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/memory-ball-2013
+---
+2013/03/26 11:10:05 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'so.city_id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON ec.id = so.city_id
+                WHERE so.id = :id
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php (90)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (676)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 11:10:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'so.city_id' in 'on clause'. The SQL statement executed was: SELECT so.*,ec.title as country_title
+                FROM etk_orders so
+                LEFT JOIN etk_countries ec
+                ON ec.id = so.city_id
+                WHERE so.id = :id
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\OrderModel.php(90): CDbCommand->queryRow()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(676): OrderModel->get('25')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): EventController->actionRegister()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('register')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/register')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/event/register/?order_id=25&token=30fjAHApL
+HTTP_REFERER=http://localhost/eticket/front/event/info/s/memory-ball-2013
+---
+2013/03/26 11:22:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/css/conten...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/user/css/content.css
+HTTP_REFERER=http://localhost/eticket/front/user/make_profile
+---
+2013/03/26 11:22:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                .
+in D:\xampp\htdocs\eticket\front\protected\models\CityModel.php (14)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (271)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (252)
+2013/03/26 11:22:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT *
+                FROM etk_cities
+                ' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\CityModel.php(14): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(271): CityModel->gets_all_cities()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(252): UserController->account_setting('setting')
+#4 [internal function]: UserController->actionAccount('setting', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/setting
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
+---

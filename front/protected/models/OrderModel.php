@@ -79,10 +79,10 @@ class OrderModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT so.*,sc.title as city_title
+        $sql = "SELECT so.*,ec.title as country_title
                 FROM etk_orders so
-                LEFT JOIN etk_cities sc
-                ON sc.id = so.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = so.country_id
                 WHERE so.id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);

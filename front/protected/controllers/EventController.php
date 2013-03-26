@@ -11,7 +11,7 @@ class EventController extends Controller {
     private $TicketTypeModel;
     private $TicketModel;
     private $OrderModel;
-    private $CityModel;
+    private $CountryModel;
     private $TrackingModel;
     private $PaypalModel;
 
@@ -37,8 +37,8 @@ class EventController extends Controller {
         /* @var $OrderModel OrderModel */
         $this->OrderModel = new OrderModel();
 
-        /* @var $CityModel CityModel */
-        $this->CityModel = new CityModel();
+        /* @var $CountryModel CountryModel */
+        $this->CountryModel = new CountryModel();
 
         /* @var $TrackingModel TrackingModel */
         $this->TrackingModel = new TrackingModel();
@@ -70,7 +70,7 @@ class EventController extends Controller {
 
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['city_id']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['country_id']);
         echo json_encode($tmp);
     }
 
@@ -100,7 +100,7 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
-        $city = trim($_POST['city']);
+        $country = trim($_POST['city']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -164,11 +164,11 @@ class EventController extends Controller {
         //check if have location then get that location, add new location otherwise
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
-            if ($loc['title'] != $location || $loc['city_id'] != $city)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            if ($loc['title'] != $location || $loc['country_id'] != $country)
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
 
         //add new event
         $event_id = $this->EventModel->add(array('user_id' => UserControl::getId(),
@@ -227,7 +227,7 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
-        $city = trim($_POST['city']);
+        $country = trim($_POST['city']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -289,11 +289,11 @@ class EventController extends Controller {
         //check if have location then get that location, add new location otherwise
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
-            if ($loc['title'] != $location || $loc['city_id'] != $city)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            if ($loc['title'] != $location || $loc['country_id'] != $country)
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
 
         //update event
         $this->EventModel->update(array('id' => $event['id'],
@@ -695,7 +695,7 @@ class EventController extends Controller {
         if ($_POST)
             $this->do_register($event, $order, $order_details, $token);
         
-        $this->viewData['cities'] = $this->CityModel->gets_all_cities();
+        $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
         $this->viewData['order'] = $order;
@@ -712,7 +712,8 @@ class EventController extends Controller {
         $email = trim($_POST['email']);
         $phone = trim($_POST['phone']);
         $address = trim($_POST['address']);
-        $city = $_POST['city_id'];
+        $city = trim($_POST['city']);
+        $country = $_POST['country_id'];
         $zipcode = trim($_POST['zipcode']);
 
         if ($this->validator->is_empty_string($firstname))
@@ -728,6 +729,8 @@ class EventController extends Controller {
 
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Address cannot be blank.";
+        if ($this->validator->is_empty_string($city))
+            $this->message['error'][] = "City cannot be blank.";
         if ($this->validator->is_empty_string($zipcode))
             $this->message['error'][] = "Zipcode cannot be blank.";
 
@@ -744,7 +747,8 @@ class EventController extends Controller {
             'phone' => $phone,
             'address' => $address,
             'zipcode' => $zipcode,
-            'city_id' => $city,
+            'city' => $city,
+            'country_id' => $country,
             'email' => $email,
             'id' => $order['id']
         ));
@@ -926,16 +930,16 @@ class EventController extends Controller {
 
         $cate = isset($_GET['cate']) ? $_GET['cate'] : "";
         $date = isset($_GET['date']) ? $_GET['date'] : "";
-        $city = isset($_GET['city']) ? $_GET['city'] : "";
-        //$city = strlen($city) > 2 ? $city : "";
+        $country = isset($_GET['city']) ? $_GET['city'] : "";
+        //$country = strlen($country) > 2 ? $country : "";
 //        $price = isset($_GET['price']) ? $_GET['price'] : "";
 //        $cid = isset($_GET['cid']) ? $_GET['cid'] : "";
 //        $oid = isset($_GET['oid']) ? $_GET['oid'] : "";
         $ppp = Yii::app()->getParams()->itemAt('ppp');
-        if ($city == 0) {
+        if ($country == 0) {
             $args = array('search_title' => $s, 'search_cate' => $cate, 'date' => $date);
         } else {
-            $args = array('search_title' => $s, 'search_city' => $city, 'search_cate' => $cate, 'date' => $date);
+            $args = array('search_title' => $s, 'search_city' => $country, 'search_cate' => $cate, 'date' => $date);
         }
         $events = $this->EventModel->gets($args, $p, $ppp);
         $total = $this->EventModel->counts($args);
@@ -945,8 +949,8 @@ class EventController extends Controller {
         $event_categories = $this->CategoryModel->gets(array('deleted' => 0, 'type' => 'event'));
         $event_city = $this->LocationModel->gets(array('deleted' => 0));
 
-//        if ($s || $city)
-//            $this->KeywordModel->add($s, $city, 0, time());
+//        if ($s || $country)
+//            $this->KeywordModel->add($s, $country, 0, time());
 
         $this->viewData['events'] = $events;
         $this->viewData['total'] = $total;

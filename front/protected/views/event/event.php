@@ -18,7 +18,7 @@
                             <?php echo '<b>From:</b> '.date('l,g:ia F j, Y',  strtotime($event['start_time']))?><br/>
                             <?php echo '<b>To:</b> '.date('l,g:ia F j, Y',  strtotime($event['end_time']))?><br/>
                             
-                            <?php echo $event['city_title'] ?><br/>
+                            <?php echo $event['country_title'] ?><br/>
 
                         </h2>
                     </div>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="vcard">
                             <h6><?php echo $event['location'] ?></h6>
-                            <p><?php echo $event['address'] ?>, <?php echo $event['city_title'] ?></p>
+                            <p><?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
                         </div>
 
 

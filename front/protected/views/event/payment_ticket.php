@@ -14,7 +14,7 @@
                             <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
                             <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>
 
-                            <?php echo $event['city_title'] ?><br/>
+                            <?php echo $event['country_title'] ?><br/>
 
                         </h2>
                     </div>
@@ -149,9 +149,15 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">City <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <select name="city_id" class="input-medium">
-                                            <?php foreach ($cities as $k => $v): ?>
-                                                <option value="<?php echo $v['id']; ?>" <?php if(isset($_POST['city_id']) && $_POST['city_id'] == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
+                                        <input type="text" class="input-medium" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $order['city']; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Country <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <select name="country_id" class="input-medium">
+                                            <?php foreach ($countries as $k => $v): ?>
+                                                <option value="<?php echo $v['id']; ?>" <?php if(isset($_POST['country_id']) && $_POST['country_id'] == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -271,7 +277,7 @@
                         </div>
                         <div class="vcard">
                             <h6><?php echo $event['location'] ?></h6>
-                            <p><?php echo $event['address'] ?>, <?php echo $event['city_title'] ?></p>
+                            <p><?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
                         </div>
 
 

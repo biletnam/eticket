@@ -939,7 +939,7 @@ class EventController extends Controller {
 
         $cate = isset($_GET['cate']) ? $_GET['cate'] : "";
         $date = isset($_GET['date']) ? $_GET['date'] : "";
-        $country = isset($_GET['city']) ? $_GET['city'] : "";
+        $country = isset($_GET['country']) ? $_GET['country'] : "";
         //$country = strlen($country) > 2 ? $country : "";
 //        $price = isset($_GET['price']) ? $_GET['price'] : "";
 //        $cid = isset($_GET['cid']) ? $_GET['cid'] : "";
@@ -956,7 +956,7 @@ class EventController extends Controller {
         //print_r($events);die;
 
         $event_categories = $this->CategoryModel->gets(array('deleted' => 0, 'type' => 'event'));
-        $event_city = $this->LocationModel->gets(array('deleted' => 0));
+        $event_country = $this->LocationModel->gets(array('deleted' => 0));
 
 //        if ($s || $country)
 //            $this->KeywordModel->add($s, $country, 0, time());
@@ -964,8 +964,8 @@ class EventController extends Controller {
         $this->viewData['events'] = $events;
         $this->viewData['total'] = $total;
         $this->viewData['event_categories'] = $event_categories;
-        $this->viewData['event_city'] = $event_city;
-        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/event/search/p/", $total, $p) : "";
+        $this->viewData['event_country'] = $event_country;
+        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, HelperUrl::baseUrl() . "event/search/p/", $total, $p) : "";
         $this->viewData['query_string'] = $this->get_query_string();
         Yii::app()->params['page'] = "Find Events";
         $this->render('search', $this->viewData);

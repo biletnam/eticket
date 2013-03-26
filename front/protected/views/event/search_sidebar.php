@@ -79,11 +79,11 @@
 
 
         <div id="filter_city" class="filter">
-            <h3>Location</h3>
+            <h3>Country</h3>
             <ul>
-                <?php foreach ($cities as $k => $c): ?>
+                <?php foreach ($countries as $k => $c): ?>
                     <li class="">
-                        <a href="<?php echo Yii::app()->baseUrl?>/event/search?city=<?php echo $c['id']?>"><?php echo $c['title']; ?></a>
+                        <a href="<?php echo Yii::app()->baseUrl?>/event/search?country=<?php echo $c['id']?>"><?php echo $c['title']; ?></a>
                         
                     </li>
                 <?php endforeach; ?>

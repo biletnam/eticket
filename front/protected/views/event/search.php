@@ -1,13 +1,13 @@
 <?php
-$cities = Helper::cities();
+$countries = Helper::countries();
 ?>
 
 <div class="row page-search padding-bottom-50px">
     <div class="container container_12">
         <article class="row-fluid find-magu grid_12 border">
-            <?php $this->renderPartial('search_sidebar', array('event_categories' => $event_categories, 'cities' => $cities, 'query_string' => $query_string)); ?>
+            <?php $this->renderPartial('search_sidebar', array('event_categories' => $event_categories, 'countries' => $countries, 'query_string' => $query_string)); ?>
             <section class="search search-content">
-                <?php $this->renderPartial('search_bar', array('query_string' => $query_string,'cities' => $cities)); ?>
+                <?php $this->renderPartial('search_bar', array('query_string' => $query_string,'countries' => $countries)); ?>
 
 
                 <div id="search_results">
@@ -53,7 +53,7 @@ $cities = Helper::cities();
                                         <div class="clearfix"><label>Start Time: </label><?php echo ($e['display_start_time']==1) ? " ".date('M d, Y', $start_time )." at ".date('g:ia',$start_time) : ''?></div>
                                         <div class="clearfix"><label>End Time: </label><?php echo ($e['display_end_time']==1) ? " " .date('M d, Y', $end_time )." at ".date('g:ia',$end_time)  : ''?>
                                             <?php //echo ($e['is_repeat']==1) ? '(Tổ chức thường xuyên)': ''?></div>
-                                        <div class="clearfix"><label>Location:</label>  <?php echo $e['location']?> - <?php echo $e['city_title']?></div>
+                                        <div class="clearfix"><label>Location:</label>  <?php echo $e['location']?> - <?php echo $e['country_title']?></div>
                                     </div>
                                 </li>
                             <?php endforeach; ?>

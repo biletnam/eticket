@@ -633,7 +633,7 @@ class EventController extends Controller {
         Yii::app()->params['page'] = 'Event Detail';
 
         $this->viewData['ticket_types'] = $ticket_types;
-        //print_r($ticket_types);die;
+        
         $this->viewData['event'] = $event;
         $this->viewData['message'] = $this->message;
         $this->render('event', $this->viewData);
@@ -642,7 +642,7 @@ class EventController extends Controller {
     private function do_add_event_token($event) {
 
         HelperGlobal::require_login();
-
+        
         $ticket_types = $_POST['ticket_type'];
         $tmp = array();
         $use_payment = 0;
@@ -665,8 +665,16 @@ class EventController extends Controller {
         foreach ($tmp as $k => $v) {
             //$this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
             //$total += ($v['quantity'] * $v['type']['price']) + $v['type']['tax'];
-            $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) * 1.1);
-            $total += ($v['quantity'] * $v['type']['price']) * 1.1;
+            
+            if($v['type']['service_fee']){
+                $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price']*1.1, $v['type']['tax'], ($v['quantity'] * $v['type']['price']) * 1.1);
+                $total += ($v['quantity'] * $v['type']['price'])*1.1;
+            }
+            else{ 
+                $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']));
+                $total += ($v['quantity'] * $v['type']['price']);
+            }     
+            
         }
 
         $token = Ultilities::base32UUID();

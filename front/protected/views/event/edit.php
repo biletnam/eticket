@@ -368,11 +368,11 @@ $ticket_status = Helper::ticket_status();
 
                                                             <label class="radio">
                                                                 <input type="radio" name="ticket_service_fee" value="0" class="ticket-service-fee" <?php if (!$v["service_fee"]) echo 'checked'; ?>>
-                                                                INCLUDE fees into total ticket price 
+                                                                Absorb the fees into the ticket price
                                                             </label>
                                                             <label class="radio">
                                                                 <input type="radio" name="ticket_service_fee" value="1" class="ticket-service-fee" <?php if ($v["service_fee"]) echo 'checked'; ?>>
-                                                                ADD fees on top of total ticket price 
+                                                                Pass on the fees to the ticket buyer
                                                             </label>
                                                         </div>
                                                     </div>

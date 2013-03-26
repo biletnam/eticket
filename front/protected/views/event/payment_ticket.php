@@ -38,12 +38,12 @@
                                     <tr class="ticket_table_head">
                                         <th width="210px">TICKET TYPE</th>
                                         <th>PRICE</th>
-                                        <th>FEE</th>
-                                        <th width="60px">Quantity</th>
+                                        <th width="100px">Quantity</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php //print_r($order_details);die; ?>
                                     <?php foreach ($order_details as $k => $t): ?>
 
                                         <tr>
@@ -51,8 +51,14 @@
                                                 <?php echo $t['title']; ?>
                                             </td>
 
-                                            <td>$<?php echo $t['price'] ?></td>
-                                            <td>$<?php echo $t['price']*0.1//$t['fee'] ?></td>
+                                            <td>$
+                                                <?php 
+//                                                if($t['service_fee'])
+//                                                    echo $t['price']*1.1;
+//                                                else
+                                                    echo $t['price'];
+                                                ?>
+                                            </td>
                                             <td><?php echo $t['quantity'] ?></td>                                        
                                             <td>$<?php echo $t['total']; ?></td>
                                         </tr>
@@ -60,7 +66,7 @@
 
                                     <?php endforeach; ?>
                                     <tr>
-                                        <td colspan="4" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
+                                        <td colspan="3" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
                                         <td class="text-bold">$<?php echo $order['total']; ?></td>
                                     </tr>
                                 </tbody>

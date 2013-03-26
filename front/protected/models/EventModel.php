@@ -82,14 +82,14 @@ class EventModel extends CFormModel {
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 
-        $sql = "SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE 1
                 $custom
                 GROUP BY ee.id
@@ -185,8 +185,8 @@ class EventModel extends CFormModel {
                 ON va.id = ee.id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE 1
                 $custom
                 ";
@@ -224,14 +224,14 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,va.firstname,va.lastname,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,va.firstname,va.lastname,el.title as location, el.address,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE ee.id = :id
                 AND ee.deleted = 0
                 ";
@@ -241,14 +241,14 @@ class EventModel extends CFormModel {
     }
 
     public function get_by_slug($slug) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE ee.slug = :slug
                 AND ee.deleted = 0
                 ";
@@ -260,14 +260,14 @@ class EventModel extends CFormModel {
     public function get_all_by_user($user_id, $page = 1, $ppp = 20){
         $page = ($page - 1) * $ppp;
 
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as city_id,ec.title as city_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE ee.user_id = :user_id
                 AND ee.deleted = 0
                 GROUP BY ee.id
@@ -288,8 +288,8 @@ class EventModel extends CFormModel {
                 ON va.id = ee.user_id
                 LEFT JOIN etk_locations el
                 ON el.id = ee.location_id
-                LEFT JOIN etk_cities ec
-                ON ec.id = el.city_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = el.country_id
                 WHERE ee.user_id = :user_id
                 AND ee.deleted = 0
                 ORDER BY ee.date_added DESC

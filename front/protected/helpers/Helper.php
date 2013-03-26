@@ -344,9 +344,9 @@ class Helper {
         return array('faq' => 'Faq', 'event' => 'Sự kiện');
     }
 
-    public static function cities() {
-        $CityModel = new CityModel();
-        return $CityModel->gets_all_cities();
+    public static function countries() {
+        $CountryModel = new CountryModel();
+        return $CountryModel->gets_all_countries();
     }
 
     public static function ticket_types() {

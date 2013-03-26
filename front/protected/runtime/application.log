@@ -1111,3 +1111,66 @@ Stack trace:
 REQUEST_URI=/eticket/front/images/bt_fb.png
 HTTP_REFERER=http://localhost/eticket/front/user/signin
 ---
+2013/03/26 10:24:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.disabled = :disabled AND ee.published = :published AND DATE(start_time) >= DATE(NOW())
+                GROUP BY ee.id
+                ORDER BY ee.start_time ASC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\front\protected\models\EventModel.php (105)
+in D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php (31)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 10:24:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.etk_cities' doesn't exist. The SQL statement executed was: SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as city_id,ec.title as city_title
+                FROM etk_events ee
+                LEFT JOIN etk_users va
+                ON va.id = ee.id
+                LEFT JOIN etk_locations el
+                ON el.id = ee.location_id
+                LEFT JOIN etk_cities ec
+                ON ec.id = el.city_id
+                WHERE 1
+                 AND ee.deleted = :deleted AND ee.disabled = :disabled AND ee.published = :published AND DATE(start_time) >= DATE(NOW())
+                GROUP BY ee.id
+                ORDER BY ee.start_time ASC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\front\protected\models\EventModel.php(105): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\HomeController.php(31): EventModel->gets(Array, 1, 12)
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): HomeController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/
+---
+2013/03/26 10:29:38 [error] [php] Undefined index: city_title (D:\xampp\htdocs\eticket\front\protected\views\event\event.php:21)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): EventController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): EventController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php(630): EventController->render()
+#3 unknown(0): EventController->actionInfo()
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/info/s/memory-ball-2013
+in D:\xampp\htdocs\eticket\front\protected\views\event\event.php (21)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (630)
+in D:\xampp\htdocs\eticket\front\index.php (14)

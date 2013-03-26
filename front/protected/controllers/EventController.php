@@ -70,7 +70,7 @@ class EventController extends Controller {
 
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] ($v[city])", 'value' => $v['id'], 'address' => $v['address'], 'city' => $v['country_id']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'],'city'=>$v['city_title']);
         echo json_encode($tmp);
     }
 
@@ -100,7 +100,8 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
-        $country = trim($_POST['city']);
+        $city = trim($_POST['city']);
+        $country = trim($_POST['country']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -129,6 +130,8 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter the Location.";
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Please enter the Address.";
+        if ($this->validator->is_empty_string($city))
+            $this->message['error'][] = "Please enter the City.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date starts incorrect.";
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
@@ -165,11 +168,12 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
 
+        
         //add new event
         $event_id = $this->EventModel->add(array('user_id' => UserControl::getId(),
             'title' => $title,
@@ -200,6 +204,7 @@ class EventController extends Controller {
     public function actionEdit($id = "", $type = "general") {
         HelperGlobal::require_login();
         $event = $this->EventModel->get($id);
+        //print_r($event);die;
         if (!$event || $event['user_id'] != UserControl::getId())
             $this->load_404();
 
@@ -227,7 +232,8 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
-        $country = trim($_POST['city']);
+        $city = trim($_POST['city']);
+        $country = trim($_POST['country']);
         $start_date = trim($_POST['start_date']);
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
@@ -258,6 +264,8 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter the address.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date starts incorrect.";
+        if ($this->validator->is_empty_string($city))
+            $this->message['error'][] = "Please enter the city.";
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
@@ -290,11 +298,12 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $address);
-
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+        
+        $this->LocationModel->update(array('country_id' => $country,'city_title' => $city,'id' => $location_id));
         //update event
         $this->EventModel->update(array('id' => $event['id'],
             'title' => $title,

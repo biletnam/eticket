@@ -1,5 +1,5 @@
 <?php
-$cities = Helper::cities();
+$countries = Helper::countries();
 $ticket_status = Helper::ticket_status();
 ?>
 <div class="container_12">
@@ -41,12 +41,16 @@ $ticket_status = Helper::ticket_status();
                                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : htmlspecialchars($event['address']); ?>"></div>
                                 </div>
                                 <div class="controls-group clearfix">
-                                    <label class="control-label pull-left">City</label>
+                                    <label class="control-label pull-left" for="address">City</label>
+                                    <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : htmlspecialchars($event['city']); ?>"></div>
+                                </div>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Country</label>
                                     <div class="controls pull-left">
                                         <?php //print_r($event);die; ?>
-                                        <select name="city">
-                                            <?php foreach ($cities as $k => $v): ?>
-                                                <option <?php if (isset($_POST['city']) && $_POST['city'] == $v['id']) echo 'selected'; else if ($event['city_id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
+                                        <select name="country">
+                                            <?php foreach ($countries as $k => $v): ?>
+                                                <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; else if ($event['country_id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>

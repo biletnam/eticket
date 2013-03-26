@@ -1,5 +1,5 @@
 <?php
-$cities = Helper::cities();
+$countries = Helper::countries();
 ?>
 <div class="container_12">
     <div class="grid_12 padding-bottom-50px">
@@ -23,7 +23,7 @@ $cities = Helper::cities();
                     <label for="location" class="control-label pull-left ">Location<span class="required">*</span></label>
                     <div class="controls pull-left event-location">
                         <input type="text" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>" name="location" class="input-xxlarge span11" id="add_location">
-                        <img src="<?php echo HelperUrl::baseUrl()?>img/ajax-big-roller.gif" class="loading-location hide">
+                        <img src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" class="loading-location hide">
                     </div>
                 </div>
                 <div class="controls-group clearfix">
@@ -33,12 +33,16 @@ $cities = Helper::cities();
                     </div>
                 </div>
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">City</label>
+                    <label class="control-label pull-left" for="address">City</label>
+                    <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']); ?>"></div>
+                </div>
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Country</label>
                     <div class="controls pull-left">
-                        <?php //print_r($cities);die; ?>
-                        <select name="city">
-                            <?php foreach ($cities as $k => $v): ?>
-                                <option <?php if (isset($_POST['city']) && $_POST['city'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
+                        <?php //print_r($countries);die; ?>
+                        <select name="country">
+                            <?php foreach ($countries as $k => $v): ?>
+                                <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -92,10 +96,10 @@ $cities = Helper::cities();
                                     <input type="checkbox" value="1" name="display_end_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
-<!--                                <label class="checkbox inline">
-                                    <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
-                                    Yes, This is event repeat
-                                </label>-->
+                                <!--                                <label class="checkbox inline">
+                                                                    <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
+                                                                    Yes, This is event repeat
+                                                                </label>-->
                             </div>
 
                         </div>

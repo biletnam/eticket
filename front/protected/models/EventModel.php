@@ -224,7 +224,7 @@ class EventModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,va.firstname,va.lastname,el.title as location, el.address,ec.id as country_id,ec.title as country_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,va.firstname,va.lastname,el.title as location,el.city_title as city, el.address,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
@@ -241,7 +241,7 @@ class EventModel extends CFormModel {
     }
 
     public function get_by_slug($slug) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as country_id,ec.title as country_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as country_id,ec.title as country_title,el.city_title as city
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
@@ -260,7 +260,7 @@ class EventModel extends CFormModel {
     public function get_all_by_user($user_id, $page = 1, $ppp = 20){
         $page = ($page - 1) * $ppp;
 
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,ec.id as country_id,ec.title as country_title
+        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city_title as city,ec.id as country_id,ec.title as country_title
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id

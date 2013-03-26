@@ -67,6 +67,12 @@
             </div>
         </div>
         <div class="controls-group">
+            <label class="control-label pull-left">Address 2</label>
+            <div class="controls">
+                <input class="input-medium" type="text" name="address2" value="<?php if (isset($_POST['address2'])) echo htmlspecialchars($_POST['address2']);else if (isset($metas['address2'])) echo htmlspecialchars($metas['address2']); ?>" >
+            </div>
+        </div>
+        <div class="controls-group">
             <label class="control-label pull-left">Phone</label>
             <div class="controls">
                 <input class="input-medium" type="text" name="phone" value="<?php if (isset($_POST['phone'])) echo htmlspecialchars($_POST['phone']);else if (isset($metas['phone'])) echo htmlspecialchars($metas['phone']); ?>" >

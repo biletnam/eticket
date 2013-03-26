@@ -6,18 +6,19 @@ class UserModel extends CFormModel {
         
     }
 
-    public function add($email, $password, $secret_key, $firstname,$lastname,$city_id,$client='customer') {
+    public function add($email, $password, $secret_key, $firstname,$lastname,$country_id,$client='customer',$signup_facebook) {
         $time = time();
-        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)";
+        $sql = "INSERT INTO etk_users(email,password,secret_key,firstname,lastname,country_id,role,date_added,signup_facebook) VALUES(:email,:password,:secret_key,:firstname,:lastname,:country_id,:role,:date_added,:signup_facebook)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":email", $email);
         $command->bindParam(":password", $password);
         $command->bindParam(":secret_key", $secret_key);
         $command->bindParam(":firstname", $firstname);
         $command->bindParam(":lastname", $lastname);
-        $command->bindParam(":city_id", $city_id);
+        $command->bindParam(":country_id", $country_id);
         $command->bindParam(":role", $client);
         $command->bindParam(":date_added", $time);
+        $command->bindParam(":signup_facebook", $signup_facebook);
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }

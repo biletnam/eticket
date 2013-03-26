@@ -82,6 +82,11 @@ class UserControl {
         return self::$instance['role'];
     }
     
+    public static function getIs_signup_facebook(){
+        self::FetchUserInstance();
+        return self::$instance['signup_facebook'];
+    }
+    
     public static function getSecretKey(){
         self::FetchUserInstance();
         return self::$instance['secret_key'];

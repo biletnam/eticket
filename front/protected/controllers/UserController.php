@@ -32,7 +32,7 @@ class UserController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
-        
+
         /* @var $OrderModel OrderModel */
         $this->OrderModel = new OrderModel();
     }
@@ -75,8 +75,11 @@ class UserController extends Controller {
         $pwd2 = trim($_POST['pwd2']);
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
+        $address = trim($_POST['address']);
+        $address2 = trim($_POST['address2']);
         $is_session = isset($_POST['remember']) ? false : true;
-        $country_id = trim($_POST['city']);
+        $city = trim($_POST['city']);
+        $country_id = trim($_POST['country']);
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
 
         if ($this->validator->is_empty_string($email))
@@ -99,6 +102,10 @@ class UserController extends Controller {
             $this->message['error'][] = "Lastname cannot be blank.";
         if (preg_match($special_char, $lastname))
             $this->message['error'][] = "Lastname must not contains any speacial characters.";
+        if ($this->validator->is_empty_string($city))
+            $this->message['error'][] = "City cannot be blank.";
+        if (preg_match($special_char, $city))
+            $this->message['error'][] = "City must not contains any speacial characters.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -109,7 +116,12 @@ class UserController extends Controller {
         $password = $hasher->HashPassword($pwd1);
         $secret_key = Ultilities::base32UUID();
 
-        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $country_id, $client);
+        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $country_id, $client, 0);
+
+        $this->UserModel->add_meta('city', $city, $user_id);
+        $this->UserModel->add_meta('address', $address, $user_id);
+        $this->UserModel->add_meta('address2', $address2, $user_id);
+
         $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
         $this->redirect(HelperUrl::baseUrl() . "home/");
@@ -314,6 +326,7 @@ class UserController extends Controller {
 
         //update metas
         $this->UserModel->update_metas('address', trim($_POST['address']), UserControl::getId());
+        $this->UserModel->update_metas('address2', trim($_POST['address2']), UserControl::getId());
         $this->UserModel->update_metas('phone', trim($_POST['phone']), UserControl::getId());
         $this->UserModel->update_metas('city', trim($_POST['city']), UserControl::getId());
 
@@ -365,8 +378,8 @@ class UserController extends Controller {
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_paid_event();
-        
-        $args = array('user_id'=>  UserControl::getId(),'status'=>'completed');
+
+        $args = array('user_id' => UserControl::getId(), 'status' => 'completed');
         $orders = $this->OrderModel->gets($args);
         $total = $this->OrderModel->counts($args);
 
@@ -377,23 +390,23 @@ class UserController extends Controller {
         Yii::app()->params['is_tab'] = 'paid_event';
         $this->render('paid_event', $this->viewData);
     }
-    
-    public function actionOrder($id = 0){
+
+    public function actionOrder($id = 0) {
         HelperGlobal::require_login();
         $this->layout = 'account';
         $order = $this->OrderModel->get($id);
-        if(!$order ||$order['user_id'] != UserControl::getId())
-            $this->load_404 ();
-        
+        if (!$order || $order['user_id'] != UserControl::getId())
+            $this->load_404();
+
         $order_details = $this->OrderModel->get_details($id);
-        
+
         Yii::app()->params['page'] = "Order #$id";
         Yii::app()->params['is_tab'] = 'paid_event';
-        
+
         $this->viewData['order'] = $order;
         $this->viewData['order_details'] = $order_details;
-        
-        $this->render('order-detail',$this->viewData);
+
+        $this->render('order-detail', $this->viewData);
     }
 
     public function actionTicket($id) {
@@ -424,15 +437,21 @@ class UserController extends Controller {
 
     private function do_change_password() {
 
-        $oldpwd = trim($_POST['oldpwd']);
         $pwd1 = trim($_POST['pwd1']);
         $pwd2 = trim($_POST['pwd2']);
 
         $hasher = new PasswordHash(10, TRUE);
-        if ($this->validator->is_empty_string($oldpwd))
-            $this->message['error'][] = "Password cannot be blank.";
-        if (!$hasher->CheckPassword($oldpwd, UserControl::getPassword()))
-            $this->message['error'][] = "Current password is not match.";
+        
+        if (UserControl::getIs_signup_facebook() == 0) {
+            $oldpwd = trim($_POST['oldpwd']);
+            if ($this->validator->is_empty_string($oldpwd))
+                $this->message['error'][] = "Password cannot be blank.";
+
+            if (!$hasher->CheckPassword($oldpwd, UserControl::getPassword()))
+                $this->message['error'][] = "Current password is not match.";
+        }
+        
+        
         if ($this->validator->is_empty_string($pwd1))
             $this->message['error'][] = "New password cannot be blank.";
         if (strlen($pwd1) < 6 || strlen($pwd1) > 20)
@@ -453,10 +472,10 @@ class UserController extends Controller {
 
     public function actionMake_profile() {
         HelperGlobal::require_login();
-        
-        if(UserControl::getRole()!='client')
-            $this->load_404 ();
-        
+
+        if (UserControl::getRole() != 'client')
+            $this->load_404();
+
         $organizer = $this->OrganizerModel->get_by_user(UserControl::getId());
 
         if ($_POST)
@@ -500,24 +519,24 @@ class UserController extends Controller {
         $this->redirect(HelperUrl::baseUrl() . "user/make_profile/?s=1");
     }
 
-    public function actionView_profile($s = 'current', $u = '',$p = 1) {
-        
+    public function actionView_profile($s = 'current', $u = '', $p = 1) {
+
         if ($u == '')
             $this->load_404();
-        
+
         $ppp = 10;
-        $list_events = $this->EventModel->get_all_by_user($u,$p, $ppp);
+        $list_events = $this->EventModel->get_all_by_user($u, $p, $ppp);
         $user = $this->UserModel->get($u);
-        
+
         $total = $this->EventModel->count_all_by_user($u);
-        
-        if($user['id'] == UserControl::getId())
+
+        if ($user['id'] == UserControl::getId())
             $page_title = 'My Profile';
         else
-            $page_title = $user['firstname'].' '. $user['lastname']. "'s Profile";
-        
+            $page_title = $user['firstname'] . ' ' . $user['lastname'] . "'s Profile";
+
         $this->viewData['user'] = $user;
-        $this->viewData['list_events']=$list_events;
+        $this->viewData['list_events'] = $list_events;
         $this->viewData['message'] = $this->message;
         $this->viewData['total'] = $total;
         $this->viewData['current_tab'] = $s;
@@ -571,7 +590,7 @@ class UserController extends Controller {
         $user = $this->UserModel->get_by_email($user_info->email);
         if (!$user) {
             $secret_key = Ultilities::base32UUID();
-            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name,'',1,'customer');
+            $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name, '', 1, 'customer', 1);
             HelperApp::add_cookie('secret_key', $secret_key, $is_session);
             $this->redirect(Yii::app()->request->baseUrl . "/home/");
         } else {

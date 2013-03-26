@@ -1,4 +1,4 @@
-<?php $arr_cities = Helper::cities(); ?>
+<?php $arr_countries= Helper::countries(); ?>
 <div class="container_12 page-register bg-kube ">
     <div class="grid_12">
         <form class="form-style form-register border" method="POST">
@@ -32,10 +32,28 @@
                 </div>
             </div>
             <div class="controls-group clearfix">
+                <label class="control-label pull-left">Address:</label>
+                <div class="controls pull-left">
+                    <input type="text" class="input-large" name="address"/>
+                </div>
+            </div>
+            <div class="controls-group clearfix">
+                <label class="control-label pull-left">Address 2:</label>
+                <div class="controls pull-left">
+                    <input type="text" class="input-large" name="address2"/>
+                </div>
+            </div>
+            <div class="controls-group clearfix">
                 <label class="control-label pull-left">City:</label>
                 <div class="controls pull-left">
-                    <select class="input-mini" name="city">
-                        <?php foreach($arr_cities as $c): ?>
+                    <input type="text" class="input-large" name="city"/>
+                </div>
+            </div>
+            <div class="controls-group clearfix">
+                <label class="control-label pull-left">Country:</label>
+                <div class="controls pull-left">
+                    <select class="input-mini" name="country">
+                        <?php foreach($arr_countries as $c): ?>
                             <option value="<?php echo $c['id']; ?>"><?php echo $c['title'] ?></option>
                         <?php endforeach; ?>
                     </select>

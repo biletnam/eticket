@@ -2022,3 +2022,103 @@ REQUEST_URI=/eticket/front/event/register/?order_id=27&token=g9IK0doTb
 in D:\xampp\htdocs\eticket\front\protected\views\event\payment_ticket.php (55)
 in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (722)
 in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/26 14:58:21 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_id' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (21)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (119)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (63)
+2013/03/26 14:58:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_id' in 'field list'. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(21): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(119): UserModel->add('tung@gmail.com', '$P$DLt5Cqdwuj1I...', '3BI1DTumN', 'Tung', 'Nguyen', '6', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(63): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/26 14:59:27 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (21)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (119)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (63)
+2013/03/26 14:59:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(21): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(119): UserModel->add('tung@gmail.com', '$P$DEaNu4wJmwsV...', 'gsN1DJOh7', 'Tung', 'Nguyen', '6', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(63): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/26 15:01:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (21)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (119)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (63)
+2013/03/26 15:01:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,city_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(21): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(119): UserModel->add('tung@gmail.com', '$P$DCWQwFCHwzMZ...', '4W2k1smHz', 'Tung', 'Nguyen', '6', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(63): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/26 15:01:23 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,country_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added).
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (21)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (119)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (63)
+2013/03/26 15:01:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: INSERT INTO etk_users(email,password,secret_key,firstname,lastname,country_id,role,date_added) VALUES(:email,:password,:secret_key,:firstname,:lastname,:city_id,:role,:date_added)' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(21): CDbCommand->execute()
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(119): UserModel->add('tung@gmail.com', '$P$DBZHYRtFFro/...', 'dLwW836dL', 'Tung', 'Nguyen', '6', 'waiting')
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(63): UserController->do_signup()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): UserController->actionSignup()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('signup')
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/eticket/front/user/signup
+HTTP_REFERER=http://localhost/eticket/front/user/signup
+---
+2013/03/26 16:35:45 [error] [php] Undefined index: oldpwd (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:440)
+Stack trace:
+#0 unknown(0): UserController->actionAccount()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/change_password
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (440)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (430)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (273)

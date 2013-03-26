@@ -1458,3 +1458,84 @@ Stack trace:
 REQUEST_URI=/eticket/front/user/account/type/setting
 HTTP_REFERER=http://localhost/eticket/front/user/account/type/manage_event
 ---
+2013/03/26 11:25:46 [error] [php] Undefined variable: cities (D:\xampp\htdocs\eticket\front\protected\views\user\account-setting.php:51)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(277): UserController->render()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(252): UserController->account_setting()
+#4 unknown(0): UserController->actionAccount()
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/setting
+in D:\xampp\htdocs\eticket\front\protected\views\user\account-setting.php (51)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (277)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (252)
+2013/03/26 11:26:34 [error] [php] Undefined index: city_id (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:284)
+Stack trace:
+#0 unknown(0): UserController->actionAccount()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/setting
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (284)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (269)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (252)
+2013/03/26 11:26:56 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'country_id' in 'field list'. The SQL statement executed was: update etk_users set img = :img, thumbnail = :thumbnail, country_id = :country_id, firstname = :firstname, lastname = :lastname, id = :id where id = :id.
+in D:\xampp\htdocs\eticket\front\protected\models\UserModel.php (90)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (310)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (269)
+2013/03/26 11:26:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'country_id' in 'field list'. The SQL statement executed was: update etk_users set img = :img, thumbnail = :thumbnail, country_id = :country_id, firstname = :firstname, lastname = :lastname, id = :id where id = :id' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:354
+Stack trace:
+#0 D:\xampp\htdocs\eticket\front\protected\models\UserModel.php(90): CDbCommand->execute(Array)
+#1 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(310): UserModel->update(Array)
+#2 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(269): UserController->do_account_setting()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(252): UserController->account_setting('setting')
+#4 [internal function]: UserController->actionAccount('setting', 1, '')
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('account')
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/account/ty...')
+#12 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/eticket/front/user/account/type/setting
+HTTP_REFERER=http://localhost/eticket/front/user/account/type/setting
+---
+2013/03/26 11:27:37 [error] [php] Undefined index: city_id (D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php:69)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): UserController->renderInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(277): UserController->render()
+#4 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(252): UserController->account_setting()
+#5 unknown(0): UserController->actionAccount()
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#7 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#10 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#12 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#13 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/setting/?s=1
+in D:\xampp\htdocs\eticket\front\protected\helpers\UserControl.php (69)
+in D:\xampp\htdocs\eticket\front\protected\views\user\account-setting.php (52)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (277)

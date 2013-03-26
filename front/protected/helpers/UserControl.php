@@ -64,9 +64,9 @@ class UserControl {
         self::FetchUserInstance();
         return self::$instance['lastname'];
     }
-    public static function getCityId(){
+    public static function getCountryId(){
         self::FetchUserInstance();
-        return self::$instance['city_id'];
+        return self::$instance['country_id'];
     }
     public static function getImg(){
         self::FetchUserInstance();

@@ -6,7 +6,7 @@ class UserController extends Controller {
     private $validator;
     private $message = array('success' => true, 'error' => array());
     private $UserModel;
-    private $CityModel;
+    private $CountryModel;
     private $OrganizerModel;
     private $EventModel;
     private $TicketModel;
@@ -19,8 +19,8 @@ class UserController extends Controller {
         /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
 
-        /* @var $CityModel CityModel */
-        $this->CityModel = new CityModel();
+        /* @var $CountryModel CountryModel */
+        $this->CountryModel = new CountryModel();
 
 
         /* @var $OrganizerModel OrganizerModel */
@@ -76,7 +76,7 @@ class UserController extends Controller {
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
         $is_session = isset($_POST['remember']) ? false : true;
-        $city_id = trim($_POST['city']);
+        $country_id = trim($_POST['city']);
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
 
         if ($this->validator->is_empty_string($email))
@@ -109,7 +109,7 @@ class UserController extends Controller {
         $password = $hasher->HashPassword($pwd1);
         $secret_key = Ultilities::base32UUID();
 
-        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $city_id, $client);
+        $user_id = $this->UserModel->add($email, $password, $secret_key, $firstname, $lastname, $country_id, $client);
         $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
         $this->redirect(HelperUrl::baseUrl() . "home/");
@@ -268,7 +268,7 @@ class UserController extends Controller {
         if ($_POST)
             $this->do_account_setting();
 
-        $this->viewData['cities'] = $this->CityModel->gets_all_cities();
+        $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['metas'] = $this->UserModel->get_metas(UserControl::getId());
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
@@ -281,7 +281,8 @@ class UserController extends Controller {
         $file = $_FILES['file'];
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
-        $city_id = $_POST['city_id'];
+        $city = $_POST['city'];
+        $country_id = $_POST['country_id'];
 
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file, 1048576))
             $this->message['error'][] = "Image or size is not correct.";
@@ -291,6 +292,8 @@ class UserController extends Controller {
             $this->message['error'][] = "Firstname can not be blank and not contains any speacial characters.";
         if ($this->validator->is_empty_string($lastname) || $this->validator->has_speacial_character($lastname))
             $this->message['error'][] = "Lastname can not be blank and not contains any speacial characters.";
+        if ($this->validator->is_empty_string($city) || $this->validator->has_speacial_character($city))
+            $this->message['error'][] = "City can not be blank and not contains any speacial characters.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -307,11 +310,12 @@ class UserController extends Controller {
         }
 
 
-        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'city_id' => $city_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
+        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
 
         //update metas
         $this->UserModel->update_metas('address', trim($_POST['address']), UserControl::getId());
         $this->UserModel->update_metas('phone', trim($_POST['phone']), UserControl::getId());
+        $this->UserModel->update_metas('city', trim($_POST['city']), UserControl::getId());
 
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }

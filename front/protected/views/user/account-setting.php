@@ -47,9 +47,15 @@
         <div class="controls-group clearfix">
             <label class="control-label pull-left">City</label>
             <div class="controls pull-left">
-                <select name="city_id">
-                    <?php foreach ($cities as $v): ?>
-                        <option value="<?php echo $v['id']; ?>" <?php if (isset($_POST['city_id']) && $_POST['city_id'] == $v['id']) echo 'selected';else if (UserControl::getCityId() == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
+                <input type="text" class="input-medium" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']);else if (isset($metas['city'])) echo htmlspecialchars($metas['city']); ?>"/>
+            </div>
+        </div>
+        <div class="controls-group clearfix">
+            <label class="control-label pull-left">Country</label>
+            <div class="controls pull-left">
+                <select name="country_id">
+                    <?php foreach ($countries as $v): ?>
+                        <option value="<?php echo $v['id']; ?>" <?php if (isset($_POST['country_id']) && $_POST['country_id'] == $v['id']) echo 'selected';else if (UserControl::getCountryId() == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

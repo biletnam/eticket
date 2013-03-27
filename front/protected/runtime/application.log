@@ -2122,3 +2122,12 @@ REQUEST_URI=/eticket/front/user/account/type/change_password
 in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (440)
 in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (430)
 in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (273)
+2013/03/27 08:33:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---

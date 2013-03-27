@@ -9,6 +9,7 @@ $(document).ready(function(){
     contact_form();
 
     delete_gallery();
+    
 });
 
 function goToByScroll(id){
@@ -29,27 +30,27 @@ function contact_form(){
             message : $('.message').val()
         };
         $.post(url, data ,function(respone) {   
-                $('.form-contact_us .alert').hide();
-                if(respone.success){
-                    $('.yourname,.email,.message').css('border','none')
-                    $('.form-contact_us .alert-success').fadeIn();
+            $('.form-contact_us .alert').hide();
+            if(respone.success){
+                $('.yourname,.email,.message').css('border','none')
+                $('.form-contact_us .alert-success').fadeIn();
                     
-                }else{
-                    /*var error = "";
+            }else{
+                /*var error = "";
                     $.each(respone.error, function(k,v){
                         error += v+'<br/>';
                     });
                     $('.form-contact_us .error-message').html(error);
                     $('.form-contact_us .alert-error').fadeIn();*/
-                    if(respone.yourname =='error')
-                        $('.yourname').addClass('error');
-                    if(respone.email =='error')
-                        $('.email').addClass('error');
-                    if(respone.yourmessage =='error')
-                        $('.message').addClass('error');
-                }
+                if(respone.yourname =='error')
+                    $('.yourname').addClass('error');
+                if(respone.email =='error')
+                    $('.email').addClass('error');
+                if(respone.yourmessage =='error')
+                    $('.message').addClass('error');
             }
-            ,'json');
+        }
+        ,'json');
         return false;
     });
 }
@@ -62,7 +63,7 @@ function init(){
     
     $('.btn-invite').fancybox({
         
-    });
+        });
     
     $("table .delete-row").click(function(){
         if(!confirm("Are you sure delete this item?")) return false;
@@ -86,21 +87,37 @@ function init(){
         goToByScroll("block"+index);
         return false;
     });
+    
+    slider_controls();
 
+}
+
+function slider_controls(){
+    $('#flex1').flexslider();
+    if($('section.slider .flexslider').length>0){
+        var height = $('section.slider .flexslider').height();
+        console.log(height);
+        $('.flex-direction-nav a').css('top',(height/2 - 20)+'px');
+
+        $(window).resize(function(){
+            height = $('section.slider .flexslider').height();
+            $('.flex-direction-nav a').css('top',(height/2 - 20)+'px');
+        });
+    }
 }
 
 function delete_gallery(){
     
     $('.gallery .btn-delete').click(function(e){
         
-              e.preventDefault();
-       var ele = $(this);
-       var url = ele.attr('href');
-       var id = ele.attr('value');
+        e.preventDefault();
+        var ele = $(this);
+        var url = ele.attr('href');
+        var id = ele.attr('value');
        
-       $.post(url,function(){
-           $('#gallery_'+id).fadeOut('slow');
-       });
+        $.post(url,function(){
+            $('#gallery_'+id).fadeOut('slow');
+        });
        
     });
     

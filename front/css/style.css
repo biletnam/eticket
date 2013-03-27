@@ -1000,3 +1000,5 @@ aside.sidebar{border-right: 1px solid #DEDEDE;margin-right: -1px;float: left;wid
     .page-404 h1{font-size: 30px;line-height: 45px}
     .page-404 h5{font-size: 20px;line-height: 30px}
 .error{background-color: #ffb9b9 !important}    
+
+.add_ticket_container .btn-ticket.paid{text-transform: none}

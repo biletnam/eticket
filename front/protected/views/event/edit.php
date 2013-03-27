@@ -225,8 +225,9 @@ $ticket_status = Helper::ticket_status();
                         </div>
                         <div class="add_ticket_container">
                             <span class="add_ticket_text">Type of price:</span>
-                            <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
-                            <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a>
+<!--                            <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
+                            <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a>-->
+                            <a class="btn button-medium eb_button small go add_ticket_class btn-ticket paid">Add eTicket</a>
 
                         </div>
                         <div id="event_form" class="form-ticket">  

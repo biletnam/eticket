@@ -33,19 +33,19 @@
             </div>
         </div>
         <div class="controls-group clearfix">
-            <label class="control-label pull-left">First Name</label>
+            <label class="control-label pull-left">First Name <span class="required">*</span></label>
             <div class="controls pull-left">
                 <input type="text" class="input-medium" name="firstname" value="<?php if (isset($_POST['firstname'])) echo htmlspecialchars($_POST['firstname']);else echo UserControl::getFirstname(); ?>"/>
             </div>
         </div>
         <div class="controls-group clearfix">
-            <label class="control-label pull-left">Last Name</label>
+            <label class="control-label pull-left">Last Name <span class="required">*</span></label>
             <div class="controls pull-left">
                 <input type="text" class="input-medium" name="lastname" value="<?php if (isset($_POST['lastname'])) echo htmlspecialchars($_POST['lastname']);else echo UserControl::getLastname(); ?>"/>
             </div>
         </div>
         <div class="controls-group clearfix">
-            <label class="control-label pull-left">City</label>
+            <label class="control-label pull-left">City <span class="required">*</span></label>
             <div class="controls pull-left">
                 <input type="text" class="input-medium" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']);else if (isset($metas['city'])) echo htmlspecialchars($metas['city']); ?>"/>
             </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="controls-group">
-            <label class="control-label pull-left">Address</label>
+            <label class="control-label pull-left">Address <span class="required">*</span></label>
             <div class="controls">
                 <input class="input-medium" type="text" name="address" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']);else if (isset($metas['address'])) echo htmlspecialchars($metas['address']); ?>" >
             </div>

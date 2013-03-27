@@ -102,6 +102,12 @@ class UserController extends Controller {
             $this->message['error'][] = "Lastname cannot be blank.";
         if (preg_match($special_char, $lastname))
             $this->message['error'][] = "Lastname must not contains any speacial characters.";
+        if ($this->validator->is_empty_string($address))
+            $this->message['error'][] = "Address cannot be blank.";
+        if (preg_match($special_char, $address))
+            $this->message['error'][] = "Address must not contains any speacial characters.";
+        if (preg_match($special_char, $address2))
+            $this->message['error'][] = "Address 2 must not contains any speacial characters.";
         if ($this->validator->is_empty_string($city))
             $this->message['error'][] = "City cannot be blank.";
         if (preg_match($special_char, $city))
@@ -293,6 +299,8 @@ class UserController extends Controller {
         $file = $_FILES['file'];
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
+        $address = trim($_POST['address']);
+        $address2 = trim($_POST['address2']);
         $city = $_POST['city'];
         $country_id = $_POST['country_id'];
 
@@ -306,6 +314,10 @@ class UserController extends Controller {
             $this->message['error'][] = "Lastname can not be blank and not contains any speacial characters.";
         if ($this->validator->is_empty_string($city) || $this->validator->has_speacial_character($city))
             $this->message['error'][] = "City can not be blank and not contains any speacial characters.";
+        if ($this->validator->is_empty_string($address) || $this->validator->has_speacial_character($address))
+            $this->message['error'][] = "Address can not be blank and not contains any speacial characters.";
+        if ($this->validator->has_speacial_character($address2))
+            $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";       
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -325,10 +337,10 @@ class UserController extends Controller {
         $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
 
         //update metas
-        $this->UserModel->update_metas('address', trim($_POST['address']), UserControl::getId());
-        $this->UserModel->update_metas('address2', trim($_POST['address2']), UserControl::getId());
+        $this->UserModel->update_metas('address', $address, UserControl::getId());
+        $this->UserModel->update_metas('address2', $address2, UserControl::getId());
         $this->UserModel->update_metas('phone', trim($_POST['phone']), UserControl::getId());
-        $this->UserModel->update_metas('city', trim($_POST['city']), UserControl::getId());
+        $this->UserModel->update_metas('city', $city, UserControl::getId());
 
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }

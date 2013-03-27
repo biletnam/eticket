@@ -4,47 +4,47 @@
         <form class="form-style form-register border" method="POST">
             <?php echo Helper::print_error($message); ?>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Email:</label>
+                <label class="control-label pull-left">Email <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Password:</label>
+                <label class="control-label pull-left">Password <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="password" class="input-large" name="pwd1"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Confirm password:</label>
+                <label class="control-label pull-left">Confirm password <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="password" class="input-large" name="pwd2"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">First name:</label>
+                <label class="control-label pull-left">First name <span class="required">*</span></label>
                 <div class="controls pull-left">
-                    <input type="text" class="input-mini" name="firstname" value="<?php if (isset($_POST['firstname'])) echo $_POST['firstname']; ?>"/>
+                    <input type="text" style="width: 133px" class="input-mini" name="firstname" value="<?php if (isset($_POST['firstname'])) echo $_POST['firstname']; ?>"/>
 
-                    <label class="sub-label"><strong>Last name:</strong></label>
-                    <input class="input-mini" type="text" name="lastname" value="<?php if (isset($_POST['lastname'])) echo $_POST['lastname']; ?>"/>
+                    <label class="sub-label"><strong>Last name <span class="required">*</span></strong></label>
+                    <input class="input-mini" style="width: 133px" type="text" name="lastname" value="<?php if (isset($_POST['lastname'])) echo $_POST['lastname']; ?>"/>
 
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Address:</label>
+                <label class="control-label pull-left">Address <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="address"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Address 2:</label>
+                <label class="control-label pull-left">Address 2</label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="address2"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">City:</label>
+                <label class="control-label pull-left">City <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="city"/>
                 </div>

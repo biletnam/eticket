@@ -14,6 +14,7 @@ class EventController extends Controller {
     private $CountryModel;
     private $TrackingModel;
     private $PaypalModel;
+    private $SettingsModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -45,6 +46,9 @@ class EventController extends Controller {
 
         /* @var $PaypalModel PaypalModel */
         $this->PaypalModel = new PaypalModel();
+        
+        /* @var $SettingsModel SettingsModel */
+        $this->SettingsModel = new SettingsModel();
     }
 
     /**
@@ -740,6 +744,9 @@ class EventController extends Controller {
 
     private function do_register($event, $order, $order_details, $token) {
 
+        $usd = $this->SettingsModel->get_usd();
+        $ttd = $this->SettingsModel->get_ttd();
+        
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
         $email = trim($_POST['email']);
@@ -804,7 +811,7 @@ class EventController extends Controller {
 
             $payment_to = Yii::app()->params['business'];
             $currency = 'USD';
-            $amount = $order['total'];
+            $amount = $order['total']*($usd['option_value']/$ttd['option_value']);
             $tracking_id = $this->TrackingModel->add('paypal', $payment_to, $currency, UserControl::getId(), $amount, 'purchase_ticket');
 
             $return_url = HelperUrl::baseUrl(true) . "event/register/?order_id=$order[id]&token=$token[token]";
@@ -814,7 +821,7 @@ class EventController extends Controller {
             $queryStr = "?business=" . urlencode($payment_to);
 
             $data = array('item_name' => "Purchase ticket of event : " . $event['title'] . ".",
-                'amount' => $amount,
+                'amount' => rount($amount,2),
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'payer_email' => $email,

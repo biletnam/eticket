@@ -45,7 +45,7 @@
                                         <th width="210px">TICKET TYPE</th>
                                         <th>SALES END</th>
                                         <th>PRICE</th>
-<!--                                        <th>FEE</th>-->
+                                        <?php /*<th>FEE</th>*/ ?>
                                         <th width="60px" align="right">Quantity</th>
                                     </tr>
                                 </thead>
@@ -60,14 +60,14 @@
                                                 <?php echo date('M j, Y', strtotime($t['sale_end'])) ?>
 
                                             </td>
-                                            <td>$<?php 
+                                            <td>TT$<?php 
                                                 if($t['service_fee'])
                                                     echo $t['price']*1.1;
                                                 else
                                                     echo $t['price'];
                                                 ?>
                                             </td>
-<!--                                            <td>$<?php echo $t['price']*1.1 ?></td>-->
+                                            <?php /*<td>$<?php echo $t['price']*1.1 ?></td> */ ?>
                                             <td>                             
                                                 <?php if ((int) $t['remaining'] == 0 && (int)$t['total_ticket'] > 0): ?>
                                                 SOLD OUT

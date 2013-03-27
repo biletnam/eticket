@@ -51,7 +51,7 @@
                                                 <?php echo $t['title']; ?>
                                             </td>
 
-                                            <td>$<?php 
+                                            <td>TT$<?php 
 //                                                if($t['service_fee'])
 //                                                    echo $t['price']*1.1;
 //                                                else
@@ -59,14 +59,14 @@
                                                 ?>
                                             </td>
                                             <td><?php echo $t['quantity'] ?></td>                                        
-                                            <td>$<?php echo $t['total']; ?></td>
+                                            <td>TT$<?php echo $t['total']; ?></td>
                                         </tr>
 
 
                                     <?php endforeach; ?>
                                     <tr>
                                         <td colspan="3" class="align-right text-bold">TOTAL AMOUNT DUE :</td>
-                                        <td class="text-bold">$<?php echo $order['total']; ?></td>
+                                        <td class="text-bold">TT$<?php echo $order['total']; ?></td>
                                     </tr>
                                 </tbody>
 

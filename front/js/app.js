@@ -511,6 +511,6 @@ function count_total(ticket_info){
     var tax = tmp_total * ticketTax;
     var final_total = service_fee == 1 ? tmp_total + tax : tmp_total;
     
-    $(".ticket-tax",ticket_info).text(number_format(tax)+" USD");
-    $(".ticket-total",ticket_info).text(number_format(final_total)+" USD");
+    $(".ticket-tax",ticket_info).text(number_format(tax)+" TTD");
+    $(".ticket-total",ticket_info).text(number_format(final_total)+" TTD");
 }

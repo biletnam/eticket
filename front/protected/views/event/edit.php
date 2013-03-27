@@ -264,10 +264,10 @@ $ticket_status = Helper::ticket_status();
                                         <td class="ticket_quantity"><input type="text" placeholder="0" name="ticket_quantity" class="input-mini quantity ticket-quantity" value="<?php echo htmlspecialchars($v['quantity']); ?>"></td>
 
                                         <?php if ($v['type'] == "paid"): ?>
-                                            <td class="ticket_fee"><input type="text" placeholder="0 VNĐ" name="ticket_fee" class="input-mini ticket-fee" value="<?php echo htmlspecialchars(number_format($v['price'], 0, '', '')); ?>"></td>
-                                            <td><span class="price ticket-tax"><?php echo number_format($v['tax']) ?> USD</span></td>
+                                            <td class="ticket_fee"><input type="text" placeholder="0 TTD" name="ticket_fee" class="input-mini ticket-fee" value="<?php echo htmlspecialchars(number_format($v['price'], 0, '', '')); ?>"></td>
+                                            <td><span class="price ticket-tax"><?php echo number_format($v['tax']) ?> TTD</span></td>
                                             <?php $total = $v['service_fee'] ? $v['price'] * $v['quantity'] + $v['tax'] : $v['price'] * $v['quantity']; ?>
-                                            <td><span class="price ticket-total"><?php echo number_format($total) ?> USD</span></td>
+                                            <td><span class="price ticket-total"><?php echo number_format($total) ?> TTD</span></td>
                                         <?php else: ?>
                                             <td class="ticket_fee">Free</td>
                                         <?php endif; ?>
@@ -427,9 +427,9 @@ $ticket_status = Helper::ticket_status();
                                 <input type="hidden" class="ticket-id" value="" name="ticket_id">
                                 <td class="ticket_name"><input type="text" class="input-mini ticket-name" name="ticket_name"></td>
                                 <td class="ticket_quantity"><input type="text" class="input-mini quantity ticket-quantity" name="ticket_quantity" placeholder="0"></td>
-                                <td class="ticket_fee"><input type="text" class="input-mini ticket-fee" name="ticket_fee" placeholder="0 USD"></td>
-                                <td><span class="price ticket-tax">0.00 USD</span></td>
-                                <td><span class="price ticket-total">0.00 USD</span></td>
+                                <td class="ticket_fee"><input type="text" class="input-mini ticket-fee" name="ticket_fee" placeholder="0 TTD"></td>
+                                <td><span class="price ticket-tax">0.00 TTD</span></td>
+                                <td><span class="price ticket-total">0.00 TTD</span></td>
                                 <td>
                                     <select name="ticket_status" class="ticket-status">
                                         <?php foreach ($ticket_status as $k => $v): ?>

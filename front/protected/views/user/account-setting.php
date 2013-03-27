@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="controls-group">
-            <label class="control-label pull-left">Address <span class="required">*</span></label>
+            <label class="control-label pull-left">Address 1<span class="required">*</span></label>
             <div class="controls">
                 <input class="input-medium" type="text" name="address" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']);else if (isset($metas['address'])) echo htmlspecialchars($metas['address']); ?>" >
             </div>

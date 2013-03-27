@@ -5546,3 +5546,100 @@ Stack trace:
 REQUEST_URI=/eticket/back/slide/
 HTTP_REFERER=http://localhost/eticket/back/home/
 ---
+2013/03/27 11:18:28 [error] [php] Undefined variable: custom (D:\xampp\htdocs\eticket\back\protected\models\SettingsModel.php:15)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): SettingsController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): SettingsController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): SettingsController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/settings/
+in D:\xampp\htdocs\eticket\back\protected\models\SettingsModel.php (15)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php (30)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 11:18:45 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\back\protected\views\settings\index.php:11)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): SettingsController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): SettingsController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(32): SettingsController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): SettingsController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): SettingsController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): SettingsController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): SettingsController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/settings/
+in D:\xampp\htdocs\eticket\back\protected\views\settings\index.php (11)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php (32)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 11:19:04 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\back\protected\views\settings\index.php:11)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): SettingsController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): SettingsController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(33): SettingsController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): SettingsController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): SettingsController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): SettingsController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): SettingsController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/settings/
+in D:\xampp\htdocs\eticket\back\protected\views\settings\index.php (11)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php (33)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 11:19:33 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\back\protected\views\settings\index.php:11)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): SettingsController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): SettingsController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(33): SettingsController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): SettingsController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): SettingsController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): SettingsController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): SettingsController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/settings/
+in D:\xampp\htdocs\eticket\back\protected\views\settings\index.php (11)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php (33)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 11:36:18 [error] [php] Undefined variable: message (D:\xampp\htdocs\eticket\back\protected\views\settings\index.php:9)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(870): SettingsController->renderFile()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(783): SettingsController->renderPartial()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(36): SettingsController->render()
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): SettingsController->actionIndex()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(287): SettingsController->runAction()
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(266): SettingsController->runActionWithFilters()
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): SettingsController->run()
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\eticket\back\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/back/settings/
+in D:\xampp\htdocs\eticket\back\protected\views\settings\index.php (9)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php (36)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 11:36:53 [error] [exception.CException] exception 'CException' with message 'Property "SettingsController.SlideModel" is not defined.' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(43): CComponent->__get('SlideModel')
+#1 D:\xampp\htdocs\eticket\back\protected\controllers\SettingsController.php(33): SettingsController->do_settings(Array)
+#2 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(50): SettingsController->actionIndex()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#7 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('settings')
+#8 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/eticket/back/settings/
+HTTP_REFERER=http://localhost/eticket/back/settings/
+---

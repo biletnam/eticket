@@ -111,11 +111,20 @@ $countries = Helper::countries();
                 <div class="controls-group clearfix upload">
                     <label for="title" class="control-label pull-left">Upload the photo for your event:</label>
                     <div class="controls pull-left">
-                        <img src="<?php echo HelperUrl::baseUrl() ?>img/default_upload_logo.gif" class="image-default">
-                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB.<br/>
-                        We allow only 1920 x 1080 photo. Please upload correct one.
-                        </p>
-                        <input type="file" name="file" class="fileupload customfile-input">
+                        <div class="event-logo pull-left">
+                            <img src="<?php echo HelperUrl::baseUrl() ?>img/default_upload_logo.gif" class="image-default logo-default">
+                            <img class="image-default waiting hide" src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" />
+                            <input type="hidden" name="event_id" value=""/>
+                            <input type="hidden" name="file_temp" class="file_temp" value="<?php if (isset($_POST['file_temp'])) echo $_POST['file_temp']; ?>"/>
+                            <input type="hidden" name="name_temp" class="name_temp" value="<?php if (isset($_POST['name_temp'])) echo $_POST['name_temp']; ?>"/>
+                        </div>
+                        <div class="event-logo-upload pull-left">
+                            <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB.<br/>
+                            We allow only 1920 x 1080 photo. Please upload correct one.
+                            </p>
+                            <div><input type="file" name="file" class="fileupload customfile-input"></div>
+                            <div class="error1"></div>
+                        </div>
                     </div>
 
                     <?php /* <div class="controls pull-left"><button class="btn btn-primary" type="button">Upload</button></div> */ ?>

@@ -46,7 +46,7 @@ class EventController extends Controller {
 
         /* @var $PaypalModel PaypalModel */
         $this->PaypalModel = new PaypalModel();
-        
+
         /* @var $SettingsModel SettingsModel */
         $this->SettingsModel = new SettingsModel();
     }
@@ -74,32 +74,32 @@ class EventController extends Controller {
 
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'],'city'=>$v['city_title']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'], 'city' => $v['city_title']);
         echo json_encode($tmp);
     }
 
     public function actionCreate() {
-        if(!UserControl::LoggedIn()){
-            $this->redirect(HelperUrl::baseUrl().'user/signup');
+        if (!UserControl::LoggedIn()) {
+            $this->redirect(HelperUrl::baseUrl() . 'user/signup');
             die;
         }
-        if(UserControl::getRole()=='waiting' && UserControl::LoggedIn()){
+        if (UserControl::getRole() == 'waiting' && UserControl::LoggedIn()) {
             Yii::app()->params['page'] = 'Create Event';
-            $this->viewData['message'] = 'Your client account is pending. Please <a href="'.HelperUrl::baseUrl().'page/contact_us">contact us</a> for more info.';
-            $this->render('access',$this->viewData);
+            $this->viewData['message'] = 'Your client account is pending. Please <a href="' . HelperUrl::baseUrl() . 'page/contact_us">contact us</a> for more info.';
+            $this->render('access', $this->viewData);
             die;
         }
-        if(UserControl::getRole()=='customer' && UserControl::LoggedIn()){
+        if (UserControl::getRole() == 'customer' && UserControl::LoggedIn()) {
             Yii::app()->params['page'] = 'Create Event';
             $this->viewData['message'] = 'You are not authorized to access this page.';
-            $this->render('access',$this->viewData);
+            $this->render('access', $this->viewData);
             die;
         }
-        
+
         //HelperGlobal::require_login();
 //        if(UserControl::getRole()!='client' && UserControl::LoggedIn())
 //            $this->load_404();
-        
+
         if ($_POST)
             $this->do_create();
 
@@ -175,8 +175,12 @@ class EventController extends Controller {
         $img = "";
         $thumbnail = "";
         // check if has thumbnail
-        if (!$this->validator->is_empty_string($file['name'])) {
-            $resize = HelperApp::resize_images($file, HelperApp::get_event_sizes());
+        if (!$this->validator->is_empty_string($_POST['file_temp'])) {
+            $filesize = filesize ( $_POST['file_temp'] );
+            $image_info = getimagesize($_POST['file_temp']);
+            $filetype = $image_info['mime'];
+            $tmp_file = array('tmp_name'=>$_POST['file_temp'],'name'=>$_POST['name_temp'],'error'=>0,'type'=>$filetype,'size'=>$filesize);
+            $resize = HelperApp::resize_images($tmp_file, HelperApp::get_event_sizes());
             $img = $resize['img'];
             $thumbnail = $resize['thumbnail'];
         }
@@ -186,12 +190,12 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
 
-        
+
         //add new event
         $event_id = $this->EventModel->add(array('user_id' => UserControl::getId(),
             'title' => $title,
@@ -216,6 +220,11 @@ class EventController extends Controller {
         $note = "Your event :" . $title . "was created, please wait admin approve.";
 
         @HelperApp::email(UserControl::getEmail(), 'Event was created', $note);
+        
+        
+        $temp_file = $_POST['file_temp'];
+        if($temp_file!='')
+            @unlink ($temp_file);
 
 //        $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/?s=1&msg= You have created event <strong>$title</strong>");
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/type/ticket");
@@ -223,6 +232,8 @@ class EventController extends Controller {
 
     public function actionEdit($id = "", $type = "general") {
         HelperGlobal::require_login();
+        
+        
         $event = $this->EventModel->get($id);
         //print_r($event);die;
         if (!$event || $event['user_id'] != UserControl::getId())
@@ -308,8 +319,12 @@ class EventController extends Controller {
         $thumbnail = $event['thumbnail'];
 
         // check if has thumbnail
-        if (!$this->validator->is_empty_string($file['name'])) {
-            $resize = HelperApp::resize_images($file, HelperApp::get_event_sizes(), $event['img']);
+        if (!$this->validator->is_empty_string($_POST['file_temp'])) {
+            $filesize = filesize ( $_POST['file_temp'] );
+            $image_info = getimagesize($_POST['file_temp']);
+            $filetype = $image_info['mime'];
+            $tmp_file = array('tmp_name'=>$_POST['file_temp'],'name'=>$_POST['name_temp'],'error'=>0,'type'=>$filetype,'size'=>$filesize);
+            $resize = HelperApp::resize_images($tmp_file, HelperApp::get_event_sizes(), $event['img']);
             $img = $resize['img'];
             $thumbnail = $resize['thumbnail'];
         }
@@ -318,12 +333,12 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
-        
-        $this->LocationModel->update(array('country_id' => $country,'city_title' => $city,'id' => $location_id));
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
+
+        $this->LocationModel->update(array('country_id' => $country, 'city_title' => $city, 'id' => $location_id));
         //update event
         $this->EventModel->update(array('id' => $event['id'],
             'title' => $title,
@@ -346,6 +361,11 @@ class EventController extends Controller {
         if ($second_cate)
             $this->EventModel->add_event_category($event['id'], $second_cate, 0);
 
+        //remove file upload temp
+        $temp_file = $_POST['file_temp'];
+        if($temp_file!='')
+            @unlink ($temp_file);
+        
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event[id]/?s=1");
     }
 
@@ -639,30 +659,30 @@ class EventController extends Controller {
         if ($_POST)
             $this->do_add_event_token($event);
 
-        $ticket_types = $this->TicketTypeModel->gets(array('deleted'=>0,'event_id'=>$event['id']),1,100);
-        
-        foreach($ticket_types as $k=>$v){
+        $ticket_types = $this->TicketTypeModel->gets(array('deleted' => 0, 'event_id' => $event['id']), 1, 100);
+
+        foreach ($ticket_types as $k => $v) {
             $tmp_quantity = $this->TicketTypeModel->get_tmp_quantity($v['id']);
-            $total_paid_ticket = (int)$v['total_ticket'] == 0 ? 0 : $v['total_ticket'];
+            $total_paid_ticket = (int) $v['total_ticket'] == 0 ? 0 : $v['total_ticket'];
             $remaining = $v['quantity'] - $tmp_quantity - $total_paid_ticket;
             $v['remaining'] = $remaining;
-            $v['total_ticket'] = $total_paid_ticket;            
+            $v['total_ticket'] = $total_paid_ticket;
             $ticket_types[$k] = $v;
         }
 
         Yii::app()->params['page'] = 'Event Detail';
 
         $this->viewData['ticket_types'] = $ticket_types;
-        
+
         $this->viewData['event'] = $event;
         $this->viewData['message'] = $this->message;
         $this->render('event', $this->viewData);
     }
-    
+
     private function do_add_event_token($event) {
 
         HelperGlobal::require_login();
-        
+
         $ticket_types = $_POST['ticket_type'];
         $tmp = array();
         $use_payment = 0;
@@ -685,16 +705,14 @@ class EventController extends Controller {
         foreach ($tmp as $k => $v) {
             //$this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
             //$total += ($v['quantity'] * $v['type']['price']) + $v['type']['tax'];
-            
-            if($v['type']['service_fee']){
-                $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price']*1.1, $v['type']['tax'], ($v['quantity'] * $v['type']['price']) * 1.1);
-                $total += ($v['quantity'] * $v['type']['price'])*1.1;
-            }
-            else{ 
+
+            if ($v['type']['service_fee']) {
+                $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'] * 1.1, $v['type']['tax'], ($v['quantity'] * $v['type']['price']) * 1.1);
+                $total += ($v['quantity'] * $v['type']['price']) * 1.1;
+            } else {
                 $this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']));
                 $total += ($v['quantity'] * $v['type']['price']);
-            }     
-            
+            }
         }
 
         $token = Ultilities::base32UUID();
@@ -731,7 +749,7 @@ class EventController extends Controller {
 
         if ($_POST)
             $this->do_register($event, $order, $order_details, $token);
-        
+
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
@@ -746,7 +764,7 @@ class EventController extends Controller {
 
         $usd = $this->SettingsModel->get_usd();
         $ttd = $this->SettingsModel->get_ttd();
-        
+
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
         $email = trim($_POST['email']);
@@ -780,7 +798,7 @@ class EventController extends Controller {
         }
 
         //update order information
-        
+
         $this->OrderModel->update(array(
             'firstname' => $firstname,
             'lastname' => $lastname,
@@ -795,14 +813,14 @@ class EventController extends Controller {
 
         $order = $this->OrderModel->get($order['id']);
         // if this order does not use payment then insert to database normally
-        if ($order['use_payment'] == 0) {            
+        if ($order['use_payment'] == 0) {
             foreach ($order_details as $k => $v) {
 
                 for ($i = 0; $i < $v['quantity']; $i++) {
                     $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
                 }
             }
-            
+
             $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
             $this->email_register_event($order, $order_details);
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]?iok=1&msg=Thank you for joining our event.");
@@ -811,7 +829,7 @@ class EventController extends Controller {
 
             $payment_to = Yii::app()->params['business'];
             $currency = 'USD';
-            $amount = $order['total']*($usd['option_value']/$ttd['option_value']);
+            $amount = $order['total'] * ($usd['option_value'] / $ttd['option_value']);
             $tracking_id = $this->TrackingModel->add('paypal', $payment_to, $currency, UserControl::getId(), $amount, 'purchase_ticket');
 
             $return_url = HelperUrl::baseUrl(true) . "event/register/?order_id=$order[id]&token=$token[token]";
@@ -821,7 +839,7 @@ class EventController extends Controller {
             $queryStr = "?business=" . urlencode($payment_to);
 
             $data = array('item_name' => "Purchase ticket of event : " . $event['title'] . ".",
-                'amount' => round($amount,2),
+                'amount' => round($amount, 2),
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'payer_email' => $email,
@@ -936,31 +954,31 @@ class EventController extends Controller {
         fclose($fp);
         exit();
     }
-    
-    private function email_register_event($order,$order_details){
+
+    private function email_register_event($order, $order_details) {
         $event = $this->EventModel->get($order['event_id']);
-        
-        
-        $message = 'Dear '.$order['firstname'].', <br/><br/>
+
+
+        $message = 'Dear ' . $order['firstname'] . ', <br/><br/>
                     
-                    Thank you for joining our event: '.$event['title'].' <br/><br/>
+                    Thank you for joining our event: ' . $event['title'] . ' <br/><br/>
                     We hope you enjoyt it. <br/>
                     
                     Here are the qrcodes for attending our events: <br/><br/>
                     
                     
                     ';
-        foreach($order_details as $k=>$v){
-            $url = urlencode(HelperUrl::baseUrl(true)."event/attend/eid/$order[event_id]/did/$v[id]");
-            $message.= ($k + 1).'. '.$v['title'];
-            $message.= '<br/><br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data='.$url.'&amp;size=100x100" alt="'.$v['title'].'" title="'.$v['title'].'" /> <br/> <br/>';
+        foreach ($order_details as $k => $v) {
+            $url = urlencode(HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/did/$v[id]");
+            $message.= ($k + 1) . '. ' . $v['title'];
+            $message.= '<br/><br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data=' . $url . '&amp;size=100x100" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
         }
-        
+
         $message.= '<br/><br/>
                     
                     
                     ';
-        HelperApp::email($order['email'], "Register event ".$event['title'], $message);
+        HelperApp::email($order['email'], "Register event " . $event['title'], $message);
     }
 
     public function actionSearch($p = 1) {
@@ -1001,19 +1019,19 @@ class EventController extends Controller {
         Yii::app()->params['page'] = "Find Events";
         $this->render('search', $this->viewData);
     }
-    
-    public function actionAttend($eid,$did){
+
+    public function actionAttend($eid, $did) {
         $event = $this->EventModel->get($eid);
-        
-        if(!$event){
+
+        if (!$event) {
             echo "PERMISSION DENIED";
             die;
         }
-        
+
         $message = '<h2>Permission Accepted</h2> <br/><br/>
-                    <h3>Event: '.$event['title'].' </h3>
+                    <h3>Event: ' . $event['title'] . ' </h3>
                     ';
-        
+
         echo $message;
     }
 
@@ -1028,6 +1046,36 @@ class EventController extends Controller {
             $params[$tmp[0]] = $tmp[1];
         }
         return $params;
+    }
+
+    public function ActionUpload_logo_event() {
+        HelperGlobal::require_login();
+        
+        $temp_file = $_POST['file_temp'];
+        if($temp_file!='')
+            @unlink ($temp_file);
+        
+        $file = $_FILES['file'];
+        
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file,2097152))
+            $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
+            $this->message['error'][] = "Image's size does not correct.";
+        
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            echo json_encode(array('message' => $this->message));
+            die;
+        }
+        
+
+        // check if has thumbnail
+        if (!$this->validator->is_empty_string($file['name'])) {
+            $file_upload = HelperApp::upload_files($file, 2097152 , "temp/" . date('Y') . '/' . date('m') . '/');
+            echo json_encode(array('message' => $this->message, 'data' => array('url' => $file_upload[0]['url'] , 'name' => $file_upload[0]['name'] )));
+            die;
+        }
+        
     }
 
 }

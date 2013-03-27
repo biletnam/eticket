@@ -31,6 +31,8 @@
                             <script type="text/javascript">
                                 var baseUrl = '<?php echo Yii::app()->request->baseUrl; ?>' ;
                                 var ticketTax = '<?php echo Yii::app()->getParams()->itemAt('ticket_tax'); ?>';
+                                var uploadDir = '<?php echo HelperUrl::upload_dir() ?>';
+                                var uploadUrl = '<?php echo HelperUrl::upload_url() ?>';
                             </script>
                             </head>
 

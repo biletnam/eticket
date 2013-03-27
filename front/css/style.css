@@ -489,7 +489,10 @@ i{display: inline-block;position: relative}
     .step .number {font-size: 20px;background: url("../img/step.png") no-repeat;color: #06415a;font-weight: bold;height: 43px;left: -28px;position: absolute;text-align: center;top: -5px;width: 54px;}
         .step .number > span{position: relative;top:9px;left:-5px}
     .step h3 {margin: 25px 0 20px 35px;font-size: 20px;line-height: 30px;color: #06415a}
-.upload .image-default{float: left;margin-right: 20px;width: 97px}
+.event-logo{width: 97px;margin-right: 20px;}     
+    .upload .image-default{}
+.event-logo-upload{width: 593px}    
+.event-logo-upload .error1{margin-top: 10px;color:#fa0000}
 
 .form-create-event .controls{width: 710px}
     .ico-calendar{background: url('../img/ico_calendar.png') no-repeat 125px 5px}
@@ -532,7 +535,7 @@ i{display: inline-block;position: relative}
         }
         .event-bar ul li a:hover .icon-edit-white,.event-bar ul li a.active .icon-edit-white{background-position: -31px 0}
         .event-bar ul li a:hover .icon-ticket,.event-bar ul li a.active .icon-ticket{background-position:0 -34px}
-        
+            
 .page-create-ticket{margin-bottom: 50px}
 .add_ticket_container {margin-bottom: 20px;text-align: center;}     
 .btn-type-price:hover{color: #fff}

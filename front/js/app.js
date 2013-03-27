@@ -9,7 +9,7 @@ $(document).ready(function(){
     contact_form();
 
     delete_gallery();
-    
+    upload_logo_event_edit();
 });
 
 function goToByScroll(id){
@@ -513,4 +513,45 @@ function count_total(ticket_info){
     
     $(".ticket-tax",ticket_info).text(number_format(tax)+" TTD");
     $(".ticket-total",ticket_info).text(number_format(final_total)+" TTD");
+}
+
+function upload_logo_event_edit(){
+    $('.fileupload').live('change',function(){
+        var ele = $(this);
+        var parent = ele.parents('.controls');
+        var event_logo = $('.event-logo',parent);
+        $(".logo-default",event_logo).hide();
+        $(".waiting ",event_logo).show();
+
+        $('#event_form').ajaxSubmit({ 
+            url : baseUrl+'/event/upload_logo_event' ,
+            beforeSubmit: function(){
+                
+            } ,
+            success:function(response, statusText, xhr, $form){
+               
+                if(!response.message.success){
+                    $(".image-default").hide();
+                    $(".logo-default",event_logo).show();
+                    $(".waiting ",event_logo).hide();
+                    var msg = "";
+                    $.each(response.message.error,function(k,v){
+                        msg+= v+"</br>";
+                    });
+                    $(".event-logo-upload .error1").html(msg);
+                }
+                else{
+                    $(".image-default").hide();
+                    $(".waiting ",event_logo).hide();
+                    $(".logo-default",event_logo).attr('src',uploadUrl+response.data.url).show();
+                    $(".file_temp",parent).val(uploadDir+response.data.url);
+                    $(".name_temp",parent).val(response.data.name);
+                    $(".event-logo-upload .error1").html("");
+                    ele.val('');
+                }               
+            },
+            dataType:'json'
+        });
+        return false;
+    });
 }

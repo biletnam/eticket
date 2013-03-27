@@ -85,7 +85,7 @@ class EventController extends Controller {
         }
         if(UserControl::getRole()=='waiting' && UserControl::LoggedIn()){
             Yii::app()->params['page'] = 'Create Event';
-            $this->viewData['message'] = 'Your account is being checked by admin.';
+            $this->viewData['message'] = 'Your client account is pending. Please <a href="'.HelperUrl::baseUrl().'page/contact_us">contact us</a> for more info.';
             $this->render('access',$this->viewData);
             die;
         }

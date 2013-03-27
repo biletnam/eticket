@@ -821,7 +821,7 @@ class EventController extends Controller {
             $queryStr = "?business=" . urlencode($payment_to);
 
             $data = array('item_name' => "Purchase ticket of event : " . $event['title'] . ".",
-                'amount' => rount($amount,2),
+                'amount' => round($amount,2),
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'payer_email' => $email,

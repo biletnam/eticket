@@ -17,7 +17,8 @@ class HelperApp {
             'small' => array('w' => 63, 'h' => 58, 'crop' => true),
             'edit' => array('w' => 97, 'h' => 94, 'crop' => true),
             'home_thumbnail' => array('w' => 80, 'h' => 80, 'crop' => true),
-            'profile' => array('w' => 96, 'h' => 84, 'crop' => true)
+            'profile' => array('w' => 96, 'h' => 84, 'crop' => true),
+            'detail' => array('w' => 0, 'h' => 130, 'crop' => true)
         );
         return $array;
     }

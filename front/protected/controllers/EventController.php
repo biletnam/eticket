@@ -75,10 +75,24 @@ class EventController extends Controller {
     }
 
     public function actionCreate() {
+        if(!UserControl::LoggedIn()){
+            $this->redirect(HelperUrl::baseUrl().'user/signup');
+            die;
+        }
+        if(UserControl::getRole()=='waiting' && UserControl::LoggedIn()){
+            Yii::app()->params['page'] = 'Create Event';
+            $this->viewData['message'] = 'Your account is being checked by admin.';
+            $this->render('access',$this->viewData);
+            die;
+        }
+        if(UserControl::getRole()=='customer' && UserControl::LoggedIn()){
+            Yii::app()->params['page'] = 'Create Event';
+            $this->viewData['message'] = 'You are not authorized to access this page.';
+            $this->render('access',$this->viewData);
+            die;
+        }
         
-        
-        
-        HelperGlobal::require_login();
+        //HelperGlobal::require_login();
 //        if(UserControl::getRole()!='client' && UserControl::LoggedIn())
 //            $this->load_404();
         
@@ -120,7 +134,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter Event Title.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(100, 100, $file['tmp_name']))
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a Primary category.";
@@ -187,7 +201,8 @@ class EventController extends Controller {
             'thumbnail' => $thumbnail,
             'description' => $description,
             'published' => $_POST['published'],
-            'show_tickets' => $show_tickets));
+            'show_tickets' => $show_tickets,
+            'disabled' => 0));
         //'is_repeat' => $is_repeat));
         //add new event category
         $this->EventModel->add_event_category($event_id, $primary_cate, 1);
@@ -253,7 +268,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Please enter Event Title.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(100, 100, $file['tmp_name']))
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a primary category.";

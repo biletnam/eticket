@@ -48,9 +48,9 @@
                                                         <ul class="clearfix">
                                                             <li><a href="<?php echo HelperUrl::baseUrl() ?>event/search">Find Events</a></li>
                                                             <!--                                    <li><a href="#">Print Tickets</a></li>-->
-                                                            <?php if (UserControl::getRole() && UserControl::getRole() == 'client'): ?>
-                                                                <li><a href="<?php echo HelperUrl::baseUrl() ?>event/create">Create An Event</a></li>
-                                                            <?php endif; ?>
+                                                            
+                                                            <li><a href="<?php echo HelperUrl::baseUrl() ?>event/create">Create An Event</a></li>
+                                                            
 
                                                             <li><a href="<?php echo HelperUrl::baseUrl() ?>page/how_it_work">How It Works</a></li>
                                                             <li class="last"><a href="<?php echo HelperUrl::baseUrl() ?>faq">Help</a></li>

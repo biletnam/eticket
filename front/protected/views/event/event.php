@@ -22,7 +22,9 @@
                         </h2>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail']) ?>"/>
+                        <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'full') ?>">
+                            <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'detail') ?>"/>
+                        </a>
                     </div>
                 </div>
             </div>

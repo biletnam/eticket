@@ -96,10 +96,10 @@ $countries = Helper::countries();
                                     <input type="checkbox" value="1" name="display_end_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
-                                <!--                                <label class="checkbox inline">
+                                <?php /*                                <label class="checkbox inline">
                                                                     <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
                                                                     Yes, This is event repeat
-                                                                </label>-->
+                                                                </label> */ ?>
                             </div>
 
                         </div>
@@ -112,11 +112,13 @@ $countries = Helper::countries();
                     <label for="title" class="control-label pull-left">Upload the photo for your event:</label>
                     <div class="controls pull-left">
                         <img src="<?php echo HelperUrl::baseUrl() ?>img/default_upload_logo.gif" class="image-default">
-                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 100x100px</p>
+                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB.<br/>
+                        We allow only 1920 x 1080 photo. Please upload correct one.
+                        </p>
                         <input type="file" name="file" class="fileupload customfile-input">
                     </div>
-                    <!--
-                    <div class="controls pull-left"><button class="btn btn-primary" type="button">Upload</button></div> -->
+
+                    <?php /* <div class="controls pull-left"><button class="btn btn-primary" type="button">Upload</button></div> */ ?>
                 </div>
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left">Event Description</label>

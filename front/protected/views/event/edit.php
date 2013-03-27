@@ -124,7 +124,9 @@ $ticket_status = Helper::ticket_status();
                                             <img class="image-default waiting hide" src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" />
                                             <img class="image-default thumbnail" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'edit'); ?>" />
                                         <?php endif; ?>
-                                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB and larger than 100x100px.</p>
+                                        <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB.<br/>
+                                         We allow only 1920 x 1080 photo. Please upload correct one.
+                                        </p>
                                         <input class="fileupload customfile-input" class="input-xlarge" name="file" type="file">
                                          <?php if ($event['img'] != ""): ?>
                                         <div class="controls pull-left" style="margin-top: 10px"><a href="<?php echo HelperUrl::baseUrl() ?>event/remove_thumb/id/<?php echo $event['id'] ?>" class="btn-style remove-event-thumb">Remove</a></div>

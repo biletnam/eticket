@@ -318,8 +318,8 @@ class EventModel extends CFormModel {
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added) 
-                                    VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added)";
+        $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added,disabled) 
+                                    VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added,:disabled)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":user_id", $args['user_id'], PDO::PARAM_INT);
         $command->bindParam(":title", $args['title']);
@@ -336,6 +336,7 @@ class EventModel extends CFormModel {
         $command->bindParam(":img", $args['img']);
         $command->bindParam(":thumbnail", $args['thumbnail']);
         $command->bindParam(":date_added", $time);
+        $command->bindParam(":disabled", $args['disabled']);
         $command->execute();
         return Yii::app()->db->lastInsertID;
     }

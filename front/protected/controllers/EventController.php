@@ -124,10 +124,12 @@ class EventController extends Controller {
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
         $start_minute = trim($_POST['start_minute']);
+        $start_am_pm = trim($_POST['start_am_pm']);
         $end_date = trim($_POST['end_date']);
         $end_date = explode('-', $end_date);
         $end_hour = trim($_POST['end_hour']);
         $end_minute = trim($_POST['end_minute']);
+        $end_am_pm = trim($_POST['end_am_pm']);
         $description = trim($_POST['description']);
         $display_start_time = isset($_POST['display_start_time']) ? 1 : 0;
         $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
@@ -163,8 +165,23 @@ class EventController extends Controller {
             $this->message['success'] = false;
             return false;
         }
-        $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
-        $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+
+        if ($start_am_pm == 'am') {
+            $start_hour = $start_hour == "12" ? "00" : $start_hour;
+            $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
+        } else {
+            $start_hour += 12;
+            $start_hour = $start_hour == 24 ? 12 : $start_hour;
+            $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
+        }
+        if ($end_am_pm == 'am') {
+            $end_hour = $end_hour == "12" ? "00" : $end_hour;
+            $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+        } else {
+            $end_hour += 12;
+            $end_hour = $end_hour == 24 ? 12 : $end_hour;
+            $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+        }
 
         if (strtotime($start_time) - strtotime($end_time) >= 0) {
             $this->message['error'][] = "The ending time of your event must be later than the start time.";
@@ -176,10 +193,10 @@ class EventController extends Controller {
         $thumbnail = "";
         // check if has thumbnail
         if (!$this->validator->is_empty_string($_POST['file_temp'])) {
-            $filesize = filesize ( $_POST['file_temp'] );
+            $filesize = filesize($_POST['file_temp']);
             $image_info = getimagesize($_POST['file_temp']);
             $filetype = $image_info['mime'];
-            $tmp_file = array('tmp_name'=>$_POST['file_temp'],'name'=>$_POST['name_temp'],'error'=>0,'type'=>$filetype,'size'=>$filesize);
+            $tmp_file = array('tmp_name' => $_POST['file_temp'], 'name' => $_POST['name_temp'], 'error' => 0, 'type' => $filetype, 'size' => $filesize);
             $resize = HelperApp::resize_images($tmp_file, HelperApp::get_event_sizes());
             $img = $resize['img'];
             $thumbnail = $resize['thumbnail'];
@@ -220,11 +237,11 @@ class EventController extends Controller {
         $note = "Your event :" . $title . "was created, please wait admin approve.";
 
         @HelperApp::email(UserControl::getEmail(), 'Event was created', $note);
-        
-        
+
+
         $temp_file = $_POST['file_temp'];
-        if($temp_file!='')
-            @unlink ($temp_file);
+        if ($temp_file != '')
+            @unlink($temp_file);
 
 //        $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/?s=1&msg= You have created event <strong>$title</strong>");
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/type/ticket");
@@ -232,8 +249,8 @@ class EventController extends Controller {
 
     public function actionEdit($id = "", $type = "general") {
         HelperGlobal::require_login();
-        
-        
+
+
         $event = $this->EventModel->get($id);
         //print_r($event);die;
         if (!$event || $event['user_id'] != UserControl::getId())
@@ -269,10 +286,12 @@ class EventController extends Controller {
         $start_date = explode('-', $start_date);
         $start_hour = trim($_POST['start_hour']);
         $start_minute = trim($_POST['start_minute']);
+        $start_am_pm = trim($_POST['start_am_pm']);
         $end_date = trim($_POST['end_date']);
         $end_date = explode('-', $end_date);
         $end_hour = trim($_POST['end_hour']);
         $end_minute = trim($_POST['end_minute']);
+        $end_am_pm = trim($_POST['end_am_pm']);
         $description = trim($_POST['description']);
         $display_start_time = isset($_POST['display_start_time']) ? 1 : 0;
         $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
@@ -306,8 +325,23 @@ class EventController extends Controller {
             $this->message['success'] = false;
             return false;
         }
-        $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
-        $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+        
+        if ($start_am_pm == 'am') {
+            $start_hour = $start_hour == "12" ? "00" : $start_hour;
+            $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
+        } else {
+            $start_hour += 12;
+            $start_hour = $start_hour == 24 ? 12 : $start_hour;
+            $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
+        }
+        if ($end_am_pm == 'am') {
+            $end_hour = $end_hour == "12" ? "00" : $end_hour;
+            $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+        } else {
+            $end_hour += 12;
+            $end_hour = $end_hour == 24 ? 12 : $end_hour;
+            $end_time = "$end_date[2]-$end_date[1]-$end_date[0] $end_hour:$end_minute:00";
+        }
 
         if (strtotime($start_time) - strtotime($end_time) >= 0) {
             $this->message['error'][] = "The ending time of your event must be later than the start time.";
@@ -320,10 +354,10 @@ class EventController extends Controller {
 
         // check if has thumbnail
         if (!$this->validator->is_empty_string($_POST['file_temp'])) {
-            $filesize = filesize ( $_POST['file_temp'] );
+            $filesize = filesize($_POST['file_temp']);
             $image_info = getimagesize($_POST['file_temp']);
             $filetype = $image_info['mime'];
-            $tmp_file = array('tmp_name'=>$_POST['file_temp'],'name'=>$_POST['name_temp'],'error'=>0,'type'=>$filetype,'size'=>$filesize);
+            $tmp_file = array('tmp_name' => $_POST['file_temp'], 'name' => $_POST['name_temp'], 'error' => 0, 'type' => $filetype, 'size' => $filesize);
             $resize = HelperApp::resize_images($tmp_file, HelperApp::get_event_sizes(), $event['img']);
             $img = $resize['img'];
             $thumbnail = $resize['thumbnail'];
@@ -363,9 +397,9 @@ class EventController extends Controller {
 
         //remove file upload temp
         $temp_file = $_POST['file_temp'];
-        if($temp_file!='')
-            @unlink ($temp_file);
-        
+        if ($temp_file != '')
+            @unlink($temp_file);
+
         $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event[id]/?s=1");
     }
 
@@ -1050,32 +1084,31 @@ class EventController extends Controller {
 
     public function ActionUpload_logo_event() {
         HelperGlobal::require_login();
-        
+
         $temp_file = $_POST['file_temp'];
-        if($temp_file!='')
-            @unlink ($temp_file);
-        
+        if ($temp_file != '')
+            @unlink($temp_file);
+
         $file = $_FILES['file'];
-        
-        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file,2097152))
+
+        if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file, 2097152))
             $this->message['error'][] = "The file you are trying to upload is invalid. Make sure it is a valid image and that the filename ends with a .jpg, .gif or .png extension.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
-        
+
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             echo json_encode(array('message' => $this->message));
             die;
         }
-        
+
 
         // check if has thumbnail
         if (!$this->validator->is_empty_string($file['name'])) {
-            $file_upload = HelperApp::upload_files($file, 2097152 , "temp/" . date('Y') . '/' . date('m') . '/');
-            echo json_encode(array('message' => $this->message, 'data' => array('url' => $file_upload[0]['url'] , 'name' => $file_upload[0]['name'] )));
+            $file_upload = HelperApp::upload_files($file, 2097152, "temp/" . date('Y') . '/' . date('m') . '/');
+            echo json_encode(array('message' => $this->message, 'data' => array('url' => $file_upload[0]['url'], 'name' => $file_upload[0]['name'])));
             die;
         }
-        
     }
 
 }

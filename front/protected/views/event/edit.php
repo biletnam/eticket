@@ -65,15 +65,19 @@ $ticket_status = Helper::ticket_status();
                                             <input type="text" class="input-mini ico ico-calendar datetimepicker" name="start_date" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y', strtotime($event['start_time'])); ?>">
 
                                             <select name="start_hour" class="input-mini">
-                                                <?php for ($i = 0; $i < 24; $i++): ?>
-                                                    <option <?php if (isset($_POST['start_hour']) && $_POST['start_hour'] == $i) echo 'selected'; else if ((int) date('H', strtotime($event['start_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                                <?php for ($i = 0; $i <= 12; $i++): ?>
+                                                    <option <?php if (isset($_POST['start_hour']) && $_POST['start_hour'] == $i) echo 'selected'; else if ( (int) date('g', strtotime($event['start_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                 <?php endfor; ?>
                                             </select>
                                             <select name="start_minute" class="input-mini">
                                                 <?php for ($i = 0; $i < 60; $i++): ?>
                                                     <option <?php if (isset($_POST['start_minute']) && $_POST['start_minute'] == $i) echo 'selected'; else if ((int) date('i', strtotime($event['start_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                                                 <?php endfor; ?>
-                                            </select>                                                         
+                                            </select>   
+                                            <select name="start_am_pm">
+                                                <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='am') echo 'selected' ; else if(date('a', strtotime($event['start_time'])) == 'am') echo 'selected' ?> value="am">AM</option>
+                                                <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='pm') echo 'selected' ; else if(date('a', strtotime($event['start_time'])) == 'pm') echo 'selected' ?> value="pm">PM</option>
+                                            </select>
                                             <label class="checkbox inline">
                                                 <input type="checkbox" name="display_start_time" value="1" <?php if (isset($_POST['display_start_time'])) echo 'checked'; else if ($event['display_start_time']) echo 'checked'; ?>/>
                                                 Show
@@ -89,15 +93,19 @@ $ticket_status = Helper::ticket_status();
                                             <input type="text" class="input-mini ico ico-calendar datetimepicker" name="end_date" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y', strtotime($event['end_time'])); ?>">
 
                                             <select name="end_hour" class="input-mini" id="time_hour">
-                                                <?php for ($i = 0; $i < 24; $i++): ?>
-                                                    <option <?php if (isset($_POST['end_hour']) && $_POST['end_hour'] == $i) echo 'selected'; else if ((int) date('H', strtotime($event['end_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
+                                                <?php for ($i = 0; $i <= 12; $i++): ?>
+                                                    <option <?php if (isset($_POST['end_hour']) && $_POST['end_hour'] == $i) echo 'selected'; else if ((int) date('g', strtotime($event['end_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                                                 <?php endfor; ?>
                                             </select>
                                             <select name="end_minute" class="input-mini" id="time_min">
                                                 <?php for ($i = 0; $i < 60; $i++): ?>
                                                     <option <?php if (isset($_POST['end_minute']) && $_POST['end_minute'] == $i) echo 'selected'; else if ((int) date('i', strtotime($event['end_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
                                                 <?php endfor; ?>
-                                            </select>                                                
+                                            </select>     
+                                            <select name="end_am_pm">
+                                                <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='am') echo 'selected' ; else if(date('a', strtotime($event['end_time'])) == 'am') echo 'selected' ?> value="am">AM</option>
+                                                <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='pm') echo 'selected' ; else if(date('a', strtotime($event['end_time'])) == 'pm') echo 'selected' ?> value="pm">PM</option>
+                                            </select>
                                             <label class="checkbox inline">
                                                 <input type="checkbox" name="display_end_time" value="1" <?php if (isset($_POST['display_end_time'])) echo 'checked'; else if ($event['display_end_time']) echo 'checked'; ?>/>
                                                 Show

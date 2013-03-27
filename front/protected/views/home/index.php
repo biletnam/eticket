@@ -5,14 +5,11 @@
 
     <div id="flex1" class="flexslider">
         <ul class="slides">
-
+            <?php foreach($sliders as $s): ?>
             <li>
-                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner_3.png" alt="" />
+                <img src="<?php  echo HelperApp::get_thumbnail($s['thumbnail'],'homepage') ?>" alt="<?php echo $s['title'] ?>" />
             </li>
-
-            <li>
-                <img src="<?php echo HelperUrl::baseUrl(); ?>img/banner_2.png" alt="" />
-            </li>
+            <?php endforeach; ?>
         </ul>
     </div>
 

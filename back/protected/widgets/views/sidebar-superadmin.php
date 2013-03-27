@@ -10,6 +10,7 @@
         
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location"><i class="icon-map-marker"></i>Location</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/location/country"><i class="icon-map-marker"></i>Country</a></li>
+        <li><a href="<?php echo HelperUrl::baseUrl() ?>slide/"><i class="icon-tasks"></i>Sliders</a></li>
         
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/faq/"><i class="icon-info-sign"></i>FAQs</a></li>
 

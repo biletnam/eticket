@@ -5513,3 +5513,36 @@ REQUEST_URI=/eticket/back/location/add/
 in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (54)
 in D:\xampp\htdocs\eticket\back\protected\controllers\LocationController.php (43)
 in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 10:24:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.btr_posts' doesn't exist. The SQL statement executed was: SELECT *
+                FROM btr_posts bp
+                WHERE 1
+                 AND bp.post_type = :post_type AND bp.deleted = :deleted
+                ORDER BY bp.title ASC
+                LIMIT :page,:ppp.
+in D:\xampp\htdocs\eticket\back\protected\models\SlideModel.php (44)
+in D:\xampp\htdocs\eticket\back\protected\controllers\SlideController.php (36)
+in D:\xampp\htdocs\eticket\back\index.php (14)
+2013/03/27 10:24:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eticket.btr_posts' doesn't exist. The SQL statement executed was: SELECT *
+                FROM btr_posts bp
+                WHERE 1
+                 AND bp.post_type = :post_type AND bp.deleted = :deleted
+                ORDER BY bp.title ASC
+                LIMIT :page,:ppp' in D:\xampp\htdocs\eticket\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\htdocs\eticket\back\protected\models\SlideModel.php(44): CDbCommand->queryAll()
+#2 D:\xampp\htdocs\eticket\back\protected\controllers\SlideController.php(36): SlideModel->gets(Array, 1, 20)
+#3 [internal function]: SlideController->actionIndex(1)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(SlideController), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(SlideController), Object(ReflectionMethod), Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('')
+#10 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('slide')
+#11 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\eticket\back\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/eticket/back/slide/
+HTTP_REFERER=http://localhost/eticket/back/home/
+---

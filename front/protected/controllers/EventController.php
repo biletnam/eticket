@@ -198,7 +198,8 @@ class EventController extends Controller {
 
         @HelperApp::email(UserControl::getEmail(), 'Event was created', $note);
 
-        $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/?s=1&msg= You have created event <strong>$title</strong>");
+//        $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/?s=1&msg= You have created event <strong>$title</strong>");
+        $this->redirect(HelperUrl::baseUrl() . "event/edit/id/$event_id/type/ticket");
     }
 
     public function actionEdit($id = "", $type = "general") {

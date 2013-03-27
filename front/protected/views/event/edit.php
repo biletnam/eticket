@@ -8,7 +8,7 @@ $ticket_status = Helper::ticket_status();
             <ul class="clearfix">
                 <li><a class="<?php if ($type == "general") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white"></i>Event Information</a></li>
                 <li><a class="<?php if ($type == "ticket") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket"></i>Ticket</a></li>
-                <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li>
+                <?php /* <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li> */ ?>
             </ul>
         </div>
     </div>
@@ -225,8 +225,8 @@ $ticket_status = Helper::ticket_status();
                         </div>
                         <div class="add_ticket_container">
                             <span class="add_ticket_text">Type of price:</span>
-<!--                            <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
-                            <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a>-->
+                            <?php /*<a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
+                            <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a> */ ?>
                             <a class="btn button-medium eb_button small go add_ticket_class btn-ticket paid">Add eTicket</a>
 
                         </div>

@@ -252,10 +252,11 @@ class EventController extends Controller {
 
 
         $event = $this->EventModel->get($id);
-        //print_r($event);die;
+        
         if (!$event || $event['user_id'] != UserControl::getId())
             $this->load_404();
-
+        if(date('M j, Y', strtotime($event['end_time']))<=date('M j, Y'))
+            $this->load_404 ();
         if ($_POST) {
             if ($type == "general")
                 $this->do_edit($event);

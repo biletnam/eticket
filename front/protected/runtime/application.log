@@ -2733,3 +2733,37 @@ Stack trace:
 REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
 HTTP_REFERER=http://localhost/eticket/front/css/style.css
 ---
+2013/03/28 09:40:38 [error] [php] date() expects at least 1 parameter, 0 given (D:\xampp\htdocs\eticket\front\protected\views\user\manage_event.php:22)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CBaseController.php(96): UserController->renderInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(870): UserController->renderFile()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(783): UserController->renderPartial()
+#3 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(373): UserController->render()
+#4 D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php(273): UserController->manage_event()
+#5 unknown(0): UserController->actionAccount()
+#6 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#7 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#8 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#10 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#11 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#12 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#13 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/account/type/manage_event
+in D:\xampp\htdocs\eticket\front\protected\views\user\manage_event.php (22)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (373)
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (273)
+2013/03/28 09:58:49 [error] [php] Undefined variable: e (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:258)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/edit/id/19
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (258)
+in D:\xampp\htdocs\eticket\front\index.php (14)

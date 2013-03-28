@@ -10,6 +10,7 @@ $(document).ready(function(){
 
     delete_gallery();
     upload_logo_event_edit();
+    setInterval(function(){slider_controls();},2000);
 });
 
 function goToByScroll(id){
@@ -93,10 +94,10 @@ function init(){
 }
 
 function slider_controls(){
-    $('#flex1').flexslider();
+    
     if($('section.slider .flexslider').length>0){
         var height = $('section.slider .flexslider').height();
-        console.log(height);
+        
         $('.flex-direction-nav a').css('top',(height/2 - 20)+'px');
 
         $(window).resize(function(){

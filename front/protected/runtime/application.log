@@ -2891,3 +2891,89 @@ Stack trace:
 REQUEST_URI=/eticket/front/user/css/content.css
 HTTP_REFERER=http://localhost/eticket/front/user/make_profile
 ---
+2013/03/28 17:03:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action ".'img".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('.'img')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('.'img')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/.'img/emai...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/.%27img/email_tw.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action ".'img".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('.'img')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('.'img')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/.'img/emai...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/.%27img/email_fb.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action ".'img".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('.'img')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('.'img')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('page/.'img/emai...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/page/.%27img/email_fb.png
+---
+2013/03/28 17:03:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request ".'img/email_fb.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('.'img/email_fb....')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/.%27img/email_fb.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request ".'img/email_tw.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('.'img/email_tw....')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/.%27img/email_tw.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "'img/email_tw.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController(''img/email_tw.p...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/%27img/email_tw.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "'img/email_fb.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController(''img/email_fb.p...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/%27img/email_fb.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "'img/email_fb.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController(''img/email_fb.p...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/%27img/email_fb.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---
+2013/03/28 17:03:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "'img/email_tw.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController(''img/email_tw.p...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/%27img/email_tw.png
+HTTP_REFERER=http://localhost/eticket/front/page/email
+---

@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="controls-group clearfix">
-                <label class="control-label pull-left">Address 1<span class="required">*</span></label>
+                <label class="control-label pull-left">Address <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="address"/>
                 </div>

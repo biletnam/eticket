@@ -145,7 +145,7 @@ class HelperApp {
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
-                "From: VeSuKien.vn <$from>\r\n" .
+                "From: 360islandevents.com <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 

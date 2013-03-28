@@ -882,7 +882,7 @@
 })(jQuery);
 
 $(window).load(function() {
-    //$('#flex1').flexslider();
+    $('#flex1').flexslider();
 });
 
 $(window).load(function() {

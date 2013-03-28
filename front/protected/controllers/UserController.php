@@ -107,9 +107,9 @@ class UserController extends Controller {
         if (preg_match($special_char, $lastname))
             $this->message['error'][] = "Lastname must not contains any speacial characters.";
         if ($this->validator->is_empty_string($address))
-            $this->message['error'][] = "Address 1 cannot be blank.";
+            $this->message['error'][] = "Address cannot be blank.";
         if (preg_match($special_char, $address))
-            $this->message['error'][] = "Address 1 must not contains any speacial characters.";
+            $this->message['error'][] = "Address must not contains any speacial characters.";
         if (preg_match($special_char, $address2))
             $this->message['error'][] = "Address 2 must not contains any speacial characters.";
         if ($this->validator->is_empty_string($city))

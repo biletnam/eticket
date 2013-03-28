@@ -161,5 +161,11 @@ class PageController extends Controller {
         Yii::app()->params['page'] = "How it work";
         $this->render('how_it_work');
     }
+    
+    public function actionEmail(){
+        
+        $this->layout = 'email';
+        $this->render('email_template');
+    }
 
 }

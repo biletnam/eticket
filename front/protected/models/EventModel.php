@@ -82,7 +82,8 @@ class EventModel extends CFormModel {
             $custom.= " AND DATE(start_time) >= DATE(NOW())";
         }
 
-        $sql = "SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as country_id,ec.title as country_title
+        $sql = "SELECT ee.*,va.email as author,el.title as location, el.address,el.title as location_title,ec.id as country_id,ec.title as country_title,
+                ett.title as ticket_title , ett.type as ticket_type, ett.quantity as quantity
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.id
@@ -90,6 +91,8 @@ class EventModel extends CFormModel {
                 ON el.id = ee.location_id
                 LEFT JOIN etk_countries ec
                 ON ec.id = el.country_id
+                LEFT JOIN etk_ticket_types ett
+		ON ee.id = ett.event_id
                 WHERE 1
                 $custom
                 GROUP BY ee.id

@@ -11,6 +11,7 @@ class UserController extends Controller {
     private $EventModel;
     private $TicketModel;
     private $OrderModel;
+    private $TicketTypeModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -35,6 +36,9 @@ class UserController extends Controller {
 
         /* @var $OrderModel OrderModel */
         $this->OrderModel = new OrderModel();
+        
+         /* @var $TicketTypeModel TicketTypeModel */
+        $this->TicketTypeModel = new TicketTypeModel();
     }
 
     /**
@@ -612,4 +616,25 @@ class UserController extends Controller {
         }
     }
 
+    
+    public function actionEvent_view_info($id){
+        HelperGlobal::require_login();
+        
+        $event = $this->EventModel->get($id);
+        
+        if(!$event)
+            $this->load_404 ();
+        if($event['user_id'] != UserControl::getId())
+            $this->load_404 ();
+        
+        $event_all_tickets_sold = $this->TicketTypeModel->gets(array('event_id'=>$event['id']),1,300);
+        
+        $this->viewData['event_all_tickets_sold'] = $event_all_tickets_sold;
+
+        Yii::app()->params['is_tab'] == 'manage_event';
+        Yii::app()->params['page'] = 'Management Event';
+        $this->layout = 'account';
+        $this->render('view_event_info', $this->viewData);
+        
+    }
 }

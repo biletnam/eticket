@@ -61,9 +61,9 @@ function init(){
     });
     $(".fancybox").fancybox();
     
-    $('.btn-invite').fancybox({
-        
-        });
+    $('.btn-invite').fancybox();
+    $('.btn-view-info').fancybox();
+
     
     $("table .delete-row").click(function(){
         if(!confirm("Are you sure delete this item?")) return false;

@@ -31,7 +31,7 @@
                             <?php else: ?>
                             <a class="btn-style btn-primary" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $e['id'] ?>"> Edit </a>
                             <?php endif; ?>
-                            <a class="btn-style" href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $e['slug'] ?>">View</a>
+                            <a class="btn-style btn-view-info" href="<?php echo HelperUrl::baseUrl() ?>user/event_view_info/id/<?php echo $e['id'] ?>">Info</a>
                             <a class="btn-style btn-invite"  href="#invite_<?php echo $e['id'] ?>">Invite</a>
                         </div>
                         <div id="invite_<?php echo $e['id'] ?>" style="display: none">

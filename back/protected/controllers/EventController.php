@@ -10,6 +10,7 @@ class EventController extends Controller {
     private $LocationModel;
     private $TicketTypeModel;
     private $TicketModel;
+    private $OrganizerModel;
 
     public function init() {
 
@@ -30,6 +31,9 @@ class EventController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
+        
+        /* @var $OrganizerModel OrganizerModel */
+        $this->OrganizerModel = new OrganizerModel();
     }
 
     public function actions() {
@@ -686,4 +690,23 @@ class EventController extends Controller {
         
     }
 
+    
+    public function actionInfo($id){
+        HelperGlobal::require_login();
+        
+        $event = $this->EventModel->get($id);
+        
+        if(!$event)
+            $this->load_404 ();
+        
+        $ticket_types = $this->TicketTypeModel->gets(array('event_id'=>$event['id']),1,300);
+        $client = $this->OrganizerModel->get_by_user($event['user_id']);
+        
+        //print_r($ticket_types);die;
+        $this->viewData['event'] = $event;
+        $this->viewData['ticket_types'] = $ticket_types;
+        $this->viewData['client'] = $client;
+        
+        $this->render('info',$this->viewData);
+    }
 }

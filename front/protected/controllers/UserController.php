@@ -305,6 +305,7 @@ class UserController extends Controller {
         $lastname = trim($_POST['lastname']);
         $address = trim($_POST['address']);
         $address2 = trim($_POST['address2']);
+        $paypal_account = trim($_POST['paypal_account']);
         $city = $_POST['city'];
         $country_id = $_POST['country_id'];
 
@@ -321,7 +322,7 @@ class UserController extends Controller {
         if ($this->validator->is_empty_string($address) || $this->validator->has_speacial_character($address))
             $this->message['error'][] = "Address 1 can not be blank and not contains any speacial characters.";
         if ($this->validator->has_speacial_character($address2))
-            $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";       
+            $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";  
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -338,7 +339,7 @@ class UserController extends Controller {
         }
 
 
-        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
+        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'paypal_account' => $paypal_account ,'id' => UserControl::getId()));
 
         //update metas
         $this->UserModel->update_metas('address', $address, UserControl::getId());

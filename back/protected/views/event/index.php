@@ -15,7 +15,7 @@
             <th>Location</th>
             <th>Time</th>
    
-            <th class="row-action"></th>
+            <th width="23%"></th>
         </tr>
     </thead>
     <tbody>
@@ -27,7 +27,14 @@
         <?php foreach ($events as $v): ?>
             <tr>
                 <td><img width="50" class="img-polaroid" src="<?php echo HelperApp::get_thumbnail($v['thumbnail'],'small') ?>" /></td>
-                <td style="text-align: left"><a href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>"><?php echo $v['title'] ?></a></td>    
+                <td style="text-align: left">
+                    <a href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>"><?php echo $v['title'] ?></a>
+                    <?php if(date('M j, Y', strtotime($v['end_time']))>date('M j, Y') ):?>
+                    <span class="label label-success">Live</span>
+                    <?php else: ?>
+                    <span class="label label-inverse">Expired</span>
+                    <?php endif; ?>
+                </td>    
                 <td>
                     <?php foreach($v['categories'] as $c): ?>
                     <p><a href="<?php echo Yii::app()->request->baseUrl; ?>/category/edit/id/<?php echo $c['id'] ?>"><?php echo $c['title'] ?></a></p>
@@ -45,6 +52,7 @@
                
                 
                 <td>
+                    <a class="btn btn-primary" style="padding:2px 12px" href="<?php echo HelperUrl::baseUrl() ?>event/info/id/<?php echo $v['id'] ?>">Paid</a>
                     <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>">Edit</a>
                     <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/event/delete/id/".$v['id']; ?>">Delete</a>
                 </td>

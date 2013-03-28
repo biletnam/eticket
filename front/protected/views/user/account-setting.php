@@ -73,6 +73,12 @@
             </div>
         </div>
         <div class="controls-group">
+            <label class="control-label pull-left">Paypal Account</label>
+            <div class="controls">
+                <input class="input-medium" type="text" name="paypal_account" value="<?php if (isset($_POST['paypal_account'])) echo htmlspecialchars($_POST['paypal_account']);else echo UserControl::getPaypal_account();?>" >
+            </div>
+        </div>
+        <div class="controls-group hide">
             <label class="control-label pull-left">Phone</label>
             <div class="controls">
                 <input class="input-medium" type="text" name="phone" value="<?php if (isset($_POST['phone'])) echo htmlspecialchars($_POST['phone']);else if (isset($metas['phone'])) echo htmlspecialchars($metas['phone']); ?>" >

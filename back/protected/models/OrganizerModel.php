@@ -81,6 +81,19 @@ class OrganizerModel extends CFormModel {
         $command->bindParam(":id", $id, PDO::PARAM_INT);
         return $command->queryRow();
     }
+    
+    public function get_by_user($id) {
+        $sql = "SELECT eo.*,eu.email,eo.date_added as join_date,ec.title as country,eu.paypal_account
+                FROM etk_organizers eo
+                LEFT JOIN etk_users eu
+                ON eu.id = eo.user_id
+                LEFT JOIN etk_countries ec
+                ON ec.id = eu.country_id
+                WHERE eo.user_id = :id";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $id, PDO::PARAM_INT);
+        return $command->queryRow();
+    }
 
     public function add($title, $slug, $country, $address) {
         $count_slug = $this->check_exist_slug($slug);

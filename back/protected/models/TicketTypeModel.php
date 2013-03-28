@@ -31,8 +31,13 @@ class TicketTypeModel extends CFormModel {
             $params[] = array('name' => ':event_id', 'value' => $args['event_id'],'type'=>PDO::PARAM_INT);
         }
 
-        $sql = "SELECT *
+        $sql = "SELECT vc.*,et.total_ticket,(vc.quantity - et.total_ticket) as remaining
                 FROM etk_ticket_types vc
+                LEFT JOIN (SELECT count(*) as total_ticket,ticket_type_id
+                            FROM etk_tickets 
+                            WHERE deleted = 0                            
+                            GROUP BY ticket_type_id) et
+                ON et.ticket_type_id = vc.id
                 WHERE 1
                 $custom
                 ORDER BY vc.date_added DESC

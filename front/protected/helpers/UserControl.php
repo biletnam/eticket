@@ -82,6 +82,11 @@ class UserControl {
         return self::$instance['role'];
     }
     
+    public static function getPaypal_account(){
+        self::FetchUserInstance();
+        return self::$instance['paypal_account'];
+    }
+    
     public static function getIs_signup_facebook(){
         self::FetchUserInstance();
         return self::$instance['signup_facebook'];

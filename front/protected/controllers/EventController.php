@@ -474,9 +474,11 @@ class EventController extends Controller {
         $ticket_start_date = $_POST['ticket_start_date'];
         $ticket_start_hour = $_POST['ticket_start_hour'];
         $ticket_start_minute = $_POST['ticket_start_minute'];
+        $start_am_pm = trim($_POST['start_am_pm']);
         $ticket_end_date = $_POST['ticket_end_date'];
         $ticket_end_hour = $_POST['ticket_end_hour'];
         $ticket_end_minute = $_POST['ticket_end_minute'];
+        $end_am_pm = trim($_POST['end_am_pm']);
         $ticket_min = $_POST['ticket_min'];
         $ticket_max = $_POST['ticket_max'];
         $ticket_service_fee = isset($_POST['ticket_service_fee']) ? $_POST['ticket_service_fee'] : null;
@@ -522,8 +524,24 @@ class EventController extends Controller {
             echo json_encode(array('message' => $this->message));
             die;
         }
-        $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
-        $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        
+        if ($start_am_pm == 'am') {
+            $ticket_start_hour = $ticket_start_hour == "12" ? "00" : $ticket_start_hour;
+            $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
+        } else {
+            $ticket_start_hour += 12;
+            $ticket_start_hour = $ticket_start_hour == 24 ? 12 : $ticket_start_hour;
+            $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
+        }
+        if ($end_am_pm == 'am') {
+            $ticket_end_hour = $ticket_end_hour == "12" ? "00" : $ticket_end_hour;
+            $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        } else {
+            $ticket_end_hour += 12;
+            $ticket_end_hour = $ticket_end_hour == 24 ? 12 : $ticket_end_hour;
+            $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        }
+        
 
         if (strtotime($sale_start) - strtotime($sale_end) >= 0) {
             $this->message['error'][] = "The ending time must be later than the start time.";
@@ -574,9 +592,11 @@ class EventController extends Controller {
         $ticket_start_date = $_POST['ticket_start_date'];
         $ticket_start_hour = $_POST['ticket_start_hour'];
         $ticket_start_minute = $_POST['ticket_start_minute'];
+        $start_am_pm = trim($_POST['start_am_pm']);
         $ticket_end_date = $_POST['ticket_end_date'];
         $ticket_end_hour = $_POST['ticket_end_hour'];
         $ticket_end_minute = $_POST['ticket_end_minute'];
+        $end_am_pm = trim($_POST['end_am_pm']);
         $ticket_min = $_POST['ticket_min'];
         $ticket_max = $_POST['ticket_max'];
         $ticket_service_fee = isset($_POST['ticket_service_fee']) ? $_POST['ticket_service_fee'] : null;
@@ -629,8 +649,22 @@ class EventController extends Controller {
             die;
         }
 
-        $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
-        $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        if ($start_am_pm == 'am') {
+            $ticket_start_hour = $ticket_start_hour == "12" ? "00" : $ticket_start_hour;
+            $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
+        } else {
+            $ticket_start_hour += 12;
+            $ticket_start_hour = $ticket_start_hour == 24 ? 12 : $ticket_start_hour;
+            $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
+        }
+        if ($end_am_pm == 'am') {
+            $ticket_end_hour = $ticket_end_hour == "12" ? "00" : $ticket_end_hour;
+            $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        } else {
+            $ticket_end_hour += 12;
+            $ticket_end_hour = $ticket_end_hour == 24 ? 12 : $ticket_end_hour;
+            $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
+        }
 
         if (strtotime($sale_start) - strtotime($sale_end) >= 0) {
             $this->message['error'][] = "The ending time must be later than the start time.";

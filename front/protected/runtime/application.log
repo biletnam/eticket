@@ -2607,3 +2607,129 @@ REQUEST_URI=/eticket/front/event/edit/id/29/type/general
 in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (289)
 in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (261)
 in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/03/28 08:32:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:32:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:36:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:36:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:36:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:37:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:37:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:37:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:38:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:38:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:38:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/03/28 08:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---

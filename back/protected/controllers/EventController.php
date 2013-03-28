@@ -11,6 +11,8 @@ class EventController extends Controller {
     private $TicketTypeModel;
     private $TicketModel;
     private $OrganizerModel;
+    private $SettingsModel;
+    private $UserModel;
 
     public function init() {
 
@@ -31,9 +33,15 @@ class EventController extends Controller {
 
         /* @var $TicketModel TicketModel */
         $this->TicketModel = new TicketModel();
-        
+
         /* @var $OrganizerModel OrganizerModel */
         $this->OrganizerModel = new OrganizerModel();
+
+        /* @var $SettingsModel SettingsModel */
+        $this->SettingsModel = new SettingsModel();
+        
+        /* @var $UserModel UserModel */
+        $this->UserModel = new UserModel();
     }
 
     public function actions() {
@@ -404,7 +412,7 @@ class EventController extends Controller {
 
         $tmp = array();
         foreach ($locations as $v)
-            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'],'city'=>$v['city_title']);
+            $tmp[] = array('title' => $v['title'], 'label' => $v['title'] . " - $v[address] - $v[city_title] ($v[country])", 'value' => $v['id'], 'address' => $v['address'], 'country' => $v['country_id'], 'city' => $v['city_title']);
         echo json_encode($tmp);
     }
 
@@ -497,15 +505,15 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country,$city, $address);
-        
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
+
         //echo $location_id;die;
 
-        $this->LocationModel->update(array('country_id' => $country,'city_title' => $city,'id' => $location_id));
-        
+        $this->LocationModel->update(array('country_id' => $country, 'city_title' => $city, 'id' => $location_id));
+
         //update event
         $this->EventModel->update(array('id' => $event['id'],
             'title' => $title,
@@ -681,32 +689,186 @@ class EventController extends Controller {
                 $this->EventModel->add_gallery($event['id'], $img, $thumbnail);
             }
         }
-      $this->redirect(Yii::app()->request->baseUrl . "/event/gallery/id/$event[id]?s=1");
-    }
-    
-      public function actionDelete_gallery($id){
-   
-        $this->EventModel->delete_gallery($id);
-        
+        $this->redirect(Yii::app()->request->baseUrl . "/event/gallery/id/$event[id]?s=1");
     }
 
-    
-    public function actionInfo($id){
+    public function actionDelete_gallery($id) {
+
+        $this->EventModel->delete_gallery($id);
+    }
+
+    public function actionInfo($id) {
         HelperGlobal::require_login();
-        
+
         $event = $this->EventModel->get($id);
-        
-        if(!$event)
-            $this->load_404 ();
-        
-        $ticket_types = $this->TicketTypeModel->gets(array('event_id'=>$event['id']),1,300);
+
+        if (!$event)
+            $this->load_404();
+
+
+        $ticket_types = $this->TicketTypeModel->gets(array('event_id' => $event['id']), 1, 300);
         $client = $this->OrganizerModel->get_by_user($event['user_id']);
         
+        if ($_POST){
+            $this->do_update_info($event);
+        }
+        
+        $usd = $this->SettingsModel->get_usd();
+        $ttd = $this->SettingsModel->get_ttd();
         //print_r($ticket_types);die;
+        $this->viewData['usd'] = $usd;
+        $this->viewData['ttd'] = $ttd;
         $this->viewData['event'] = $event;
         $this->viewData['ticket_types'] = $ticket_types;
         $this->viewData['client'] = $client;
-        
-        $this->render('info',$this->viewData);
+        $this->viewData['message'] = $this->message;
+        $this->render('info', $this->viewData);
     }
+
+    private function do_update_info($event){
+        $this->EventModel->update(array('is_paid'=>1,'id'=>$event['id']));
+        $this->redirect(HelperUrl::baseUrl().'event/info/id/'.$event['id'].'?s=1');
+        die;
+    }
+    
+    private function do_paypal($event,$ticket_types,$client) {
+
+        $usd = $this->SettingsModel->get_usd();
+        $ttd = $this->SettingsModel->get_ttd();
+        
+        
+        $total_amount = 0;
+        foreach ($ticket_types as $t) {
+            if ($t['service_fee']) {
+                $total = round($t['total_ticket'] * $t['price'] * 1.1, 2);
+            } else {
+                $total = round($t['total_ticket'] * $t['price'], 2);
+            }
+            $total_amount += $total;
+        }
+        
+        $user = $this->UserModel->get($event['user_id']);
+
+        $payment_to = Yii::app()->params['business'];
+        $currency = 'USD';
+        $amount = $total_amount*($usd['option_value']/$ttd['option_value']);
+        $tracking_id = $this->TrackingModel->add('paypal', $payment_to, $currency, $event['user_id'], $amount, 'send_money');
+
+        $return_url = HelperUrl::baseUrl(true) . "event/info/id/$event[id]";
+        $cancel_url = HelperUrl::baseUrl(true) . "event/info/id/$event[id]";
+        $notify_url = HelperUrl::baseUrl(true) . "event/process_paypal/";
+
+        $queryStr = "?business=" . urlencode($payment_to);
+
+        $data = array('item_name' => "Purchase ticket of event : " . $event['title'] . ".",
+            'amount' => round($amount, 2),
+            'first_name' => $user['firstname'],
+            'last_name' => $user['lastname'],
+            'payer_email' => 'info@eticket.com',
+            'cmd' => '_xclick',
+            'no_note' => '1',
+            'lc' => 'US',
+            'currency_code' => $currency,
+            'item_number' => $event['id'],
+            'return' => $return_url,
+            'cancel_return' => $cancel_url,
+            'custom' => $tracking_id,
+            'quantity' => 1,
+            'notify_url' => $notify_url
+            );
+        foreach ($data as $key => $value) {
+            $value = urlencode(stripslashes($value));
+            $queryStr .= "&$key=$value";
+        }
+
+        $this->redirect('https://www.sandbox.paypal.com/cgi-bin/webscr' . $queryStr);
+        //$this->redirect('https://www.paypal.com/cgi-bin/webscr' . $queryStr);
+        die;
+    }
+
+    public function actionProcess_paypal() {
+        if (!$_POST)
+            return;
+        //$this->PaypalModel->test(serialize($_POST));
+        $txn_id = isset($_POST['txn_id']) ? $_POST['txn_id'] : null;
+        if (!$txn_id)
+            return;
+
+        $data['item_number'] = $_POST['item_number'];
+        $data['package_id'] = $_POST['item_number'];
+        $data['payment_status'] = $_POST['payment_status'];
+        $data['payment_amount'] = $_POST['mc_gross'];
+        $data['paypal_fee'] = $_POST['mc_fee'];
+        $data['txn_id'] = $_POST['txn_id'];
+        $data['custom'] = $_POST['custom'];
+        $data['currency'] = $_POST['mc_currency'];
+        $data['firstname'] = $_POST['first_name'];
+        $data['lastname'] = $_POST['last_name'];
+        $data['payer_email'] = $_POST['payer_email'];
+        $payment_to = Yii::app()->params['business'];
+
+
+        //if ($_POST['test_ipn'] == 1)
+        //exit();
+        // check that receiver_email is your Primary PayPal email and status must be completed
+
+        if ($_POST['business'] != $payment_to || $data['payment_status'] != "Completed")
+            exit();
+        //check if has txn_id 
+        if ($this->TrackingModel->get_by_txn_id($data['txn_id']))
+            exit();
+
+        $tracking = $this->TrackingModel->get($data['custom']);
+
+        // check that payment_amount/payment_currency are correct
+        if (!$tracking || $tracking['payment_type'] != "paypal" || $tracking['amount'] != $data['payment_amount'] || $tracking['completed'] == 1 || strtoupper($data['currency']) != $tracking['currency'])
+            exit();
+
+        $req = 'cmd=_notify-validate';
+        foreach ($_POST as $key => $value) {
+            $value = urlencode(stripslashes($value));
+            $req .= "&$key=$value";
+        }
+        $header = '';
+        // post back to PayPal system to validate
+
+        $header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
+        //comment this line if not sandbox
+        $header .= "Host: www.sandbox.paypal.com \r\n";
+        $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+        $fp = fsockopen('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+        //$fp = fsockopen('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+
+
+        if (!$fp)
+            exit();
+
+        fputs($fp, $header . $req);
+        while (!feof($fp)) {
+
+            $res = fgets($fp, 1024);
+
+            if (strcmp($res, "INVALID") == 0) {
+                //log for manual investigation
+                fclose($fp);
+                exit();
+            }
+            //process payment if all verfified
+            //$this->PaypalModel->test($res);
+            if (strcmp($res, "VERIFIED") == 0) {
+                $paypal_id = $this->PaypalModel->add($data['txn_id'], $tracking['id'], $data['paypal_fee'], serialize($_POST));
+                $this->TrackingModel->update(array('ref_id' => $paypal_id, 'txn_id' => $data['txn_id'], 'completed' => 1, 'id' => $tracking['id']));
+
+                //update status is_paid
+                
+                $this->EventModel->update(array('is_paid'=>1,'id'=>$data['item_number']));
+                
+                //$this->email_register_event($order, $order_details);
+            }
+        }
+        fclose($fp);
+        exit();
+    }
+
 }

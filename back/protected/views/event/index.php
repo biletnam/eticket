@@ -52,7 +52,9 @@
                
                 
                 <td>
+                    <?php if(!$v['is_paid']): ?>
                     <a class="btn btn-primary" style="padding:2px 12px" href="<?php echo HelperUrl::baseUrl() ?>event/info/id/<?php echo $v['id'] ?>">Paid</a>
+                    <?php endif; ?>
                     <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl."/event/edit/id/".$v['id']; ?>">Edit</a>
                     <a class="btn btn-small btn-danger delete-row" href="<?php echo Yii::app()->request->baseUrl."/event/delete/id/".$v['id']; ?>">Delete</a>
                 </td>

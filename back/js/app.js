@@ -20,6 +20,10 @@ function init(){
         return false;
     });
     
+    $('.btn-confirm').click(function(){
+          if(!confirm("Are you sure?")) return false;
+    });
+    
     $('.datetimepicker').datepicker({
         dateFormat: 'dd-mm-yy',
         changeMonth:true,

@@ -37,7 +37,7 @@
     <li>Email : <?php echo $client['email'] ?></li>
     <li>Joined date : <?php echo date('M d,Y', $client['join_date']) ?></li>
     <li>Country : <?php echo $client['country'] ?></li>
-    <li><strong>Paypal account: <?php echo $client['paypal_account'] ?></strong></li>
+    <?php /* <li><strong>Paypal account: <?php echo $client['paypal_account'] ?></strong></li> */ ?>
 </ul>
 <?php if ($event['is_paid']): ?>
     <div class="alert alert-block">

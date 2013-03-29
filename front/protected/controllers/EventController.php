@@ -233,11 +233,32 @@ class EventController extends Controller {
         $this->EventModel->add_event_category($event_id, $primary_cate, 1);
         if ($second_cate)
             $this->EventModel->add_event_category($event_id, $second_cate, 0);
-
-        $note = "Your event :" . $title . "was created, please wait admin approve.";
-
-        @HelperApp::email(UserControl::getEmail(), 'Event was created', $note);
-
+     
+        
+        $url = HelperUrl::hostInfo();
+        
+        $message = '
+                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
+                    <div>
+                        <div><img width="180px" src="'.$url.'front/img/logo.png"/></div>
+                    </div>
+                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                        Event Registration
+                    </div>
+                    <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                        <p style="margin-bottom: 10px;margin-top:0">Congatulations,</p>
+                        <p style="margin-bottom: 10px;margin-top:0">Your Event has been successfully created.</p>
+                        <p style="margin-bottom: 0px;margin-top:0">
+                            Regards,<br/>
+                            The 360 Island Events Team.    
+                        </p>
+                        <a href="#"><img src="'.$url.'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="'.$url.'front/img/email_tw.png"/></a>
+                    </div>
+                </div>
+        ';
+        
+        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Registration' , $message);
 
         $temp_file = $_POST['file_temp'];
         if ($temp_file != '')

@@ -156,17 +156,36 @@ class UserController extends Controller {
         $this->CheckPermission();
         $user_email = $user;
 
-        $link = HelperUrl::hostInfo();
         if ($approve == 'client') {
-            $subject = 'Eticket - Account approved';
-            $note = "Your account was approved to become Client <br/>";
+            $subject = '360islandevents.com - Account approved';
+            $note = "Your account was approved to become Client";
         } else {
-            $subject = 'Eticket - Your account was not approved';
-            $note = "Your account was not approved to become Client <br/>";
+            $subject = '360islandevents.com - Your account was not approved';
+            $note = "Your account was not approved to become Client";
         }
-
-        @HelperApp::email($user_email, $subject, $note);
-
+        
+        $url = HelperUrl::hostInfo();
+        
+        $message = '
+                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
+                    <div>
+                        <div><img width="180px" src="'.$url.'front/img/logo.png"/></div>
+                    </div>
+                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                        Account
+                    </div>
+                    <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                        <p style="margin-bottom: 0px;margin-top:0">
+                            '.$note.'    
+                        </p>
+                        <a href="#"><img src="'.$url.'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="'.$url.'front/img/email_tw.png"/></a>
+                    </div>
+                </div>
+        ';
+        // $message;die;
+        @HelperApp::email($user_email,$subject, $message);
+        
         $this->UserModel->update(array('role' => $approve, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
     }

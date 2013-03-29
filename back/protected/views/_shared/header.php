@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css?v=05102012" />
         <link rel="stylesheet" type="text/css" href="<?php echo HelperUrl::baseUrl(); ?>js/fancybox/jquery.fancybox.css" />
 
-        <title>eTicket</title>
+        <title>360 Island Events.com</title>
         <script>
             var baseUrl = '<?php echo HelperUrl::baseUrl() ?>';
             var ticketTax = '<?php echo Yii::app()->getParams()->itemAt('ticket_tax'); ?>';
@@ -27,7 +27,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>                       
-                        <a href="<?php echo Yii::app()->request->baseUrl; ?>" class="brand">eTicket.com</a>
+                        <a href="<?php echo Yii::app()->request->baseUrl; ?>" class="brand">360islandevents.com</a>
                         <div class="nav-collapse">
                             <ul class="nav pull-left">
                                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a></li>

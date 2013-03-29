@@ -728,30 +728,30 @@ class EventController extends Controller {
     private function do_update_info($event,$client){
         $this->EventModel->update(array('is_paid'=>1,'id'=>$event['id']));
         
+        $url = HelperUrl::hostInfo();
         
         $message = '
-                <link rel="stylesheet" href="'.HelperUrl::baseUrl().'css/email.css" />
-                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
-                    <div class="header">
-                        <div class="logo" style="background: url("'. HelperUrl::baseUrl().'img/logo.png") no-repeat 10px top;width: 196px;height: 110px">&nbsp;</div>
+                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
+                    <div>
+                        <div><img width="180px" src="'.$url.'front/img/logo.png"/></div>
                     </div>
-                    <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
                         Payment Event
                     </div>
                     <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
-                        <p style="margin-bottom: 10px">Congatulations,</p>
-                        <p style="margin-bottom: 10px">Your Event has been successfully paid from admin.</p>
-                        <p>
+                        <p style="margin-bottom: 10px;margin-top:0">Congatulations,</p>
+                        <p style="margin-bottom: 10px;margin-top:0">Your Event has been successfully paid from admin.</p>
+                        <p style="margin-bottom: 0px;margin-top:0">
                             Regards,<br/>
                             The 360 Island Events Team.    
                         </p>
-                        <a href="#"><img src="'.HelperUrl::hostInfo().'front/img/email_fb.png"/></a>
-                        <a href="#"><img src="'.HelperUrl::hostInfo().'front/img/email_tw.png"/></a>
+                        <a href="#"><img src="'.$url.'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="'.$url.'front/img/email_tw.png"/></a>
                     </div>
                 </div>
         ';
-        
-        @HelperApp::email($client['email'], 'Payment for event '.$event['title'], $message);
+        // $message;die;
+        @HelperApp::email($client['email'], '360islandevents.com - Payment for event '.$event['title'], $message);
         
         $this->redirect(HelperUrl::baseUrl().'event/info/id/'.$event['id'].'?s=1');
         die;

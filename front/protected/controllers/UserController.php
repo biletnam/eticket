@@ -305,7 +305,7 @@ class UserController extends Controller {
         $lastname = trim($_POST['lastname']);
         $address = trim($_POST['address']);
         $address2 = trim($_POST['address2']);
-        $paypal_account = trim($_POST['paypal_account']);
+        
         $city = $_POST['city'];
         $country_id = $_POST['country_id'];
 
@@ -339,7 +339,7 @@ class UserController extends Controller {
         }
 
 
-        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'paypal_account' => $paypal_account ,'id' => UserControl::getId()));
+        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname,'id' => UserControl::getId()));
 
         //update metas
         $this->UserModel->update_metas('address', $address, UserControl::getId());

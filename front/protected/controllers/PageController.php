@@ -110,7 +110,7 @@ class PageController extends Controller {
         }
 
         $to = "ntnhanbk@gmail.com";
-        $subject = "New Message";
+        $subject = "360islandevents.com - New Message";    
         $from = $email;
         @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
 
@@ -148,7 +148,7 @@ class PageController extends Controller {
             }
 
             $to = "ntnhanbk@gmail.com";
-            $subject = "New Message";
+            $subject = "360islandevents.com - New Message";
             $from = $email;
             @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
 

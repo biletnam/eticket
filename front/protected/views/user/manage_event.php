@@ -22,7 +22,7 @@
                         <a href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $e['slug'] ?>"><?php echo $e['title'] ?> </a>
                     </td>
                     <td><?php echo date('M j, Y', strtotime($e['start_time'])) ?></td>
-                    <td><?php echo (date('M j, Y', strtotime($e['end_time']))>date('M j, Y') ) ? 'Live' : 'Expired' ;?></td>
+                    <td><?php echo strtotime($e['end_time']) > time() ? 'Live' : 'Expired' ;?></td>
                     <td><?php echo ($e['is_paid']) ? 'Paid' : 'Pending' ?></td>
                     <td>
                         <div>

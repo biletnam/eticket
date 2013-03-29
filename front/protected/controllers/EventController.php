@@ -276,7 +276,7 @@ class EventController extends Controller {
         
         if (!$event || $event['user_id'] != UserControl::getId())
             $this->load_404();
-        if(date('M j, Y', strtotime($event['end_time']))<=date('M j, Y'))
+        if(strtotime($event['end_time'])<= time())
             $this->load_404 ();
         if ($_POST) {
             if ($type == "general")

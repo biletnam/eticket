@@ -364,12 +364,11 @@ class Helper {
 
     public static function error_code() {
         $error = array(
+            '500' =>'Internal Server Error',
+            '400' =>'Access Token has expired',
             '401' => "You do not have permission to access this page",
             '404' => "Page not found",
-            '200' => 'Successfully',
-            '1' => 'You are not login',
-            '2' => 'The api token does not correct',
-            '3' => 'The access token does not correct',
+            '200' => 'OK',                       
             '4' => 'Fields do not correct'
         );
 

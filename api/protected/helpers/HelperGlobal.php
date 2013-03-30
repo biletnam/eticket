@@ -24,13 +24,13 @@ class HelperGlobal {
         $access_token = isset($_GET['access_token']) ? $_GET['access_token'] : "";
         $code = "200";
         if ($api_token != self::$api_token) {
-            $code = "2";
+            $code = "401";
             $error = Helper::_error_code($code);
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));
         }
 
         if ($need_login && !$AuthTokenModel->get_by_token($access_token)) {
-            $code = "3";
+            $code = "400";
             $error = Helper::_error_code($code);
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));
         }

@@ -2977,3 +2977,11 @@ Stack trace:
 REQUEST_URI=/eticket/front/%27img/email_tw.png
 HTTP_REFERER=http://localhost/eticket/front/page/email
 ---
+2013/03/29 14:27:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "event".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController('event')
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/api/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/api/event/
+---

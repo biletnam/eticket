@@ -9,7 +9,7 @@ class AuthTokenModel extends CFormModel {
     public function add($user_id, $token, $os_version, $os_name,$device_name) {
         $time = time();
         $expire = $time + 3600;
-        $sql = "INSERT INTO vsk_auth_tokens(user_id,token,os_version,os_name,device_name,date_added,date_expired) VALUES(:user_id,:token,:os_version,:os_name,:device_name,:date_added,:date_expired)";
+        $sql = "INSERT INTO etk_auth_tokens(user_id,token,os_version,os_name,device_name,date_added,date_expired) VALUES(:user_id,:token,:os_version,:os_name,:device_name,:date_added,:date_expired)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":user_id", $user_id);
         $command->bindParam(":token", $token);
@@ -24,7 +24,7 @@ class AuthTokenModel extends CFormModel {
 
     public function get($id) {
         $sql = "SELECT *
-                FROM vsk_auth_tokens
+                FROM etk_auth_tokens
                 WHERE id = :id
                 AND date_expired > UNIX_TIMESTAMP()
                 ";
@@ -35,7 +35,7 @@ class AuthTokenModel extends CFormModel {
 
     public function get_by_token($token) {
         $sql = "SELECT *
-                FROM vsk_auth_tokens
+                FROM etk_auth_tokens
                 WHERE token = :token
                 AND date_expired > UNIX_TIMESTAMP()";
         $command = Yii::app()->db->createCommand($sql);
@@ -49,7 +49,7 @@ class AuthTokenModel extends CFormModel {
         foreach ($keys as $k)
             $custom .= $k . ' = :' . $k . ', ';
         $custom = substr($custom, 0, strlen($custom) - 2);
-        $sql = 'update vsk_auth_tokens set ' . $custom . ' where id = :id';
+        $sql = 'update etk_auth_tokens set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
     }

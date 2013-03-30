@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends Controller {
+class SlidersController extends Controller {
     
     private $viewData;
     private $message = array('success' => true, 'error' => array());
@@ -30,18 +30,20 @@ class HomeController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {  
-        //$events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1), 1, 5);
-        
+        HelperGlobal::CheckAccessToken();
         $args = array('deleted' => 0,'post_type' => 'slider','disabled'=> 0);
-
+        $tmp = array();
         $sliders = $this->SlideModel->gets($args, 1, 5);
-
-        $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0), 1, 12);
-        $this->viewData['events'] = $events;
-        $this->viewData['sliders'] = $sliders;
-        $this->layout = 'home';
-        $this->render('index',$this->viewData);
-        
+        foreach($sliders as $k=>$v){
+            $tmp[] = array(
+                'title'=>$v['title'],
+                'slug'=>$v['slug'],
+                'img'=>$v['img'],
+                'thumbnail'=> HelperApp::get_thumbnail($v['thumbnail'],'iphone')
+            );
+        }
+        $this->viewData['sliders'] = $tmp;        
+        HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));
     }   
     
 }

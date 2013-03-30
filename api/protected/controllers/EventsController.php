@@ -77,6 +77,11 @@ class EventsController extends Controller {
     public function actionIndex() {
         HelperGlobal::CheckAccessToken();
         $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0), 1, 12);
+        foreach($events as $k=>$v){
+            
+            $events[$k]['thumbnail'] = HelperApp::get_thumbnail($events[$k]['thumbnail']);
+        }
+        
         HelperGlobal::return_data(array('events'=>$events), array('code' => 200, 'message' => $this->message['error']));        
     }
     
@@ -99,9 +104,11 @@ class EventsController extends Controller {
             $v['total_ticket'] = $total_paid_ticket;
             $ticket_types[$k] = $v;
         }
+        $event['thumbnail'] = unserialize($event['thumbnail']);
         $this->viewData['ticket_types'] = $ticket_types;
         $this->viewData['event'] = $event;
         $this->viewData['message'] = $this->message;
+        
         HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));  
     }
 

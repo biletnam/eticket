@@ -52,7 +52,7 @@ class HelperGlobal {
             'email' => $user['email'],
             'fullname' => $user['fullname'],
             'img' => $user['img'],
-            'thumbnail' => $user['thumbnail'],
+            'thumbnail' => unserialize($user['thumbnail']),
             'date_added' => $user['date_added'],
             'last_modified' => $user['last_modified'],
             'apikey' => $user['apikey']

@@ -1,6 +1,6 @@
 <?php
 
-class FaqController extends Controller {
+class FaqsController extends Controller {
 
     private $message = array('success' => true, 'error' => array());
     private $validator;
@@ -24,24 +24,23 @@ class FaqController extends Controller {
     }
 
     public function actionIndex() {
+        HelperGlobal::CheckAccessToken();
         $categories = $this->CategoryModel->gets(array('deleted' => 0,'disabled'=>0, 'type' => 'faq'));
         foreach ($categories as $k => $c)
             $categories[$k]['faqs'] = $this->FaqModel->get_by_category($c['id']);
 
         $this->viewData['categories'] = $categories;
-        Yii::app()->params['page'] = 'Help';
-        $this->render('index', $this->viewData);
+        HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));
     }
 
     public function actionView($s = "") {
 
         $faq = $this->FaqModel->get_by_slug($s);
         if (!$faq)
-            $this->layout = "404";
+            HelperGlobal::return_data($this->viewData, array('code' => 404, 'message' => $this->message['error']));
 
         $this->viewData['faq'] = $faq;
-        Yii::app()->params['page'] = 'Help';
-        $this->render('view', $this->viewData);
+        HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));
     }
 
     public function actionCategory($c = "", $p = 1) {
@@ -58,30 +57,6 @@ class FaqController extends Controller {
         $this->viewData['total'] = $total;
         $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/faq/category/c/$c/p/", $total, $p) : "";
         $this->render('category', $this->viewData);
-    }
-
-    public function actionSearch($p = 1) {
-        $q = isset($_GET['q']) ? $_GET['q'] : "";
-        $q = strlen($q) < 2 ? "" : $q;
-
-        if ($q == "") {
-            $this->viewData['faqs'] = array();
-            $this->viewData['total'] = 0;
-            $this->viewData['paging'] = "";
-            $this->render('result', $this->viewData);
-            die;
-        }
-
-        $ppp = 10;
-        $args = array('deleted' => 0, 's' => $q, 'description' => $q);
-        $faqs = $this->FaqModel->gets($args, $p, $ppp);
-        $total = $this->FaqModel->counts($args);
-
-        Yii::app()->params['page'] = 'Help';
-        $this->viewData['faqs'] = $faqs;
-        $this->viewData['total'] = $total;
-        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/faq/search/p/", $total, $p) : "";
-        $this->render('result', $this->viewData);
     }
 
 }

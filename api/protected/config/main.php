@@ -43,6 +43,7 @@ return array(
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'events/<s>'=>'events/detail/',
+                'faqs/<s>'=>'faqs/view/',
             ),
         ),
         // uncomment the following to use a MySQL database

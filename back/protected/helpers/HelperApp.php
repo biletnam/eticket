@@ -51,7 +51,8 @@ class HelperApp {
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true),
             'mini' => array('w' => 50, 'h' => 50, 'crop' => true),
-            'homepage' => array('w' => 1500, 'h' => 350, 'crop' => true)
+            'homepage' => array('w' => 1500, 'h' => 350, 'crop' => true),
+            'iphone' => array('w' => 320, 'h' => 125, 'crop' => true),
         );
         return $array;        
     } 

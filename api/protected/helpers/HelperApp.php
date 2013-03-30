@@ -177,7 +177,7 @@ class HelperApp {
     public static function get_thumbnail($sizes, $size = 'thumbnail') {
         $sizes = unserialize($sizes);
         if (isset($sizes[$size]['filename']))
-            return HelperUrl::upload_url() . "media/" . $sizes[$size]['folder'] . '/' . $sizes[$size]['filename'];
+            return HelperUrl::upload_url() . "media/" . $sizes[$size]['folder']  . $sizes[$size]['filename'];
         return HelperUrl::baseUrl() . "img/default.png";
     }
 

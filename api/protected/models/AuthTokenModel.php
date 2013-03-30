@@ -39,7 +39,7 @@ class AuthTokenModel extends CFormModel {
                 WHERE token = :token
                 AND date_expired > UNIX_TIMESTAMP()";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(":apikey", $token);
+        $command->bindParam(":token", $token);
         return $command->queryRow();
     }
 

@@ -8,6 +8,7 @@ class UsersController extends Controller {
     private $UserModel;
     private $AuthTokenModel;
     private $EventModel;
+    private $OrganizerModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -21,6 +22,9 @@ class UsersController extends Controller {
         
         /* @var $EventModel EventModel */
         $this->EventModel = new EventModel();
+        
+        /* @var $OrganizerModel OrganizerModel */
+        $this->OrganizerModel = new OrganizerModel();
     }
 
     public function actionCode_access() {

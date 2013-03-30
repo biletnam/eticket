@@ -30,7 +30,7 @@ class HelperGlobal {
         }
         
         if ($need_login && !$AuthTokenModel->get_by_token($access_token)) {
-            $code = "400";
+            $code = 400;
             $error = Helper::_error_code($code);
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));
         }

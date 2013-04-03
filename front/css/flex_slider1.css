@@ -40,10 +40,6 @@ html[xmlns] .slides {display: block;}
 .flexslider {
 	background: #fff;
 	zoom: 1;
-        border: 1px solid #D7D7D7;
-        padding: 4px;
-        margin-top: 15px;
-        box-shadow: 0 12px 15px 0px #5A5A5A
 }
 
 .ie7 .flexslider {margin-bottom: -30px;}
@@ -57,8 +53,8 @@ html[xmlns] .slides {display: block;}
 =================================================================== */
 
 .flex-direction-nav a {
-	width: 66px;
-	height: 65px;
+	width: 30px;
+	height: 52px;
 	display: block;
 	/*background-color: #555;*/
 	top: 210px;
@@ -78,19 +74,19 @@ html[xmlns] .slides {display: block;}
 }
 
 .flex-direction-nav .flex-next {
-	background-image: url(../img/slider-control-right_1.png);
+	background-image: url(../img/slider-control-right.png);
 	background-repeat: no-repeat;
 	background-position: 52% 50%;
-        right: -86px;
+        right: 0px;
         border-radius: 5px 0 0 5px;-moz-border-radius: 5px 0 0 5px;-webkit-border-radius: 5px 0 0 5px;
 }
 
 .flex-direction-nav .flex-prev {
 	margin-right: 36px;
-	background-image: url(../img/slider-control-left_1.png);
+	background-image: url(../img/slider-control-left.png);
 	background-repeat: no-repeat;
 	background-position: 48% 50%;
-        left: -86px;
+        left: 0px;
         border-radius: 0 5px 5px 0;-moz-border-radius: 0 5px 5px 0;-webkit-border-radius: 0 5px 5px 0;
 
 }

@@ -6,7 +6,7 @@
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">Email <span class="required">*</span></label>
                 <div class="controls pull-left">
-                    <input type="text" class="input-large" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/>
+                    <input type="text" class="input-large" name="email" value="<?php echo  (isset($_POST['email'])) ? $_POST['email'] : $email; ?>"/>
                 </div>
             </div>
             <div class="controls-group clearfix">
@@ -62,15 +62,10 @@
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left">
-                    <label class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  Register as an Event Organizer.</label>
+                    <label style="color:red" class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  <b>Register as an Event Organizer.</b></label>
                 </div>
             </div>
-            <div class="controls-group clearfix">
-                <label class="control-label pull-left">&nbsp;</label>
-                <div class="controls pull-left">
-                    <label class="checkbox"><input type="checkbox" name="remember"/> Remember me.</label>
-                </div>
-            </div>
+          
             <div class="actions controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left">

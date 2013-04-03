@@ -20,7 +20,7 @@
             <th class="row-img"></th>
             <th>Email</th>
             <th>Date Added</th>
-            <th style="width:16%"></th>
+            <th style="width:25%"></th>
         </tr>
     </thead>
     <tbody>
@@ -51,6 +51,7 @@
                     <a class="btn btn-small btn-danger ban hide" href="<?php echo Yii::app()->request->baseUrl ?>/user/ban/id/<?php echo $v['id'] ?>">Lock</a>
                     <a class="btn btn-small btn-warning unban" href="<?php echo Yii::app()->request->baseUrl ?>/user/unban/id/<?php echo $v['id'] ?>">Unlock</a>
                     <?php endif;?>
+                     <a class="delete-row btn btn-small btn-danger" href="<?php echo HelperUrl::baseUrl() . "user/delete/id/" . $v['id']; ?>">Delete</a>
                 </td>                
             </tr>
         <?php endforeach; ?>

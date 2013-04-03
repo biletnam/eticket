@@ -1,6 +1,6 @@
 bind_mce();
 var ticket_id = $("#last_ticket_id").val();
-$(document).ready(function(){
+$(document).ready(function() {
     init();
     bind_user();
     bind_category();
@@ -8,177 +8,221 @@ $(document).ready(function(){
 
     contact_form();
 
+    payment_count_down();
+
     delete_gallery();
     upload_logo_event_edit();
-    setInterval(function(){slider_controls();},2000);
+    setInterval(function() {
+        slider_controls();
+    }, 2000);
 });
 
-function goToByScroll(id){
+function goToByScroll(id) {
     $('html,body').animate({
-        scrollTop: $("#"+id).offset().top
-    },'slow');
+        scrollTop: $("#" + id).offset().top
+    }, 'slow');
+}
+var count;
+var counter;
+
+function payment_count_down() {
+    if ($('#count_down').length == 0)
+        return false;
+
+    count = $('#count_down').val();
+    counter = setInterval(timer, 1000);
+
 }
 
-function contact_form(){
-    $('.btn-send-email').click(function(){
+
+function timer()
+{
+    count = count - 1;
+    var sec = count % 60;
+    if (sec < 10)
+        sec = '0' + sec;
+    var min = Math.floor((count / 60));
+    
+    var url = $('#url_back').val();
+
+    $('.timer').text(min + ':' + sec);
+
+    if (count / 60 < 10)
+        min = '0' + min;
+    
+    if (count <= 0)
+    {
+        window.location = url+"?wok=1&msg=Your session expired. Please try again.";
+        clearInterval(counter);
+        return;
+    }
+
+
+}
+
+function contact_form() {
+    $('.btn-send-email').click(function() {
         var ele = $(this);
         var parent = ele.parents('.form-contact_us');
 
         var url = parent.attr('action');
         var data = {
-            yourname : $('.yourname').val(),
-            email : $('.email').val(),
-            message : $('.message').val()
+            yourname: $('.yourname').val(),
+            email: $('.email').val(),
+            message: $('.message').val()
         };
-        $.post(url, data ,function(respone) {   
+        $.post(url, data, function(respone) {
             $('.form-contact_us .alert').hide();
-            if(respone.success){
-                $('.yourname,.email,.message').css('border','none')
+            if (respone.success) {
+                $('.yourname,.email,.message').css('border', 'none')
                 $('.form-contact_us .alert-success').fadeIn();
-                    
-            }else{
+
+            } else {
                 /*var error = "";
-                    $.each(respone.error, function(k,v){
-                        error += v+'<br/>';
-                    });
-                    $('.form-contact_us .error-message').html(error);
-                    $('.form-contact_us .alert-error').fadeIn();*/
-                if(respone.yourname =='error')
+                 $.each(respone.error, function(k,v){
+                 error += v+'<br/>';
+                 });
+                 $('.form-contact_us .error-message').html(error);
+                 $('.form-contact_us .alert-error').fadeIn();*/
+                if (respone.yourname == 'error')
                     $('.yourname').addClass('error');
-                if(respone.email =='error')
+                if (respone.email == 'error')
                     $('.email').addClass('error');
-                if(respone.yourmessage =='error')
+                if (respone.yourmessage == 'error')
                     $('.message').addClass('error');
             }
         }
-        ,'json');
+        , 'json');
         return false;
     });
 }
 
-function init(){
-    $('.alert .close').click(function(){
+function init() {
+    $('.alert .close').click(function() {
         $('.alert').fadeOut('slow');
     });
     $(".fancybox").fancybox();
-    
+
     $('.btn-invite').fancybox();
     $('.btn-view-info').fancybox();
 
-    
-    $("table .delete-row").click(function(){
-        if(!confirm("Are you sure delete this item?")) return false;
+
+    $("table .delete-row").click(function() {
+        if (!confirm("Are you sure delete this item?"))
+            return false;
         var ele = $(this);
-        $.get(ele.attr('href'),"",function(){
+        $.get(ele.attr('href'), "", function() {
             ele.parents("tr").fadeOut('slow');
         });
         return false;
     });
-    
+
     $('.datetimepicker').datepicker({
         dateFormat: 'dd-mm-yy',
-        changeMonth:true,
-        changeYear:true,
+        changeMonth: true,
+        changeYear: true,
         yearRange: "c-1:c+1"
     });
-    
-    $('.header-how-it-work a').click(function(){
+
+    $('.header-how-it-work a').click(function() {
         var ele = $(this);
-        var index = ele.index()+ 1;
-        goToByScroll("block"+index);
+        var index = ele.index() + 1;
+        goToByScroll("block" + index);
         return false;
     });
-    
+
     slider_controls();
 
 }
 
-function slider_controls(){
-    
-    if($('section.slider .flexslider').length>0){
-        var height = $('section.slider .flexslider').height();
-        
-        $('.flex-direction-nav a').css('top',(height/2 - 20)+'px');
+function slider_controls() {
 
-        $(window).resize(function(){
+    if ($('section.slider .flexslider').length > 0) {
+        var height = $('section.slider .flexslider').height();
+
+        $('.flex-direction-nav a').css('top', (height / 2 - 20) + 'px');
+
+        $(window).resize(function() {
             height = $('section.slider .flexslider').height();
-            $('.flex-direction-nav a').css('top',(height/2 - 20)+'px');
+            $('.flex-direction-nav a').css('top', (height / 2 - 20) + 'px');
         });
     }
 }
 
-function delete_gallery(){
-    
-    $('.gallery .btn-delete').click(function(e){
-        
+function delete_gallery() {
+
+    $('.gallery .btn-delete').click(function(e) {
+
         e.preventDefault();
         var ele = $(this);
         var url = ele.attr('href');
         var id = ele.attr('value');
-       
-        $.post(url,function(){
-            $('#gallery_'+id).fadeOut('slow');
+
+        $.post(url, function() {
+            $('#gallery_' + id).fadeOut('slow');
         });
-       
+
     });
-    
+
     return false;
 }
 
-function bind_user(){
-    $("#users .ban").live('click',function(){
-        if(!confirm("Bạn có chắc banned người dùng này không?")) return false;
+function bind_user() {
+    $("#users .ban").live('click', function() {
+        if (!confirm("Bạn có chắc banned người dùng này không?"))
+            return false;
         var ele = $(this);
         var parent = ele.parents('tr');
-       
-        $.get(ele.attr('href'),"",function(data){
-            if(data.success)
+
+        $.get(ele.attr('href'), "", function(data) {
+            if (data.success)
             {
-                $(".label-banned",parent).show();
+                $(".label-banned", parent).show();
                 ele.addClass('hide');
-                $(".unban",parent).removeClass('hide');
+                $(".unban", parent).removeClass('hide');
             }
-        },'json');
+        }, 'json');
         return false;
     });
-    
-    $("#users .unban").live('click',function(){
-        if(!confirm("Bạn có chắc unban người dùng này không?")) return false;
+
+    $("#users .unban").live('click', function() {
+        if (!confirm("Bạn có chắc unban người dùng này không?"))
+            return false;
         var ele = $(this);
         var parent = ele.parents('tr');
-       
-        $.get(ele.attr('href'),"",function(data){
-            if(data.success)
+
+        $.get(ele.attr('href'), "", function(data) {
+            if (data.success)
             {
-                $(".label-banned",parent).hide();
+                $(".label-banned", parent).hide();
                 ele.addClass('hide');
-                $(".ban",parent).removeClass('hide');
+                $(".ban", parent).removeClass('hide');
             }
-        },'json');
+        }, 'json');
         return false;
     });
 }
 
-function bind_category(){
-    $(".category-type").change(function(){
+function bind_category() {
+    $(".category-type").change(function() {
         var ele = $(this);
-        window.location = baseUrl+"category/index/type/"+ ele.val();
+        window.location = baseUrl + "category/index/type/" + ele.val();
     });
 }
 
-function display_error(msg){
+function display_error(msg) {
     $(".alert-success").hide();
     $(".alert-error .msg").html(msg);
     $(".alert-error").fadeIn('slow');
 }
 
-function display_success(msg){
+function display_success(msg) {
     $(".alert-error").hide();
     $(".alert-success .msg").html(msg);
     $(".alert-success").fadeIn('slow');
 }
 
-function number_format (number, decimals, dec_point, thousands_sep) {
+function number_format(number, decimals, dec_point, thousands_sep) {
     // *     example 1: number_format(1234.56);
     // *     returns 1: '1,235'
     // *     example 2: number_format(1234.56, 2, ',', ' ');
@@ -208,11 +252,11 @@ function number_format (number, decimals, dec_point, thousands_sep) {
     // Strip all characters but numerical ones.
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
     var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function (n, prec) {
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function(n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.round(n * k) / k;
     };
@@ -228,330 +272,332 @@ function number_format (number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-function bind_mce(){
+function bind_mce() {
     tinyMCE.init({
         // General options
-        mode : "specific_textareas",
-        editor_selector : "tinymce",
-        theme : "advanced",
-        plugins : "autolink,lists,pagebreak,style,table,advimage,advlink,inlinepopups,media,paste,nonbreaking,xhtmlxtras,template,wordcount",
-        entity_encoding : "raw",
+        mode: "specific_textareas",
+        editor_selector: "tinymce",
+        theme: "advanced",
+        plugins: "autolink,lists,pagebreak,style,table,advimage,advlink,inlinepopups,media,paste,nonbreaking,xhtmlxtras,template,wordcount",
+        entity_encoding: "raw",
         // Theme options
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,media,advhr,image,media_uploader",
-        theme_advanced_buttons2 : "pastetext,pasteword,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,code",
-        theme_advanced_buttons3 : "",
-        theme_advanced_buttons4 : "",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true,
-                
+        theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,media,advhr,image,media_uploader",
+        theme_advanced_buttons2: "pastetext,pasteword,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,code",
+        theme_advanced_buttons3: "",
+        theme_advanced_buttons4: "",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing: true,
         // Example content CSS (should be your site CSS)
-        content_css : "css/content.css",
-                
+        content_css: "css/content.css",
         // Drop lists for link/image/media/template dialogs
-        template_external_list_url : "lists/template_list.js",
-        external_link_list_url : "lists/link_list.js",
-        external_image_list_url : "lists/image_list.js",
-        media_external_list_url : "lists/media_list.js",
-        extended_valid_elements : "script[language|type|src]",        
- 
+        template_external_list_url: "lists/template_list.js",
+        external_link_list_url: "lists/link_list.js",
+        external_image_list_url: "lists/image_list.js",
+        media_external_list_url: "lists/media_list.js",
+        extended_valid_elements: "script[language|type|src]",
         // Replace values for the template plugin
-        template_replace_values : {
-            username : "Some User",
-            staffid : "991234"
+        template_replace_values: {
+            username: "Some User",
+            staffid: "991234"
         },
-                
-        setup : function(ed) {
+        setup: function(ed) {
             ed.addButton('media_uploader', {
-                title : 'Media Uploader',
-                image : baseUrl + 'img/media-button.png',
-                onclick : function() {
+                title: 'Media Uploader',
+                image: baseUrl + 'img/media-button.png',
+                onclick: function() {
                     $.fancybox({
-                        href : baseUrl + 'ajax/media_uploader',
-                        type : 'ajax'
+                        href: baseUrl + 'ajax/media_uploader',
+                        type: 'ajax'
                     })
                 }
             });
         }
     });
-    
-   
+
+
 }
 
 
-function bind_event(){
-    $(".create-magu .make_event_live").click(function(){
-        $("#event_form").trigger('submit'); 
+function bind_event() {
+    $(".create-magu .make_event_live").click(function() {
+        $("#event_form").trigger('submit');
         return false;
     });
-    
-    var cache = {},lastXhr;
+
+    var cache = {}, lastXhr;
     $('#event_form #add_location').keyup(function() {
         var str = $.trim($(this).val());
-        if(str.length == 0)
+        if (str.length == 0)
             return false;
         $("#event_form .loading-location").show();
         $("#event_form #add_location").autocomplete({
-            source: function( request, response ) {
+            source: function(request, response) {
                 $("#event_form .loading-location").hide();
-                var term = request.term;    
-                if ( term in cache ) {
-                    response( cache[ term ] );
+                var term = request.term;
+                if (term in cache) {
+                    response(cache[ term ]);
                     return;
                 }
 
-                lastXhr = $.getJSON(baseUrl+'/event/search_location/s/' + str + '/', request, function( data, status, xhr ) {
+                lastXhr = $.getJSON(baseUrl + '/event/search_location/s/' + str + '/', request, function(data, status, xhr) {
                     console.log(data);
                     cache[ term ] = data;
-                    if ( xhr === lastXhr ) {
-                        response( data );
+                    if (xhr === lastXhr) {
+                        response(data);
                     }
                 });
             },
             delay: 400,
             focus: function(event, ui) {
                 $("#event_form .loading-location").hide();
-                $("#event_form #add_location").val( ui.item.title );
+                $("#event_form #add_location").val(ui.item.title);
                 $("#event_form input[name=address]").val(ui.item.address);
                 $("#event_form select[name=country]").val(ui.item.country);
                 $("#event_form input[name=city]").val(ui.item.city);
                 return false;
             },
-            select: function(event, ui) { 
+            select: function(event, ui) {
                 $("#event_form .loading-location").hide();
-                $("#event_form #add_location").val( ui.item.title );
+                $("#event_form #add_location").val(ui.item.title);
                 $("#event_form input[name=address]").val(ui.item.address);
                 $("#event_form select[name=country]").val(ui.item.country);
                 $("#event_form input[name=location_id]").val(ui.item.value);
                 $("#event_form input[name=city]").val(ui.item.city);
                 return false;
             },
-            change: function(event, ui) { 
+            change: function(event, ui) {
                 if (ui.item == null) {
                     $("#event_form input[name=location_id]").val('');
                 }
                 $("#event_form .loading-location").hide();
             },
-            open: function(event,ui){
+            open: function(event, ui) {
                 $("#event_form .loading-location").hide();
             },
-            close: function(event,ui){
+            close: function(event, ui) {
                 $("#event_form .loading-location").hide();
             }
-        });        
+        });
     });
-    
-    $("#event_form .remove-event-thumb").click(function(){
-        if(!confirm('Do you want to delete this logo?')) return false;        
-        
+
+    $("#event_form .remove-event-thumb").click(function() {
+        if (!confirm('Do you want to delete this logo?'))
+            return false;
+
         var ele = $(this);
         var parent = ele.parents('#event_form');
-        $(".image-default.thumbnail",parent).remove();        
+        $(".image-default.thumbnail", parent).remove();
         ele.remove();
-        $(".waiting",parent).show();
-        $.get(ele.attr('href'),"",function(response){           
-            if(response.success){
-                $(".image-default.waiting",parent).remove();
+        $(".waiting", parent).show();
+        $.get(ele.attr('href'), "", function(response) {
+            if (response.success) {
+                $(".image-default.waiting", parent).remove();
                 $(".image-default.default").removeClass('hide');
-            }           
-        },'json');
+            }
+        }, 'json');
         return false;
     });
-    
-    $("#event_form .ticket-info .setting").live('click',function(){
-        
+
+    $("#event_form .ticket-info .setting").live('click', function() {
+
         var ele = $(this);
         var parent = ele.parents('.ticket-info');
-        $('.description-ticket',parent).toggle();
+        $('.description-ticket', parent).toggle();
         return false;
     });
-    
-    $("#event_form .ticket-info .remove-ticket.clone").live('click',function(){
-        if(!confirm('Do you want to delete this ticket type?')) return false;
+
+    $("#event_form .ticket-info .remove-ticket.clone").live('click', function() {
+        if (!confirm('Do you want to delete this ticket type?'))
+            return false;
         var ele = $(this);
-        ele.parents('.table-ticket').fadeOut('slow',function(){
-            $(this).remove();            
-        });        
+        ele.parents('.table-ticket').fadeOut('slow', function() {
+            $(this).remove();
+        });
         return false;
     });
-    
-    $("#event_form .ticket-info .remove-ticket:not(.clone)").live('click',function(){
-        if(!confirm('Do you want to delete this ticket type?')) return false;
+
+    $("#event_form .ticket-info .remove-ticket:not(.clone)").live('click', function() {
+        if (!confirm('Do you want to delete this ticket type?'))
+            return false;
         var ele = $(this);
         var parent = ele.parents('.table-ticket');
-        $(".ticket-info",parent).hide();
-        $(".loading",parent).show();
-        $.get(ele.attr('href'),"",function(response){
-            if(response.message.success){
-                ele.parents('.table-ticket').fadeOut('slow',function(){
-                    $(this).remove();            
-                });     
+        $(".ticket-info", parent).hide();
+        $(".loading", parent).show();
+        $.get(ele.attr('href'), "", function(response) {
+            if (response.message.success) {
+                ele.parents('.table-ticket').fadeOut('slow', function() {
+                    $(this).remove();
+                });
                 display_success(response.message.error[0]);
-            }else{
+            } else {
                 var msg = "";
-                $.each(response.message.error,function(k,v){
-                    msg+= v+"<br/>"; 
+                $.each(response.message.error, function(k, v) {
+                    msg += v + "<br/>";
                 });
                 display_error(msg);
             }
-            $(".loading",parent).hide();
-            $(".ticket-info",parent).show();
-            
-        },'json');
-           
+            $(".loading", parent).hide();
+            $(".ticket-info", parent).show();
+
+        }, 'json');
+
         return false;
     });
-    
-    $(".btn-ticket").click(function(){
+
+    $(".btn-ticket").click(function() {
         var ele = $(this);
         var type = ele.hasClass("free") ? "free" : "paid";
-        var ticket_free = $(".table-ticket.clone."+type).clone().removeClass('clone hide');
+        var ticket_free = $(".table-ticket.clone." + type).clone().removeClass('clone hide');
         $("#event_form").append(ticket_free);
         //$("#event_form .table-ticket").show();
         //ticket_id++;
         return false;
     });
-    
-    $("#event_form .ticket-info .quantity").live('keyup',function(){
+
+    $("#event_form .ticket-info .quantity").live('keyup', function() {
         var ele = $(this);
         var quantity = 0;
         var ticket_quantities = $("#event_form .ticket-info .quantity");
-        $.each(ticket_quantities,function(k,v){
+        $.each(ticket_quantities, function(k, v) {
             var val = $(v).val();
             val = val == "" ? 0 : val;
             val = parseInt(val);
-            quantity+= val;           
+            quantity += val;
         });
         $("#event_form .total-ticket").val(quantity);
         count_total(ele.parents('.ticket-info'));
     });
-    
-    $("#event_form .ticket-info .ticket-fee").live('keyup',function(){
+
+    $("#event_form .ticket-info .ticket-fee").live('keyup', function() {
         var ele = $(this);
         count_total(ele.parents('.ticket-info'));
     });
-    
-    $("#event_form .ticket-info .ticket-service-fee").live('change',function(){
+
+    $("#event_form .ticket-info .ticket-service-fee").live('change', function() {
         var ele = $(this);
         var parent = ele.parents('.ticket-info');
-        $(".ticket-total",parent).hide();
+        $(".ticket-total", parent).hide();
         count_total(parent);
-        $(".ticket-total",parent).fadeIn('slow');
+        $(".ticket-total", parent).fadeIn('slow');
     });
-    
-    $("#event_form .apply-ticket").live('click',function(){
-        
+
+    $("#event_form .apply-ticket").live('click', function() {
+
         var ele = $(this);
         var parent = ele.parents(".table-ticket");
         var td = ele.parent();
-        if(ele.hasClass('disabled')) return false;      
-        
-        if(parent.hasClass('processing')) return false;
-        
-        if(!confirm("Are you sure?")) return false;
-        
-        $(".apply-ticket",parent).addClass('disabled');
-        
+        if (ele.hasClass('disabled'))
+            return false;
+
+        if (parent.hasClass('processing'))
+            return false;
+
+        if (!confirm("Are you sure?"))
+            return false;
+
+        $(".apply-ticket", parent).addClass('disabled');
+
         parent.ajaxSubmit({
-            beforeSubmit:function(){
-                $(".ticket-info",parent).hide();
-                $(".loading",parent).show();
-                parent.addClass('processing');  
+            beforeSubmit: function() {
+                $(".ticket-info", parent).hide();
+                $(".loading", parent).show();
+                parent.addClass('processing');
             },
-            success: function(response){                
-                if(!response.message.success){
+            success: function(response) {
+                if (!response.message.success) {
                     var msg = "";
-                    $.each(response.message.error,function(k,v){
-                        msg+= v+"<br/>"; 
+                    $.each(response.message.error, function(k, v) {
+                        msg += v + "<br/>";
                     });
                     display_error(msg);
-                    $(".apply-ticket",parent).removeClass('disabled');
+                    $(".apply-ticket", parent).removeClass('disabled');
                 }
-                else{
+                else {
                     display_success(response.message.error[0]);
-                    if(response.type == "add"){                        
-                        parent.attr('action',baseUrl+"/event/edit_ticket_type/id/"+response.id);
-                        $(".remove-ticket",parent).removeClass('clone').attr('href',baseUrl+"/event/delete_ticket_type/id/"+response.id);
+                    if (response.type == "add") {
+                        parent.attr('action', baseUrl + "/event/edit_ticket_type/id/" + response.id);
+                        $(".remove-ticket", parent).removeClass('clone').attr('href', baseUrl + "/event/delete_ticket_type/id/" + response.id);
                     }
-                    $(".apply-ticket.edit1",parent).removeClass('disabled btn-info').html('Edit <i class="icon icon-edit"></i>');
-                    $(".apply-ticket.edit2",parent).removeClass('disabled btn-info').addClass('btn').html('Edit');
+                    $(".apply-ticket.edit1", parent).removeClass('disabled btn-info').html('Edit <i class="icon icon-edit"></i>');
+                    $(".apply-ticket.edit2", parent).removeClass('disabled btn-info').addClass('btn').html('Edit');
                 }
-                $(".loading",parent).hide();
-                $(".ticket-info",parent).show();
-                
-                
+                $(".loading", parent).hide();
+                $(".ticket-info", parent).show();
+
+
                 parent.removeClass('processing');
             },
-            dataType:'json'
-        });        
+            dataType: 'json'
+        });
         return false;
     });
-    
-    $("#event_form .table-ticket").live('submit',function(){
+
+    $("#event_form .table-ticket").live('submit', function() {
         var ele = $(this);
-        $(".apply-ticket",ele).eq(0).trigger('click');
+        $(".apply-ticket", ele).eq(0).trigger('click');
         return false;
     });
 }
 
 
-function count_total(ticket_info){
-    
-    var type = $(".ticket-id",ticket_info).val();
-    if(type == "free")
+function count_total(ticket_info) {
+
+    var type = $(".ticket-id", ticket_info).val();
+    if (type == "free")
         return false;
-    
-    var quantity = parseInt($(".ticket-quantity",ticket_info).val());
-    var fee = parseFloat($(".ticket-fee",ticket_info).val());    
-    if(isNaN(quantity) || isNaN(fee))
+
+    var quantity = parseInt($(".ticket-quantity", ticket_info).val());
+    var fee = parseFloat($(".ticket-fee", ticket_info).val());
+    if (isNaN(quantity) || isNaN(fee))
         return false;
-    
-    var service_fee = $(".ticket-service-fee:checked",ticket_info).val();
-    var tmp_total = quantity*fee;
+
+    var service_fee = $(".ticket-service-fee:checked", ticket_info).val();
+    var tmp_total = quantity * fee;
     var tax = tmp_total * ticketTax;
     var final_total = service_fee == 1 ? tmp_total + tax : tmp_total;
-    
-    $(".ticket-tax",ticket_info).text(number_format(tax)+" TTD");
-    $(".ticket-total",ticket_info).text(number_format(final_total)+" TTD");
+
+    $(".ticket-tax", ticket_info).text(number_format(tax) + " TTD");
+    $(".ticket-total", ticket_info).text(number_format(final_total) + " TTD");
 }
 
-function upload_logo_event_edit(){
-    $('.fileupload').live('change',function(){
+function upload_logo_event_edit() {
+    $('.fileupload').live('change', function() {
         var ele = $(this);
         var parent = ele.parents('.controls');
-        var event_logo = $('.event-logo',parent);
-        $(".logo-default",event_logo).hide();
-        $(".waiting ",event_logo).show();
+        var event_logo = $('.event-logo', parent);
+        $(".logo-default", event_logo).hide();
+        $(".waiting ", event_logo).show();
 
-        $('#event_form').ajaxSubmit({ 
-            url : baseUrl+'/event/upload_logo_event' ,
-            beforeSubmit: function(){
-                
-            } ,
-            success:function(response, statusText, xhr, $form){
-               
-                if(!response.message.success){
+        $('#event_form').ajaxSubmit({
+            url: baseUrl + '/event/upload_logo_event',
+            beforeSubmit: function() {
+
+            },
+            success: function(response, statusText, xhr, $form) {
+
+                if (!response.message.success) {
                     $(".image-default").hide();
-                    $(".logo-default",event_logo).show();
-                    $(".waiting ",event_logo).hide();
+                    $(".logo-default", event_logo).show();
+                    $(".waiting ", event_logo).hide();
                     var msg = "";
-                    $.each(response.message.error,function(k,v){
-                        msg+= v+"</br>";
+                    $.each(response.message.error, function(k, v) {
+                        msg += v + "</br>";
                     });
                     $(".event-logo-upload .error1").html(msg);
                 }
-                else{
+                else {
                     $(".image-default").hide();
-                    $(".waiting ",event_logo).hide();
-                    $(".logo-default",event_logo).attr('src',uploadUrl+response.data.url).show();
-                    $(".file_temp",parent).val(uploadDir+response.data.url);
-                    $(".name_temp",parent).val(response.data.name);
+                    $(".waiting ", event_logo).hide();
+                    $(".logo-default", event_logo).attr('src', uploadUrl + response.data.url).show();
+                    $(".file_temp", parent).val(uploadDir + response.data.url);
+                    $(".name_temp", parent).val(response.data.name);
                     $(".event-logo-upload .error1").html("");
                     ele.val('');
-                }               
+                }
             },
-            dataType:'json'
+            dataType: 'json'
         });
         return false;
     });

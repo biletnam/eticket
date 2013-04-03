@@ -134,6 +134,9 @@ class EventController extends Controller {
         $display_start_time = isset($_POST['display_start_time']) ? 1 : 0;
         $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
         $show_tickets = isset($_POST['show_tickets']) ? 1 : 0;
+
+        $facebook = $_POST['facebook'];
+        $link = $_POST['link'];
         //$is_repeat = isset($_POST['is_repeat']) ? 1 : 0;
 
         if ($this->validator->is_empty_string($title))
@@ -227,20 +230,22 @@ class EventController extends Controller {
             'description' => $description,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets,
+            'facebook' => $facebook,
+            'link' => $link,
             'disabled' => 0));
         //'is_repeat' => $is_repeat));
         //add new event category
         $this->EventModel->add_event_category($event_id, $primary_cate, 1);
         if ($second_cate)
             $this->EventModel->add_event_category($event_id, $second_cate, 0);
-     
-        
+
+
         $url = HelperUrl::hostInfo();
-        
+
         $message = '
                 <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
                     <div>
-                        <div><img width="180px" src="'.$url.'front/img/logo.png"/></div>
+                        <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
                     </div>
                     <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
                         Event Registration
@@ -252,13 +257,13 @@ class EventController extends Controller {
                             Regards,<br/>
                             The 360 Island Events Team.    
                         </p>
-                        <a href="#"><img src="'.$url.'front/img/email_fb.png"/></a>
-                        <a href="#"><img src="'.$url.'front/img/email_tw.png"/></a>
+                        <a href="#"><img src="' . $url . 'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
                     </div>
                 </div>
         ';
-        
-        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Registration' , $message);
+
+        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Registration', $message);
 
         $temp_file = $_POST['file_temp'];
         if ($temp_file != '')
@@ -273,11 +278,11 @@ class EventController extends Controller {
 
 
         $event = $this->EventModel->get($id);
-        
+
         if (!$event || $event['user_id'] != UserControl::getId())
             $this->load_404();
-        if(strtotime($event['end_time'])<= time())
-            $this->load_404 ();
+        if (strtotime($event['end_time']) <= time())
+            $this->load_404();
         if ($_POST) {
             if ($type == "general")
                 $this->do_edit($event);
@@ -347,7 +352,7 @@ class EventController extends Controller {
             $this->message['success'] = false;
             return false;
         }
-        
+
         if ($start_am_pm == 'am') {
             $start_hour = $start_hour == "12" ? "00" : $start_hour;
             $start_time = "$start_date[2]-$start_date[1]-$start_date[0] $start_hour:$start_minute:00";
@@ -546,7 +551,7 @@ class EventController extends Controller {
             echo json_encode(array('message' => $this->message));
             die;
         }
-        
+
         if ($start_am_pm == 'am') {
             $ticket_start_hour = $ticket_start_hour == "12" ? "00" : $ticket_start_hour;
             $sale_start = "$ticket_start_date[2]-$ticket_start_date[1]-$ticket_start_date[0] $ticket_start_hour:$ticket_start_minute:00";
@@ -563,7 +568,7 @@ class EventController extends Controller {
             $ticket_end_hour = $ticket_end_hour == 24 ? 12 : $ticket_end_hour;
             $sale_end = "$ticket_end_date[2]-$ticket_end_date[1]-$ticket_end_date[0] $ticket_end_hour:$ticket_end_minute:00";
         }
-        
+
 
         if (strtotime($sale_start) - strtotime($sale_end) >= 0) {
             $this->message['error'][] = "The ending time must be later than the start time.";
@@ -589,7 +594,7 @@ class EventController extends Controller {
             'hide_description' => $ticket_hide_description, 'sale_start' => $sale_start,
             'sale_end' => $sale_end, 'minimum' => $ticket_min,
             'maximum' => $ticket_max, 'service_fee' => $service_fee
-                ));
+        ));
 
         $this->message['error'][] = "New ticket has been added successfully.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
@@ -760,6 +765,8 @@ class EventController extends Controller {
             $ticket_types[$k] = $v;
         }
 
+
+
         Yii::app()->params['page'] = 'Event Detail';
 
         $this->viewData['ticket_types'] = $ticket_types;
@@ -771,7 +778,8 @@ class EventController extends Controller {
 
     private function do_add_event_token($event) {
 
-        HelperGlobal::require_login();
+
+
 
         $ticket_types = $_POST['ticket_type'];
         $tmp = array();
@@ -790,7 +798,11 @@ class EventController extends Controller {
         if (!$tmp)
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]");
 
-        $order_id = $this->OrderModel->add(UserControl::getId(), $event['id'], Yii::app()->request->userHostAddress, Yii::app()->request->userAgent, $use_payment);
+     
+        
+       $user_id = (UserControl::LoggedIn()==true)  ? UserControl::getId() : "-1";
+
+        $order_id = $this->OrderModel->add($user_id, $event['id'], Yii::app()->request->userHostAddress, Yii::app()->request->userAgent, $use_payment);
         $total = 0;
         foreach ($tmp as $k => $v) {
             //$this->OrderModel->add_detail($order_id, $v['type']['id'], $v['quantity'], $v['type']['price'], $v['type']['tax'], ($v['quantity'] * $v['type']['price']) + $v['type']['tax']);
@@ -808,7 +820,11 @@ class EventController extends Controller {
         $token = Ultilities::base32UUID();
         $event_token_id = $this->EventModel->add_event_token($order_id, $token, time(), time() + 900, "");
         $this->OrderModel->update(array('total' => $total, 'id' => $order_id));
-        $this->redirect(HelperUrl::baseUrl() . "event/register/?order_id=$order_id&token=$token");
+
+        if ($user_id == "-1")
+            HelperGlobal::require_login(HelperUrl::baseUrl() . "event/register/?order_id=$order_id&token=$token&back=1");
+        else
+            $this->redirect(HelperUrl::baseUrl() . "event/register/?order_id=$order_id&token=$token");
     }
 
     public function actionRegister() {
@@ -816,9 +832,21 @@ class EventController extends Controller {
 
         $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : 0;
         $tmp_token = isset($_GET['token']) ? $_GET['token'] : "";
+        
+        $return = isset($_GET['back']) ? $_GET['back'] : 0;
+        
+        if($return !=0)
+            $this->OrderModel->update(array('user_id'=>  UserControl::getId(),'id'=>$order_id));
 
         $token = $this->EventModel->get_event_token($tmp_token);
+        
+        $count_down = (int)$token['date_expired'] - time();
+        
+        
+        
         $order = $this->OrderModel->get($order_id);
+        
+      
 
         if (!$order || $order['user_id'] != UserControl::getId())
             $this->load_404();
@@ -839,14 +867,17 @@ class EventController extends Controller {
 
         if ($_POST)
             $this->do_register($event, $order, $order_details, $token);
-
+        
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
+        
+        $this->viewData['count_down'] = $count_down;
+        
         $this->viewData['order'] = $order;
         $this->viewData['token'] = $token;
         $this->viewData['message'] = $this->message;
-        Yii::app()->params['page'] = 'Payment Ticket';
+        Yii::app()->params['page'] = 'eTicket Payment';
         $this->render('payment_ticket', $this->viewData);
     }
 
@@ -860,9 +891,10 @@ class EventController extends Controller {
         $email = trim($_POST['email']);
         $phone = trim($_POST['phone']);
         $address = trim($_POST['address']);
+        $address_2 = trim($_POST['address_2']);
         $city = trim($_POST['city']);
         $country = $_POST['country_id'];
-        $zipcode = trim($_POST['zipcode']);
+
 
         if ($this->validator->is_empty_string($firstname))
             $this->message['error'][] = "First name cannot be blank.";
@@ -879,8 +911,7 @@ class EventController extends Controller {
             $this->message['error'][] = "Address cannot be blank.";
         if ($this->validator->is_empty_string($city))
             $this->message['error'][] = "City cannot be blank.";
-        if ($this->validator->is_empty_string($zipcode))
-            $this->message['error'][] = "Zipcode cannot be blank.";
+
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -894,7 +925,7 @@ class EventController extends Controller {
             'lastname' => $lastname,
             'phone' => $phone,
             'address' => $address,
-            'zipcode' => $zipcode,
+            'address_2' => $address_2,
             'city' => $city,
             'country_id' => $country,
             'email' => $email,

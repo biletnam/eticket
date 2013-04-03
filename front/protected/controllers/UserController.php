@@ -36,8 +36,8 @@ class UserController extends Controller {
 
         /* @var $OrderModel OrderModel */
         $this->OrderModel = new OrderModel();
-        
-         /* @var $TicketTypeModel TicketTypeModel */
+
+        /* @var $TicketTypeModel TicketTypeModel */
         $this->TicketTypeModel = new TicketTypeModel();
     }
 
@@ -62,11 +62,11 @@ class UserController extends Controller {
     }
 
     public function actionSignup() {
-
         if ($_POST)
             $this->do_signup();
-
+        $email = isset($_GET['email']) ? $_GET['email'] : '';
         $this->viewData['message'] = $this->message;
+        $this->viewData['email'] = $email;
         Yii::app()->params['page'] = 'Register';
         $this->render('signup', $this->viewData);
     }
@@ -130,16 +130,25 @@ class UserController extends Controller {
 
         $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
-        $this->redirect(HelperUrl::baseUrl() . "home/");
+
+        $url = isset($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
+
+
+        $this->redirect($url);
     }
 
     public function actionSignin() {
 
+        $return = isset($_GET['return']) ? $_GET['return'] : "";
+
+        if (isset($_POST['register']))
+            $this->redirect(HelperUrl::baseUrl() . 'user/signup/?email=' . $_POST['email'] . "&return=" . urlencode($return));
         if ($_POST)
             $this->do_signin();
 
-        Yii::app()->params['page'] = 'Login';
+        Yii::app()->params['page'] = 'Register/Login';
         $this->viewData['message'] = $this->message;
+        $this->viewData['url_return'] = $return;
         $this->render('signin', $this->viewData);
     }
 
@@ -174,7 +183,7 @@ class UserController extends Controller {
         }
 
         HelperApp::add_cookie('secret_key', $user['secret_key'], $is_session);
-        $url = isset($_GET['return']) ? $_GET['return'] : HelperUrl::baseUrl() . "home/";
+        $url = isset($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
         $this->redirect($url);
     }
 
@@ -301,7 +310,7 @@ class UserController extends Controller {
         $lastname = trim($_POST['lastname']);
         $address = trim($_POST['address']);
         $address2 = trim($_POST['address2']);
-        
+
         $city = $_POST['city'];
         $country_id = $_POST['country_id'];
 
@@ -318,7 +327,7 @@ class UserController extends Controller {
         if ($this->validator->is_empty_string($address) || $this->validator->has_speacial_character($address))
             $this->message['error'][] = "Address 1 can not be blank and not contains any speacial characters.";
         if ($this->validator->has_speacial_character($address2))
-            $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";  
+            $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -335,7 +344,7 @@ class UserController extends Controller {
         }
 
 
-        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname,'id' => UserControl::getId()));
+        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
 
         //update metas
         $this->UserModel->update_metas('address', $address, UserControl::getId());
@@ -454,7 +463,7 @@ class UserController extends Controller {
         $pwd2 = trim($_POST['pwd2']);
 
         $hasher = new PasswordHash(10, TRUE);
-        
+
         if (UserControl::getIs_signup_facebook() == 0) {
             $oldpwd = trim($_POST['oldpwd']);
             if ($this->validator->is_empty_string($oldpwd))
@@ -463,8 +472,8 @@ class UserController extends Controller {
             if (!$hasher->CheckPassword($oldpwd, UserControl::getPassword()))
                 $this->message['error'][] = "Current password is not match.";
         }
-        
-        
+
+
         if ($this->validator->is_empty_string($pwd1))
             $this->message['error'][] = "New password cannot be blank.";
         if (strlen($pwd1) < 6 || strlen($pwd1) > 20)
@@ -559,6 +568,9 @@ class UserController extends Controller {
     }
 
     public function actionLoginfacebook() {
+        
+        
+        
         $app_id = "104204896436938";
         $app_secret = "d6a281b62853338ba8d41fdf4c5df216";
         $my_url = HelperUrl::baseUrl(true) . "user/loginfacebook/";
@@ -605,33 +617,34 @@ class UserController extends Controller {
             $secret_key = Ultilities::base32UUID();
             $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name, '', 1, 'customer', 1);
             HelperApp::add_cookie('secret_key', $secret_key, $is_session);
-            $this->redirect(Yii::app()->request->baseUrl . "/home/");
+            
+            $url = isset($_GET['return']) ? urldecode($_GET['return']) : Yii::app()->request->baseUrl . "/home/";
+            $this->redirect($url);
         } else {
             HelperApp::add_cookie('secret_key', $user['secret_key'], $is_session);
-            $url = isset($_GET['return']) ? $_GET['return'] : Yii::app()->request->baseUrl . "/home/";
+            $url = isset($_GET['return']) ? urldecode($_GET['return']) : Yii::app()->request->baseUrl . "/home/";
             $this->redirect($url);
         }
     }
 
-    
-    public function actionEvent_view_info($id){
+    public function actionEvent_view_info($id) {
         HelperGlobal::require_login();
-        
+
         $event = $this->EventModel->get($id);
-        
-        if(!$event)
-            $this->load_404 ();
-        if($event['user_id'] != UserControl::getId())
-            $this->load_404 ();
-        
-        $event_all_tickets_sold = $this->TicketTypeModel->gets(array('event_id'=>$event['id']),1,300);
-        
+
+        if (!$event)
+            $this->load_404();
+        if ($event['user_id'] != UserControl::getId())
+            $this->load_404();
+
+        $event_all_tickets_sold = $this->TicketTypeModel->gets(array('event_id' => $event['id']), 1, 300);
+
         $this->viewData['event_all_tickets_sold'] = $event_all_tickets_sold;
 
         Yii::app()->params['is_tab'] == 'manage_event';
         Yii::app()->params['page'] = 'Management Event';
         $this->layout = 'account';
         $this->render('view_event_info', $this->viewData);
-        
     }
+
 }

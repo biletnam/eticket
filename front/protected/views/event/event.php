@@ -8,22 +8,33 @@
             <div class="grid_12">
                 <div class="event-header clearfix border border-radius">
                     <div class="pull-left event-header-title">
-                        
+
                         <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
 
-                            <b>Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo $event['firstname']. ' ' . $event['lastname'] ?></a><br/>
-                            
-                            <?php echo '<b>From:</b> '.date('l,g:ia F j, Y',  strtotime($event['start_time']))?><br/>
-                            <?php echo '<b>To:</b> '.date('l,g:ia F j, Y',  strtotime($event['end_time']))?><br/>
-                            
-                            <?php echo $event['country_title'] ?><br/>
+                            <h4><?php echo $event['location'] ?></h4>
+                            <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
+
+                            <b>Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_name'] != "") ? $event['organizer_name'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
+
+                            <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
+                            <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>
+
 
                         </h2>
+
+                        <?php if ($event['facebook'] != ''): ?>
+                            <a href="<?php echo $event['facebook'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/facebook-logo.png"></a>
+                        <?php endif; ?>
+
+                        <?php if ($event['link'] != ''): ?>
+                            <a href="<?php echo $event['link'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/link-logo.png"></a>
+                        <?php endif; ?>
+
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'full') ?>">
-                            <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'],'detail') ?>"/>
+                        <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'full') ?>">
+                            <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'detail') ?>"/>
                         </a>
                     </div>
                 </div>
@@ -45,7 +56,7 @@
                                         <th width="210px">TICKET TYPE</th>
                                         <th>SALES END</th>
                                         <th>PRICE</th>
-                                        <?php /*<th>FEE</th>*/ ?>
+                                        <?php /* <th>FEE</th> */ ?>
                                         <th width="60px" align="right">Quantity</th>
                                     </tr>
                                 </thead>
@@ -60,21 +71,20 @@
                                                 <?php echo date('M j, Y', strtotime($t['sale_end'])) ?>
 
                                             </td>
-                                            <td>TT$<?php 
-                                                if($t['service_fee'])
-                                                    echo $t['price']*1.1;
+                                            <td>TT$<?php
+                                                if ($t['service_fee'])
+                                                    echo $t['price'] * 1.1;
                                                 else
                                                     echo $t['price'];
                                                 ?>
                                             </td>
-                                            <?php /*<td>$<?php echo $t['price']*1.1 ?></td> */ ?>
+                                            <?php /* <td>$<?php echo $t['price']*1.1 ?></td> */ ?>
                                             <td>                             
-                                                <?php if ((int) $t['remaining'] == 0 && (int)$t['total_ticket'] > 0): ?>
-                                                SOLD OUT
+                                                <?php if ((int) $t['remaining'] == 0 && (int) $t['total_ticket'] > 0): ?>
+                                                    SOLD OUT
                                                 <?php else: ?>
-                                                    <?php 
-                                                    
-                                                    $remaining = $t['remaining'] > (int)$t['minimum'] ? $t['remaining'] : (int)$t['minimum'];
+                                                    <?php
+                                                    $remaining = $t['remaining'] > (int) $t['minimum'] ? $t['remaining'] : (int) $t['minimum'];
                                                     ?>
                                                     <select name="ticket_type[<?php echo $t['id']; ?>]">
                                                         <option value='0'>0</option>
@@ -92,7 +102,7 @@
                             </table>
                         </div>
                         <div class="ticket-button clearfix">
-                            <input type="submit" class="btn pull-right" value="Order now">
+                            <input type="submit" <?php if (count($ticket_types) == 0): ?>class="hide"<?php endif; ?> class="btn pull-right" value="Order now">
                         </div>
                     </form>
                 </article>
@@ -125,7 +135,7 @@
                         <?php echo date('l, d/m/Y g:i a', strtotime($event['end_time'])) ?>
                     </div>
                 </article>
-                
+
             </div>
         </div>
     </div>

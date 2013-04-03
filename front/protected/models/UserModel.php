@@ -41,6 +41,7 @@ class UserModel extends CFormModel {
                 ON eo.user_id = eu.id
                 WHERE eu.id = :id
                 AND eu.disabled = 0
+                AND eu.deleted = 0
                 AND eu.banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);
@@ -52,6 +53,7 @@ class UserModel extends CFormModel {
                 FROM etk_users
                 WHERE apikey = :apikey
                 AND disabled = 0
+                AND deleted = 0
                 AND banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":apikey", $apikey);
@@ -63,6 +65,7 @@ class UserModel extends CFormModel {
                 FROM etk_users
                 WHERE email = :email
                 AND disabled = 0
+                AND deleted = 0
                 AND banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":email", $email, PDO::PARAM_INT);
@@ -74,6 +77,7 @@ class UserModel extends CFormModel {
                 FROM etk_users
                 WHERE secret_key = :secret_key
                 AND disabled = 0
+                AND deleted = 0
                 AND banned = 0";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":secret_key", $secret_key, PDO::PARAM_INT);

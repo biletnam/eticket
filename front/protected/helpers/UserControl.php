@@ -68,6 +68,14 @@ class UserControl {
         self::FetchUserInstance();
         return self::$instance['country_id'];
     }
+    
+    public static function getPhone(){
+        self::FetchUserInstance();
+        return self::$instance['cell_phone'];
+    }
+    
+   
+    
     public static function getImg(){
         self::FetchUserInstance();
         return self::$instance['img'];

@@ -27,7 +27,7 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.deleted = :deleted";
             $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
         }
-        
+
         if (isset($args['disabled'])) {
             $custom.= " AND ee.disabled = :disabled";
             $params[] = array('name' => ':disabled', 'value' => $args['disabled'], 'type' => PDO::PARAM_INT);
@@ -117,7 +117,7 @@ class EventModel extends CFormModel {
             $custom.= " AND ee.user_id = :user_id";
             $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
         }
-        
+
 
         if (isset($args['s']) && $args['s'] != "") {
             $custom.= " AND ee.title like :title";
@@ -259,8 +259,8 @@ class EventModel extends CFormModel {
         $command->bindParam(":slug", $slug);
         return $this->_parse_events($command->queryRow());
     }
-    
-    public function get_all_by_user($user_id, $page = 1, $ppp = 20){
+
+    public function get_all_by_user($user_id, $page = 1, $ppp = 20) {
         $page = ($page - 1) * $ppp;
 
         $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location, el.address,el.city_title as city,ec.id as country_id,ec.title as country_title
@@ -283,7 +283,8 @@ class EventModel extends CFormModel {
         $command->bindParam(":ppp", $ppp, PDO::PARAM_INT);
         return $this->_parse_events($command->queryAll());
     }
-    public function count_all_by_user($user_id){
+
+    public function count_all_by_user($user_id) {
 
         $sql = "SELECT count(*) as total
                 FROM etk_events ee
@@ -321,8 +322,8 @@ class EventModel extends CFormModel {
             $slug = $slug . "-" . $count_slug;
         $time = time();
 
-        $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added,disabled) 
-                                    VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added,:disabled)";
+        $sql = "INSERT INTO etk_events(user_id,title,slug,location_id,start_time,end_time,display_start_time,display_end_time,img,thumbnail,description,published,show_tickets,is_repeat,date_added,disabled,facebook,link) 
+                                    VALUES(:user_id,:title,:slug,:location_id,:start_time,:end_time,:display_start_time,:display_end_time,:img,:thumbnail,:description,:published,:show_tickets,:is_repeat,:date_added,:disabled,:facebook,:link)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":user_id", $args['user_id'], PDO::PARAM_INT);
         $command->bindParam(":title", $args['title']);
@@ -339,6 +340,10 @@ class EventModel extends CFormModel {
         $command->bindParam(":img", $args['img']);
         $command->bindParam(":thumbnail", $args['thumbnail']);
         $command->bindParam(":date_added", $time);
+
+        $command->bindParam(":facebook", $args['facebook']);
+        $command->bindParam(":link", $args['link']);
+
         $command->bindParam(":disabled", $args['disabled']);
         $command->execute();
         return Yii::app()->db->lastInsertID;
@@ -438,7 +443,7 @@ class EventModel extends CFormModel {
 
         $sql = "INSERT INTO etk_event_tokens(order_id,token,date_added,date_expired,content) VALUES(:order_id,:token,:date_added,:date_expired,:content)";
         $command = Yii::app()->db->createCommand($sql);
-        $command->bindParam(':order_id', $order_id, PDO::PARAM_INT);        
+        $command->bindParam(':order_id', $order_id, PDO::PARAM_INT);
         $command->bindParam(':token', $token, PDO::PARAM_STR);
         $command->bindParam(':date_added', $date_added, PDO::PARAM_STR);
         $command->bindParam(':date_expired', $date_expired, PDO::PARAM_STR);

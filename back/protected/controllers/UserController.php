@@ -31,14 +31,19 @@ class UserController extends Controller {
         $ppp = Yii::app()->getParams()->itemAt('ppp');
         $s = isset($_GET['s']) ? $_GET['s'] : "";
         $s = strlen($s) > 2 ? $s : "";
-        $args = array('s' => $s);
+
+
+
+        $args = array('s' => $s, 'deleted' => 0);
 
         if ($role != "all")
             $args['role'] = $role;
 
         $users = $this->UserModel->gets($args, $p, $ppp);
         $total = $this->UserModel->counts($args);
-        
+
+
+
         $this->viewData['role'] = $role;
         $this->viewData['users'] = $users;
         $this->viewData['total'] = $total;
@@ -163,31 +168,40 @@ class UserController extends Controller {
             $subject = '360islandevents.com - Your account was not approved';
             $note = "Your account was not approved to become Client";
         }
-        
+
         $url = HelperUrl::hostInfo();
-        
+
         $message = '
                 <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
                     <div>
-                        <div><img width="180px" src="'.$url.'front/img/logo.png"/></div>
+                        <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
                     </div>
                     <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
                         Account
                     </div>
                     <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
                         <p style="margin-bottom: 0px;margin-top:0">
-                            '.$note.'    
+                            ' . $note . '    
                         </p>
-                        <a href="#"><img src="'.$url.'front/img/email_fb.png"/></a>
-                        <a href="#"><img src="'.$url.'front/img/email_tw.png"/></a>
+                        <a href="#"><img src="' . $url . 'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
                     </div>
                 </div>
         ';
         // $message;die;
-        @HelperApp::email($user_email,$subject, $message);
-        
+        @HelperApp::email($user_email, $subject, $message);
+
         $this->UserModel->update(array('role' => $approve, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));
+    }
+
+    public function actionDelete($id) {
+        $this->CheckPermission();
+        $user = $this->UserModel->get($id);
+        if (!$user)
+            return;
+
+        $this->UserModel->delete($id);
     }
 
 }

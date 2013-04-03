@@ -9,10 +9,16 @@ class HelperGlobal {
         
     }
 
-    public static function require_login($return_url = false) {
+    public static function require_login($return_url = "") {
 
         if (!UserControl::LoggedIn()) {
-            header("location:" . Yii::app()->request->baseUrl . "/user/signin/");
+            $location = Yii::app()->request->baseUrl . "/user/signin/";
+            $location = $return_url == "" ? $location : $location."?return=".urlencode($return_url);
+            Yii::app()->params['url_return'] = $location;
+            
+            
+            
+            header("location:" . $location);
             die;
         }
     }

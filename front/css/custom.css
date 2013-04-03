@@ -6,3 +6,15 @@
 .event-location {position: relative}
 .event-location img{position: absolute;top:-3px;right: -40px}
 .home-topbar{margin-bottom: 0;border-bottom: 0}
+
+.link-logo{width: 20px}
+.page-register .register-6{width: 470px;float: left}
+.page-register .login-label{color: #000000;
+    font-family: Arial;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-top: 3px;
+    text-align: right;
+    width: 64px;}
+.font-login{font-weight: 300;color:#666}
+.form-login{width: 400px;margin-bottom: 50px;height: 310px}  

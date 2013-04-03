@@ -2977,3 +2977,182 @@ Stack trace:
 REQUEST_URI=/eticket/front/%27img/email_tw.png
 HTTP_REFERER=http://localhost/eticket/front/page/email
 ---
+2013/04/03 09:19:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/04/03 09:22:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/04/03 09:34:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/04/03 09:35:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\htdocs\eticket\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(271): CController->missingAction('css')
+#1 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('css')
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('event/css/conte...')
+#3 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/front/event/css/content.css
+---
+2013/04/03 09:58:12 [error] [php] Undefined index: ticket_type (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:783)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/info/s/games
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (783)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (755)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 09:58:26 [error] [php] Undefined index: ticket_type (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:783)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/info/s/games
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (783)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (755)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 10:50:28 [error] [php] Undefined index: register (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:140)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/signin
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (140)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 10:50:35 [error] [php] Undefined index: register (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:140)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/signin
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (140)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 11:04:18 [error] [php] Undefined index: ticket_type (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:783)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/info/s/games
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (783)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (755)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 11:04:28 [error] [php] Undefined index: ticket_type (D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php:783)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\xampp\htdocs\eticket\framework\web\CController.php(287): EventController->runAction()
+#4 D:\xampp\htdocs\eticket\framework\web\CController.php(266): EventController->runActionWithFilters()
+#5 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): EventController->run()
+#6 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/event/info/s/games
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (783)
+in D:\xampp\htdocs\eticket\front\protected\controllers\EventController.php (755)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 11:12:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/04/03 11:12:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/04/03 11:35:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pattern_grey_white_squiggle.png".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('img/pattern_gre...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/img/pattern_grey_white_squiggle.png
+HTTP_REFERER=http://localhost/eticket/front/css/style.css
+---
+2013/04/03 13:09:45 [error] [php] print_r() expects at least 1 parameter, 0 given (D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php:573)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UserController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UserController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UserController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\front\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/front/user/loginfacebook?
+in D:\xampp\htdocs\eticket\front\protected\controllers\UserController.php (573)
+in D:\xampp\htdocs\eticket\front\index.php (14)
+2013/04/03 14:18:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "eticket/front/event/info/s/meta-mosaic---snag-conference".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('eticket/front/e...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/eticket/front/event/info/s/meta-mosaic---snag-conference
+HTTP_REFERER=http://localhost/eticket/front/event/register/?order_id=55&token=5FJRjk7WZ
+---
+2013/04/03 14:19:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "eticket/front/event/info/s/meta-mosaic---snag-conference".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('eticket/front/e...')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\front\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/front/eticket/front/event/info/s/meta-mosaic---snag-conference
+HTTP_REFERER=http://localhost/eticket/front/event/register/?order_id=56&token=6wnTcpSXr
+---

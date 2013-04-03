@@ -150,6 +150,16 @@ $countries = Helper::countries();
                     <div class="number"><span>2</span></div>
                     <h3>Option</h3>
                 </div>
+                
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Facebook</label>
+                    <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="facebook" value="<?php if (isset($_POST['facebook'])) echo htmlspecialchars($_POST['facebook']); ?>"></div>
+                </div>
+                
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left">Link</label>
+                    <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="link" value="<?php if (isset($_POST['link'])) echo htmlspecialchars($_POST['link']); ?>"></div>
+                </div>
 
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left" for="select01">This event will public and registered.</label>

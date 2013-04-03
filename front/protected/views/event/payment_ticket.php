@@ -1,5 +1,6 @@
-
 <?php $total = 0 ?>
+<input type="hidden" value="<?php echo $count_down?>" id="count_down">
+<input type="hidden" value="<?php echo HelperUrl::baseUrl()?>event/info/s/<?php echo $event['slug']?>" id="url_back">
 <div class="page-event-detail page-event-register">
     <div class="container_12">
         <div class="clearfix">
@@ -9,17 +10,32 @@
                         <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
 
-                            <b>Author: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo $event['firstname']. ' ' . $event['lastname'] ?></a><br/>
+                            <h4><?php echo $event['location'] ?></h4>
+                            <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
+
+                            <b>Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_name'] != "") ? $event['organizer_name'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
 
                             <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
                             <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>
 
-                            <?php echo $event['country_title'] ?><br/>
 
                         </h2>
+
+                        <?php if ($event['facebook'] != ''): ?>
+                            <a href="<?php echo $event['facebook'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/facebook-logo.png"></a>
+                        <?php endif; ?>
+
+                        <?php if ($event['link'] != ''): ?>
+                            <a href="<?php echo $event['link'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/link-logo.png"></a>
+                        <?php endif; ?>
                     </div>
                     <div class="pull-right event-header-thumb">
-                        <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail']) ?>"/>
+
+
+                        <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'full') ?>">
+                            <img alt="" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'detail') ?>"/>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -51,11 +67,11 @@
                                                 <?php echo $t['title']; ?>
                                             </td>
 
-                                            <td>TT$<?php 
+                                            <td>TT$<?php
 //                                                if($t['service_fee'])
 //                                                    echo $t['price']*1.1;
 //                                                else
-                                                    echo $t['price'];
+                                                echo $t['price'];
                                                 ?>
                                             </td>
                                             <td><?php echo $t['quantity'] ?></td>                                        
@@ -86,25 +102,24 @@
                     <div class="event-body">
                         <form class="form-style" method="post">
                             <div class="alert clearfix countdown">
-                                
+
                                 <?php
                                 $expired_time = $token['date_expired'] - time();
                                 $minute = 0;
                                 $second = 0;
-                                
-                                $minute = (int)($expired_time / 60);
-                                $second = (int)($expired_time % 60);
-                                
+
+                                $minute = (int) ($expired_time / 60);
+                                $second = (int) ($expired_time % 60);
                                 ?>
-                                <div class="pull-left timer"><?php echo $minute.":".$second; ?></div>
+                                <div class="pull-left timer"><?php echo $minute . ":" . $second; ?></div>
                                 <div class="pull-left notification">
                                     <p>Please complete registration within 15:00 minutes.<br/>
                                         After 15:00 minutes, the reservation we're holding will be released to others.</p>
                                 </div>
                             </div>
-                            
+
                             <?php echo Helper::print_error($message); ?>
-                            
+
                             <div class="required align-right">
                                 * Required Field
                             </div>
@@ -119,25 +134,25 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">First Name <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="firstname" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : $order['firstname']; ?>"/>
+                                        <input type="text" class="input-medium" name="firstname" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : ($order['firstname']!="" ? $order['firstname'] : UserControl::getFirstname()); ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Last Name <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="lastname" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : $order['lastname']; ?>"/>
+                                        <input type="text" class="input-medium" name="lastname" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ($order['lastname']!="" ? $order['lastname'] : UserControl::getLastname()); ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Email Address <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : $order['email']; ?>"/>
+                                        <input type="text" class="input-medium" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ($order['email']!="" ? $order['email'] : UserControl::getEmail()); ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Phone <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : $order['phone']; ?>"/>
+                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ($order['phone']!="" ? $order['phone'] : UserControl::getPhone()); ?>"/>
                                     </div>
                                 </div>
                             </div>
@@ -151,6 +166,14 @@
                                         <input type="text" class="input-medium" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : $order['address']; ?>"/>
                                     </div>
                                 </div>
+
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Address 2</label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-medium" name="address_2" value="<?php echo isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : $order['address_2']; ?>"/>
+                                    </div>
+                                </div>
+
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">City <span class="required">*</span></label>
                                     <div class="controls pull-left">
@@ -162,17 +185,12 @@
                                     <div class="controls pull-left">
                                         <select name="country_id" class="input-medium">
                                             <?php foreach ($countries as $k => $v): ?>
-                                                <option value="<?php echo $v['id']; ?>" <?php if(isset($_POST['country_id']) && $_POST['country_id'] == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
+                                            <option value="<?php echo $v['id']; ?>" <?php echo (isset($_POST['country_id']) && $_POST['country_id'] == $v['id']) ? 'selected' : (UserControl::getCountryId() == $v['id'] ? 'selected' :''); ?>><?php echo $v['title']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="controls-group clearfix">
-                                    <label class="control-label pull-left">Zip Code <span class="required">*</span></label>
-                                    <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="zipcode" value="<?php echo isset($_POST['zipcode']) ? htmlspecialchars($_POST['zipcode']) : $order['zipcode']; ?>"/>
-                                    </div>
-                                </div>
+
                             </div>
                             <?php /*
                               <div class="box-register-info">
@@ -290,8 +308,9 @@
                         <?php echo date('l, d/m/Y g:i a', strtotime($event['end_time'])) ?>
                     </div>
                 </article>
-              
+
             </div>
         </div>
     </div>
+    
 </div>

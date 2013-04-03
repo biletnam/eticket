@@ -11,17 +11,27 @@ class UserModel extends CFormModel {
         $custom = "";
         $params = array();
 
+
+
         if (isset($args['s']) && $args['s'] != "") {
-            $custom = " AND title like :title";
+
+            $custom .= " AND title like :title";
             $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
         }
 
-        if (isset($args['role']) && $args['role'] != "") {
-            $custom = " AND role = :role";
+        if (isset($args['deleted'])) {
+
+            $custom .= " AND deleted = :deleted";
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['role'])) {
+            $custom .= " AND role = :role";
             $params[] = array('name' => ':role', 'value' => $args['role'], 'type' => PDO::PARAM_STR);
         }
 
-   
+
+
 
         $sql = "SELECT *
                 FROM etk_users
@@ -29,6 +39,8 @@ class UserModel extends CFormModel {
                 $custom
                 ORDER BY date_added DESC
                 LIMIT :page,:ppp";
+
+
 
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":page", $page);
@@ -53,7 +65,10 @@ class UserModel extends CFormModel {
             $params[] = array('name' => ':role', 'value' => $args['role'], 'type' => PDO::PARAM_STR);
         }
 
-    
+        if (isset($args['deleted']) && $args['deleted'] != "") {
+            $custom = " AND deleted = :deleted";
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_STR);
+        }
 
         $sql = "SELECT count(*) as total
                 FROM etk_users
@@ -87,6 +102,15 @@ class UserModel extends CFormModel {
         $sql = 'update etk_users set ' . $custom . ' where id = :id';
         $command = Yii::app()->db->createCommand($sql);
         return $command->execute($args);
+    }
+
+    public function delete($user_id) {
+        $sql = "DELETE FROM etk_users
+        WHERE id =:id ";
+
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindParam(":id", $user_id);
+        return $command->execute();
     }
 
 }

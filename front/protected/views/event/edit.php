@@ -16,10 +16,15 @@ $ticket_status = Helper::ticket_status();
         <div class="grid_12 page-create-ticket">
             <?php if ($type == "general"): ?>
                 <form class="form-style form-create-event border form-create-magu" method="post" enctype="multipart/form-data" id="event_form">
-                    <input type="hidden" name="location_id" value="<?php if (isset($_POST['location_id'])) echo $_POST['location_id'];else echo $event['location_id']; ?>"/>
+                    <input type="hidden" name="location_id" value="<?php
+                    if (isset($_POST['location_id']))
+                        echo $_POST['location_id'];
+                    else
+                        echo $event['location_id'];
+                    ?>"/>
                     <div class="row-fluid content">
                         <?php echo Helper::print_error($message); ?>
-                        <?php echo Helper::print_success($message); ?>
+    <?php echo Helper::print_success($message); ?>
                         <div class="span10 form-magu">
                             <div class="step"> <div class="number"><span>1</span></div>
                                 <h3>Event Information</h3>
@@ -47,11 +52,11 @@ $ticket_status = Helper::ticket_status();
                             <div class="controls-group clearfix">
                                 <label class="control-label pull-left">Country</label>
                                 <div class="controls pull-left">
-                                    <?php //print_r($event);die; ?>
+                                        <?php //print_r($event);die;    ?>
                                     <select name="country">
                                         <?php foreach ($countries as $k => $v): ?>
                                             <option <?php if (isset($_POST['country']) && $_POST['country'] == $v['id']) echo 'selected'; else if ($event['country_id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
-                                        <?php endforeach; ?>
+    <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -62,7 +67,12 @@ $ticket_status = Helper::ticket_status();
                                     <div class="row-fluid">
                                         <p class="start-date-title">Event starts</p>
                                         <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
-                                            <input type="text" class="input-mini ico ico-calendar datetimepicker" name="start_date" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y', strtotime($event['start_time'])); ?>">
+                                            <input type="text" class="input-mini ico ico-calendar datetimepicker" name="start_date" value="<?php
+                                            if (isset($_POST['start_date']))
+                                                echo $_POST['start_date'];
+                                            else
+                                                echo date('d-m-Y', strtotime($event['start_time']));
+                                            ?>">
 
                                             <select name="start_hour" class="input-mini">
                                                 <?php for ($i = 0; $i <= 12; $i++): ?>
@@ -72,7 +82,7 @@ $ticket_status = Helper::ticket_status();
                                             <select name="start_minute" class="input-mini">
                                                 <?php for ($i = 0; $i < 60; $i++): ?>
                                                     <option <?php if (isset($_POST['start_minute']) && $_POST['start_minute'] == $i) echo 'selected'; else if ((int) date('i', strtotime($event['start_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                <?php endfor; ?>
+    <?php endfor; ?>
                                             </select>   
                                             <select name="start_am_pm">
                                                 <option <?php if (isset($_POST['start_am_pm']) && $_POST['start_am_pm'] == 'am') echo 'selected'; else if (date('a', strtotime($event['start_time'])) == 'am') echo 'selected' ?> value="am">AM</option>
@@ -90,17 +100,22 @@ $ticket_status = Helper::ticket_status();
                                         <p class="end-date-title">Event ends</p>
 
                                         <div class="input-append date dp3" data-date-format="mm/dd/yyyy">
-                                            <input type="text" class="input-mini ico ico-calendar datetimepicker" name="end_date" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y', strtotime($event['end_time'])); ?>">
+                                            <input type="text" class="input-mini ico ico-calendar datetimepicker" name="end_date" value="<?php
+                                            if (isset($_POST['end_date']))
+                                                echo $_POST['end_date'];
+                                            else
+                                                echo date('d-m-Y', strtotime($event['end_time']));
+                                            ?>">
 
                                             <select name="end_hour" class="input-mini" id="time_hour">
-                                                <?php for ($i = 0; $i <= 12; $i++): ?>
+    <?php for ($i = 0; $i <= 12; $i++): ?>
                                                     <option <?php if (isset($_POST['end_hour']) && $_POST['end_hour'] == $i) echo 'selected'; else if ((int) date('g', strtotime($event['end_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                 <?php endfor; ?>
                                             </select>
                                             <select name="end_minute" class="input-mini" id="time_min">
-                                                <?php for ($i = 0; $i < 60; $i++): ?>
+    <?php for ($i = 0; $i < 60; $i++): ?>
                                                     <option <?php if (isset($_POST['end_minute']) && $_POST['end_minute'] == $i) echo 'selected'; else if ((int) date('i', strtotime($event['end_time'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                <?php endfor; ?>
+    <?php endfor; ?>
                                             </select>     
                                             <select name="end_am_pm">
                                                 <option <?php if (isset($_POST['end_am_pm']) && $_POST['end_am_pm'] == 'am') echo 'selected'; else if (date('a', strtotime($event['end_time'])) == 'am') echo 'selected' ?> value="am">AM</option>
@@ -134,9 +149,9 @@ $ticket_status = Helper::ticket_status();
                                             <img class="image-default waiting hide" src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" />
                                             <img class="image-default thumbnail" src="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'edit'); ?>" />
                                         <?php endif; ?>
-                                        <?php if ($event['img'] != ""): ?>
+    <?php if ($event['img'] != ""): ?>
                                             <div class="controls pull-left" style="margin-top: 10px"><a href="<?php echo HelperUrl::baseUrl() ?>event/remove_thumb/id/<?php echo $event['id'] ?>" class="btn-style remove-event-thumb">Remove</a></div>
-                                        <?php endif; ?> 
+    <?php endif; ?> 
                                         <input type="hidden" name="event_id" value="<?php echo $event['id'] ?>"/>
                                         <input type="hidden" name="file_temp" class="file_temp" value="<?php if (isset($_POST['file_temp'])) echo $_POST['file_temp']; ?>"/>
                                         <input type="hidden" name="name_temp" class="name_temp" value="<?php if (isset($_POST['name_temp'])) echo $_POST['name_temp']; ?>"/>
@@ -168,6 +183,16 @@ $ticket_status = Helper::ticket_status();
                                             </div>
 
                                             <div class="controls-group clearfix">
+                                                <label class="control-label pull-left">Facebook</label>
+                                                <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="facebook" value="<?php echo (isset($_POST['facebook'])) ? htmlspecialchars($_POST['facebook']) : $event['facebook']; ?>"></div>
+                                            </div>
+
+                                            <div class="controls-group clearfix">
+                                                <label class="control-label pull-left">Link</label>
+                                                <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="link" value="<?php echo (isset($_POST['link'])) ? htmlspecialchars($_POST['link']) : $event['link']; ?>"></div>
+                                            </div>
+
+                                            <div class="controls-group clearfix">
                                                 <label for="select01" class="control-label pull-left">This event will public and registered.</label>
                                                 <div class="controls">
                                                     <select name="published">
@@ -183,16 +208,16 @@ $ticket_status = Helper::ticket_status();
                                                     <select name="primary_cate">
 
                                                         <option value="0">Primary category</option>                                                    
-                                                        <?php foreach ($categories as $k => $v): ?>                
+    <?php foreach ($categories as $k => $v): ?>                
                                                             <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; else if ($event['categories']['primary']['id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
-                                                        <?php endforeach; ?>
+    <?php endforeach; ?>
                                                     </select>
                                                     <select name="second_cate">
 
                                                         <option value="0">Secondary category</option>                                                    
-                                                        <?php foreach ($categories as $k => $v): ?>                
+    <?php foreach ($categories as $k => $v): ?>                
                                                             <option <?php if (isset($_POST['second_cate']) && $_POST['second_cate'] == $v['id']) echo 'selected'; else if (isset($event['categories']['second']) && $event['categories']['second']['id'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
-                                                        <?php endforeach; ?>
+    <?php endforeach; ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -219,9 +244,9 @@ $ticket_status = Helper::ticket_status();
                                             </div>
                                             </form>
 
-                                        <?php endif; ?>
+<?php endif; ?>
 
-                                        <?php if ($type == "ticket"): ?>
+<?php if ($type == "ticket"): ?>
                                             <div class="form-style border-radius border content">
                                                 <div class="alert alert-error hide">
                                                     <button data-dismiss="alert" class="close" type="button">×</button>
@@ -246,13 +271,13 @@ $ticket_status = Helper::ticket_status();
                                                     </div>
                                                     <div class="add_ticket_container">
                                                         <span class="add_ticket_text">Type of price:</span>
-                                                        <?php /* <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
-                                                          <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a> */ ?>
+    <?php /* <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
+      <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a> */ ?>
                                                         <a class="btn button-medium eb_button small go add_ticket_class btn-ticket paid">Add eTicket</a>
 
                                                     </div>
                                                     <div id="event_form" class="form-ticket">  
-                                                        <?php foreach ($ticket_types as $k => $v): ?>
+    <?php foreach ($ticket_types as $k => $v): ?>
                                                             <form class="form-horizontal form-create-ticket table-ticket <?php echo $v['type'] ?> <?php if ($v['type'] == 'paid') echo 'custom-table' ?>" method="post" enctype="multipart/form-data" action="<?php echo HelperUrl::baseUrl() ?>event/edit_ticket_type/id/<?php echo $v['id']; ?>">           
                                                                 <table class="table table-bordered table-striped">
                                                                     <thead>
@@ -263,7 +288,7 @@ $ticket_status = Helper::ticket_status();
                                                                             <?php if ($v['type'] == "paid"): ?>
                                                                                 <th class="head-ticket-fee">Fee</th>
                                                                                 <th>Total</th>
-                                                                            <?php endif; ?>
+        <?php endif; ?>
                                                                             <th class="head-ticket-status">Status</th>
                                                                             <th class="head-ticket-action" colspan="3"></th>
                                                                         </tr>
@@ -287,15 +312,15 @@ $ticket_status = Helper::ticket_status();
                                                                         <td><span class="price ticket-tax"><?php echo number_format($v['tax']) ?> TTD</span></td>
                                                                         <?php $total = $v['service_fee'] ? $v['price'] * $v['quantity'] + $v['tax'] : $v['price'] * $v['quantity']; ?>
                                                                         <td><span class="price ticket-total"><?php echo number_format($total) ?> TTD</span></td>
-                                                                    <?php else: ?>
+        <?php else: ?>
                                                                         <td class="ticket_fee">Free</td>
-                                                                    <?php endif; ?>
+                                                                            <?php endif; ?>
 
                                                                     <td>
                                                                         <select class="ticket-status" name="ticket_status">
-                                                                            <?php foreach ($ticket_status as $tkey => $ts): ?>
+        <?php foreach ($ticket_status as $tkey => $ts): ?>
                                                                                 <option <?php if ($v['ticket_status'] == $tkey) echo 'selected'; ?> value="<?php echo $tkey; ?>"><?php echo $ts; ?></option>
-                                                                            <?php endforeach; ?>
+        <?php endforeach; ?>
                                                                         </select>
                                                                     </td>
                                                                     <td><a href="#" class="setting">Option <i class="icon ico-hide icon-chevron-down"></i></a></td>
@@ -329,14 +354,14 @@ $ticket_status = Helper::ticket_status();
                                                                                         <div data-date-format="mm/dd/yyyy" data-date="" class="input-append date dp3">
                                                                                             <input type="text" value="<?php echo htmlspecialchars(date('d-m-Y', strtotime($v['sale_start']))); ?>" name="ticket_start_date" class="input-mini ico ico-calendar datetimepicker ticket-start-date">
                                                                                             <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
-                                                                                                <?php for ($i = 0; $i <= 12; $i++): ?>
-                                                                                                    <option <?php if (date('H', strtotime($v['sale_start'])) == $i) echo 'selected'; else if ((int) date('g', strtotime($v['sale_start'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo  $i; ?></option>
+        <?php for ($i = 0; $i <= 12; $i++): ?>
+                                                                                                    <option <?php if (date('H', strtotime($v['sale_start'])) == $i) echo 'selected'; else if ((int) date('g', strtotime($v['sale_start'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                                 <?php endfor; ?>
                                                                                             </select>
                                                                                             <select id="time_min" class="input-mini ticket-start-minute" name="ticket_start_minute">
-                                                                                                <?php for ($i = 0; $i < 60; $i++): ?>
+        <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                                     <option <?php if (date('i', strtotime($v['sale_start'])) == $i) echo 'selected'; else if ((int) date('i', strtotime($v['sale_start'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                                <?php endfor; ?>
+        <?php endfor; ?>
                                                                                             </select>
                                                                                             <select name="start_am_pm">
                                                                                                 <option <?php if (isset($_POST['start_am_pm']) && $_POST['start_am_pm'] == 'am') echo 'selected'; else if (date('a', strtotime($v['sale_start'])) == 'am') echo 'selected' ?> value="am">AM</option>
@@ -359,14 +384,14 @@ $ticket_status = Helper::ticket_status();
                                                                                             <input type="text" value="<?php echo htmlspecialchars(date('d-m-Y', strtotime($v['sale_end']))); ?>" name="ticket_end_date" class="input-mini ico ico-calendar datetimepicker ticket-end-date">
 
                                                                                             <select id="time_hour" class="input-mini ticket-end-hour" name="ticket_end_hour">
-                                                                                                <?php for ($i = 0; $i <= 12; $i++): ?>
+        <?php for ($i = 0; $i <= 12; $i++): ?>
                                                                                                     <option <?php if (date('H', strtotime($v['sale_end'])) == $i) echo 'selected'; else if ((int) date('g', strtotime($v['sale_end'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                                 <?php endfor; ?>
                                                                                             </select>
                                                                                             <select id="time_min" class="input-mini ticket-end-minute" name="ticket_end_minute">
-                                                                                                <?php for ($i = 0; $i < 60; $i++): ?>
+        <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                                     <option <?php if (date('i', strtotime($v['sale_end'])) == $i) echo 'selected'; else if ((int) date('i', strtotime($v['sale_end'])) == $i) echo 'selected' ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                                <?php endfor; ?>
+        <?php endfor; ?>
                                                                                             </select>
                                                                                             <select name="end_am_pm">
                                                                                                 <option <?php if (isset($_POST['end_am_pm']) && $_POST['end_am_pm'] == 'am') echo 'selected'; else if (date('a', strtotime($v['sale_end'])) == 'am') echo 'selected' ?> value="am">AM</option>
@@ -391,7 +416,7 @@ $ticket_status = Helper::ticket_status();
                                                                                 </div>
                                                                             </div>
 
-                                                                            <?php if ($v['type'] == "paid"): ?>
+        <?php if ($v['type'] == "paid"): ?>
                                                                                 <div class="controls-group clearfix">
                                                                                     <label class="control-label pull-left">Service Fee </label>
                                                                                     <div class="controls pull-left">
@@ -406,7 +431,7 @@ $ticket_status = Helper::ticket_status();
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
-                                                                            <?php endif; ?>
+        <?php endif; ?>
                                                                             <div class="controls-group clearfix">
                                                                                 <label class="control-label pull-left clearfix">&nbsp;</label>
                                                                                 <div class="controls clearfix pull-left">
@@ -422,7 +447,7 @@ $ticket_status = Helper::ticket_status();
                                                                 </table>
                                                                 <input type="submit" class="hide"/>
                                                             </form>
-                                                        <?php endforeach; ?>
+    <?php endforeach; ?>
                                                     </div>
                                                 </div>
 
@@ -459,9 +484,9 @@ $ticket_status = Helper::ticket_status();
                                                             <td><span class="price ticket-total">0.00 TTD</span></td>
                                                             <td>
                                                                 <select name="ticket_status" class="ticket-status">
-                                                                    <?php foreach ($ticket_status as $k => $v): ?>
+    <?php foreach ($ticket_status as $k => $v): ?>
                                                                         <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
-                                                                    <?php endforeach; ?>
+    <?php endforeach; ?>
                                                                 </select>
                                                             </td>
                                                             <td><a class="setting" href="#">Option <i class="icon ico-hide icon-chevron-down"></i></a></td>
@@ -497,18 +522,18 @@ $ticket_status = Helper::ticket_status();
                                                                                 <div class="input-append date dp3" data-date="" data-date-format="mm/dd/yyyy">
                                                                                     <input type="text" value="<?php echo date('d-m-Y'); ?>" class="input-mini ico ico-calendar datetimepicker ticket-start-date " name="ticket_start_date">
                                                                                     <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
-                                                                                        <?php for ($i = 0; $i <= 12; $i++): ?>
+    <?php for ($i = 0; $i <= 12; $i++): ?>
                                                                                             <option <?php if (date("H") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                         <?php endfor; ?>
                                                                                     </select>
                                                                                     <select id="time_min" class="input-mini ticket-start-minute" name="ticket_start_minute">
-                                                                                        <?php for ($i = 0; $i < 60; $i++): ?>
+    <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                             <option <?php if (date("i") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                        <?php endfor; ?>
+    <?php endfor; ?>
                                                                                     </select>
                                                                                     <select name="start_am_pm">
-                                                                                        <option <?php if(date("a")=='am') echo 'selected' ?> value="am">AM</option>
-                                                                                        <option <?php if(date("a")=='pm') echo 'selected' ?> value="pm">PM</option>
+                                                                                        <option <?php if (date("a") == 'am') echo 'selected' ?> value="am">AM</option>
+                                                                                        <option <?php if (date("a") == 'pm') echo 'selected' ?> value="pm">PM</option>
                                                                                     </select>
                                                                                 </div>
 
@@ -521,18 +546,18 @@ $ticket_status = Helper::ticket_status();
                                                                                     <input type="text" value="<?php echo date('d-m-Y', strtotime("+1 month")); ?>"  class="input-mini ico ico-calendar datetimepicker ticket-end-date " name="ticket_end_date">
 
                                                                                     <select id="time_hour" class="input-mini ticket-end-hour" name="ticket_end_hour">
-                                                                                        <?php for ($i = 0; $i <= 12; $i++): ?>
+    <?php for ($i = 0; $i <= 12; $i++): ?>
                                                                                             <option <?php if (date("H") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                         <?php endfor; ?>
                                                                                     </select>
                                                                                     <select id="time_min" class="input-mini ticket-end-minute" name="ticket_end_minute">
-                                                                                        <?php for ($i = 0; $i < 60; $i++): ?>
+    <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                             <option <?php if (date("i") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                        <?php endfor; ?>
+    <?php endfor; ?>
                                                                                     </select>
                                                                                     <select name="end_am_pm">
-                                                                                        <option <?php if(date("a")=='am') echo 'selected' ?> value="am">AM</option>
-                                                                                        <option <?php if(date("a")=='pm') echo 'selected' ?> value="pm">PM</option>
+                                                                                        <option <?php if (date("a") == 'am') echo 'selected' ?> value="am">AM</option>
+                                                                                        <option <?php if (date("a") == 'pm') echo 'selected' ?> value="pm">PM</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -602,9 +627,9 @@ $ticket_status = Helper::ticket_status();
                                                             <td class="ticket_fee">Free</td>
                                                             <td>
                                                                 <select name="ticket_status" class="ticket-status">
-                                                                    <?php foreach ($ticket_status as $k => $v): ?>
+    <?php foreach ($ticket_status as $k => $v): ?>
                                                                         <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
-                                                                    <?php endforeach; ?>
+    <?php endforeach; ?>
                                                                 </select>
                                                             </td>
                                                             <td><a class="setting" href="JavaScript:void(0);">Option <i class="icon-chevron-down icon ico-hide"></i></a></td>
@@ -640,18 +665,18 @@ $ticket_status = Helper::ticket_status();
                                                                                 <div class="input-append date dp3" data-date="" data-date-format="mm/dd/yyyy">
                                                                                     <input type="text" value="<?php echo date('d-m-Y'); ?>" class="input-mini ico ico-calendar datetimepicker ticket-start-date " name="ticket_start_date">
                                                                                     <select id="time_hour" class="input-mini ticket-start-hour" name="ticket_start_hour">
-                                                                                        <?php for ($i = 0; $i <= 12; $i++): ?>
+    <?php for ($i = 0; $i <= 12; $i++): ?>
                                                                                             <option <?php if (date("H") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                         <?php endfor; ?>
                                                                                     </select>
                                                                                     <select id="time_min" class="input-mini ticket-start-minute" name="ticket_start_minute">
-                                                                                        <?php for ($i = 0; $i < 60; $i++): ?>
+    <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                             <option <?php if (date("i") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                        <?php endfor; ?>
+    <?php endfor; ?>
                                                                                     </select>
                                                                                     <select name="start_am_pm">
-                                                                                        <option <?php if(date("a")=='am') echo 'selected' ?> value="am">AM</option>
-                                                                                        <option <?php if(date("a")=='pm') echo 'selected' ?> value="pm">PM</option>
+                                                                                        <option <?php if (date("a") == 'am') echo 'selected' ?> value="am">AM</option>
+                                                                                        <option <?php if (date("a") == 'pm') echo 'selected' ?> value="pm">PM</option>
                                                                                     </select>
                                                                                 </div>
 
@@ -665,18 +690,18 @@ $ticket_status = Helper::ticket_status();
                                                                                     <input type="text" value="<?php echo date('d-m-Y', strtotime("+1 month")); ?>" class="input-mini ico ico-calendar datetimepicker ticket-end-date" name="ticket_end_date" >
 
                                                                                     <select id="time_hour" class="input-mini ticket-end-hour" name="ticket_end_hour">
-                                                                                        <?php for ($i = 0; $i <= 12; $i++): ?>
+    <?php for ($i = 0; $i <= 12; $i++): ?>
                                                                                             <option <?php if (date("H") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                                                         <?php endfor; ?>
                                                                                     </select>
                                                                                     <select id="time_min" class="input-mini ticket-end-minute" name="ticket_end_minute">
-                                                                                        <?php for ($i = 0; $i < 60; $i++): ?>
+    <?php for ($i = 0; $i < 60; $i++): ?>
                                                                                             <option <?php if (date("i") == $i) echo 'selected'; ?> value="<?php echo $i; ?>"><?php echo $i < 10 ? "0$i" : $i; ?></option>
-                                                                                        <?php endfor; ?>
+    <?php endfor; ?>
                                                                                     </select>
                                                                                     <select name="end_am_pm">
-                                                                                        <option <?php if(date("a")=='am') echo 'selected' ?> value="am">AM</option>
-                                                                                        <option <?php if(date("a")=='pm') echo 'selected' ?> value="pm">PM</option>
+                                                                                        <option <?php if (date("a") == 'am') echo 'selected' ?> value="am">AM</option>
+                                                                                        <option <?php if (date("a") == 'pm') echo 'selected' ?> value="pm">PM</option>
                                                                                     </select>
                                                                                 </div>
 
@@ -711,7 +736,7 @@ $ticket_status = Helper::ticket_status();
                                                 </div>
                                                 <!-- end clone tbody if has ticket -->
                                             </div>
-                                        <?php endif; ?>
+<?php endif; ?>
                                         </div>
                                         </div>
                                         </div>

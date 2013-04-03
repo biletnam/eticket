@@ -324,6 +324,9 @@ class EventController extends Controller {
         $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
         $show_tickets = isset($_POST['show_tickets']) ? 1 : 0;
         //$is_repeat = isset($_POST['is_repeat']) ? 1 : 0;
+        
+        $facebook= $_POST['facebook'];
+        $link = $_POST['link'];
 
         if ($this->validator->is_empty_string($title))
             $this->message['error'][] = "Please enter Event Title.";
@@ -411,8 +414,11 @@ class EventController extends Controller {
             'img' => $img,
             'thumbnail' => $thumbnail,
             'description' => $description,
+            'facebook' => $facebook,
+            'link' => $link,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets));
+        
         //'is_repeat' => $is_repeat));
         //delete old event category
         $this->EventModel->delete_event_category($event['id']);
@@ -748,6 +754,9 @@ class EventController extends Controller {
     public function actionInfo($s) {
 
         $event = $this->EventModel->get_by_slug($s);
+        
+    
+        
         if (!$event)
             $this->load_404();
 

@@ -244,7 +244,7 @@ class EventModel extends CFormModel {
     }
 
     public function get_by_slug($slug) {
-        $sql = "SELECT ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as country_id,ec.title as country_title,el.city_title as city
+        $sql = "SELECT eo.title as organizer_title,ee.*,va.email as author,va.id as author_id,el.title as location,va.firstname as firstname, va.lastname as lastname, el.address,ec.id as country_id,ec.title as country_title,el.city_title as city
                 FROM etk_events ee
                 LEFT JOIN etk_users va
                 ON va.id = ee.user_id
@@ -252,6 +252,10 @@ class EventModel extends CFormModel {
                 ON el.id = ee.location_id
                 LEFT JOIN etk_countries ec
                 ON ec.id = el.country_id
+                
+                LEFT JOIN etk_organizers eo
+                ON eo.user_id = ee.user_id
+                
                 WHERE ee.slug = :slug
                 AND ee.deleted = 0
                 ";

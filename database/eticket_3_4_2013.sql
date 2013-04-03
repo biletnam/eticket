@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-04-03 14:55:34
+Date: 2013-04-03 17:08:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -717,7 +717,7 @@ CREATE TABLE `etk_organizers` (
   `img` varchar(20) DEFAULT NULL,
   `thumbnail` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_organizers
@@ -728,6 +728,7 @@ INSERT INTO `etk_organizers` VALUES ('8', '8', null, null, null, '1364290310', n
 INSERT INTO `etk_organizers` VALUES ('9', '9', null, null, null, '1364349771', null, '0', '0', '0', null, null);
 INSERT INTO `etk_organizers` VALUES ('10', '8', null, null, null, '1364965003', null, '0', '0', '0', null, null);
 INSERT INTO `etk_organizers` VALUES ('11', '9', null, null, null, '1364965130', null, '0', '0', '0', null, null);
+INSERT INTO `etk_organizers` VALUES ('12', '10', null, null, null, '1364983499', null, '0', '0', '0', null, null);
 
 -- ----------------------------
 -- Table structure for `etk_paypals`
@@ -960,7 +961,7 @@ CREATE TABLE `etk_users` (
   `deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_users
@@ -969,6 +970,7 @@ INSERT INTO `etk_users` VALUES ('6', '1', 'thanh@gmail.com', '$P$DqXuiPYbUx7AVb9
 INSERT INTO `etk_users` VALUES ('7', '6', 'tung@gmail.com', '$P$DiBHPmx3KIJdtC6o7YI/iCruvLC6z20', 'cFaYF02Ff', 'Tung', 'Nguyen', null, null, null, null, '', '', '1364284894', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'client', '0', '0');
 INSERT INTO `etk_users` VALUES ('8', '1', 'tung123@gmail.com', '$P$DjYtTdvYhi9LFKzGRRU6im2Hu652Nt1', 'e1QMvqiK9', 'Tung', 'Nguyen', null, null, null, null, '', '', '1364965003', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer', '0', '0');
 INSERT INTO `etk_users` VALUES ('9', '1', 'thanh1234@yahoo.com', '$P$DSDO/z71ro.4DMI4WtAruZfUFSUrnM/', '6zjrsN9Ax', 'Thanh', 'Nguyen', null, null, null, null, '', '', '1364965130', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'customer', '0', '0');
+INSERT INTO `etk_users` VALUES ('10', '1', 'thanhnguyen@gmail.com', '$P$D5kkpIDJjMpmOrgsWOjhue4H8q8UWH0', '1H3pfes4d', 'Thanh', 'Nguyen', null, null, null, null, '', '', '1364983499', '0', null, null, '1', '1', '0', '1', '0', '0', '0', '0', 'waiting', '0', '0');
 
 -- ----------------------------
 -- Table structure for `etk_user_metas`
@@ -980,7 +982,7 @@ CREATE TABLE `etk_user_metas` (
   `meta_key` varchar(50) DEFAULT NULL,
   `meta_value` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of etk_user_metas
@@ -1004,6 +1006,9 @@ INSERT INTO `etk_user_metas` VALUES ('19', '8', 'address2', '');
 INSERT INTO `etk_user_metas` VALUES ('20', '9', 'city', 'HCM');
 INSERT INTO `etk_user_metas` VALUES ('21', '9', 'address', 'Phan Sao Nam');
 INSERT INTO `etk_user_metas` VALUES ('22', '9', 'address2', '');
+INSERT INTO `etk_user_metas` VALUES ('23', '10', 'city', 'HCM');
+INSERT INTO `etk_user_metas` VALUES ('24', '10', 'address', 'Fête Chicago');
+INSERT INTO `etk_user_metas` VALUES ('25', '10', 'address2', '');
 
 -- ----------------------------
 -- Table structure for `etk_vote_faq`

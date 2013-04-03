@@ -13,7 +13,7 @@
                             <h4><?php echo $event['location'] ?></h4>
                             <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
 
-                            <b>Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_name'] != "") ? $event['organizer_name'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
+                            <b>Event Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_name'] != "") ? $event['organizer_name'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
 
                             <?php echo '<b>From:</b> ' . date('l,g:ia F j, Y', strtotime($event['start_time'])) ?><br/>
                             <?php echo '<b>To:</b> ' . date('l,g:ia F j, Y', strtotime($event['end_time'])) ?><br/>

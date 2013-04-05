@@ -176,12 +176,12 @@ $countries = Helper::countries();
                     <div class="controls pull-left">
                         <select class="input-medium" name="primary_cate">
 
-                            <option value="0">Primary category</option>                                                    
+                            <option value="0">--- Category ---</option>                                                    
                             <?php foreach ($categories as $k => $v): ?>                
                                 <option <?php if (isset($_POST['primary_cate']) && $_POST['primary_cate'] == $v['id']) echo 'selected'; ?> value="<?php echo $v['id'] ?>"><?php echo $v['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <select class="input-medium" name="second_cate">
+                        <select class="input-medium hide" name="second_cate">
 
                             <option value="0">Secondary category</option>                                                    
                             <?php foreach ($categories as $k => $v): ?>                

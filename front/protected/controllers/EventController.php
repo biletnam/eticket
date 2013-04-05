@@ -147,8 +147,8 @@ class EventController extends Controller {
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a Primary category.";
-        if ($primary_cate == $second_cate)
-            $this->message['error'][] = "Primary category and Second category must be different.";
+//        if ($primary_cate == $second_cate)
+//            $this->message['error'][] = "Primary category and Second category must be different.";
         if ($this->validator->is_empty_string($location))
             $this->message['error'][] = "Please enter the Location.";
         if ($this->validator->is_empty_string($address))
@@ -336,8 +336,8 @@ class EventController extends Controller {
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
             $this->message['error'][] = "Please select a primary category.";
-        if ($primary_cate == $second_cate)
-            $this->message['error'][] = "Primary category and Second category must be different.";
+//        if ($primary_cate == $second_cate)
+//            $this->message['error'][] = "Primary category and Second category must be different.";
         if ($this->validator->is_empty_string($location))
             $this->message['error'][] = "Please enter the location.";
         if ($this->validator->is_empty_string($address))

@@ -15,6 +15,7 @@ $(document).ready(function() {
     setInterval(function() {
         slider_controls();
     }, 2000);
+    jqTransform();
 });
 
 function goToByScroll(id) {
@@ -608,4 +609,9 @@ function upload_logo_event_edit() {
         });
         return false;
     });
+}
+function jqTransform() {
+
+    $('.jq-plugin').jqTransform({imgPath: 'js/jqtransformplugin/img/'});
+
 }

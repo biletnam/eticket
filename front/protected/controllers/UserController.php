@@ -88,6 +88,7 @@ class UserController extends Controller {
         $phone = trim($_POST['phone']);
 
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
+     
 
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email cannot be blank.";

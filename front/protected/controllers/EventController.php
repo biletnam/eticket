@@ -15,6 +15,7 @@ class EventController extends Controller {
     private $TrackingModel;
     private $PaypalModel;
     private $SettingsModel;
+    private $UserModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -49,6 +50,9 @@ class EventController extends Controller {
 
         /* @var $SettingsModel SettingsModel */
         $this->SettingsModel = new SettingsModel();
+        
+         /* @var $UserModel UserModel */
+        $this->UserModel = new UserModel();
     }
 
     /**
@@ -211,10 +215,10 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address,$address_2);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address, $address_2);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address,$address_2);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address, $address_2);
 
 
         //add new event
@@ -325,8 +329,8 @@ class EventController extends Controller {
         $display_end_time = 1;
         $show_tickets = isset($_POST['show_tickets']) ? 1 : 0;
         //$is_repeat = isset($_POST['is_repeat']) ? 1 : 0;
-        
-        $facebook= $_POST['facebook'];
+
+        $facebook = $_POST['facebook'];
         $link = $_POST['link'];
 
         if ($this->validator->is_empty_string($title))
@@ -419,7 +423,7 @@ class EventController extends Controller {
             'link' => $link,
             'published' => $_POST['published'],
             'show_tickets' => $show_tickets));
-        
+
         //'is_repeat' => $is_repeat));
         //delete old event category
         $this->EventModel->delete_event_category($event['id']);
@@ -755,9 +759,9 @@ class EventController extends Controller {
     public function actionInfo($s) {
 
         $event = $this->EventModel->get_by_slug($s);
-        
-    
-        
+
+
+
         if (!$event)
             $this->load_404();
 
@@ -808,9 +812,9 @@ class EventController extends Controller {
         if (!$tmp)
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]");
 
-     
-        
-       $user_id = (UserControl::LoggedIn()==true)  ? UserControl::getId() : "-1";
+
+
+        $user_id = (UserControl::LoggedIn() == true) ? UserControl::getId() : "-1";
 
         $order_id = $this->OrderModel->add($user_id, $event['id'], Yii::app()->request->userHostAddress, Yii::app()->request->userAgent, $use_payment);
         $total = 0;
@@ -842,28 +846,30 @@ class EventController extends Controller {
 
         $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : 0;
         $tmp_token = isset($_GET['token']) ? $_GET['token'] : "";
-        
+
         $return = isset($_GET['back']) ? $_GET['back'] : 0;
-        
-        if($return !=0)
-            $this->OrderModel->update(array('user_id'=>  UserControl::getId(),'id'=>$order_id));
+
+        if ($return != 0)
+            $this->OrderModel->update(array('user_id' => UserControl::getId(), 'id' => $order_id));
 
         $token = $this->EventModel->get_event_token($tmp_token);
-        
-        $count_down = (int)$token['date_expired'] - time();
-        
-        
-        
+
+        $count_down = (int) $token['date_expired'] - time();
+
+
+
         $order = $this->OrderModel->get($order_id);
-        
-      
+
+
 
         if (!$order || $order['user_id'] != UserControl::getId())
             $this->load_404();
 
         $event = $this->EventModel->get($order['event_id']);
-        
 
+        $user_metas = $this->UserModel->get_metas(UserControl::getId());
+        
+        
 
         if (!$event)
             $this->load_404();
@@ -879,13 +885,15 @@ class EventController extends Controller {
 
         if ($_POST)
             $this->do_register($event, $order, $order_details, $token);
-        
+
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
         
+        $this->viewData['user_metas'] = $user_metas;
+
         $this->viewData['count_down'] = $count_down;
-        
+
         $this->viewData['order'] = $order;
         $this->viewData['token'] = $token;
         $this->viewData['message'] = $this->message;

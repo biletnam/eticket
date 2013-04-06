@@ -19,7 +19,7 @@ $countries = Helper::countries();
                         <input type="text" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>" class="input-xxlarge span11">
                     </div>
                 </div>
-                
+
                 <div class="controls-group clearfix hide">
                     <label for="location" class="control-label pull-left ">Location<span class="required">*</span></label>
                     <div class="controls pull-left event-location">
@@ -27,21 +27,21 @@ $countries = Helper::countries();
                         <img src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" class="loading-location hide">
                     </div>
                 </div>
-                
+
                 <div class="controls-group clearfix">
                     <label for="address" class="control-label pull-left">Address<span class="required">*</span></label>
                     <div class="controls pull-left">
                         <input type="text" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']); ?>" name="address" class="input-xxlarge span11">
                     </div>
                 </div>
-                
+
                 <div class="controls-group clearfix">
                     <label for="address" class="control-label pull-left">Address 2</label>
                     <div class="controls pull-left">
                         <input type="text" value="<?php if (isset($_POST['address_2'])) echo htmlspecialchars($_POST['address_2']); ?>" name="address_2" class="input-xxlarge span11">
                     </div>
                 </div>
-                
+
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left" for="address">City<span class="required">*</span></label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']); ?>"></div>
@@ -64,7 +64,12 @@ $countries = Helper::countries();
                         <div class="row-fluid">
                             <p class="start-date-title">Event start</p>
                             <div data-date-format="mm/dd/yyyy" class="input-append date dp3">
-                                <input type="text" value="<?php if (isset($_POST['start_date'])) echo $_POST['start_date']; else echo date('d-m-Y'); ?>" name="start_date" class="input-mini ico ico-calendar datetimepicker">
+                                <input type="text" value="<?php
+                                if (isset($_POST['start_date']))
+                                    echo $_POST['start_date'];
+                                else
+                                    echo date('d-m-Y');
+                                ?>" name="start_date" class="input-mini ico ico-calendar datetimepicker">
 
                                 <select name="start_hour" class="input-mini">
                                     <?php for ($i = 1; $i <= 12; $i++): ?>
@@ -77,8 +82,8 @@ $countries = Helper::countries();
                                     <?php endfor; ?>
                                 </select>       
                                 <select name="start_am_pm">
-                                    <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='am') echo 'selected' ?> value="am">AM</option>
-                                    <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='pm') echo 'selected' ?> value="pm">PM</option>
+                                    <option <?php if (isset($_POST['start_am_pm']) && $_POST['start_am_pm'] == 'am') echo 'selected' ?> value="am">AM</option>
+                                    <option <?php if (isset($_POST['start_am_pm']) && $_POST['start_am_pm'] == 'pm') echo 'selected' ?> value="pm">PM</option>
                                 </select>
                                 <label class="checkbox inline hide">
                                     <input type="checkbox" value="1" name="display_start_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
@@ -92,7 +97,12 @@ $countries = Helper::countries();
                             <p class="end-date-title">Event end</p>
 
                             <div data-date-format="mm/dd/yyyy" class="input-append date dp3">
-                                <input type="text" value="<?php if (isset($_POST['end_date'])) echo $_POST['end_date']; else echo date('d-m-Y'); ?>" name="end_date" class="input-mini ico ico-calendar datetimepicker">
+                                <input type="text" value="<?php
+                                if (isset($_POST['end_date']))
+                                    echo $_POST['end_date'];
+                                else
+                                    echo date('d-m-Y');
+                                ?>" name="end_date" class="input-mini ico ico-calendar datetimepicker">
 
                                 <select name="end_hour" class="input-mini" id="time_hour">
                                     <?php for ($i = 0; $i <= 12; $i++): ?>
@@ -105,17 +115,17 @@ $countries = Helper::countries();
                                     <?php endfor; ?>
                                 </select>                    
                                 <select name="end_am_pm">
-                                    <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='am') echo 'selected' ?> value="am">AM</option>
-                                    <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='pm') echo 'selected' ?> value="pm">PM</option>
+                                    <option <?php if (isset($_POST['end_am_pm']) && $_POST['end_am_pm'] == 'am') echo 'selected' ?> value="am">AM</option>
+                                    <option <?php if (isset($_POST['end_am_pm']) && $_POST['end_am_pm'] == 'pm') echo 'selected' ?> value="pm">PM</option>
                                 </select>
                                 <label class="checkbox inline hide">
                                     <input type="checkbox" value="1" name="display_end_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
                                 <?php /*                                <label class="checkbox inline">
-                                                                    <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
-                                                                    Yes, This is event repeat
-                                                                </label> */ ?>
+                                  <input type="checkbox" name="is_repeat" value="1" <?php if (isset($_POST['is_repeat'])) echo 'checked'; ?>>
+                                  Yes, This is event repeat
+                                  </label> */ ?>
                             </div>
 
                         </div>
@@ -153,13 +163,13 @@ $countries = Helper::countries();
                     </div>
                 </div>                                        
 
-           
-                
+
+
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left">Facebook URL</label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="facebook" value="<?php if (isset($_POST['facebook'])) echo htmlspecialchars($_POST['facebook']); ?>"></div>
                 </div>
-                
+
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left">Event URL</label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="link" value="<?php if (isset($_POST['link'])) echo htmlspecialchars($_POST['link']); ?>"></div>
@@ -196,12 +206,16 @@ $countries = Helper::countries();
                 </div>
 
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left" for="optionsCheckbox">The number of tickets remaining</label>
+                    <label class="control-label pull-left" for="optionsCheckbox">&nbsp;</label>
                     <div class="controls pull-left">
-                        <label class="checkbox">
-                            <input type="checkbox" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?>>
-                            Show number of tickets remaining on the registration page
-                        </label>
+                        <div class="rowElem">
+                            <div class="jq-plugin clearfix">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?>>
+                                    CHECK HERE TO SHOW THE NUMBER OF ETICKETS REMAINING
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

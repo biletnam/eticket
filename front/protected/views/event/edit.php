@@ -226,12 +226,16 @@ $ticket_status = Helper::ticket_status();
                             </div>
 
                             <div class="controls-group clearfix">
-                                <label for="optionsCheckbox" class="control-label pull-left">The number of tickets remaining</label>
+                                <label for="optionsCheckbox" class="control-label pull-left">&nbsp;</label>
                                 <div class="controls pull-left">
-                                    <label class="checkbox">
-                                        <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked';else if ($event['show_tickets']) echo 'checked'; ?> >
-                                        Show number of tickets remaining on the registration page.
-                                    </label>
+                                    <div class="rowElem">
+                                        <div class="jq-plugin clearfix">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked';else if ($event['show_tickets']) echo 'checked'; ?> >
+                                                CHECK HERE TO SHOW THE NUMBER OF ETICKETS REMAINING
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

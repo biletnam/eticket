@@ -69,8 +69,12 @@
             </div>
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
-                <div class="controls pull-left">
-                    <label style="color:red" class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  <b>Register as an Event Organizer.</b></label>
+                <div class="controls pull-left" style="width: 415px">
+                    <div class="rowElem">
+                         <div class="jq-plugin clearfix">
+                             <label class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  Register as an Event Organizer.</label>
+                         </div>
+                    </div>
                 </div>
             </div>
           

@@ -153,7 +153,7 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Phone <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ($order['phone'] != "" ? $order['phone'] : UserControl::getPhone()); ?>"/>
+                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ($order['phone'] != "" ? $order['phone'] : (isset($user_metas['phone'])) ? $user_metas['phone'] :''  ); ?>"/>
                                     </div>
                                 </div>
                             </div>
@@ -164,21 +164,21 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Address <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : $order['address']; ?>"/>
+                                        <input type="text" class="input-medium" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : ($order['address'] != "" ? $order['address'] : (isset($user_metas['address'])) ? $user_metas['address'] :''  ); ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Address 2</label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="address_2" value="<?php echo isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : $order['address_2']; ?>"/>
+                                        <input type="text" class="input-medium" name="address_2" value="<?php echo isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : ($order['address_2'] != "" ? $order['address_2'] : (isset($user_metas['address_2'])) ? $user_metas['address_2'] :''  ); ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">City <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $order['city']; ?>"/>
+                                        <input type="text" class="input-medium" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ($order['city'] != "" ? $order['city'] : (isset($user_metas['city'])) ? $user_metas['city'] :''  ); ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">

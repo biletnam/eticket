@@ -43,6 +43,14 @@
                     <input type="text" class="input-large" name="address2"/>
                 </div>
             </div>
+            
+             <div class="controls-group clearfix">
+                <label class="control-label pull-left">Phone (Home or Mobile): <span class="required">*</span></label>
+                <div class="controls pull-left">
+                    <input type="text" class="input-large" name="phone"/>
+                </div>
+            </div>
+            
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">City <span class="required">*</span></label>
                 <div class="controls pull-left">

@@ -283,5 +283,43 @@ class HelperApp {
         @mail($to, $subject, $message, $header);
     }
     
+    public static function email_register_organizer($to,$name,$from = 'noreply@360islandevents.com',$footer = true){
+         if ($footer)
+            $message .= '';
+         $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From:  <$from>\r\n" .
+                "Reply-to: $from" .
+                "Date: " . date("r") . "\r\n";
+         
+         $subject = 'Eticket - Register as an Event Organizer';
+         $message ='Dear '.$name. '<br/> <br/> 
+             Your Register is successful, you can view and buy ticket. <br/>
+             Your register of Event Oraginzer is waitting to approve by admin. We will send you other email when it finnish.';
+
+         @mail($to, $subject, $message, $header);
+    }
+    
+    public static function email_register($to,$name,$from = 'noreply@360islandevents.com',$footer = true){
+         if ($footer)
+            $message .= '';
+         $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From:  <$from>\r\n" .
+                "Reply-to: $from" .
+                "Date: " . date("r") . "\r\n";
+         
+         $subject = 'Eticket - Register as an Event Organizer';
+         $message ='Dear '.$name. '<br/> <br/> 
+             Your Register is successful, you can view and buy ticket. <br/>';
+            
+
+         @mail($to, $subject, $message, $header);
+    }
+    
+    
+    
  
 }

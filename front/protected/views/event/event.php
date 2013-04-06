@@ -12,8 +12,9 @@
                         <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
 
-                            <h4><?php echo $event['location'] ?></h4>
-                            <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
+                          
+                            <b>Address:</b> <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
+                            <?php if($event['address_2']!=''):?><b>Address 2:</b>:<?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?><br/><?php endif;?>
 
                             <b>Event Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_title'] != "") ? $event['organizer_title'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
 
@@ -126,8 +127,11 @@
                             <br/>
                         </div>
                         <div class="vcard">
-                            <h6><?php echo $event['location'] ?></h6>
-                            <p><?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
+                            
+                            <p>Address: <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
+                            <?php if ($event['address_2'] != ''):  ?>
+                            <p>Address 2: <?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?></p>
+                            <?php endif;?>
                         </div>
 
 

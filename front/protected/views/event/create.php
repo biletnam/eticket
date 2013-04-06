@@ -14,30 +14,40 @@ $countries = Helper::countries();
                 </div>
 
                 <div class="controls-group clearfix">
-                    <label for="title" class="control-label pull-left">Add Event Title<span class="required">*</span></label>
+                    <label for="title" class="control-label pull-left">Event Title<span class="required">*</span></label>
                     <div class="controls pull-left">
                         <input type="text" name="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>" class="input-xxlarge span11">
                     </div>
                 </div>
-                <div class="controls-group clearfix">
+                
+                <div class="controls-group clearfix hide">
                     <label for="location" class="control-label pull-left ">Location<span class="required">*</span></label>
                     <div class="controls pull-left event-location">
                         <input type="text" value="<?php if (isset($_POST['location'])) echo htmlspecialchars($_POST['location']); ?>" name="location" class="input-xxlarge span11" id="add_location">
                         <img src="<?php echo HelperUrl::baseUrl() ?>img/ajax-big-roller.gif" class="loading-location hide">
                     </div>
                 </div>
+                
                 <div class="controls-group clearfix">
-                    <label for="address" class="control-label pull-left">Address</label>
+                    <label for="address" class="control-label pull-left">Address<span class="required">*</span></label>
                     <div class="controls pull-left">
                         <input type="text" value="<?php if (isset($_POST['address'])) echo htmlspecialchars($_POST['address']); ?>" name="address" class="input-xxlarge span11">
                     </div>
                 </div>
+                
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left" for="address">City</label>
+                    <label for="address" class="control-label pull-left">Address 2</label>
+                    <div class="controls pull-left">
+                        <input type="text" value="<?php if (isset($_POST['address_2'])) echo htmlspecialchars($_POST['address_2']); ?>" name="address_2" class="input-xxlarge span11">
+                    </div>
+                </div>
+                
+                <div class="controls-group clearfix">
+                    <label class="control-label pull-left" for="address">City<span class="required">*</span></label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="city" value="<?php if (isset($_POST['city'])) echo htmlspecialchars($_POST['city']); ?>"></div>
                 </div>
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">Country</label>
+                    <label class="control-label pull-left">Country<span class="required">*</span></label>
                     <div class="controls pull-left">
                         <?php //print_r($countries);die; ?>
                         <select name="country">
@@ -48,7 +58,7 @@ $countries = Helper::countries();
                     </div>
                 </div>
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">Add When<span class="required">*</span></label>
+                    <label class="control-label pull-left">Date & Time<span class="required">*</span></label>
                     <div class="controls pull-left">
 
                         <div class="row-fluid">
@@ -70,7 +80,7 @@ $countries = Helper::countries();
                                     <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='am') echo 'selected' ?> value="am">AM</option>
                                     <option <?php if(isset($_POST['start_am_pm']) && $_POST['start_am_pm']=='pm') echo 'selected' ?> value="pm">PM</option>
                                 </select>
-                                <label class="checkbox inline">
+                                <label class="checkbox inline hide">
                                     <input type="checkbox" value="1" name="display_start_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
@@ -98,7 +108,7 @@ $countries = Helper::countries();
                                     <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='am') echo 'selected' ?> value="am">AM</option>
                                     <option <?php if(isset($_POST['end_am_pm']) && $_POST['end_am_pm']=='pm') echo 'selected' ?> value="pm">PM</option>
                                 </select>
-                                <label class="checkbox inline">
+                                <label class="checkbox inline hide">
                                     <input type="checkbox" value="1" name="display_end_time" <?php if (isset($_POST['display_start_time'])) echo 'checked'; ?>>
                                     Show
                                 </label>
@@ -115,7 +125,7 @@ $countries = Helper::countries();
                 </div>
 
                 <div class="controls-group clearfix upload">
-                    <label for="title" class="control-label pull-left">Upload the photo for your event:</label>
+                    <label for="title" class="control-label pull-left">Event Logo:</label>
                     <div class="controls pull-left">
                         <div class="event-logo pull-left">
                             <img src="<?php echo HelperUrl::baseUrl() ?>img/default_upload_logo.gif" class="image-default logo-default">
@@ -125,8 +135,7 @@ $countries = Helper::countries();
                             <input type="hidden" name="name_temp" class="name_temp" value="<?php if (isset($_POST['name_temp'])) echo $_POST['name_temp']; ?>"/>
                         </div>
                         <div class="event-logo-upload pull-left">
-                            <p class="help-block">Must be JPG, GIF, or PNG smaller than 2MB.<br/>
-                            We allow only 1920 x 1080 photo. Please upload correct one.
+                            <p class="help-block">Image must be JPG, GIF or PNG.<br/> Image must be 1920 x 1080 px and smaller than 2MB.
                             </p>
                             <div><input type="file" name="file" class="fileupload customfile-input"></div>
                             <div class="error1"></div>
@@ -144,24 +153,19 @@ $countries = Helper::countries();
                     </div>
                 </div>                                        
 
-                <div class="ticket-ridges"></div>
-
-                <div class="step"> 
-                    <div class="number"><span>2</span></div>
-                    <h3>Option</h3>
-                </div>
+           
                 
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">Facebook</label>
+                    <label class="control-label pull-left">Facebook URL</label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="facebook" value="<?php if (isset($_POST['facebook'])) echo htmlspecialchars($_POST['facebook']); ?>"></div>
                 </div>
                 
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">Link</label>
+                    <label class="control-label pull-left">Event URL</label>
                     <div class="controls pull-left"><input type="text" class="input-xxlarge span11" name="link" value="<?php if (isset($_POST['link'])) echo htmlspecialchars($_POST['link']); ?>"></div>
                 </div>
 
-                <div class="controls-group clearfix">
+                <div class="controls-group clearfix hide">
                     <label class="control-label pull-left" for="select01">This event will public and registered.</label>
                     <div class="controls pull-left">
                         <select class="input-mini" name="published">
@@ -172,7 +176,7 @@ $countries = Helper::countries();
                 </div>
 
                 <div class="controls-group clearfix">
-                    <label class="control-label pull-left">Select categories for your event</label>
+                    <label class="control-label pull-left">Event Category</label>
                     <div class="controls pull-left">
                         <select class="input-medium" name="primary_cate">
 
@@ -205,7 +209,7 @@ $countries = Helper::countries();
                 <div class="controls-group clearfix">
                     <label class="control-label pull-left" for="optionsCheckbox">&nbsp;</label>
                     <div class="controls pull-left clearfix">
-                        <input type="submit" class="btn pull-right" value="SAVE"/>
+                        <input type="submit" class="btn pull-right" value="Save Event"/>
                     </div>
                 </div>
 

@@ -118,6 +118,7 @@ class EventController extends Controller {
         $location_id = $_POST['location_id'];
         $location = trim($_POST['location']);
         $address = trim($_POST['address']);
+        $address_2 = trim($_POST['address_2']);
         $city = trim($_POST['city']);
         $country = trim($_POST['country']);
         $start_date = trim($_POST['start_date']);
@@ -131,8 +132,8 @@ class EventController extends Controller {
         $end_minute = trim($_POST['end_minute']);
         $end_am_pm = trim($_POST['end_am_pm']);
         $description = trim($_POST['description']);
-        $display_start_time = isset($_POST['display_start_time']) ? 1 : 0;
-        $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
+        $display_start_time = 1;
+        $display_end_time = 1;
         $show_tickets = isset($_POST['show_tickets']) ? 1 : 0;
 
         $facebook = $_POST['facebook'];
@@ -146,11 +147,11 @@ class EventController extends Controller {
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
-            $this->message['error'][] = "Please select a Primary category.";
+            $this->message['error'][] = "Please select Category.";
 //        if ($primary_cate == $second_cate)
 //            $this->message['error'][] = "Primary category and Second category must be different.";
-        if ($this->validator->is_empty_string($location))
-            $this->message['error'][] = "Please enter the Location.";
+//        if ($this->validator->is_empty_string($location))
+//            $this->message['error'][] = "Please enter the Location.";
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Please enter the Address.";
         if ($this->validator->is_empty_string($city))
@@ -210,10 +211,10 @@ class EventController extends Controller {
         if ($location_id) {
             $loc = $this->LocationModel->get($location_id);
             if ($loc['title'] != $location || $loc['country_id'] != $country)
-                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
+                $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address,$address_2);
         }
         else
-            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address);
+            $location_id = $this->LocationModel->add($location, Helper::create_slug($location), $country, $city, $address,$address_2);
 
 
         //add new event
@@ -320,8 +321,8 @@ class EventController extends Controller {
         $end_minute = trim($_POST['end_minute']);
         $end_am_pm = trim($_POST['end_am_pm']);
         $description = trim($_POST['description']);
-        $display_start_time = isset($_POST['display_start_time']) ? 1 : 0;
-        $display_end_time = isset($_POST['display_end_time']) ? 1 : 0;
+        $display_start_time = 1;
+        $display_end_time = 1;
         $show_tickets = isset($_POST['show_tickets']) ? 1 : 0;
         //$is_repeat = isset($_POST['is_repeat']) ? 1 : 0;
         
@@ -335,11 +336,11 @@ class EventController extends Controller {
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(1920, 1080, $file['tmp_name']))
             $this->message['error'][] = "Image's size does not correct.";
         if (!$primary_cate)
-            $this->message['error'][] = "Please select a primary category.";
+            $this->message['error'][] = "Please select a Category.";
 //        if ($primary_cate == $second_cate)
 //            $this->message['error'][] = "Primary category and Second category must be different.";
-        if ($this->validator->is_empty_string($location))
-            $this->message['error'][] = "Please enter the location.";
+//        if ($this->validator->is_empty_string($location))
+//            $this->message['error'][] = "Please enter the location.";
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Please enter the address.";
         if (count($start_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
@@ -349,7 +350,7 @@ class EventController extends Controller {
         if (count($end_date) != 3 || !$this->validator->is_valid_date($start_date[0], $start_date[1], $start_date[2]))
             $this->message['error'][] = "Date ends incorrect.";
         if ($this->validator->is_empty_string($description))
-            $this->message['error'][] = "Please enter Event Detail.";
+            $this->message['error'][] = "Please enter Event Description.";
 
         if (count($this->message['error'])) {
             $this->message['success'] = false;
@@ -861,6 +862,8 @@ class EventController extends Controller {
             $this->load_404();
 
         $event = $this->EventModel->get($order['event_id']);
+        
+
 
         if (!$event)
             $this->load_404();

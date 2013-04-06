@@ -5,7 +5,7 @@ $(document).ready(function() {
     bind_user();
     bind_category();
     bind_event();
-
+    load_eticket_information();
     contact_form();
 
     payment_count_down();
@@ -42,17 +42,17 @@ function timer()
     if (sec < 10)
         sec = '0' + sec;
     var min = Math.floor((count / 60));
-    
+
     var url = $('#url_back').val();
 
     $('.timer').text(min + ':' + sec);
 
     if (count / 60 < 10)
         min = '0' + min;
-    
+
     if (count <= 0)
     {
-        window.location = url+"?wok=1&msg=Your session expired. Please try again.";
+        window.location = url + "?wok=1&msg=Your session expired. Please try again.";
         clearInterval(counter);
         return;
     }
@@ -319,6 +319,13 @@ function bind_mce() {
 
 }
 
+function load_eticket_information() {
+    if ($('#edit_ticket_form').length == 0 || $('.table-ticket:not(.clone)').length > 0)
+        return false;
+    
+    $(".btn-ticket").trigger('click');
+
+}
 
 function bind_event() {
     $(".create-magu .make_event_live").click(function() {

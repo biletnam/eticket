@@ -84,6 +84,9 @@ class UserController extends Controller {
         $is_session = isset($_POST['remember']) ? false : true;
         $city = trim($_POST['city']);
         $country_id = trim($_POST['country']);
+
+        $phone = trim($_POST['phone']);
+
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
 
         if ($this->validator->is_empty_string($email))
@@ -108,6 +111,8 @@ class UserController extends Controller {
             $this->message['error'][] = "Lastname must not contains any speacial characters.";
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Address cannot be blank.";
+        if ($this->validator->is_empty_string($phone))
+            $this->message['error'][] = "Phone cannot be blank.";
         if ($this->validator->is_empty_string($city))
             $this->message['error'][] = "City cannot be blank.";
         if (preg_match($special_char, $city))
@@ -127,13 +132,18 @@ class UserController extends Controller {
         $this->UserModel->add_meta('city', $city, $user_id);
         $this->UserModel->add_meta('address', $address, $user_id);
         $this->UserModel->add_meta('address2', $address2, $user_id);
+        $this->UserModel->add_meta('phone', $phone, $user_id);
 
         $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
 
         $url = isset($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
 
-
+        if ($client == 'waiting')
+            HelperApp::email_register_organizer($email, $firstname);
+        else
+            HelperApp::email_register($email, $firstname);
+        
         $this->redirect($url);
     }
 
@@ -568,9 +578,9 @@ class UserController extends Controller {
     }
 
     public function actionLoginfacebook() {
-        
-        
-        
+
+
+
         $app_id = "104204896436938";
         $app_secret = "d6a281b62853338ba8d41fdf4c5df216";
         $my_url = HelperUrl::baseUrl(true) . "user/loginfacebook/";
@@ -617,7 +627,7 @@ class UserController extends Controller {
             $secret_key = Ultilities::base32UUID();
             $user_id = $this->UserModel->add($user_info->email, '', $secret_key, $user_info->name, '', 1, 'customer', 1);
             HelperApp::add_cookie('secret_key', $secret_key, $is_session);
-            
+
             $url = isset($_GET['return']) ? urldecode($_GET['return']) : Yii::app()->request->baseUrl . "/home/";
             $this->redirect($url);
         } else {

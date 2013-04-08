@@ -29,7 +29,7 @@ $ticket_status = Helper::ticket_status();
                         <?php echo Helper::print_error($message); ?>
                         <?php echo Helper::print_success($message); ?>
                         <div class="span10 form-magu">
-                            <div class="step"> <div class="number"><span>1</span></div>
+                            <div class="step hide"> <div class="number"><span>1</span></div>
                                 <h3>Event Information</h3>
                             </div>
 
@@ -274,7 +274,7 @@ $ticket_status = Helper::ticket_status();
 
                     <div class="span10 form-magu">
 
-                        <div class="step"> <div class="number"><span>2</span></div>
+                        <div class="step hide"> <div class="number"><span>2</span></div>
                             <h3>eTicket Information</h3>
                         </div>
                         <div class="add_ticket_container">

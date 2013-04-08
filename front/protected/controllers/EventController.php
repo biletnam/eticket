@@ -1320,8 +1320,8 @@ class EventController extends Controller {
 
         $message.= '<br/><br/>
                     
-                    
-                    ';
+
+                    ';        
         HelperApp::email($order['email'], "Register event " . $event['title'], $message);
     }
 

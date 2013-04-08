@@ -44,7 +44,7 @@
                 </div>
             </div>
             
-             <div class="controls-group clearfix">
+             <div class="controls-group clearfix hide">
                 <label class="control-label pull-left">Phone (Home or Mobile): <span class="required">*</span></label>
                 <div class="controls pull-left">
                     <input type="text" class="input-large" name="phone"/>
@@ -72,7 +72,7 @@
                 <div class="controls pull-left" style="width: 415px">
                     <div class="rowElem">
                          <div class="jq-plugin clearfix">
-                             <label class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  Register as an Event Organizer.</label>
+                             <label class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  CHECK HERE TO REGISTER AS AN EVENT ORGANIZER.</label>
                          </div>
                     </div>
                 </div>

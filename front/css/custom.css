@@ -18,7 +18,7 @@
     width: 64px;}
 .font-login{font-weight: 300;color:#666}
 .form-login{width: 400px;margin-bottom: 50px;height: 310px}  
-.rowElem{display: block;padding:10px 5px;background-color: #dedede}
+.rowElem{display: block;padding:14px 12px;background-color: #eceaeb}
 
 .use-payment{margin:8px 10px 0 10px;}
 .payment-ticket .input-mini{width: 65px !important;}

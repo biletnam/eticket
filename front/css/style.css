@@ -652,7 +652,7 @@ i{display: inline-block;position: relative}
 .event.event-box{margin-bottom: 20px}
 .page-event-register{}
     .page-event-register .form-style{background-color: transparent;padding:0}
-    .page-event-register .alert{color:#282727;padding:8px 15px;margin-bottom: 0}
+    .page-event-register .alert.countdown{color:#282727;padding:8px 15px;margin-bottom: 0}
     .page-event-register .countdown{font-size: 12px}
         .page-event-register .countdown .timer{width: 70px;margin-right: 20px;font-size: 30px;margin-top: 10px;}
         .page-event-register .countdown .notification{width: 465px}

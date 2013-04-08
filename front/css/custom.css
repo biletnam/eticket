@@ -19,3 +19,6 @@
 .font-login{font-weight: 300;color:#666}
 .form-login{width: 400px;margin-bottom: 50px;height: 310px}  
 .rowElem{display: block;padding:10px 5px;background-color: #dedede}
+
+.use-payment{margin:8px 10px 0 10px;}
+.input-mini{width: 65px !important;}

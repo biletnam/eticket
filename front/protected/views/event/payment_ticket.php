@@ -72,7 +72,7 @@
 //                                                if($t['service_fee'])
 //                                                    echo $t['price']*1.1;
 //                                                else
-                                                echo $t['price'];
+                                            echo $t['price'];
                                                 ?>
                                             </td>
                                             <td><?php echo $t['quantity'] ?></td>                                        
@@ -153,7 +153,7 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Phone <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ($order['phone'] != "" ? $order['phone'] : (isset($user_metas['phone'])) ? $user_metas['phone'] :''  ); ?>"/>
+                                        <input type="text" class="input-medium" name="phone" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ($order['phone'] != "" ? $order['phone'] : (isset($user_metas['phone'])) ? $user_metas['phone'] : '' ); ?>"/>
                                     </div>
                                 </div>
                             </div>
@@ -164,21 +164,21 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Address <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : ($order['address'] != "" ? $order['address'] : (isset($user_metas['address'])) ? $user_metas['address'] :''  ); ?>"/>
+                                        <input type="text" class="input-medium" name="address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : ($order['address'] != "" ? $order['address'] : (isset($user_metas['address'])) ? $user_metas['address'] : '' ); ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Address 2</label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="address_2" value="<?php echo isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : ($order['address_2'] != "" ? $order['address_2'] : (isset($user_metas['address_2'])) ? $user_metas['address_2'] :''  ); ?>"/>
+                                        <input type="text" class="input-medium" name="address_2" value="<?php echo isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : ($order['address_2'] != "" ? $order['address_2'] : (isset($user_metas['address_2'])) ? $user_metas['address_2'] : '' ); ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">City <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ($order['city'] != "" ? $order['city'] : (isset($user_metas['city'])) ? $user_metas['city'] :''  ); ?>"/>
+                                        <input type="text" class="input-medium" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ($order['city'] != "" ? $order['city'] : (isset($user_metas['city'])) ? $user_metas['city'] : '' ); ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
@@ -193,6 +193,50 @@
                                 </div>
 
                             </div>
+                            <?php if ($type == "direct_payment"): ?>
+                                <div class="box-register-info">
+                                    <legend class="text-bold">Card Information</legend>
+
+                                    <div class="controls-group clearfix">
+                                        <label class="control-label pull-left">Card Type <span class="required">*</span></label>
+                                        <div class="controls pull-left">
+                                            <select name="card_type" class="input-medium">
+                                                <?php foreach (Helper::get_card_types() as $k => $v): ?>
+                                                    <option value="<?php echo $k; ?>" <?php echo isset($_POST['card_type']) && $_POST['card_type'] == $k ? 'selected' : ''; ?>><?php echo $v; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="controls-group clearfix">
+                                        <label class="control-label pull-left">Cardholder Name <span class="required">*</span></label>
+                                        <div class="controls pull-left">
+                                            <input type="text" class="input-medium" name="card_name" value="<?php echo isset($_POST['card_name']) ? htmlspecialchars($_POST['card_name']) : ""; ?>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="controls-group clearfix">
+                                        <label class="control-label pull-left">Card Number <span class="required">*</span></label>
+                                        <div class="controls pull-left">
+                                            <input type="text" class="input-medium" name="card_number" value="<?php echo isset($_POST['card_number']) ? htmlspecialchars($_POST['card_number']) : ""; ?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="controls-group clearfix">
+                                        <label class="control-label pull-left">Expiration [ mm / yyyy ] <span class="required">*</span></label>
+                                        <div class="controls pull-left">
+                                            <input type="text" class="input-mini" name="card_month" value="<?php echo isset($_POST['card_month']) ? htmlspecialchars($_POST['card_month']) : ""; ?>"/>
+                                            <input type="text" class="input-mini" name="card_year" value="<?php echo isset($_POST['card_year']) ? htmlspecialchars($_POST['card_year']) : ""; ?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="controls-group clearfix">
+                                        <label class="control-label pull-left">CVV Number <span class="required">*</span></label>
+                                        <div class="controls pull-left">
+                                            <input type="text" class="input-mini" name="cvv_number" value="<?php echo isset($_POST['cvv_number']) ? htmlspecialchars($_POST['cvv_number']) : ""; ?>"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
                             <?php /*
                               <div class="box-register-info">
                               <legend class="text-bold">Credit Card</legend>
@@ -284,7 +328,15 @@
                              * 
                              */ ?>
                             <div class="actions clearfix">
-                                <input type="submit" class="btn pull-right" value="Pay Now"/>
+                                <?php if ($type == "normal"): ?>
+                                    <a class="pull-right btn" href="<?php echo HelperUrl::baseUrl(); ?>event/register/?order_id=<?php echo $order['id']; ?>&token=<?php echo $token['token']; ?>&type=direct_payment">Direct Payment</a>
+                                    <span class="pull-right use-payment">Or use</span> 
+                                    <input type="submit" class="btn pull-right" value="Pay Now"/> 
+                                <?php else: ?>
+                                    <a class="pull-right btn" href="<?php echo HelperUrl::baseUrl(); ?>event/register/?order_id=<?php echo $order['id']; ?>&token=<?php echo $token['token']; ?>">Normal Payment</a>
+                                    <span class="pull-right use-payment">Or use</span> 
+                                    <input type="submit" class="btn pull-right" value="Pay Now"/> 
+                                <?php endif; ?>
                             </div>
                         </form>
                     </div>
@@ -302,9 +354,9 @@
                         <div class="vcard">
 
                             <p>Address: <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
-                            <?php if ($event['address_2'] != ''):  ?>
-                            <p>Address 2:<?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?></p>
-                            <?php endif;?>
+                            <?php if ($event['address_2'] != ''): ?>
+                                <p>Address 2:<?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?></p>
+                            <?php endif; ?>
                         </div>
 
 

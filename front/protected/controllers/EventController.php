@@ -50,8 +50,8 @@ class EventController extends Controller {
 
         /* @var $SettingsModel SettingsModel */
         $this->SettingsModel = new SettingsModel();
-        
-         /* @var $UserModel UserModel */
+
+        /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
     }
 
@@ -605,7 +605,7 @@ class EventController extends Controller {
             'hide_description' => $ticket_hide_description, 'sale_start' => $sale_start,
             'sale_end' => $sale_end, 'minimum' => $ticket_min,
             'maximum' => $ticket_max, 'service_fee' => $service_fee
-        ));
+                ));
 
         $this->message['error'][] = "New ticket has been added successfully.";
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
@@ -846,6 +846,7 @@ class EventController extends Controller {
 
         $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : 0;
         $tmp_token = isset($_GET['token']) ? $_GET['token'] : "";
+        $type = isset($_GET['type']) && $_GET['type'] == "direct_payment" ? "direct_payment" : "normal";
 
         $return = isset($_GET['back']) ? $_GET['back'] : 0;
 
@@ -868,8 +869,8 @@ class EventController extends Controller {
         $event = $this->EventModel->get($order['event_id']);
 
         $user_metas = $this->UserModel->get_metas(UserControl::getId());
-        
-        
+
+
 
         if (!$event)
             $this->load_404();
@@ -883,22 +884,223 @@ class EventController extends Controller {
 
         $order_details = $this->OrderModel->get_details($order_id);
 
-        if ($_POST)
+        if ($_POST && $type == "normal")
             $this->do_register($event, $order, $order_details, $token);
+        else if ($_POST && $type == "direct_payment")
+            $this->do_direct_payment($event, $order, $order_details, $token);
 
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
-        
         $this->viewData['user_metas'] = $user_metas;
-
         $this->viewData['count_down'] = $count_down;
-
         $this->viewData['order'] = $order;
         $this->viewData['token'] = $token;
         $this->viewData['message'] = $this->message;
+        $this->viewData['type'] = $type;
         Yii::app()->params['page'] = 'eTicket Payment';
         $this->render('payment_ticket', $this->viewData);
+    }
+
+    private function do_direct_payment($event, $order, $order_details, $token) {
+
+        $usd = $this->SettingsModel->get_usd();
+        $ttd = $this->SettingsModel->get_ttd();
+
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
+        $email = trim($_POST['email']);
+        $phone = trim($_POST['phone']);
+        $address = trim($_POST['address']);
+        $address_2 = trim($_POST['address_2']);
+        $city = trim($_POST['city']);
+        $country = $_POST['country_id'];
+        $card_type = $_POST['card_type'];
+        $card_name = trim($_POST['card_name']);
+        $card_number = trim($_POST['card_number']);
+        $card_month = intval(trim($_POST['card_month']));
+        $card_year = intval(trim($_POST['card_year']));
+        $cvv_number = trim($_POST['cvv_number']);
+
+
+        if ($this->validator->is_empty_string($firstname))
+            $this->message['error'][] = "First name cannot be blank.";
+        if ($this->validator->is_empty_string($lastname))
+            $this->message['error'][] = "Last name cannot be blank.";
+        if ($this->validator->is_empty_string($email))
+            $this->message['error'][] = "Email cannot be blank.";
+        if (!$this->validator->is_email($email))
+            $this->message['error'][] = "Email is not correct format.";
+        if ($this->validator->is_empty_string($phone))
+            $this->message['error'][] = "Phone cannot be blank.";
+
+        if ($this->validator->is_empty_string($address))
+            $this->message['error'][] = "Address cannot be blank.";
+        if ($this->validator->is_empty_string($city))
+            $this->message['error'][] = "City cannot be blank.";
+
+        if (array_search($card_type, Helper::get_card_types()) === false)
+            $this->message['error'][] = "Card type is not correct.";
+        if ($this->validator->is_empty_string($card_name))
+            $this->message['error'][] = "Card name cannot be blank.";
+        if ($this->validator->is_empty_string($card_number))
+            $this->message['error'][] = "Card number cannot be blank.";
+        if (!$this->validator->is_credit_card($card_number))
+            $this->message['error'][] = "Card number is not correct format.";
+        if (!$card_month || $card_month < 1 || $card_month > 12)
+            $this->message['error'][] = "Card month is not correct.";
+        if (!$card_year || strlen($card_year) != 4)
+            $this->message['error'][] = "Card year is not correct.";
+        if ($card_month < intval(date('n')) && $card_year < intval(date('Y')))
+            $this->message['error'][] = "Your card has expired.";
+        if ($this->validator->is_empty_string($cvv_number))
+            $this->message['error'][] = "CVV Number cannot be blank.";
+
+        if (count($this->message['error']) > 0) {
+            $this->message['success'] = false;
+            return false;
+        }
+
+        //update order information
+
+        $this->OrderModel->update(array(
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'phone' => $phone,
+            'address' => $address,
+            'address_2' => $address_2,
+            'city' => $city,
+            'country_id' => $country,
+            'email' => $email,
+            'id' => $order['id']
+        ));
+
+        $order = $this->OrderModel->get($order['id']);
+        // if this order does not use payment then insert to database normally
+        if ($order['use_payment'] == 0) {
+            foreach ($order_details as $k => $v) {
+
+                for ($i = 0; $i < $v['quantity']; $i++) {
+                    $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                }
+            }
+
+            $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
+            $this->email_register_event($order, $order_details);
+            $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]?iok=1&msg=Thank you for joining our event.");
+        } else {
+
+            $amount = round($order['total'] * ($usd['option_value'] / $ttd['option_value']),2);                        
+            $currency = "USD";
+            $payment_to = Yii::app()->params['business'];
+            //add to tracking record
+            $tracking_id = $this->TrackingModel->add('paypal', $payment_to, $currency, UserControl::getId(), $amount, 'purchase_ticket');
+            $this->TrackingModel->add_meta('payment_type', 'direct_payment', $tracking_id);
+            // Set request-specific fields.
+            $paymentType = urlencode('Authorization');    // or 'Sale'
+            $firstName = urlencode($firstname);
+            $lastName = urlencode($lastname);
+            $creditCardType = urlencode($card_type);
+            $creditCardNumber = urlencode($card_number);
+            $expDateMonth = $card_month;
+// Month must be padded with leading zero
+            $padDateMonth = urlencode(str_pad($expDateMonth, 2, '0', STR_PAD_LEFT));
+
+            $expDateYear = urlencode($card_year);
+            $cvv2Number = urlencode($cvv_number);
+            $address1 = urlencode($address);
+            $address2 = urlencode($address_2);
+            $city = urlencode($city);
+            $state = urlencode("");
+            $zip = urlencode("");
+            $country = urlencode("US");    // US or other valid country code
+            $amount = urlencode($amount);
+            $currencyID = urlencode($currency);       // or other currency ('GBP', 'EUR', 'JPY', 'CAD', 'AUD')
+// Add request-specific fields to the request string.
+            $nvpStr = "&PAYMENTACTION=$paymentType&AMT=$amount&CREDITCARDTYPE=$creditCardType&ACCT=$creditCardNumber" .
+                    "&EXPDATE=$padDateMonth$expDateYear&CVV2=$cvv2Number&FIRSTNAME=$firstName&LASTNAME=$lastName" .
+                    "&STREET=$address1&CITY=$city&STATE=$state&ZIP=$zip&COUNTRYCODE=$country&CURRENCYCODE=$currencyID";
+
+// Execute the API operation; see the PPHttpPost function above.
+            $httpParsedResponseAr = $this->PPHttpPost('DoDirectPayment', $nvpStr);
+
+            if ("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
+
+
+                $paypal_id = $this->PaypalModel->add($httpParsedResponseAr['TRANSACTIONID'], $tracking_id, $amount, serialize($httpParsedResponseAr));
+                $this->TrackingModel->update(array('ref_id' => $paypal_id, 'txn_id' => $httpParsedResponseAr['TRANSACTIONID'], 'completed' => 1, 'id' => $tracking_id));
+                
+                foreach ($order_details as $k => $v) {
+
+                    for ($i = 0; $i < $v['quantity']; $i++) {
+                        $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                    }
+                }
+
+                $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
+                $this->email_register_event($order, $order_details);
+                $this->redirect(HelperUrl::baseUrl()."event/register/?order_id=$order[id]&token=$token[token]");
+                //exit('Direct Payment Completed Successfully: '.print_r($httpParsedResponseAr, true));
+            } else {
+                //exit('DoDirectPayment failed: ' . "<pre>" . print_r($httpParsedResponseAr, true) . "</pre>");
+                $this->message['error'][] = urldecode($httpParsedResponseAr['L_LONGMESSAGE0']);
+            }
+        }
+    }
+
+    private function PPHttpPost($methodName_, $nvpStr_) {
+        $environment = 'sandbox'; // or 'beta-sandbox' or 'live'
+        // Set up your API credentials, PayPal end point, and API version.
+        $API_UserName = urlencode(Yii::app()->params['paypal_api_username']);
+        $API_Password = urlencode(Yii::app()->params['paypal_api_password']);
+        $API_Signature = urlencode(Yii::app()->params['paypal_api_signature']);
+        $API_Endpoint = "https://api-3t.paypal.com/nvp";
+        if ("sandbox" === $environment || "beta-sandbox" === $environment) {
+            $API_Endpoint = "https://api-3t.$environment.paypal.com/nvp";
+        }
+        $version = urlencode('51.0');
+
+        // Set the curl parameters.
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $API_Endpoint);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+
+        // Turn off the server and peer verification (TrustManager Concept).
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+
+        // Set the API operation, version, and API signature in the request.
+        $nvpreq = "METHOD=$methodName_&VERSION=$version&PWD=$API_Password&USER=$API_UserName&SIGNATURE=$API_Signature$nvpStr_";
+
+        // Set the request as a POST FIELD for curl.
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $nvpreq);
+
+        // Get response from the server.
+        $httpResponse = curl_exec($ch);
+
+        if (!$httpResponse) {
+            exit("$methodName_ failed: " . curl_error($ch) . '(' . curl_errno($ch) . ')');
+        }
+
+        // Extract the response details.
+        $httpResponseAr = explode("&", $httpResponse);
+
+        $httpParsedResponseAr = array();
+        foreach ($httpResponseAr as $i => $value) {
+            $tmpAr = explode("=", $value);
+            if (sizeof($tmpAr) > 1) {
+                $httpParsedResponseAr[$tmpAr[0]] = $tmpAr[1];
+            }
+        }
+
+        if ((0 == sizeof($httpParsedResponseAr)) || !array_key_exists('ACK', $httpParsedResponseAr)) {
+            exit("Invalid HTTP Response for POST request($nvpreq) to $API_Endpoint.");
+        }
+
+        return $httpParsedResponseAr;
     }
 
     private function do_register($event, $order, $order_details, $token) {
@@ -970,8 +1172,9 @@ class EventController extends Controller {
 
             $payment_to = Yii::app()->params['business'];
             $currency = 'USD';
-            $amount = $order['total'] * ($usd['option_value'] / $ttd['option_value']);
+            $amount = round($order['total'] * ($usd['option_value'] / $ttd['option_value']), 2);
             $tracking_id = $this->TrackingModel->add('paypal', $payment_to, $currency, UserControl::getId(), $amount, 'purchase_ticket');
+            $this->TrackingModel->add_meta('payment_type', 'normal', $tracking_id);
 
             $return_url = HelperUrl::baseUrl(true) . "event/register/?order_id=$order[id]&token=$token[token]";
             $cancel_url = HelperUrl::baseUrl(true) . "event/register/?order_id=$order[id]&token=$token[token]";
@@ -980,7 +1183,7 @@ class EventController extends Controller {
             $queryStr = "?business=" . urlencode($payment_to);
 
             $data = array('item_name' => "Purchase ticket of event : " . $event['title'] . ".",
-                'amount' => round($amount, 2),
+                'amount' => $amount,
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'payer_email' => $email,

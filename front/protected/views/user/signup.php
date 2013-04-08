@@ -72,7 +72,7 @@
                 <div class="controls pull-left" style="width: 415px">
                     <div class="rowElem">
                          <div class="jq-plugin clearfix">
-                             <label class="checkbox"><input type="checkbox" name="client" value="client" id="client"/>  CHECK HERE TO REGISTER AS AN EVENT ORGANIZER.</label>
+                             <label class="checkbox label-signup"><input type="checkbox" name="client" value="client" id="client"/>  CHECK HERE TO REGISTER AS AN EVENT ORGANIZER.</label>
                          </div>
                     </div>
                 </div>

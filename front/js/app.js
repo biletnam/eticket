@@ -253,11 +253,11 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // Strip all characters but numerical ones.
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
     var n = !isFinite(+number) ? 0 : +number,
-            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-            s = '',
-            toFixedFix = function(n, prec) {
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.round(n * k) / k;
     };
@@ -547,6 +547,24 @@ function bind_event() {
         $(".apply-ticket", ele).eq(0).trigger('click');
         return false;
     });
+    
+    var payment_type_button = $(".payment-type:checked");
+    triggerPaymentType(payment_type_button);
+    
+    $(".payment-type").click(function(){
+        var ele = $(this);                
+        triggerPaymentType(ele);
+    });
+
+
+}
+
+function triggerPaymentType(ele){
+    var is_direct_payment = ele.hasClass("direct") ? true : false;        
+    if(is_direct_payment)
+        $(".payment-infomation").removeClass('hide');
+    else
+        $(".payment-infomation").addClass('hide');
 }
 
 
@@ -612,6 +630,8 @@ function upload_logo_event_edit() {
 }
 function jqTransform() {
 
-    $('.jq-plugin').jqTransform({imgPath: 'js/jqtransformplugin/img/'});
+    $('.jq-plugin').jqTransform({
+        imgPath: 'js/jqtransformplugin/img/'
+    });
 
 }

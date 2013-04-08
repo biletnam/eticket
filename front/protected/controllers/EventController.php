@@ -846,7 +846,7 @@ class EventController extends Controller {
 
         $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : 0;
         $tmp_token = isset($_GET['token']) ? $_GET['token'] : "";
-        $type = isset($_GET['type']) && $_GET['type'] == "direct_payment" ? "direct_payment" : "normal";
+        $type = isset($_POST['payment_type']) && $_POST['payment_type'] == "direct_payment" ? "direct_payment" : "normal";
 
         $return = isset($_GET['back']) ? $_GET['back'] : 0;
 

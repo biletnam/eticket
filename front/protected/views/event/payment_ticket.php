@@ -102,7 +102,7 @@
                     <div class="heading">Registration Information</div>
                     <div class="event-body">
                         <form class="form-style" method="post">
-                            <div class="alert clearfix countdown">
+                            <div class="alert clearfix countdown" style="margin-bottom: 20px;">
 
                                 <?php
                                 $expired_time = $token['date_expired'] - time();
@@ -124,6 +124,24 @@
                             <div class="required align-right">
                                 * Required Field
                             </div>
+
+                            <div class="box-register-info">
+                                <legend class="text-bold">Payment Type</legend>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">&nbsp;</label>
+                                    <div class="controls pull-left clearfix">
+                                        <div class="pull-left" style="margin-right: 50px;">
+                                            <input class="payment-type normal" type="radio" name="payment_type" value="paypal" <?php if (isset($_POST['payment_type']) && $_POST['payment_type'] == "normal") echo 'checked';else echo 'checked'; ?> /> 
+                                            <img style="width: auto" src="<?php echo HelperUrl::baseUrl(); ?>images/PayPal-icon.jpg"/>
+                                        </div>
+                                        <div class="pull-left">
+                                            <input class="payment-type direct" type="radio" name="payment_type" value="direct_payment" <?php if (isset($_POST['payment_type']) && $_POST['payment_type'] == "direct_payment") echo 'checked'; ?> />
+                                            <img style="width: auto" src="<?php echo HelperUrl::baseUrl(); ?>images/credit-card.jpg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="box-register-info">
                                 <legend class="text-bold">Ticket Buyer</legend>
                                 <div class="controls-group clearfix">
@@ -193,49 +211,49 @@
                                 </div>
 
                             </div>
-                            <?php if ($type == "direct_payment"): ?>
-                                <div class="box-register-info">
-                                    <legend class="text-bold">Card Information</legend>
 
-                                    <div class="controls-group clearfix">
-                                        <label class="control-label pull-left">Card Type <span class="required">*</span></label>
-                                        <div class="controls pull-left">
-                                            <select name="card_type" class="input-medium">
-                                                <?php foreach (Helper::get_card_types() as $k => $v): ?>
-                                                    <option value="<?php echo $k; ?>" <?php echo isset($_POST['card_type']) && $_POST['card_type'] == $k ? 'selected' : ''; ?>><?php echo $v; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                            <div class="box-register-info <?php echo isset($_POST['payment_type']) && $_POST['payment_type'] == "direct_payment" ? "" : "hide"; ?> payment-infomation">
+                                <legend class="text-bold">Card Information</legend>
 
-                                    <div class="controls-group clearfix">
-                                        <label class="control-label pull-left">Cardholder Name <span class="required">*</span></label>
-                                        <div class="controls pull-left">
-                                            <input type="text" class="input-medium" name="card_name" value="<?php echo isset($_POST['card_name']) ? htmlspecialchars($_POST['card_name']) : ""; ?>"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="controls-group clearfix">
-                                        <label class="control-label pull-left">Card Number <span class="required">*</span></label>
-                                        <div class="controls pull-left">
-                                            <input type="text" class="input-medium" name="card_number" value="<?php echo isset($_POST['card_number']) ? htmlspecialchars($_POST['card_number']) : ""; ?>"/>
-                                        </div>
-                                    </div>
-                                    <div class="controls-group clearfix">
-                                        <label class="control-label pull-left">Expiration [ mm / yyyy ] <span class="required">*</span></label>
-                                        <div class="controls pull-left">
-                                            <input type="text" class="input-mini" name="card_month" value="<?php echo isset($_POST['card_month']) ? htmlspecialchars($_POST['card_month']) : ""; ?>"/>
-                                            <input type="text" class="input-mini" name="card_year" value="<?php echo isset($_POST['card_year']) ? htmlspecialchars($_POST['card_year']) : ""; ?>"/>
-                                        </div>
-                                    </div>
-                                    <div class="controls-group clearfix">
-                                        <label class="control-label pull-left">CVV Number <span class="required">*</span></label>
-                                        <div class="controls pull-left">
-                                            <input type="text" class="input-mini" name="cvv_number" value="<?php echo isset($_POST['cvv_number']) ? htmlspecialchars($_POST['cvv_number']) : ""; ?>"/>
-                                        </div>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Card Type <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <select name="card_type" class="input-medium">
+                                            <?php foreach (Helper::get_card_types() as $k => $v): ?>
+                                                <option value="<?php echo $k; ?>" <?php echo isset($_POST['card_type']) && $_POST['card_type'] == $k ? 'selected' : ''; ?>><?php echo $v; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
-                            <?php endif; ?>
+
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Cardholder Name <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-medium" name="card_name" value="<?php echo isset($_POST['card_name']) ? htmlspecialchars($_POST['card_name']) : ""; ?>"/>
+                                    </div>
+                                </div>
+
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Card Number <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-medium" name="card_number" value="<?php echo isset($_POST['card_number']) ? htmlspecialchars($_POST['card_number']) : ""; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">Expiration [ mm / yyyy ] <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-mini" name="card_month" value="<?php echo isset($_POST['card_month']) ? htmlspecialchars($_POST['card_month']) : ""; ?>"/>
+                                        <input type="text" class="input-mini" name="card_year" value="<?php echo isset($_POST['card_year']) ? htmlspecialchars($_POST['card_year']) : ""; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="controls-group clearfix">
+                                    <label class="control-label pull-left">CVV Number <span class="required">*</span></label>
+                                    <div class="controls pull-left">
+                                        <input type="text" class="input-mini" name="cvv_number" value="<?php echo isset($_POST['cvv_number']) ? htmlspecialchars($_POST['cvv_number']) : ""; ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <?php /*
                               <div class="box-register-info">
@@ -328,15 +346,9 @@
                              * 
                              */ ?>
                             <div class="actions clearfix">
-                                <?php if ($type == "normal"): ?>
-                                    <a class="pull-right btn" href="<?php echo HelperUrl::baseUrl(); ?>event/register/?order_id=<?php echo $order['id']; ?>&token=<?php echo $token['token']; ?>&type=direct_payment">Direct Payment</a>
-                                    <span class="pull-right use-payment">Or use</span> 
-                                    <input type="submit" class="btn pull-right" value="Pay Now"/> 
-                                <?php else: ?>
-                                    <a class="pull-right btn" href="<?php echo HelperUrl::baseUrl(); ?>event/register/?order_id=<?php echo $order['id']; ?>&token=<?php echo $token['token']; ?>">Normal Payment</a>
-                                    <span class="pull-right use-payment">Or use</span> 
-                                    <input type="submit" class="btn pull-right" value="Pay Now"/> 
-                                <?php endif; ?>
+
+                                <input type="submit" class="btn pull-right" value="Pay Now"/> 
+
                             </div>
                         </form>
                     </div>

@@ -5019,3 +5019,1821 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/eticket/api/users/events/?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7&access_token=KIc/iCHKcMICaGYUYOYFuwnJ6/UOYP62
 ---
+2013/04/08 11:36:06 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:36:13 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 11:36:14 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 11:36:15 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 11:36:15 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 11:36:15 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 11:41:41 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:47:03 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:47:05 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:47:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:47:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:47:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:48:12 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:48:30 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:49:45 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:51:08 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:51:20 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:51:54 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:56:10 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:56:30 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:58:47 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 11:59:07 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 12:00:38 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:08:21 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:09:11 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:09:16 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:10:36 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:11:02 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:13:21 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/login.html
+---
+2013/04/08 13:13:23 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:13:24 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:13:26 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:13:36 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:16:07 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:16:08 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:16:13 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:16:37 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:16:58 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:21 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:22 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:23 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:24 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:24 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:25 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:25 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:25 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:17:25 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:18:12 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:18:14 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:18:35 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:19:00 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:19:43 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:21:14 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:21:53 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:22:25 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:23:13 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:23:29 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:24:21 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:24:27 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:25:12 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:25:14 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:26:38 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:27:08 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:28:04 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:28:47 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:30:01 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:30:06 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:30:53 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:30:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:30:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:32:21 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:32:27 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:33:22 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:33:41 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:33:46 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:35:30 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:35:35 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:36:10 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:38:26 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:39:22 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:39:47 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:40:48 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:40:48 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:32 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:35 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:52 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:55 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:41:56 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:42:47 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:43:02 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:43:03 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:43:04 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:43:46 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:51:18 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:53:52 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---
+2013/04/08 13:53:52 [error] [exception.CException] exception 'CException' with message 'UserModel and its behaviors do not have a method or closure named "get_by_app".' in D:\xampp\htdocs\eticket\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): CComponent->__call('get_by_app', Array)
+#1 D:\xampp\htdocs\eticket\api\protected\controllers\AppController.php(207): UserModel->get_by_app('undefined')
+#2 [internal function]: AppController->actionProfile('undefined')
+#3 D:\xampp\htdocs\eticket\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AppController), Array)
+#4 D:\xampp\htdocs\eticket\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AppController), Object(ReflectionMethod), Array)
+#5 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs\eticket\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\xampp\htdocs\eticket\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): CController->run('profile')
+#9 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('app/profile/id/...')
+#10 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/eticket/api/app/profile/id/undefined
+HTTP_REFERER=http://localhost/eticket/bb/
+---

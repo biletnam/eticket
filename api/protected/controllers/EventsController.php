@@ -74,15 +74,14 @@ class EventsController extends Controller {
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex() {
+    public function actionIndex($ppp = 12) {
         HelperGlobal::CheckAccessToken();
-        $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0), 1, 12);
+        $events = $this->EventModel->gets(array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0), 1, $ppp);
         foreach($events as $k=>$v){
-            
             $events[$k]['thumbnail'] = HelperApp::get_thumbnail($events[$k]['thumbnail']);
         }
         
-        HelperGlobal::return_data(array('events'=>$events), array('code' => 200, 'message' => $this->message['error']));        
+        HelperGlobal::return_data(array('events'=>$events), array('code' => 200, 'message' => $this->message['error']));       
     }
     
     public function actionDetail($s = ""){

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+
+        <script>
+
+            var events;
+            $.get(baseHost + 'api/events/index/total/2?api_token=' + api_token, function(a) {
+                events = a.data.events;
+                var html = "";
+                $.each(events, function(i, event) {
+                    html += '<div class=\"event-content\">';
+                    html += '<a href="event.html?s=' + event.slug + '" class="event-img"><img src="http://localhost' + event.thumbnail + '"></a>';
+                    html += '<div class="event-detail">';
+                    html += '<a href="event.html?s=' + event.slug + '" class="event-title">' + event.title + '</a>';
+                    html += '<p>' + event.description + '</p>';
+                    html += '<a href="event.html?s=' + event.slug + '" class="get-ticket">GET A TICKET</a></div></div><div class="cleafix"></div>';
+                });
+                $('.events').html(html);
+            }, 'json');
+
+
+
+        </script>
+
+
+    </head>
+    <body>
+        <script src="local:///chrome/webworks.js" type="text/javascript"></script>
+
+        <div class="wrapper">
+            <div class="header">
+                <a class="menu-control" href="#"><img src="images/menu-button.png"/></a>
+                <img src="images/logo.png"/>
+                <a class="facebook-button" href="#"><img src="images/facebook.png"/></a>
+                <div class="cleafix"></div>
+            </div>
+          
+
+            <div class="content">
+                <nav>
+                    <img src="images/nav.png"/>
+                </nav>
+                <div class="home">
+                    <div class="event-top">EVENTS</div>
+                    <div class="events">
+                    </div>
+                </div>
+                <div class="footer">
+
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

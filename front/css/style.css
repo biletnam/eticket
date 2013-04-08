@@ -500,6 +500,7 @@ i{display: inline-block;position: relative}
     
 .event-bar{}
     .event-bar ul{
+        /*
         background-image: linear-gradient(bottom, rgb(82,80,80) 0%, rgb(62,62,62) 100%);
         background-image: -o-linear-gradient(bottom, rgb(82,80,80) 0%, rgb(62,62,62) 100%);
         background-image: -moz-linear-gradient(bottom, rgb(82,80,80) 0%, rgb(62,62,62) 100%);
@@ -515,9 +516,27 @@ i{display: inline-block;position: relative}
         );
         border-radius: 20px;
         padding-left: 20px
+        */
+        margin-bottom: 0;
     }
-    .event-bar ul li{float:left;margin-right: 10px;padding:8px 5px;text-align: center;padding:5px 0}
-        .event-bar ul li a{font-size:14px;color:#d3d1d1;font-family: Arial;line-height: 21px;display: inline-block;padding:2px 10px;}
+    /*
+    .event-bar ul li{float:left;margin-right: 10px;padding:8px 5px;text-align: center;padding:5px 0} */
+    .event-bar ul li{background-color: #fcfcfc;
+    border: 1px solid #EFEDEE;
+    border-bottom: none;
+    float: left;    
+    padding: 19px 0;
+    text-align: center;
+    width: 228px;
+    margin-bottom: -13px;}
+    .event-bar ul li.active{
+        background-color: #fafafa;padding-top: 32px;position: relative;top: -12px;
+    }
+    .event-bar ul li:nth-child(2){border-right: none;border-left: none;}
+        .event-bar ul li a{font-size:24px;color:#c1c1c1;line-height: 21px;display: inline-block;padding:2px 10px;}
+        .event-bar ul li.active a{color: #999999;position: relative;top:-1px;}
+        
+        /*
         .event-bar ul li a:hover,.event-bar ul li a.active{border-radius: 20px;
                                  background-image: linear-gradient(bottom, rgb(137,136,136) 0%, rgb(177,176,176) 100%);
                                 background-image: -o-linear-gradient(bottom, rgb(137,136,136) 0%, rgb(177,176,176) 100%);
@@ -532,7 +551,7 @@ i{display: inline-block;position: relative}
                                         color-stop(0, rgb(137,136,136)),
                                         color-stop(1, rgb(177,176,176))
                                 );
-        }
+        }*/
         .event-bar ul li a:hover .icon-edit-white,.event-bar ul li a.active .icon-edit-white{background-position: -31px 0}
         .event-bar ul li a:hover .icon-ticket,.event-bar ul li a.active .icon-ticket{background-position:0 -34px}
             

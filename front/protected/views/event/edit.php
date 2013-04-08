@@ -8,9 +8,9 @@ $ticket_status = Helper::ticket_status();
     <div class="event-bar clearfix">
         <div class="grid_12">
             <ul class="clearfix">
-                <li><a class="<?php if ($type == "general") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white"></i>Event Information</a></li>
-                <li><a class="<?php if ($type == "ticket") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket"></i>eTicket Information</a></li>
-                <li><a class="<?php if ($type == "ticket") echo 'active'; ?>" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/share"><i class="icon icon-ticket"></i>Share Event</a></li>
+                <li class="<?php if ($type == "general") echo 'active'; ?>"><a class="<?php if ($type == "general") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white hide"></i>Event Information</a></li>
+                <li class="<?php if ($type == "ticket") echo 'active'; ?>"><a class="<?php if ($type == "ticket") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket hide"></i>eTicket Information</a></li>
+                <li class="<?php if ($type == "share") echo 'active'; ?>"><a class="<?php if ($type == "share") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/share"><i class="icon icon-ticket hide"></i>Share Event</a></li>
                 <?php /* <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li> */ ?>
             </ul>
         </div>

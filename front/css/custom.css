@@ -21,4 +21,4 @@
 .rowElem{display: block;padding:10px 5px;background-color: #dedede}
 
 .use-payment{margin:8px 10px 0 10px;}
-.input-mini{width: 65px !important;}
+.payment-ticket .input-mini{width: 65px !important;}

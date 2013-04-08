@@ -98,7 +98,7 @@
                     </form>
                 </article>
 
-                <article class="event event-box  details radius-body border border-radius box-shadow-bottom">
+                <article class="event event-box  details radius-body border border-radius box-shadow-bottom payment-ticket">
                     <div class="heading">Registration Information</div>
                     <div class="event-body">
                         <form class="form-style" method="post">

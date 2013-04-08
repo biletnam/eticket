@@ -138,7 +138,7 @@ class UserController extends Controller {
         $this->OrganizerModel->add($user_id);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
 
-        $url = isset($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
+        $url = isset($_GET['return']) && !$this->validator->is_empty_string($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
 
         if ($client == 'waiting')
             HelperApp::email_register_organizer($email, $firstname);

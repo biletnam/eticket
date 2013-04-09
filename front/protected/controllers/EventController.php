@@ -1312,12 +1312,12 @@ class EventController extends Controller {
         $event = $this->EventModel->get($order['event_id']);
 
 
-        $message = 'Dear ' . $order['firstname'] . ', <br/><br/>
+        $message = '<p style="margin-bottom:10px">Dear ' . $order['firstname'] . ', </p>
                     
-                    Thank you for joining our event: ' . $event['title'] . ' <br/><br/>
-                    We hope you enjoyt it. <br/>
+                    <p style="margin-bottom:10px">Thank you for joining our event: ' . $event['title'] . ' </p>
+                    <p style="margin-bottom:10px">We hope you enjoyt it. </p>
                     
-                    Here are the qrcodes for attending our events: <br/><br/>
+                    <p>Here are the qrcodes for attending our events: </p>
                     
                     
                     ';
@@ -1329,7 +1329,7 @@ class EventController extends Controller {
                 $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t"."&size=280x280";
                 $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname']." ".$order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
 
-                $message.= '<br/><br/> #' . $t . ' <img src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
+                $message.=  ' <img style="margin-right:10px; src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
                 
             }
         }

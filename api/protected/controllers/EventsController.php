@@ -136,6 +136,8 @@ class EventsController extends Controller {
         
         $this->viewData['tickets'] = $tickets;
         $this->viewData['total'] = $total;
+        $this->viewData['page'] = $p;
+        $this->viewData['ppp'] = $ppp;
         $this->viewData['message'] = $this->message;
         HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));  
     }

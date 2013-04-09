@@ -273,7 +273,26 @@ class HelperApp {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
-
+        
+        $template = '<link rel="stylesheet" href="'.HelperUrl::baseUrl(true).'css/email.css" />
+                    <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
+                        <div class="header">
+                            <div class="logo" style="background: url(\''.HelperUrl::baseUrl(true).'img/logo.png\') no-repeat 10px top;width: 196px;height: 110px">&nbsp;</div>
+                        </div>
+                        <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                            '.$subject.'
+                        </div>
+                        <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                            '.$message.'
+                            <p>
+                                Regards,<br/>
+                                The 360 Island Events Team.    
+                            </p>
+                            <a href="#"><img src="<?php echo HelperUrl::baseUrl()?>img/email_fb.png"/></a>
+                            <a href="#"><img src="<?php echo HelperUrl::baseUrl()?>img/email_tw.png"/></a>
+                        </div>
+                    </div>';
+        
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
@@ -281,7 +300,7 @@ class HelperApp {
                 "Reply-to: $to" .
                 "Date: " . date("r") . "\r\n";
 
-        @mail($to, $subject, $message, $header);
+        @mail($to, $subject, $template, $header);
     }
 
     public static function email_register_organizer($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {

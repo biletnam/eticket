@@ -31,7 +31,7 @@
                         <?php if ($event['link'] != ''): ?>
                             <a href="<?php echo $event['link'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/link-logo.png"></a>
                         <?php endif; ?>
-
+                            <a href="<?php echo HelperUrl::baseUrl()?>event/share/s/<?php echo $event['slug']?>"><img class="link-logo" style="width: 60px" src="<?php echo HelperUrl::baseUrl() ?>images/share.png"></a>
                     </div>
                     <div class="pull-right event-header-thumb">
                         <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'full') ?>">

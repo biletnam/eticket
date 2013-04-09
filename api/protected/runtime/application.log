@@ -5019,3 +5019,13 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/eticket/api/users/events/?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7&access_token=KIc/iCHKcMICaGYUYOYFuwnJ6/UOYP62
 ---
+2013/04/09 15:48:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CController.php(271): CController->missingAction('s')
+#1 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(283): CController->run('s')
+#2 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/web/CWebApplication.php(142): CWebApplication->runController('events/s/an-cho...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/eticket/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/eticket/api/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/eticket/api/events/s/an-choi-cuoi-tuan/p/1?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+---

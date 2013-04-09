@@ -43,6 +43,8 @@ return array(
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'events/<s>'=>'events/detail/',
+                'events/<s>/tickets/'=>'events/tickets/',
+                'events/<s>/tickets/p/<p>'=>'events/tickets/',
                 'faqs/<s>'=>'faqs/view/',
             ),
         ),

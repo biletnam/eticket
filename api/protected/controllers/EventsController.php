@@ -111,5 +111,33 @@ class EventsController extends Controller {
         
         HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));  
     }
-
+    
+    public function actionTickets($s = "",$p = 1){
+        HelperGlobal::CheckAccessToken(true);
+        $access_token = isset($_GET['access_token']) ? $_GET['access_token'] : "";
+        $token = $this->AuthTokenModel->get_by_token($access_token);
+        $user = $this->UserModel->get($token['user_id']);
+        
+        $event = $this->EventModel->get_by_slug($s);
+        if (!$event)
+        {
+            $this->message['error'][] = Helper::_error_code(404);
+            HelperGlobal::return_data(array(), array('code' => 404, 'message' => $this->message['error']));            
+        }
+        
+        $args = array('deleted'=>0,'user_id'=>$user['id'],'event_id'=>$event['id']);
+        $ppp = Yii::app()->params['ppp'];
+        
+        $tickets = $this->TicketModel->gets($args,$p,$ppp);
+        foreach($tickets as $k=>$t){
+            $tickets[$k]['qrcode'] = $t['qrcode'] != "" ? HelperUrl::upload_url()."qrcode/".$t['qrcode'] : "";
+        }
+        $total = $this->TicketModel->counts($args);
+        
+        $this->viewData['tickets'] = $tickets;
+        $this->viewData['total'] = $total;
+        $this->viewData['message'] = $this->message;
+        HelperGlobal::return_data($this->viewData, array('code' => 200, 'message' => $this->message['error']));  
+    }
+    
 }

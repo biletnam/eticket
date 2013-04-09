@@ -253,7 +253,7 @@ class HelperApp {
         return $uploaded_items;
     }
 
-    public static function email($to, $subject, $message, $footer = true, $from = 'ntnhanbk@gmail.com') {
+    public static function email($to, $subject, $message, $footer = true, $from = 'noreply@360islandevents.com') {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
@@ -264,7 +264,8 @@ class HelperApp {
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-
+        
+        
         @mail($to, $subject, $message, $header);
     }
 

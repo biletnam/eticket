@@ -386,7 +386,13 @@ class Helper {
     }
     
     public static function get_card_types(){
-        return array('Visa'=>'Visa','MasterCard'=>'MasterCard','AmericanExpress'=>'AmericanExpress');
+        return array('Visa'=>'Visa','MasterCard'=>'MasterCard');
+    }
+    
+    public static function _parse_id($id){
+        $lenght = strlen($id);
+        $final_id = str_repeat('0', 6 - $lenght) . $id;
+        return $final_id;
     }
 
 }

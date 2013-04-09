@@ -166,7 +166,7 @@ class SimpleImage {
         imagefilledrectangle($im, 0, 0, $width, 72, $white);
 
 // The text to draw
-        $ticket_id = "#".$args['ticket_id'].' - '.$args['ticket_type_title'];
+        $ticket_id = "#".  Helper::_parse_id($args['ticket_id']).' - '.$args['ticket_type_title'];
         $name = 'Name: '.$args['name'];
         $event = "Event: ".$args['event_title'];
 // Replace path by your own font path

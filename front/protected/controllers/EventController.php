@@ -898,6 +898,7 @@ class EventController extends Controller {
         $this->viewData['token'] = $token;
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
+        //$this->viewData['world_countries'] = $this->CountryModel->gets_all_world_countries();
         Yii::app()->params['page'] = 'eTicket Payment';
         $this->render('payment_ticket', $this->viewData);
     }
@@ -1011,15 +1012,17 @@ class EventController extends Controller {
             $address1 = urlencode($address);
             $address2 = urlencode($address_2);
             $city = urlencode($city);
-            $state = urlencode("");
-            $zip = urlencode("");
+            $state = urlencode("CA");
+            $zip = urlencode("95131");
             $country = urlencode("US");    // US or other valid country code
             $amount = urlencode($amount);
             $currencyID = urlencode($currency);       // or other currency ('GBP', 'EUR', 'JPY', 'CAD', 'AUD')
+            $email = urlencode($email);
 // Add request-specific fields to the request string.
             $nvpStr = "&PAYMENTACTION=$paymentType&AMT=$amount&CREDITCARDTYPE=$creditCardType&ACCT=$creditCardNumber" .
                     "&EXPDATE=$padDateMonth$expDateYear&CVV2=$cvv2Number&FIRSTNAME=$firstName&LASTNAME=$lastName" .
-                    "&STREET=$address1&CITY=$city&STATE=$state&ZIP=$zip&COUNTRYCODE=$country&CURRENCYCODE=$currencyID";
+                    "&STREET=$address1&CITY=$city&STATE=$state&ZIP=$zip&COUNTRYCODE=$country&CURRENCYCODE=$currencyID".
+                    "&EMAIL=$email";
 
 // Execute the API operation; see the PPHttpPost function above.
             $httpParsedResponseAr = $this->PPHttpPost('DoDirectPayment', $nvpStr);
@@ -1324,9 +1327,10 @@ class EventController extends Controller {
             $tmp_tickets = $tickets[$v['id']];
             foreach ($tmp_tickets as $t) {
                 $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t"."&size=280x280";
-                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
+                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname']." ".$order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
 
                 $message.= '<br/><br/> #' . $t . ' <img src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
+                
             }
         }
 
@@ -1350,7 +1354,7 @@ class EventController extends Controller {
         $simpleImage = new SimpleImage();
         $simpleImage->mergeImageQRCode(280, $args);
         $simpleImage->save_with_default_imagetype($filepath);
-
+        $this->TicketModel->update(array('qrcode'=>$filename,'id'=>$args['ticket_id']));
         return HelperUrl::hostInfo() . HelperUrl::upload_url() . "qrcode/$filename";
     }
 

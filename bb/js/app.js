@@ -134,8 +134,10 @@ function register() {
 
             $.post(baseHost + 'api/users/signup?api_token=' + api_token, data, function(re) {
                 if (typeof(re.data.access_token) != 'undefined') {
-                    $.session("access_token", re.data.access_token);
-                    console.log($.session('access_token'));
+                    //setSession("access_token", re.data.access_token);
+                    localStorage.setItem("access_token", re.data.access_token);
+                    var access_token=localStorage.getItem('access_token');
+                    console.log(access_token);
                 }
                 else {
 
@@ -146,8 +148,12 @@ function register() {
     });
 }
 
+function setSession(name, value) {
+     $.session()
+}
+
 function sqlite_data() {
-    var createStatement = "CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, phone TEXT)";
+    var createStatement = "CREATE TABLE IF NOT EXISTS userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, access_token TEXT)";
     var selectAllStatement = "SELECT * FROM Contacts";
     var insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
     var updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";

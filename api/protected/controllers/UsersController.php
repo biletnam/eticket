@@ -86,6 +86,7 @@ class UsersController extends Controller {
         $address = trim($_POST['address']);
         $address2 = trim($_POST['address2']);
         $city = trim($_POST['city']);
+        $phone = trim($_POST['phone']);
         $country_id = trim($_POST['country']);
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
 
@@ -133,6 +134,7 @@ class UsersController extends Controller {
         $this->UserModel->add_meta('city', $city, $user_id);
         $this->UserModel->add_meta('address', $address, $user_id);
         $this->UserModel->add_meta('address2', $address2, $user_id);
+        $this->UserModel->add_meta('phone', $phone, $user_id);
         $this->OrganizerModel->add($user_id);
 
         $token = Helper::gen_access_token();

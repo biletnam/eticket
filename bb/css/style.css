@@ -1,0 +1,113 @@
+/* 
+    Document   : style
+    Created on : Apr 8, 2013, 9:41:34 AM
+    Author     : Titan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+*{margin: 0;padding: 0}
+@font-face {
+    font-family: 'bebasneue';
+    src: url('font/bebasneue-webfont.eot');
+    src: url('font/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+        url('font/bebasneue-webfont.woff') format('woff'),
+        url('font/bebasneue-webfont.ttf') format('truetype'),
+        url('font/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ai_kelsor';
+    src: url('font/aikelso-r-webfont.eot');
+    src: url('font/aikelso-r-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/aikelso-r-webfont.woff') format('woff'),
+         url('font/aikelso-r-webfont.ttf') format('truetype'),
+         url('font/aikelso-r-webfont.svg#ai_kelsor') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MyriadProRegular';
+    src: url('font/normal-webfont.eot');
+    src: url('font/normal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/normal-webfont.woff') format('woff'),
+         url('font/normal-webfont.ttf') format('truetype'),
+         url('font/normal-webfont.svg#MyriadProRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MyriadProLight';
+    src: url('font/myriadpro-light-webfont.eot');
+    src: url('font/myriadpro-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/myriadpro-light-webfont.woff') format('woff'),
+         url('font/myriadpro-light-webfont.ttf') format('truetype'),
+         url('font/myriadpro-light-webfont.svg#MyriadProLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MyriadProBlack';
+    src: url('font/myriadpro-black-webfont.eot');
+    src: url('font/myriadpro-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/myriadpro-black-webfont.woff') format('woff'),
+         url('font/myriadpro-black-webfont.ttf') format('truetype'),
+         url('font/myriadpro-black-webfont.svg#MyriadProBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+root { 
+    display: block;
+}
+body{font-family: Arial;color: #2f2e2e;background-color: #fff }
+    .wrapper{width: 100%;background-color: white;height: 1280px}
+        .header{padding: 0 3.5%}
+        .header .facebook-button{float:right;margin-top: 4%;margin-right: 5%}
+        .header .menu-control{margin-right: 3%}
+        
+        .menu{border-left: 6px solid #ff8c00;height: 44px;background: url('../images/background.png');padding: 10px 3.5% 0px}
+        .menu img{vertical-align: middle}
+        .menu a{color: #fff;text-decoration:none;}
+        .menu .forget-password{float: right;margin-right: 1%;margin-top: 7px}
+        
+        .cleafix{clear: both}
+        
+        .content .login-form{padding: 0 5%;padding-top:10px}
+            .login-form p{padding-top:20px}
+                    .login-form label{display: block}
+                    .login-form input,.login-form select{width: 100%;height: 42px;border-radius: 5px;border: 1px solid #e0e2e2;margin-top: 7px}
+                    .login-form .btn-login,.home .btn-event-register,.login-form .btn-register{padding-left: 40px;font-weight: bolder;font-size: 18px;color:#fff;height: 52px;width: 100%;background: #ff8c00 url('../images/button.png') 45% center no-repeat;border:1px solid #f5851d;border-radius: 5px;box-shadow: inset 1px 1px 3px #ffb357 }
+                    .login-form .btn-facebook{padding-left: 40px;font-weight: bolder;font-size: 18px;color:#fff;height: 52px;width: 100%;background: #3e5b9e url('../images/btn-facebook.png') 45% center no-repeat;border:1px solid #213b7a;border-radius: 5px;box-shadow: inset 1px 1px 3px #687eaf }
+        .footer{background: url('../images/footer.png');height: 128px;position: fixed;bottom: 0;width: 100%}
+        .nav{width: 100%}
+        .nav img{width: 720px}
+        .home{padding: 0 4%}
+        .home a{text-decoration:none;}
+        .content .event-top{font-family:bebasneue;font-size: 36px;border-bottom: 2px solid #a2a2a2;padding: 15px 0}
+            .events .event-content{padding-top: 12px}
+            .events .event-img{float: left;width:35%}
+                .events .event-img img{width: 95%}
+            .events .event-detail{float:right;width:65%;font-family: Georgia;border-bottom:  1px dotted}
+                .events .event-detail p{font-size: 14px;font-style: italic;color:#000;padding:10px 0px}
+                .events .event-detail .get-ticket{font-family: bebasneue;font-size:24px;color: #5f5d5d}
+            
+                .event-detail .event-title{font-family:bebasneue;font-size: 32px;color:#696767}
+        .home .event-details .details{padding-bottom: 35px}
+        .home .event-details .event-title{font-family: MyriadProRegular;font-size: 27px;padding: 20px 0}
+        .home .event-details .details p{font-size: 16px}
+        .home .event-details .details .event-category{font-weight: bold}
+        
+        .home .event-details .event-content{border: 1px solid #d5d5d5;border-radius: 10px;margin-bottom: 10px}
+            .home .event-details .event-content .description{margin: 5px;height: 37px;padding-left: 12px;padding-top: 12px;background-color: #f6f4f4;font-size: 16px;color:#d96941}
+            .home .event-details .event-content .des-content p{margin: 0 15px;margin-top: 20px;margin-bottom: 10px}
+            
+        .hight_light_field{border: 1px solid red!important}

@@ -56,7 +56,8 @@ class HelperGlobal {
         return array(
             'id' => $user['id'],
             'email' => $user['email'],
-            'fullname' => $user['fullname'],
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
             'img' => $user['img'],
             'thumbnail' => $user['thumbnail'],
             'date_added' => $user['date_added'],

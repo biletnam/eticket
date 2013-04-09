@@ -28,7 +28,7 @@ class SimpleImage {
     function load($filename) {
         $image_info = getimagesize($filename);
         $this->image_type = $image_info[2];
-        
+
         if ($this->image_type == IMAGETYPE_JPEG) {
             $this->image = imagecreatefromjpeg($filename);
         } elseif ($this->image_type == IMAGETYPE_GIF) {
@@ -38,34 +38,37 @@ class SimpleImage {
         }
     }
 
-    function save($filename, $image_type=IMAGETYPE_JPEG, $compression=90, $permissions=null) {
+    function save($filename, $image_type = IMAGETYPE_JPEG, $compression = 90, $permissions = null) {
         if ($image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image, $filename, $compression);
         } elseif ($image_type == IMAGETYPE_GIF) {
             imagegif($this->image, $filename);
-        } elseif ($image_type == IMAGETYPE_PNG) {           
+        } elseif ($image_type == IMAGETYPE_PNG) {
             imagepng($this->image, $filename);
         }
         if ($permissions != null) {
             chmod($filename, $permissions);
         }
     }
-    
-    function save_with_default_imagetype($filename, $compression=90, $permissions=null) {
+
+    function save_with_default_imagetype($filename, $compression = 90, $permissions = null) {
+        
         if ($this->image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image, $filename, $compression);
         } elseif ($this->image_type == IMAGETYPE_GIF) {
             imagegif($this->image, $filename);
-        } elseif ($this->image_type == IMAGETYPE_PNG) {                  
+        } elseif ($this->image_type == IMAGETYPE_PNG) {
             imagepng($this->image, $filename);
         }
         
+        imagedestroy($this->image);
+
         if ($permissions != null) {
             chmod($filename, $permissions);
         }
     }
-    
-    function output($image_type=IMAGETYPE_JPEG) {
+
+    function output($image_type = IMAGETYPE_JPEG) {
         if ($image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image);
         } elseif ($image_type == IMAGETYPE_GIF) {
@@ -133,7 +136,7 @@ class SimpleImage {
         $this->resizeAndAddWaterMark($this->image, $watermark, $width, $height);
     }
 
-    function resizeAndAddWaterMark($sourcefile, $insertfile, $new_width, $new_height, $transition=100) {
+    function resizeAndAddWaterMark($sourcefile, $insertfile, $new_width, $new_height, $transition = 100) {
         $new_image_resized = imagecreatetruecolor($new_width, $new_height);
         imagecopyresampled($new_image_resized, $sourcefile, 0, 0, 0, 0, $new_width, $new_height, $this->getWidth(), $this->getHeight());
 
@@ -150,13 +153,55 @@ class SimpleImage {
         $this->image = $final_image;
     }
 
+    function mergeImageQRCode($width,$args) {
+        // Set the content-type
+        //header('Content-Type: image/png');
+
+// Create the image
+        $im = imagecreatetruecolor($width, 82);
+
+// Create some colors
+        $white = imagecolorallocate($im, 255, 255, 255);
+        $black = imagecolorallocate($im, 0, 0, 0);
+        imagefilledrectangle($im, 0, 0, $width, 72, $white);
+
+// The text to draw
+        $ticket_id = "#".$args['ticket_id'].' - '.$args['ticket_type_title'];
+        $name = 'Name: '.$args['name'];
+        $event = "Event: ".$args['event_title'];
+// Replace path by your own font path
+        $font = 'font/bebasneue-webfont.ttf';
+
+
+// Add the text
+        imagettftext($im, 11, 0, 10, 20, $black, $font, $ticket_id);
+        imagettftext($im, 11, 0, 10, 40, $black, $font, $name);
+        imagettftext($im, 11, 0, 10, 60, $black, $font, $event);
+
+// Using imagepng() results in clearer text compared with imagejpeg()
+        //imagepng($im);
+        //imagedestroy($im);
+        
+        $final_image = imagecreatetruecolor($width, 72 + $width);  
+        $qrcode = imagecreatefrompng($args['qrcode']);
+        imagecopy($final_image, $im, 0, 0, 0, 0, $width, 72);
+        imagecopy($final_image, $qrcode, 0, 73, 0, 0, $width, $width);
+        //imagepng($final_image);
+        $this->image = $final_image;
+        $this->image_type = IMAGETYPE_PNG;
+        //imagedestroy($final_image);
+        imagedestroy($im);
+        imagedestroy($qrcode);
+        
+    }
+
     /* function resize($width, $height) {
       $new_image = imagecreatetruecolor($width, $height);
       imagecopyresampled($new_image, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
       $this->image = $new_image;
       } */
 
-    function resize($width, $height, $forcesize='n') {
+    function resize($width, $height, $forcesize = 'n') {
 
         /* optional. if file is smaller, do not resize. */
         if ($forcesize == 'n') {
@@ -179,7 +224,7 @@ class SimpleImage {
         $this->image = $new_image;
     }
 
-    function resizeToThumb($thumbw, $thumbh, $align ="center") {
+    function resizeToThumb($thumbw, $thumbh, $align = "center") {
         $w = $this->getWidth();
         $h = $this->getHeight();
         $nw = $nh = 0;
@@ -214,7 +259,7 @@ class SimpleImage {
         $this->image = $new_image;
     }
 
-    function resizeToThumbHorizontal($thumbw, $thumbh, $align= "center") {
+    function resizeToThumbHorizontal($thumbw, $thumbh, $align = "center") {
         $nh = $this->getHeight();
         $nw = floor(($thumbw * $nh) / $thumbh);
         if ($align == "center") {

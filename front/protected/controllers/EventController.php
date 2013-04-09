@@ -990,7 +990,7 @@ class EventController extends Controller {
             $this->redirect(HelperUrl::baseUrl() . "event/info/s/$event[slug]?iok=1&msg=Thank you for joining our event.");
         } else {
 
-            $amount = round($order['total'] * ($usd['option_value'] / $ttd['option_value']),2);                        
+            $amount = round($order['total'] * ($usd['option_value'] / $ttd['option_value']), 2);
             $currency = "USD";
             $payment_to = Yii::app()->params['business'];
             //add to tracking record
@@ -1029,17 +1029,17 @@ class EventController extends Controller {
 
                 $paypal_id = $this->PaypalModel->add($httpParsedResponseAr['TRANSACTIONID'], $tracking_id, $amount, serialize($httpParsedResponseAr));
                 $this->TrackingModel->update(array('ref_id' => $paypal_id, 'txn_id' => $httpParsedResponseAr['TRANSACTIONID'], 'completed' => 1, 'id' => $tracking_id));
-                
+                $tickets = array();
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
                     }
                 }
 
                 $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
-                $this->email_register_event($order, $order_details);
-                $this->redirect(HelperUrl::baseUrl()."event/register/?order_id=$order[id]&token=$token[token]");
+                $this->email_register_event($order, $order_details, $tickets);
+                $this->redirect(HelperUrl::baseUrl() . "event/register/?order_id=$order[id]&token=$token[token]");
                 //exit('Direct Payment Completed Successfully: '.print_r($httpParsedResponseAr, true));
             } else {
                 //exit('DoDirectPayment failed: ' . "<pre>" . print_r($httpParsedResponseAr, true) . "</pre>");
@@ -1284,22 +1284,28 @@ class EventController extends Controller {
 
                 $order = $this->OrderModel->get($data['item_number']);
                 $order_details = $this->OrderModel->get_details($order['id']);
+                $tickets = array();
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
                     }
                 }
 
                 $this->OrderModel->update(array('status' => 'completed', 'id' => $order['id']));
-                $this->email_register_event($order, $order_details);
+                $this->email_register_event($order, $order_details, $tickets);
             }
         }
         fclose($fp);
         exit();
     }
 
-    private function email_register_event($order, $order_details) {
+    public function actionTest() {
+        //echo '<img src="http://api.qrserver.com/v1/create-qr-code/?data=' . HelperUrl::baseUrl() . '&amp;size=280x280" />';die;
+        echo $this->get_qrcode(HelperUrl::baseUrl(true) . '&size=280x280');
+    }
+
+    private function email_register_event($order, $order_details,$tickets) {
         $event = $this->EventModel->get($order['event_id']);
 
 
@@ -1313,16 +1319,39 @@ class EventController extends Controller {
                     
                     ';
         foreach ($order_details as $k => $v) {
-            $url = urlencode(HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/did/$v[id]");
+
             $message.= ($k + 1) . '. ' . $v['title'];
-            $message.= '<br/><br/> <img src="http://api.qrserver.com/v1/create-qr-code/?data=' . $url . '&amp;size=100x100" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
+            $tmp_tickets = $tickets[$v['id']];
+            foreach ($tmp_tickets as $t) {
+                $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t"."&size=280x280";
+                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
+
+                $message.= '<br/><br/> #' . $t . ' <img src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
+            }
         }
 
         $message.= '<br/><br/>
                     
 
-                    ';        
+                    ';
+        
         HelperApp::email($order['email'], "Register event " . $event['title'], $message);
+    }
+
+    private function get_qrcode($args) {
+        $qrcode = 'http://api.qrserver.com/v1/create-qr-code/?data=' . $args['url'];
+        $filename = Ultilities::base32UUID() . ".png";
+        $flag = @file_put_contents(HelperUrl::upload_dir() . "qrcode/$filename", file_get_contents($qrcode));
+
+        if (!$flag)
+            return "";
+        $filepath = HelperUrl::upload_dir() . "qrcode/$filename";
+        $args['qrcode'] = $filepath;
+        $simpleImage = new SimpleImage();
+        $simpleImage->mergeImageQRCode(280, $args);
+        $simpleImage->save_with_default_imagetype($filepath);
+
+        return HelperUrl::hostInfo() . HelperUrl::upload_url() . "qrcode/$filename";
     }
 
     public function actionSearch($p = 1) {
@@ -1364,7 +1393,7 @@ class EventController extends Controller {
         $this->render('search', $this->viewData);
     }
 
-    public function actionAttend($eid, $did) {
+    public function actionAttend($eid, $tid) {
         $event = $this->EventModel->get($eid);
 
         if (!$event) {
@@ -1372,8 +1401,15 @@ class EventController extends Controller {
             die;
         }
 
+        $ticket = $this->TicketModel->get($tid);
+        if (!$ticket || $ticket['event_id'] != $eid) {
+            echo "PERMISSION DENIED";
+            die;
+        }
+
         $message = '<h2>Permission Accepted</h2> <br/><br/>
                     <h3>Event: ' . $event['title'] . ' </h3>
+                    <h3>Ticket: #'.$ticket['id'].' - '.$ticket['ticket_type_title'].'</h3>
                     ';
 
         echo $message;

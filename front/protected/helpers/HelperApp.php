@@ -2,15 +2,14 @@
 
 class HelperApp {
 
-    
-   public static function get_category_sizes() {
+    public static function get_category_sizes() {
         $array = array(
             'thumbnail' => array('w' => 260, 'h' => 140, 'crop' => true),
             'small' => array('w' => 50, 'h' => 50, 'crop' => true)
         );
         return $array;
     }
-    
+
     public static function get_event_sizes() {
         $array = array(
             'thumbnail' => array('w' => 100, 'h' => 100, 'crop' => true),
@@ -22,36 +21,38 @@ class HelperApp {
         );
         return $array;
     }
-    
-     public static function get_gallery_sizes() {
+
+    public static function get_gallery_sizes() {
         $array = array(
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true)
         );
         return $array;
     }
-    
+
     public static function get_avatar_sizes() {
-        $array = array(            
+        $array = array(
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true),
             'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
         );
-        return $array;        
+        return $array;
     }
+
     public static function get_organizer_sizes() {
-        $array = array(            
+        $array = array(
             'thumbnail' => array('w' => 300, 'h' => 300, 'crop' => true),
             'small' => array('w' => 100, 'h' => 100, 'crop' => true),
             'mini' => array('w' => 50, 'h' => 50, 'crop' => true)
         );
-        return $array;        
-    } 
+        return $array;
+    }
+
     public static function add_cookie($name, $value, $is_session = false, $timeout = 2592000) {
         $cookie = new CookieRegistry();
         $cookie->Add($name, $value);
-        if(!$is_session)         
-            $cookie->setExpireTime($timeout);        
+        if (!$is_session)
+            $cookie->setExpireTime($timeout);
         $cookie->Save($is_session);
     }
 
@@ -59,12 +60,12 @@ class HelperApp {
         $cookie = new CookieRegistry();
         return $cookie->Get($name);
     }
-    
-    public static function clear_cookie(){
+
+    public static function clear_cookie() {
         $cookie = new CookieRegistry();
         $cookie->Clear();
     }
-    
+
     public static function start_session() {
         $session = new CHttpSession;
         $session->open();
@@ -128,7 +129,7 @@ class HelperApp {
                 if ($old_filename)
                     $new_oldfilename = $size['w'] . 'x' . $size['h'] . '-' . $old_filename;
             }
-            $folder = str_replace(HelperUrl::upload_dir()."media/", '', $upload_dir);
+            $folder = str_replace(HelperUrl::upload_dir() . "media/", '', $upload_dir);
 
             $new_size = '';
             if ($size['w'] == 0) {
@@ -191,15 +192,15 @@ class HelperApp {
         return $p->display_pages();
     }
 
-    public static function resize_images($file, $sizes,$old_name = '') {
+    public static function resize_images($file, $sizes, $old_name = '') {
         $image_info = getimagesize($file['tmp_name']);
-        
+
         $img = Ultilities::base32UUID() . "." . Helper::image_types($image_info['mime']);
-        $upload_dir = HelperUrl::upload_dir(). "media/" . date('Y') . '/' . date('m') . '/';
-        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir,$old_name));
+        $upload_dir = HelperUrl::upload_dir() . "media/" . date('Y') . '/' . date('m') . '/';
+        $thumbnail = serialize(self::do_resize($file['tmp_name'], $sizes, $img, $upload_dir, $old_name));
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
-    
+
     public static function upload_files($files, $allow_size = 3145728, $destination = "default") {
         $total = count($files['name']);
         if ($total <= 0)
@@ -236,7 +237,7 @@ class HelperApp {
                 $upload_dir = HelperUrl::upload_dir() . $destination;
                 self::make_folder($upload_dir);
                 try {
-                    $file = array('name'=>$files['name'][$i],'type'=>$files['type'][$i],'tmp_name'=>$files['tmp_name'][$i],'error'=>$files['error'][$i],'size'=>$files['size'][$i]);
+                    $file = array('name' => $files['name'][$i], 'type' => $files['type'][$i], 'tmp_name' => $files['tmp_name'][$i], 'error' => $files['error'][$i], 'size' => $files['size'][$i]);
                     if (!$validator->is_valid_file($file, $allow_size))
                         continue;
 
@@ -251,7 +252,6 @@ class HelperApp {
         }
         return $uploaded_items;
     }
-    
 
     public static function email($to, $subject, $message, $footer = true, $from = 'ntnhanbk@gmail.com') {
         if ($footer)
@@ -265,10 +265,10 @@ class HelperApp {
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 
-         @mail($to, $subject, $message, $header);
+        @mail($to, $subject, $message, $header);
     }
-    
-    public static function email_contact($to, $subject,$name, $message,$from, $footer = true ) {
+
+    public static function email_contact($to, $subject, $name, $message, $from, $footer = true) {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
@@ -282,44 +282,41 @@ class HelperApp {
 
         @mail($to, $subject, $message, $header);
     }
-    
-    public static function email_register_organizer($to,$name,$from = 'noreply@360islandevents.com',$footer = true){
-         if ($footer)
+
+    public static function email_register_organizer($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {
+        if ($footer)
             $message .= '';
-         $header =
+        $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-         
-         $subject = 'Eticket - Register as an Event Organizer';
-         $message ='Dear '.$name. '<br/> <br/> 
+
+        $subject = 'Eticket - Register as an Event Organizer';
+        $message = 'Dear ' . $name . '<br/> <br/> 
              Your Register is successful, you can view and buy ticket. <br/>
              Your register of Event Oraginzer is waitting to approve by admin. We will send you other email when it finnish.';
 
-         @mail($to, $subject, $message, $header);
+        @mail($to, $subject, $message, $header);
     }
-    
-    public static function email_register($to,$name,$from = 'noreply@360islandevents.com',$footer = true){
-         if ($footer)
+
+    public static function email_register($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {
+        if ($footer)
             $message .= '';
-         $header =
+        $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-         
-         $subject = 'Eticket - Register as an Event Organizer';
-         $message ='Dear '.$name. '<br/> <br/> 
-             Your Register is successful, you can view and buy ticket. <br/>';
-            
 
-         @mail($to, $subject, $message, $header);
+        $subject = 'Eticket - Register as an Event Organizer';
+        $message = 'Dear ' . $name . '<br/> <br/> 
+             Your Register is successful, you can view and buy ticket. <br/>';
+
+
+        @mail($to, $subject, $message, $header);
     }
-    
-    
-    
- 
+
 }

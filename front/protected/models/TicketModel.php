@@ -127,12 +127,14 @@ class TicketModel extends CFormModel {
     }
 
     public function get($id) {
-        $sql = "SELECT ett.*,ee.user_id as author_id,ee.title as event_title
-                FROM etk_ticket_types ett
+        $sql = "SELECT et.*,ett.title as ticket_type_title,ett.event_id,ee.title as event_title
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
                 LEFT JOIN etk_events ee
                 ON ee.id = ett.event_id
-                WHERE ett.deleted = 0
-                AND ett.id = :id
+                WHERE et.deleted = 0
+                AND et.id = :id
                 ";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":id", $id, PDO::PARAM_INT);

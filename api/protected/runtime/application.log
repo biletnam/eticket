@@ -6837,3 +6837,144 @@ Stack trace:
 REQUEST_URI=/eticket/api/app/profile/id/undefined
 HTTP_REFERER=http://localhost/eticket/bb/
 ---
+2013/04/09 11:09:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/signup".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/api/user/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+HTTP_REFERER=http://localhost/eticket/bb/register.html
+---
+2013/04/09 11:09:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/signup".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/api/user/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+HTTP_REFERER=http://localhost/eticket/bb/register.html
+---
+2013/04/09 11:10:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/signup".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/api/user/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+HTTP_REFERER=http://localhost/eticket/bb/register.html
+---
+2013/04/09 11:10:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/signup".' in D:\xampp\htdocs\eticket\framework\web\CWebApplication.php:287
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController('user/signup')
+#1 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\eticket\api\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/eticket/api/user/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+HTTP_REFERER=http://localhost/eticket/bb/register.html
+---
+2013/04/09 11:10:37 [error] [php] Undefined index: address2 (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:87)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (87)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 11:12:01 [error] [php] Undefined index: address2 (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:87)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (87)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 11:13:27 [error] [php] Undefined index: os_version (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (93)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:17:08 [error] [php] Undefined index: os_version (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (93)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:17:49 [error] [php] Undefined index: os_version (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (93)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:18:21 [error] [php] Undefined index: os_version (D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php:93)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#2 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (93)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:22:13 [error] [php] Undefined index: fullname (D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php:53)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php (53)
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (142)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:32:17 [error] [php] Undefined index: fullname (D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php:53)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php (53)
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (142)
+in D:\xampp\htdocs\eticket\api\index.php (14)
+2013/04/09 15:34:51 [error] [php] Undefined index: fullname (D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php:53)
+Stack trace:
+#0 D:\xampp\htdocs\eticket\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\eticket\framework\web\CController.php(287): UsersController->runAction()
+#2 D:\xampp\htdocs\eticket\framework\web\CController.php(266): UsersController->runActionWithFilters()
+#3 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(283): UsersController->run()
+#4 D:\xampp\htdocs\eticket\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 D:\xampp\htdocs\eticket\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\eticket\api\index.php(14): CWebApplication->run()
+REQUEST_URI=/eticket/api/users/signup?api_token=4d50a7f525245db890218329b518f0edc0d7f8f7
+in D:\xampp\htdocs\eticket\api\protected\helpers\HelperGlobal.php (53)
+in D:\xampp\htdocs\eticket\api\protected\controllers\UsersController.php (142)
+in D:\xampp\htdocs\eticket\api\index.php (14)

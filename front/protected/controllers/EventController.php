@@ -50,8 +50,8 @@ class EventController extends Controller {
 
         /* @var $SettingsModel SettingsModel */
         $this->SettingsModel = new SettingsModel();
-        
-         /* @var $UserModel UserModel */
+
+        /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
     }
 
@@ -759,9 +759,6 @@ class EventController extends Controller {
     public function actionInfo($s) {
 
         $event = $this->EventModel->get_by_slug($s);
-
-
-
         if (!$event)
             $this->load_404();
 
@@ -788,6 +785,17 @@ class EventController extends Controller {
         $this->viewData['event'] = $event;
         $this->viewData['message'] = $this->message;
         $this->render('event', $this->viewData);
+    }
+
+    public function actionShare($s) {
+        $event = $this->EventModel->get_by_slug($s);
+        if (!$event)
+            $this->load_404();
+
+        Yii::app()->params['page'] = 'Share';
+        $this->viewData['event'] = $event;
+        $this->viewData['message'] = $this->message;
+        $this->render('share', $this->viewData);
     }
 
     private function do_add_event_token($event) {
@@ -868,8 +876,8 @@ class EventController extends Controller {
         $event = $this->EventModel->get($order['event_id']);
 
         $user_metas = $this->UserModel->get_metas(UserControl::getId());
-        
-        
+
+
 
         if (!$event)
             $this->load_404();
@@ -889,7 +897,7 @@ class EventController extends Controller {
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['order_details'] = $order_details;
         $this->viewData['event'] = $event;
-        
+
         $this->viewData['user_metas'] = $user_metas;
 
         $this->viewData['count_down'] = $count_down;
@@ -1216,6 +1224,34 @@ class EventController extends Controller {
             echo json_encode(array('message' => $this->message, 'data' => array('url' => $file_upload[0]['url'], 'name' => $file_upload[0]['name'])));
             die;
         }
+    }
+
+    public function actionInvite($s) {
+        $link = HelperUrl::baseUrl() . 'event/info/s/' . $s;
+        $url = HelperUrl::hostInfo();
+        $message = '
+                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
+                    <div>
+                        <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
+                    </div>
+                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                        Event Invite
+                    </div>
+                    <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                        <p style="margin-bottom: 10px;margin-top:0">Have a invite Event</p>
+                        <p style="margin-bottom: 10px;margin-top:0"><a href=' . $link . '>Click here</a> to view</p>
+                        <p style="margin-bottom: 0px;margin-top:0">
+                            Regards,<br/>
+                            The 360 Island Events Team.    
+                        </p>
+                        <a href="#"><img src="' . $url . 'front/img/email_fb.png"/></a>
+                        <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
+                    </div>
+                </div>
+        ';
+
+        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Invite', $message);
+        $this->redirect(HelperUrl::baseUrl() . "event/share/s/$s");
     }
 
 }

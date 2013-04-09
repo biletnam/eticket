@@ -11,39 +11,46 @@
             var s = getURLParameters('s');
             var html = "";
             $.get(baseHost + 'api/events/detail/s/' + s + '?api_token=' + api_token, function(event) {
+             
                 
-           
-                var event_data =  event.data.event;
-                console.log(event_data);
+                var event_data = event.data.event;
+          
                 var date_time = event_data.start_time;
-                var date=date_time.split(" ");
-                
+                var date = date_time.split(" ");
+
                 var date1 = new Date(date[0]);
                 var time = date[1].split(':');
                 date1.setHours(time[0]);
                 date1.setMinutes(time[1]);
                 date1.setSeconds(time[2]);
-          
+
                 
-        
-                
+
+
                 var month = getMonthName(date1.getMonth());
-              
+
+
+                html += '<div class="event-title">' + event_data.title + '</div>';
+                html += '<div class="details">';
+                html += '<p class="event-category">' + event_data.categories.primary.title + '</p>';
+                html += '<p>' + date1.getDay() + ',' + month + ' ' + date1.getDay() + ' , ' + date1.getFullYear() + ' at ' + date1.getHours() + ':' + date1.getMinutes() + ' pm</p>';
+                html += '<p>Friend4Growth, Hanoi</p></div>';
+
+                html += '<div class="event-content">';
+                html += '<p class="description">DESCRIPTION</p>';
+                html += '<div class="des-content">' + event_data.description + '</div></div>';
+                html += '<p><button class="btn-event-register" type="button" value="Register">Register</button></p>';
                 
-                html+='<div class="event-title">'+event_data.title+'</div>';
-                html+='<div class="details">';
-                html+='<p class="event-category">'+event_data.categories.primary.title+'</p>';
-                html+='<p>'+date1.getDay()+','+month+' '+date1.getDay()+' , '+date1.getFullYear()+' at '+date1.getHours()+':'+date1.getMinutes()+' pm</p>';
-                html+='<p>Friend4Growth, Hanoi</p></div>';
-                        
-                html+='<div class="event-content">';
-                html+='<p class="description">DESCRIPTION</p>';
-                html+='<div class="des-content">'+event_data.description+'</div></div>';
-                html+='<p><button class="btn-event-register" type="button" value="Register">Register</button></p>';
-                 $('.event-details').html(html);
+                
+                var map = '<iframe width="768" scrolling="no" height="350" frameborder="0" src="http://maps.google.com/maps?q='+event_data.address+';&amp;iwloc=near&amp;z=15&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br/>'    
+                    
+                $('.map').html(map);
+                
+                
+                $('.event-details').html(html);
             }, 'json');
-            
-           
+
+
 
         </script>
 
@@ -63,18 +70,18 @@
             <div class="menu">
                 <a class="back-button" href="javascript: history.go(-1);"><img  src="images/back.png"></a>
 
-                <a class="login" href="login.html">Login</a>
-                <a class="forget-password" href="forgot.html">Forgot password</a>
+                <a class="login">Event Details</a>
+               
                 <div class="cleafix"></div>
             </div>
 
             <div class="content">
                 <div class="map">
-                    <img src="images/map.png"/>
+                   
                 </div>
                 <div class="home">
                     <div class="event-details">
-                       
+
                     </div>
                 </div>
                 <div class="footer">

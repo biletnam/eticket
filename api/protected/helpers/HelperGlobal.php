@@ -28,7 +28,7 @@ class HelperGlobal {
             $error = Helper::_error_code($code);
             HelperGlobal::return_data(array(), array('code' => $code, 'message' => array($error)));
         }
-        
+
         if ($need_login && !$AuthTokenModel->get_by_token($access_token)) {
             $code = 400;
             $error = Helper::_error_code($code);
@@ -50,9 +50,10 @@ class HelperGlobal {
         return array(
             'id' => $user['id'],
             'email' => $user['email'],
-            'fullname' => $user['fullname'],
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
             'img' => $user['img'],
-            'thumbnail' => unserialize($user['thumbnail']),
+            'thumbnail' => $user['thumbnail'],
             'date_added' => $user['date_added'],
             'last_modified' => $user['last_modified'],
             'apikey' => $user['apikey']
@@ -117,8 +118,8 @@ class HelperGlobal {
         $LogModel = new LogModel();
         $LogModel->add($admin_id, $controller, $method, Yii::app()->request->userHostAddress, serialize($description));
     }
-    
-    public static function get_publish(){
+
+    public static function get_publish() {
         $EventModel = new EventModel();
         $publishs = $EventModel->get_image_published();
         return $publishs;

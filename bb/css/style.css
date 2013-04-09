@@ -84,9 +84,9 @@ body{font-family: Arial;color: #2f2e2e;background-color: #fff }
         .content .login-form{padding: 0 5%;padding-top:10px}
             .login-form p{padding-top:20px}
                     .login-form label{display: block}
-                    .login-form input{width: 100%;height: 42px;border-radius: 5px;border: 1px solid #e0e2e2;margin-top: 7px}
-                    .login-form .btn-login,.home .btn-event-register{padding-left: 40px;font-weight: bolder;font-size: 18px;color:#fff;height: 52px;width: 100%;background: #ff8c00 url('../images/button.png') 45% center no-repeat;border:1px solid #f5851d;border-radius: 5px;box-shadow: inset 1px 1px 3px #ffb357 }
-                    
+                    .login-form input,.login-form select{width: 100%;height: 42px;border-radius: 5px;border: 1px solid #e0e2e2;margin-top: 7px}
+                    .login-form .btn-login,.home .btn-event-register,.login-form .btn-register{padding-left: 40px;font-weight: bolder;font-size: 18px;color:#fff;height: 52px;width: 100%;background: #ff8c00 url('../images/button.png') 45% center no-repeat;border:1px solid #f5851d;border-radius: 5px;box-shadow: inset 1px 1px 3px #ffb357 }
+                    .login-form .btn-facebook{padding-left: 40px;font-weight: bolder;font-size: 18px;color:#fff;height: 52px;width: 100%;background: #3e5b9e url('../images/btn-facebook.png') 45% center no-repeat;border:1px solid #213b7a;border-radius: 5px;box-shadow: inset 1px 1px 3px #687eaf }
         .footer{background: url('../images/footer.png');height: 128px;position: fixed;bottom: 0;width: 100%}
         .nav{width: 100%}
         .nav img{width: 720px}
@@ -109,3 +109,5 @@ body{font-family: Arial;color: #2f2e2e;background-color: #fff }
         .home .event-details .event-content{border: 1px solid #d5d5d5;border-radius: 10px;margin-bottom: 10px}
             .home .event-details .event-content .description{margin: 5px;height: 37px;padding-left: 12px;padding-top: 12px;background-color: #f6f4f4;font-size: 16px;color:#d96941}
             .home .event-details .event-content .des-content p{margin: 0 15px;margin-top: 20px;margin-bottom: 10px}
+            
+        .hight_light_field{border: 1px solid red!important}

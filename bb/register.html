@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Event Details</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+
+        <script>
+            $.get(baseHost + 'api/countries/index?api_token=' + api_token, function(coun) {
+                var countries = coun.data.countries;
+
+                var html = "";
+                html+= '<label>Country</label>';
+                html += '<select class="country" name="country">';
+                $.each(countries, function(i, country) {
+                    html += '<option value="' + country.id + '">' + country.title + '</option>';
+                });
+                html += '</select>'
+
+                $('.countries').html(html);
+
+            }, 'json');
+        </script>
+
+    </head>
+    <body>
+        <script src="local:///chrome/webworks.js" type="text/javascript"></script>
+
+        <div class="wrapper">
+            <div class="header">
+                <a class="menu-control" href="#"><img src="images/menu-button.png"/></a>
+                <img src="images/logo.png"/>
+                <a class="facebook-button" href="#"><img src="images/facebook.png"/></a>
+                <div class="cleafix"></div>
+            </div>
+
+            <div class="menu">
+                <a class="back-button" href="javascript: history.go(-1);"><img  src="images/back.png"></a>
+
+                <a class="login">Register</a>
+
+                <div class="cleafix"></div>
+            </div>
+
+            <div class="content">
+                <form class="login-form" >
+
+                    <p>
+                        <label>Email <span style="color:red">*</span></label>
+                        <input class="email" type="email" name="email"/>
+                    </p>
+                    <p>
+                        <label>Password <span style="color:red">*</span></label>
+                        <input class="password" type="password" name="password"/>
+                    </p>
+
+                    <p>
+                        <label>Confirm Password <span style="color:red">*</span></label>
+                        <input class="re-password" type="password" name="re-password"/>
+                    </p>
+                    <table style="width: 100%">
+                        <tr style="width: 100%">
+                            <td style="width: 35%;padding-right: 5%">
+                                <p>
+                                    <label>First Name <span style="color:red">*</span></label>
+                                    <input class="first-name" type="text" name="first-name"/>
+                                </p>
+                            </td>
+                            <td style="width: 35%">
+                                <p>
+                                    <label>Last Name <span style="color:red">*</span></label>
+                                    <input class="last-name" type="text" name="last-name"/>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        <label>Address <span style="color:red">*</span></label>
+                        <input class="address" type="text" name="address"/>
+                    </p>
+                   <p>
+                        <label>Address 2</label>
+                        <input class="address_2" type="text" name="address_2"/>
+                    </p>
+                    <p>
+                        <label>Phone <span style="color:red">*</span></label>
+                        <input class="phone" type="tel" name="phone"/>
+                    </p>
+                    <p>
+                        <label>City <span style="color:red">*</span></label>
+                        <input class="city" type="text" name="city"/>
+                    </p>
+                    <p class="countries">
+
+                    </p>
+                    
+                    <p>
+                        <label><input class="client" name="client" value="1" type="checkbox" style="width: auto;vertical-align: bottom;height: 20px"> CHECK HERE TO REGISTER AS AN EVENT ORGANIZER</label>
+                    </p>
+                    
+                    <p>
+                        <button class="btn-register" type="button" value="Submit">Submit</button>
+                    </p>
+                    <p>
+                        <button class="btn-facebook" type="button" value="Submit">Sign up with Facebook</button>
+                    </p>
+                </form>
+
+
+            </div>
+
+            <div class="footer">
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

@@ -30,3 +30,6 @@ ul.qrcodes{margin-left: 0;margin-top: 30px;}
     ul.qrcodes li:nth-child(3n){margin-right: 0;}
     ul.qrcodes a{}
     ul.qrcodes a img{}
+    
+    
+.event-url{width: 450px;}

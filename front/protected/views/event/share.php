@@ -1,13 +1,13 @@
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id))
-            return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=104204896436938";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+        return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=104204896436938";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="page-event-detail">
     <div class="container_12">
         <?php echo Helper::print_info(); ?>
@@ -20,7 +20,7 @@
                     <div class="pull-left event-header-title">
 
                         <h1><span class="summary"><?php echo $event['title'] ?>  <div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div></span></h1>
-                        
+
                         <h2>
 
 
@@ -36,12 +36,18 @@
                         </h2>
 
                         <p><i>You can share this event by email or send Link</i></p>
-                        <div class="share">
-                            <a href="#invite" class="share-email btn-invite"><img style="width: 30px" src="<?php echo HelperUrl::baseUrl() ?>images/share-email.png" /></a>
-                           
+                        <div class="share clearfix">
+                            
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+                                <a style="float: left;margin-right: 10px;" href="#invite" class="share-email btn-invite"><img style="width: 30px" src="<?php echo HelperUrl::baseUrl() ?>images/share-email.png" /></a>
+                                <a class="addthis_button_compact" addthis:url="<?php echo HelperUrl::baseUrl(true); ?>event/info/s/<?php echo $event['slug']; ?>" style="margin-top: 5px;"></a>
+                            </div>
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+                            <!-- AddThis Button END -->
                         </div>
                         <div class="controls">
-                            Link: <input type="text" class="event-url input-medium" value="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $event['slug'] ?>">
+                            Link: <input type="text" class="event-url input-medium" value="<?php echo HelperUrl::baseUrl(true) ?>event/info/s/<?php echo $event['slug'] ?>">
                         </div>
                     </div>
                     <div class="pull-right event-header-thumb">

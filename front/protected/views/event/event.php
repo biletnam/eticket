@@ -12,9 +12,9 @@
                         <h1><span class="summary"><?php echo $event['title'] ?></span></h1>
                         <h2>
 
-                          
+
                             <b>Address:</b> <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?><br/>
-                            <?php if($event['address_2']!=''):?><b>Address 2:</b>:<?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?><br/><?php endif;?>
+                            <?php if ($event['address_2'] != ''): ?><b>Address 2:</b>:<?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?><br/><?php endif; ?>
 
                             <b>Event Creator: </b><a href="<?php echo HelperUrl::baseUrl() ?>user/view_profile/s/current/u/<?php echo $event['user_id'] ?>"><?php echo ($event['organizer_title'] != "") ? $event['organizer_title'] : $event['firstname'] . ' ' . $event['lastname'] ?></a><br/>
 
@@ -31,7 +31,14 @@
                         <?php if ($event['link'] != ''): ?>
                             <a href="<?php echo $event['link'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/link-logo.png"></a>
                         <?php endif; ?>
-                            <a href="<?php echo HelperUrl::baseUrl()?>event/share/s/<?php echo $event['slug']?>"><img class="link-logo" style="width: 60px" src="<?php echo HelperUrl::baseUrl() ?>images/share.png"></a>
+                        
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+                            <a style="float: left;margin-right: 10px;" href="<?php echo HelperUrl::baseUrl() ?>event/share/s/<?php echo $event['slug'] ?>"><img class="link-logo" style="width: 60px" src="<?php echo HelperUrl::baseUrl() ?>images/share.png" ></a>
+                            <a class="addthis_button_compact"></a>
+                        </div>
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+                        <!-- AddThis Button END -->
                     </div>
                     <div class="pull-right event-header-thumb">
                         <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'full') ?>">
@@ -73,10 +80,10 @@
 
                                             </td>
                                             <td>TT$<?php
-                                                if ($t['service_fee'])
-                                                    echo $t['price'] * 1.1;
-                                                else
-                                                    echo $t['price'];
+                                            if ($t['service_fee'])
+                                                echo $t['price'] * 1.1;
+                                            else
+                                                echo $t['price'];
                                                 ?>
                                             </td>
                                             <?php /* <td>$<?php echo $t['price']*1.1 ?></td> */ ?>
@@ -127,11 +134,11 @@
                             <br/>
                         </div>
                         <div class="vcard">
-                            
+
                             <p>Address: <?php echo $event['address'] ?>, <?php echo $event['country_title'] ?></p>
-                            <?php if ($event['address_2'] != ''):  ?>
-                            <p>Address 2: <?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?></p>
-                            <?php endif;?>
+                            <?php if ($event['address_2'] != ''): ?>
+                                <p>Address 2: <?php echo $event['address_2'] ?>, <?php echo $event['country_title'] ?></p>
+                            <?php endif; ?>
                         </div>
 
 

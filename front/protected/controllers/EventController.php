@@ -1044,7 +1044,7 @@ class EventController extends Controller {
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "",$order['id']);
                     }
                 }
 
@@ -1299,7 +1299,7 @@ class EventController extends Controller {
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "");
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "",$order['id']);
                     }
                 }
 

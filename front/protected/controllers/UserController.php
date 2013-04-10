@@ -436,6 +436,7 @@ class UserController extends Controller {
         Yii::app()->params['page'] = "Order #$id";
         Yii::app()->params['is_tab'] = 'paid_event';
 
+        $this->viewData['tickets'] = $this->TicketModel->get_all(array('deleted'=>0,'order_id'=>$order['id']));        
         $this->viewData['order'] = $order;
         $this->viewData['order_details'] = $order_details;
 

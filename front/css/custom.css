@@ -24,3 +24,9 @@
 .payment-ticket .input-mini{width: 65px !important;}
 
 .label-signup{font-family: tahoma;color: #413f40}
+
+ul.qrcodes{margin-left: 0;margin-top: 30px;}
+    ul.qrcodes li{list-style: none;float: left;width: 193px;margin-right: 20px;margin-bottom: 20px;}
+    ul.qrcodes li:nth-child(3n){margin-right: 0;}
+    ul.qrcodes a{}
+    ul.qrcodes a img{}

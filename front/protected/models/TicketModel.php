@@ -5,6 +5,75 @@ class TicketModel extends CFormModel {
     public function __construct() {
         
     }
+    
+    public function get_all($args) {
+        
+        $custom = "";
+        $params = array();
+        $group_by = "";
+        $sql_count = "";
+
+        if (isset($args['user_id']) && $args['user_id'] != "") {
+            $custom.= " AND et.user_id = :user_id";
+            $params[] = array('name' => ':user_id', 'value' => $args['user_id'], 'type' => PDO::PARAM_STR);
+        }
+
+
+        if (isset($args['s']) && $args['s'] != "") {
+            $custom.= " AND vc.title like :title";
+            $params[] = array('name' => ':title', 'value' => "%$args[s]%", 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['deleted'])) {
+            $custom.= " AND et.deleted = :deleted";
+            $params[] = array('name' => ':deleted', 'value' => $args['deleted'], 'type' => PDO::PARAM_INT);
+        }
+
+        if (isset($args['type'])) {
+            $custom.= " AND ett.type = :type";
+            $params[] = array('name' => ':type', 'value' => $args['type'], 'type' => PDO::PARAM_STR);
+        }
+
+        if (isset($args['event_id'])) {
+            $custom.= " AND ett.event_id = :event_id";
+            $params[] = array('name' => ':event_id', 'value' => $args['event_id'], 'type' => PDO::PARAM_INT);
+        }
+
+        if (isset($args['ticket_type_id'])) {
+            $custom.= " AND et.ticket_type_id = :ticket_type_id";
+            $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
+        }
+        
+        if(isset($args['group_ticket'])){
+            $group_by = "GROUP BY et.ticket_type_id";
+            $sql_count = "count(et.id) as total_ticket,";
+        }
+        
+        if (isset($args['order_id'])) {
+            $custom.= " AND et.order_id = :order_id";
+            $params[] = array('name' => ':order_id', 'value' => $args['order_id'], 'type' => PDO::PARAM_INT);
+        }
+
+
+        $sql = "SELECT et.*,ett.title as ticket_type_name,ee.title as event_name,ett.event_id,$sql_count ee.slug as event_slug
+                FROM etk_tickets et
+                LEFT JOIN etk_ticket_types ett
+                ON ett.id = et.ticket_type_id
+                LEFT JOIN etk_events ee
+                ON ee.id = ett.event_id
+                WHERE 1
+                $custom
+                $group_by
+                ORDER BY et.date_added DESC
+                ";
+
+        $command = Yii::app()->db->createCommand($sql);        
+        foreach ($params as $a)
+            $command->bindParam($a['name'], $a['value'], $a['type']);
+
+
+        return $command->queryAll();
+    }
 
     public function gets($args, $page = 1, $ppp = 20) {
         $page = ($page - 1) * $ppp;
@@ -47,6 +116,11 @@ class TicketModel extends CFormModel {
         if(isset($args['group_ticket'])){
             $group_by = "GROUP BY et.ticket_type_id";
             $sql_count = "count(et.id) as total_ticket,";
+        }
+        
+        if (isset($args['order_id'])) {
+            $custom.= " AND et.order_id = :order_id";
+            $params[] = array('name' => ':order_id', 'value' => $args['order_id'], 'type' => PDO::PARAM_INT);
         }
 
 
@@ -107,6 +181,11 @@ class TicketModel extends CFormModel {
         if (isset($args['ticket_type_id'])) {
             $custom.= " AND et.ticket_type_id = :ticket_type_id";
             $params[] = array('name' => ':ticket_type_id', 'value' => $args['ticket_type_id'], 'type' => PDO::PARAM_INT);
+        }
+        
+        if (isset($args['order_id'])) {
+            $custom.= " AND et.order_id = :order_id";
+            $params[] = array('name' => ':order_id', 'value' => $args['order_id'], 'type' => PDO::PARAM_INT);
         }
 
         $sql = "SELECT count(*) as total
@@ -193,9 +272,9 @@ class TicketModel extends CFormModel {
         return Yii::app()->db->lastInsertID;
     }
 
-    public function add_ticket($ticket_type_id, $user_id, $visitor_firstname, $visitor_lastname, $visitor_email, $visitor_cellphone) {
+    public function add_ticket($ticket_type_id, $user_id, $visitor_firstname, $visitor_lastname, $visitor_email, $visitor_cellphone,$order_id) {
         $time = time();
-        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,visitor_firstname,visitor_lastname,visitor_email,visitor_cellphone,date_added) VALUES (:ticket_type_id,:user_id,:visitor_firstname,:visitor_lastname,:visitor_email,:visitor_cellphone,:date_added)";
+        $sql = "INSERT INTO etk_tickets(ticket_type_id,user_id,visitor_firstname,visitor_lastname,visitor_email,visitor_cellphone,date_added,order_id) VALUES (:ticket_type_id,:user_id,:visitor_firstname,:visitor_lastname,:visitor_email,:visitor_cellphone,:date_added,:order_id)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":ticket_type_id", $ticket_type_id, PDO::PARAM_INT);
         $command->bindParam(":user_id", $user_id, PDO::PARAM_INT);
@@ -206,6 +285,7 @@ class TicketModel extends CFormModel {
         $command->bindParam(":visitor_email", $visitor_email);
 
         $command->bindParam(":date_added", $time, PDO::PARAM_INT);
+        $command->bindParam(":order_id", $order_id, PDO::PARAM_INT);
 
         $command->execute();
         return Yii::app()->db->lastInsertID;

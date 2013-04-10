@@ -776,7 +776,7 @@ class EventController extends Controller {
             $ticket_types[$k] = $v;
         }
 
-
+        //print_r($ticket_types);die;
 
         Yii::app()->params['page'] = 'Event Detail';
 
@@ -1331,13 +1331,12 @@ class EventController extends Controller {
                     ';
         foreach ($order_details as $k => $v) {
 
-            $message.= ($k + 1) . '. ' . $v['title'];
+            //$message.= ($k + 1) . '. ' . $v['title'];
             $tmp_tickets = $tickets[$v['id']];
             foreach ($tmp_tickets as $t) {
                 $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t"."&size=280x280";
-                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname']." ".$order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
-
-                $message.=  ' <img style="margin-right:10px; src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
+                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname']." ".$order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));                
+                $message.=  ' <img style="margin-right:10px" src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
                 
             }
         }

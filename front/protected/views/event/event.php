@@ -81,15 +81,15 @@
                                             </td>
                                             <?php /* <td>$<?php echo $t['price']*1.1 ?></td> */ ?>
                                             <td>                             
-                                                <?php if ((int) $t['remaining'] == 0 && (int) $t['total_ticket'] > 0): ?>
+                                                <?php if (intval($t['remaining']) == 0 && intval($t['total_ticket']) > 0): ?>
                                                     SOLD OUT
                                                 <?php else: ?>
                                                     <?php
-                                                    $remaining = $t['remaining'] > (int) $t['minimum'] ? $t['remaining'] : (int) $t['minimum'];
+                                                    $remaining = intval($t['remaining']) > intval($t['minimum']) ? intval($t['remaining']) : intval($t['minimum']);
                                                     ?>
                                                     <select name="ticket_type[<?php echo $t['id']; ?>]">
                                                         <option value='0'>0</option>
-                                                        <?php for ($i = $t['minimum']; $i <= $remaining; $i++): ?>
+                                                        <?php for ($i = intval($t['minimum']); $i <= $remaining; $i++): ?>
 
                                                             <option value="<?php echo $i ?>"><?php echo $i ?></option>
                                                         <?php endfor; ?>

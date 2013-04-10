@@ -229,27 +229,27 @@
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Cardholder Name <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="card_name" value="<?php echo isset($_POST['card_name']) ? htmlspecialchars($_POST['card_name']) : ""; ?>"/>
+                                        <input type="text" class="input-medium" autocomplete="off" name="card_name" value="<?php echo isset($_POST['card_name']) ? htmlspecialchars($_POST['card_name']) : ""; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Card Number <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-medium" name="card_number" value="<?php echo isset($_POST['card_number']) ? htmlspecialchars($_POST['card_number']) : ""; ?>"/>
+                                        <input type="text" class="input-medium" autocomplete="off" name="card_number" value="<?php echo isset($_POST['card_number']) ? htmlspecialchars($_POST['card_number']) : ""; ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">Expiration [ mm / yyyy ] <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-mini" name="card_month" value="<?php echo isset($_POST['card_month']) ? htmlspecialchars($_POST['card_month']) : ""; ?>"/>
-                                        <input type="text" class="input-mini" name="card_year" value="<?php echo isset($_POST['card_year']) ? htmlspecialchars($_POST['card_year']) : ""; ?>"/>
+                                        <input type="text" class="input-mini" autocomplete="off" name="card_month" value="<?php echo isset($_POST['card_month']) ? htmlspecialchars($_POST['card_month']) : ""; ?>"/>
+                                        <input type="text" class="input-mini" autocomplete="off" name="card_year" value="<?php echo isset($_POST['card_year']) ? htmlspecialchars($_POST['card_year']) : ""; ?>"/>
                                     </div>
                                 </div>
                                 <div class="controls-group clearfix">
                                     <label class="control-label pull-left">CVV Number <span class="required">*</span></label>
                                     <div class="controls pull-left">
-                                        <input type="text" class="input-mini" name="cvv_number" value="<?php echo isset($_POST['cvv_number']) ? htmlspecialchars($_POST['cvv_number']) : ""; ?>"/>
+                                        <input type="text" class="input-mini" autocomplete="off" name="cvv_number" value="<?php echo isset($_POST['cvv_number']) ? htmlspecialchars($_POST['cvv_number']) : ""; ?>"/>
                                     </div>
                                 </div>
                             </div>

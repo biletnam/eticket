@@ -9,8 +9,8 @@ $ticket_status = Helper::ticket_status();
         <div class="grid_12">
             <ul class="clearfix">
                 <li class="<?php if ($type == "general") echo 'active'; ?>"><a class="<?php if ($type == "general") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl() ?>event/edit/id/<?php echo $event['id'] ?>/type/general"><i class="icon icon-edit-white hide"></i>Event Information</a></li>
-                <li class="<?php if ($type == "ticket") echo 'active'; ?>"><a class="<?php if ($type == "ticket") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket hide"></i>eTicket Information</a></li>
-                <li class="<?php if ($type == "share") echo 'active'; ?>"><a class="<?php if ($type == "share") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/share"><i class="icon icon-ticket hide"></i>Share Event</a></li>
+                <li class="<?php if ($type == "ticket") echo 'active'; ?>"><a class="<?php if ($type == "ticket") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/ticket"><i class="icon icon-ticket hide"></i>Ticket Information</a></li>
+                <?php /*<li class="<?php if ($type == "share") echo 'active'; ?>"><a class="<?php if ($type == "share") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/share"><i class="icon icon-ticket hide"></i>Share Event</a></li>*/?>
                 <?php /* <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li> */ ?>
             </ul>
         </div>
@@ -232,7 +232,7 @@ $ticket_status = Helper::ticket_status();
                                         <div class="jq-plugin clearfix">
                                             <label class="checkbox">
                                                 <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked';else if ($event['show_tickets']) echo 'checked'; ?> >
-                                                CHECK HERE TO SHOW THE NUMBER OF ETICKETS REMAINING
+                                                CHECK HERE TO SHOW THE NUMBER OF TICKETS REMAINING
                                             </label>
                                         </div>
                                     </div>
@@ -275,13 +275,13 @@ $ticket_status = Helper::ticket_status();
                     <div class="span10 form-magu">
 
                         <div class="step hide"> <div class="number"><span>2</span></div>
-                            <h3>eTicket Information</h3>
+                            <h3>Ticket Information</h3>
                         </div>
                         <div class="add_ticket_container">
                             <span class="add_ticket_text"></span>
                             <?php /* <a class="btn btn-type-price  btn-donate eb_button small default add_ticket_class btn-ticket free">Free</a>
                               <a class="btn-style button-medium eb_button small go add_ticket_class btn-ticket paid">Cost</a> */ ?>
-                            <a class="btn button-medium eb_button small go add_ticket_class btn-ticket paid">Add eTicket</a>
+                            <a class="btn button-medium eb_button small go add_ticket_class btn-ticket paid">Add Ticket</a>
 
                         </div>
                         <div id="event_form" class="form-ticket">  

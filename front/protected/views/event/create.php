@@ -212,7 +212,7 @@ $countries = Helper::countries();
                             <div class="jq-plugin clearfix">
                                 <label class="checkbox">
                                     <input type="checkbox" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?>>
-                                    CHECK HERE TO SHOW THE NUMBER OF ETICKETS REMAINING
+                                    CHECK HERE TO SHOW THE NUMBER OF TICKETS REMAINING
                                 </label>
                             </div>
                         </div>

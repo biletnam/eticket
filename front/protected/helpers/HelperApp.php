@@ -321,30 +321,26 @@ class HelperApp {
         @mail($to, $subject, $template, $header);
     }
 
-    public static function email_register_organizer($to, $name,$pwd, $from = 'noreply@360islandevents.com', $footer = true) {
-        $message = 'Dear '.$name.'<br/><br/>
+    public static function email_register_organizer($to, $name, $pwd, $from = 'noreply@360islandevents.com', $footer = true) {
+        
+        $subject = "Registration Successful ";
+        
+        $message = 'Dear ' . $name . '<br/><br/>
                     Congratulations!
                     Your registration was successful. You may now browse and purchase tickets from any event you wish to attend by visiting our website http://www.360islandevents.com.<br/>
 
-Log in using the following:<br/>
+                    Log in using the following:<br/>
 
-Email: '.$to.'<br/>
-Password: '.$pwd.'<br/>
+                    Email: ' . $to . '<br/>
+                    Password: ' . $pwd . '<br/>
 
-If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this.”
-Regards,
-The 360 Island Events Team.';
+                    If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this.<br/>
+                    Regards,<br/>
+                    The 360 Island Events Team.';
         if ($footer)
             $message .= '';
-        $header =
-                "MIME-Version: 1.0\r\n" .
-                "Content-type: text/html; charset=UTF-8\r\n" .
-                "From:  <$from>\r\n" .
-                "Reply-to: $from" .
-                "Date: " . date("r") . "\r\n";
-
-        $subject = 'Registration Successful';
-        $template = '<div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
+        $template = '
+                    <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
                         <div class="header">
                             <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
                         </div>
@@ -362,10 +358,16 @@ The 360 Island Events Team.';
                         </div>
                     </div>';
 
+        $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From:  <$from>\r\n" .
+                "Reply-to: $from" .
+                "Date: " . date("r") . "\r\n";
         @mail($to, $subject, $message, $header);
     }
 
-    public static function email_register($to, $name,$pwd, $from = 'noreply@360islandevents.com', $footer = true) {
+    public static function email_register($to, $name, $pwd, $from = 'noreply@360islandevents.com', $footer = true) {
         $message = '';
         if ($footer)
             $message .= '';

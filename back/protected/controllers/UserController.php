@@ -160,13 +160,13 @@ class UserController extends Controller {
     public function actionApproved($user, $id, $approve) {
         $this->CheckPermission();
         $user_email = $user;
-        
+
         $userinfo = $this->UserModel->get($id);
-        print_r($userinfo);die;
+       
 
         if ($approve == 'client') {
             $subject = 'Event Organizer Account Approved';
-            $note = "Dear ".$userinfo['firstname']." ".$userinfo['lastname']."<br/><br/>
+            $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
                     Congratulations!<br/>
                     Your request to become an Event Organizer has been approved. You may now create events and start selling tickets on our website http://www.360islandevents.com .<br/>
                     If you get any problems please do not hesitate to contact us.<br/>
@@ -174,7 +174,7 @@ class UserController extends Controller {
                     The 360 Island Events Team";
         } else {
             $subject = 'Event Organizer Account Not Approved';
-            $note = "Dear ".$userinfo['firstname']." ".$userinfo['lastname']."<br/><br/>
+            $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
                     We apologize but your request to be registered as an Event Organizer has been denied.<br/>
                     If you feel that there has been some mistake you may contact us at sales@360islandevents.com.<br/>
                     Regards,<br/>
@@ -183,13 +183,14 @@ class UserController extends Controller {
 
         $url = HelperUrl::hostInfo();
 
-        $message = '
-                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
+       
+        $template = '
+            <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
                     <div>
                         <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
                     </div>
                     <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                        '.$subject.'
+                        ' . $subject . '
                     </div>
                     <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
                         <p style="margin-bottom: 0px;margin-top:0">
@@ -199,9 +200,18 @@ class UserController extends Controller {
                         <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
                     </div>
                 </div>
-        ';
+                                    </div>
+';
+
+        $header =
+                "MIME-Version: 1.0\r\n" .
+                "Content-type: text/html; charset=UTF-8\r\n" .
+                "From:  <$from>\r\n" .
+                "Reply-to: $from" .
+                "Date: " . date("r") . "\r\n";
+
         // $message;die;
-        @HelperApp::email($user_email, $subject, $message);
+        @HelperApp::email($user_email, $subject, $template);
 
         $this->UserModel->update(array('role' => $approve, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));

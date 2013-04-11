@@ -97,7 +97,7 @@ class EventController extends Controller {
             Yii::app()->params['page'] = 'Create Event';
             //$this->viewData['message'] = 'You are not authorized to access this page.';
             $this->viewData['message'] = 'To create an event you must first be registered and approved by our team.<br/>
-                                If you would like to upgrade your account please contact us at sales@sachacosmetics.com.<br/><br/>
+                                If you would like to upgrade your account please contact us at <a href="mailto:sales@sachacosmetics.com">sales@sachacosmetics.com</a>.<br/><br/>
                                 In the mean time you can still browse events and purchase tickets by <a href="'.HelperUrl::baseUrl().'event/search">clicking here';
             $this->render('access', $this->viewData);
             die;

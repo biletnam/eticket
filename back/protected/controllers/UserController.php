@@ -160,13 +160,25 @@ class UserController extends Controller {
     public function actionApproved($user, $id, $approve) {
         $this->CheckPermission();
         $user_email = $user;
+        
+        $userinfo = $this->UserModel->get($id);
+        print_r($userinfo);die;
 
         if ($approve == 'client') {
-            $subject = '360islandevents.com - Account approved';
-            $note = "Your account was approved to become Client";
+            $subject = 'Event Organizer Account Approved';
+            $note = "Dear ".$userinfo['firstname']." ".$userinfo['lastname']."<br/><br/>
+                    Congratulations!<br/>
+                    Your request to become an Event Organizer has been approved. You may now create events and start selling tickets on our website http://www.360islandevents.com .<br/>
+                    If you get any problems please do not hesitate to contact us.<br/>
+                    Regards,<br/>
+                    The 360 Island Events Team";
         } else {
-            $subject = '360islandevents.com - Your account was not approved';
-            $note = "Your account was not approved to become Client";
+            $subject = 'Event Organizer Account Not Approved';
+            $note = "Dear ".$userinfo['firstname']." ".$userinfo['lastname']."<br/><br/>
+                    We apologize but your request to be registered as an Event Organizer has been denied.<br/>
+                    If you feel that there has been some mistake you may contact us at sales@360islandevents.com.<br/>
+                    Regards,<br/>
+                    The 360 Island Events Team";
         }
 
         $url = HelperUrl::hostInfo();
@@ -177,7 +189,7 @@ class UserController extends Controller {
                         <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
                     </div>
                     <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                        Account
+                        '.$subject.'
                     </div>
                     <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
                         <p style="margin-bottom: 0px;margin-top:0">

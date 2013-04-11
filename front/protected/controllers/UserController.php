@@ -65,6 +65,12 @@ class UserController extends Controller {
         if ($_POST)
             $this->do_signup();
         $email = isset($_GET['email']) ? $_GET['email'] : '';
+
+        $register = isset($_GET['register']) ? $_GET['register'] : '';
+        $link = isset($_GET['link']) ? $_GET['link'] : '';
+
+        $this->viewData['link'] = $link;
+        $this->viewData['register'] = $register;
         $this->viewData['message'] = $this->message;
         $this->viewData['email'] = $email;
         Yii::app()->params['page'] = 'Register';
@@ -84,11 +90,11 @@ class UserController extends Controller {
         $is_session = isset($_POST['remember']) ? false : true;
         $city = trim($_POST['city']);
         $country_id = trim($_POST['country']);
-        $company = trim($_POST['company']);
+//        $company = trim($_POST['company']);
 
         $phone = trim($_POST['phone']);
-
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
+        $company = trim($_POST['company']);
 
 
 
@@ -121,6 +127,7 @@ class UserController extends Controller {
             $this->message['error'][] = "City cannot be blank.";
         if (preg_match($special_char, $city))
             $this->message['error'][] = "City must not contains any speacial characters.";
+        
         if ($client == 'waiting') {
             if ($this->validator->is_empty_string($company))
                 $this->message['error'][] = "Company cannot be blank.";
@@ -140,26 +147,25 @@ class UserController extends Controller {
         $this->UserModel->add_meta('address', $address, $user_id);
         $this->UserModel->add_meta('address2', $address2, $user_id);
         $this->UserModel->add_meta('phone', $phone, $user_id);
-        
-      
 
-        $this->OrganizerModel->add($user_id,$company);
+
+
+        $this->OrganizerModel->add($user_id, $company);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
 
         $url = isset($_GET['return']) && !$this->validator->is_empty_string($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
 
-        if ($client == 'waiting')
-            HelperApp::email_register_organizer($email, $firstname);
-        else
-            HelperApp::email_register($email, $firstname);
+//        if ($client == 'waiting')
+        HelperApp::email_register_organizer($email, $firstname, $pwd1);
+//        else
+//            HelperApp::email_register($email, $firstname,$pwd1);
 
-        $this->redirect($url);
+        $this->redirect(HelperUrl::baseUrl() . 'user/signup?register=done&link=' . urlencode($url));
+        //$this->redirect($url);
     }
 
     public function actionSignin() {
-
         $return = isset($_GET['return']) ? $_GET['return'] : "";
-
         if (isset($_POST['register']))
             $this->redirect(HelperUrl::baseUrl() . 'user/signup/?email=' . $_POST['email'] . "&return=" . urlencode($return));
         if ($_POST)
@@ -313,11 +319,14 @@ class UserController extends Controller {
         HelperGlobal::require_login();
         if ($_POST)
             $this->do_account_setting();
+        
+        $organizer = $this->OrganizerModel->get_by_user(UserControl::getId());
 
         $this->viewData['countries'] = $this->CountryModel->gets_all_countries();
         $this->viewData['metas'] = $this->UserModel->get_metas(UserControl::getId());
         $this->viewData['message'] = $this->message;
         $this->viewData['type'] = $type;
+        $this->viewData['organizer'] = $organizer;
         Yii::app()->params['page'] = 'Account Setting';
         Yii::app()->params['is_tab'] = 'setting';
         $this->render('account-setting', $this->viewData);
@@ -333,6 +342,9 @@ class UserController extends Controller {
         $city = $_POST['city'];
         $country_id = $_POST['country_id'];
 
+        $client = isset($_POST['client']) ? 'waiting' : 'customer';
+        $company = trim($_POST['company']);
+
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->is_valid_image($file, 1048576))
             $this->message['error'][] = "Image or size is not correct.";
         if (!$this->validator->is_empty_string($file['name']) && !$this->validator->check_min_image_size(300, 300, $file['tmp_name']))
@@ -347,6 +359,10 @@ class UserController extends Controller {
             $this->message['error'][] = "Address 1 can not be blank and not contains any speacial characters.";
         if ($this->validator->has_speacial_character($address2))
             $this->message['error'][] = "Address 2 can not be blank and not contains any speacial characters.";
+        if ($client == 'waiting') {
+            if ($this->validator->is_empty_string($company))
+                $this->message['error'][] = "Company cannot be blank.";
+        }
 
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
@@ -363,14 +379,18 @@ class UserController extends Controller {
         }
 
 
-        $this->UserModel->update(array('img' => $img, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
+        $this->UserModel->update(array('img' => $img,'role'=>$client, 'thumbnail' => $thumbnail, 'country_id' => $country_id, 'firstname' => $firstname, 'lastname' => $lastname, 'id' => UserControl::getId()));
 
         //update metas
         $this->UserModel->update_metas('address', $address, UserControl::getId());
         $this->UserModel->update_metas('address2', $address2, UserControl::getId());
         $this->UserModel->update_metas('phone', trim($_POST['phone']), UserControl::getId());
         $this->UserModel->update_metas('city', $city, UserControl::getId());
-
+        
+        $organizer = $this->OrganizerModel->get_by_user(UserControl::getId());
+        
+        $this->OrganizerModel->update(array('title'=>$company,'id'=>$organizer['id']));
+        
         $this->redirect(HelperUrl::baseUrl() . "user/account/type/setting/?s=1");
     }
 

@@ -8,10 +8,7 @@ $countries = Helper::countries();
             <?php echo Helper::print_error($message); ?>
             <div class="content">
 
-                <div class="step">
-                    <div class="number"><span>1</span></div>
-                    <h3>Event Information</h3>
-                </div>
+             
 
                 <div class="controls-group clearfix">
                     <label for="title" class="control-label pull-left">Event Title<span class="required">*</span></label>
@@ -210,7 +207,7 @@ $countries = Helper::countries();
                     <div class="controls pull-left">
                         <div class="rowElem">
                             <div class="jq-plugin clearfix">
-                                <label class="checkbox">
+                                <label class="checkbox number-ticket">
                                     <input type="checkbox" name="show_tickets" value="1" <?php if (isset($_POST['show_tickets'])) echo 'checked' ?>>
                                     CHECK HERE TO SHOW THE NUMBER OF TICKETS REMAINING
                                 </label>

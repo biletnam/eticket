@@ -230,7 +230,7 @@ $ticket_status = Helper::ticket_status();
                                 <div class="controls pull-left">
                                     <div class="rowElem">
                                         <div class="jq-plugin clearfix">
-                                            <label class="checkbox">
+                                            <label class="checkbox number-ticket">
                                                 <input type="checkbox" value="1" name="show_tickets" <?php if (isset($_POST['show_tickets'])) echo 'checked';else if ($event['show_tickets']) echo 'checked'; ?> >
                                                 CHECK HERE TO SHOW THE NUMBER OF TICKETS REMAINING
                                             </label>

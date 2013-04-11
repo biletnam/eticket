@@ -100,6 +100,8 @@ class UserControl {
         return self::$instance['signup_facebook'];
     }
     
+    
+    
     public static function getSecretKey(){
         self::FetchUserInstance();
         return self::$instance['secret_key'];

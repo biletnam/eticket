@@ -30,8 +30,7 @@
             <div class="row-fluid clearfix padding-bottom-50px">
                 <div class="grid_8">
                     <h1>Page not found</h1>
-                    <h5>The page you try to access may be not exist. Click <a href="<?php echo HelperUrl::baseUrl(); ?>">here</a> to return home page. Please contact <a href="mailto:ntnhanbk@gmail.com">ntnhanbk@gmail.com</a> if you find any inconvenient</h5>
-                    
+                    <h5>The page you are trying to access does not exist. Click <a href="<?php echo HelperUrl::baseUrl(); ?>">here</a> to return the home page. If you require any further assistance please contact <a href="mailto:ntnhanbk@gmail.com">sales@360islandevents.com</a></h5>
                     <a href="<?php echo HelperUrl::baseUrl(); ?>" class="btn btn-primary"><i class="icon icon-back"></i> Home page</a>
                 </div>
                 <div class="grid_4">

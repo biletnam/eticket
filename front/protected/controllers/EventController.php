@@ -95,10 +95,15 @@ class EventController extends Controller {
         }
         if (UserControl::getRole() == 'customer' && UserControl::LoggedIn()) {
             Yii::app()->params['page'] = 'Create Event';
-            $this->viewData['message'] = 'You are not authorized to access this page.';
+            //$this->viewData['message'] = 'You are not authorized to access this page.';
+            $this->viewData['message'] = 'To create an event you must first be registered and approved by our team.<br/>
+                                If you would like to upgrade your account please contact us at sales@sachacosmetics.com.<br/><br/>
+                                In the mean time you can still browse events and purchase tickets by <a href="'.HelperUrl::baseUrl().'event/search">clicking here';
             $this->render('access', $this->viewData);
             die;
         }
+        
+        
 
         //HelperGlobal::require_login();
 //        if(UserControl::getRole()!='client' && UserControl::LoggedIn())

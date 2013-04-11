@@ -7,7 +7,7 @@ $(document).ready(function() {
     bind_event();
     load_eticket_information();
     contact_form();
-
+    register_done()
     payment_count_down();
 
     delete_gallery();
@@ -32,6 +32,22 @@ function payment_count_down() {
 
     count = $('#count_down').val();
     counter = setInterval(timer, 1000);
+}
+
+function register_done() {
+    if ($('#register_done').length == 0)
+        return false;
+
+    if ($('#register_done').val() == 'done') {
+        $('.btn-invite').trigger('click');
+    }
+    var link = $('#link').val();
+
+    $.fancybox.close = function() {
+
+        window.location.href = link;
+    }
+
 
 }
 
@@ -253,11 +269,11 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // Strip all characters but numerical ones.
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
     var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function(n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.round(n * k) / k;
     };
@@ -323,7 +339,7 @@ function bind_mce() {
 function load_eticket_information() {
     if ($('#edit_ticket_form').length == 0 || $('.table-ticket:not(.clone)').length > 0)
         return false;
-    
+
     $(".btn-ticket").trigger('click');
 
 }
@@ -547,21 +563,21 @@ function bind_event() {
         $(".apply-ticket", ele).eq(0).trigger('click');
         return false;
     });
-    
+
     var payment_type_button = $(".payment-type:checked");
     triggerPaymentType(payment_type_button);
-    
-    $(".payment-type").click(function(){
-        var ele = $(this);                
+
+    $(".payment-type").click(function() {
+        var ele = $(this);
         triggerPaymentType(ele);
     });
 
 
 }
 
-function triggerPaymentType(ele){
-    var is_direct_payment = ele.hasClass("direct") ? true : false;        
-    if(is_direct_payment)
+function triggerPaymentType(ele) {
+    var is_direct_payment = ele.hasClass("direct") ? true : false;
+    if (is_direct_payment)
         $(".payment-infomation").removeClass('hide');
     else
         $(".payment-infomation").addClass('hide');

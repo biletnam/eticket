@@ -257,34 +257,34 @@ class HelperApp {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
-        
+
         $template = '
                     <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
                         <div class="header">
-                            <img width="180px" src="'.HelperUrl::baseUrl(true).'img/logo.png">
+                            <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
                         </div>
                         <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                            '.$subject.'
+                            ' . $subject . '
                         </div>
                         <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
-                            '.$message.'
+                            ' . $message . '
                             <p>
                                 Regards,<br/>
                                 The 360 Island Events Team.    
                             </p>
-                            <a href="#"><img src="'.HelperUrl::baseUrl(true).'img/email_fb.png"/></a>
-                            <a href="#"><img src="'.HelperUrl::baseUrl(true).'img/email_tw.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_fb.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
                         </div>
                     </div>';
-        
+
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-        
-        
+
+
         @mail($to, $subject, $template, $header);
     }
 
@@ -292,25 +292,25 @@ class HelperApp {
         if ($footer)
             $message .= '';
         //$subject =  $subject;
-        
+
         $template = '<div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
                         <div class="header">
-                            <img width="180px" src="'.HelperUrl::baseUrl(true).'img/logo.png">
+                            <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
                         </div>
                         <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                            '.$subject.'
+                            ' . $subject . '
                         </div>
                         <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
-                            '.$message.'
+                            ' . $message . '
                             <p>
                                 Regards,<br/>
                                 The 360 Island Events Team.    
                             </p>
-                            <a href="#"><img src="'.HelperUrl::baseUrl(true).'img/email_fb.png"/></a>
-                            <a href="#"><img src="'.HelperUrl::baseUrl(true).'img/email_tw.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_fb.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
                         </div>
                     </div>';
-        
+
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
@@ -321,8 +321,19 @@ class HelperApp {
         @mail($to, $subject, $template, $header);
     }
 
-    public static function email_register_organizer($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {
-        $message = '';
+    public static function email_register_organizer($to, $name,$pwd, $from = 'noreply@360islandevents.com', $footer = true) {
+        $message = 'Dear '.$name.'<br/><br/>
+                    Congratulations!
+                    Your registration was successful. You may now browse and purchase tickets from any event you wish to attend by visiting our website http://www.360islandevents.com.<br/>
+
+Log in using the following:<br/>
+
+Email: '.$to.'<br/>
+Password: '.$pwd.'<br/>
+
+If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this.”
+Regards,
+The 360 Island Events Team.';
         if ($footer)
             $message .= '';
         $header =
@@ -332,15 +343,30 @@ class HelperApp {
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
 
-        $subject = 'Eticket - Register as an Event Organizer';
-        $message = 'Dear ' . $name . '<br/> <br/> 
-             Your Register is successful, you can view and buy ticket. <br/>
-             Your register of Event Oraginzer is waitting to approve by admin. We will send you other email when it finnish.';
+        $subject = 'Registration Successful';
+        $template = '<div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
+                        <div class="header">
+                            <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
+                        </div>
+                        <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                            ' . $subject . '
+                        </div>
+                        <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                            ' . $message . '
+                            <p>
+                                Regards,<br/>
+                                The 360 Island Events Team.    
+                            </p>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_fb.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
+                        </div>
+                    </div>';
 
         @mail($to, $subject, $message, $header);
     }
 
-    public static function email_register($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {
+    public static function email_register($to, $name,$pwd, $from = 'noreply@360islandevents.com', $footer = true) {
+        $message = '';
         if ($footer)
             $message .= '';
         $header =

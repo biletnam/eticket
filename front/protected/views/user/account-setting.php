@@ -6,7 +6,7 @@
             <label class="control-label pull-left">&nbsp;</label>
             <div class="controls pull-left">
                 <div class="user-avatar border">
-                    <img src="<?php echo HelperApp::get_thumbnail(UserControl::getThumbnail(),'small'); ?>" alt=""/>
+                    <img src="<?php echo HelperApp::get_thumbnail(UserControl::getThumbnail(), 'small'); ?>" alt=""/>
                 </div>
             </div>
         </div>
@@ -14,18 +14,17 @@
             <label class="control-label pull-left">Image</label>
             <div class="controls pull-left">
                 <input type="file" name="file"/>
-                
             </div>
         </div>
-        
+
         <div class="controls-group clearfix">
             <label class="control-label pull-left"></label>
             <div class="controls pull-left">
-                
+
                 We accept JPG|PNG file only. Minimum size 300x300px, maximum 1MB
             </div>
         </div>
-        
+
         <div class="controls-group clearfix">
             <label class="control-label pull-left">Email</label>
             <div class="controls pull-left">
@@ -35,13 +34,21 @@
         <div class="controls-group clearfix">
             <label class="control-label pull-left">First Name <span class="required">*</span></label>
             <div class="controls pull-left">
-                <input type="text" class="input-medium" name="firstname" value="<?php if (isset($_POST['firstname'])) echo htmlspecialchars($_POST['firstname']);else echo UserControl::getFirstname(); ?>"/>
+                <input type="text" class="input-medium" name="firstname" value="<?php if (isset($_POST['firstname']))
+            echo htmlspecialchars($_POST['firstname']);
+        else
+            echo UserControl::getFirstname();
+        ?>"/>
             </div>
         </div>
         <div class="controls-group clearfix">
             <label class="control-label pull-left">Last Name <span class="required">*</span></label>
             <div class="controls pull-left">
-                <input type="text" class="input-medium" name="lastname" value="<?php if (isset($_POST['lastname'])) echo htmlspecialchars($_POST['lastname']);else echo UserControl::getLastname(); ?>"/>
+                <input type="text" class="input-medium" name="lastname" value="<?php if (isset($_POST['lastname']))
+            echo htmlspecialchars($_POST['lastname']);
+        else
+            echo UserControl::getLastname();
+        ?>"/>
             </div>
         </div>
         <div class="controls-group clearfix">
@@ -54,9 +61,9 @@
             <label class="control-label pull-left">Country</label>
             <div class="controls pull-left">
                 <select name="country_id">
-                    <?php foreach ($countries as $v): ?>
+<?php foreach ($countries as $v): ?>
                         <option value="<?php echo $v['id']; ?>" <?php if (isset($_POST['country_id']) && $_POST['country_id'] == $v['id']) echo 'selected';else if (UserControl::getCountryId() == $v['id']) echo 'selected'; ?>><?php echo $v['title']; ?></option>
-                    <?php endforeach; ?>
+<?php endforeach; ?>
                 </select>
             </div>
         </div>
@@ -78,6 +85,25 @@
                 <input class="input-medium" type="text" name="phone" value="<?php if (isset($_POST['phone'])) echo htmlspecialchars($_POST['phone']);else if (isset($metas['phone'])) echo htmlspecialchars($metas['phone']); ?>" >
             </div>
         </div>
+        <div class="controls-group clearfix">
+            <label class="control-label pull-left">Company </label>
+            <div class="controls pull-left">
+                <input type="text" class="input-large" name="company" value="<?php if (isset($_POST['company'])) echo htmlspecialchars($_POST['company']);else if (isset($organizer['title'])) echo htmlspecialchars($organizer['title']); ?>"/>
+            </div>
+        </div>
+        <?php if (UserControl::getRole() == 'customer'): ?>
+            <div class="controls-group clearfix">
+                <label class="control-label pull-left">&nbsp;</label>
+                <div class="controls pull-left" style="width: 415px">
+                    <div class="rowElem">
+                        <div class="jq-plugin clearfix">
+                            <label class="checkbox label-signup"><input type="checkbox" name="client" value="client" id="client"/>  CHECK HERE TO UPDATE AS AN EVENT ORGANIZER.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <div class="controls-group clearfix">
             <label class="control-label pull-left">&nbsp;</label>
             <div class="controls pull-left">

@@ -88,10 +88,10 @@ return array(
         'paypal_api_username'=>'ntnhanbk_api1.gmail.com',
         'paypal_api_password'=>'1363679111',
         'paypal_api_signature'=>'An5ns1Kso7MWUdW4ErQKJJJ4qi4-AHHqQSF7LWzg-ijjp.VfShsBFHEj',
-        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/eticket/upload/',
+//        'upload_dir'=>'/Applications/XAMPP/xamppfiles/htdocs/eticket/upload/',
+//        'upload_url'=>"/eticket/upload/",
+        'upload_dir'=>'D:/xampp/htdocs/eticket/upload/',
         'upload_url'=>"/eticket/upload/",
-        //'upload_dir'=>'D:/xampp/htdocs/eticket/upload/',
-        //'upload_url'=>"/eticket/upload/",
         
      ),
     

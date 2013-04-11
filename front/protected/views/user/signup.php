@@ -67,6 +67,14 @@
                     </select>
                 </div>
             </div>
+            
+            <div class="controls-group clearfix">
+                <label class="control-label pull-left">Company <span class="required">(Enter name if you register as an event organizer)</span></label>
+                <div class="controls pull-left">
+                    <input type="text" class="input-large" name="company"/>
+                </div>
+            </div>
+            
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left" style="width: 415px">

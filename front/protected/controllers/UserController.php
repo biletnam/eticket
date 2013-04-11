@@ -84,18 +84,21 @@ class UserController extends Controller {
         $is_session = isset($_POST['remember']) ? false : true;
         $city = trim($_POST['city']);
         $country_id = trim($_POST['country']);
+        $company = trim($_POST['company']);
 
         $phone = trim($_POST['phone']);
 
         $client = isset($_POST['client']) ? 'waiting' : 'customer';
-     
+
+
+
 
         if ($this->validator->is_empty_string($email))
             $this->message['error'][] = "Email cannot be blank.";
         if (!$this->validator->is_email($email))
             $this->message['error'][] = "Email is not correct.";
         if ($this->UserModel->is_existed_email($email))
-            $this->message['error'][] = "Email is exists.";
+            $this->message['error'][] = "The following email already exists in our database. Please try using another email address.";
         if ($this->validator->is_empty_string($pwd1))
             $this->message['error'][] = "Password cannot be blank.";
         if (strlen($pwd1) < 6 || strlen($pwd1) > 20)
@@ -113,12 +116,15 @@ class UserController extends Controller {
         if ($this->validator->is_empty_string($address))
             $this->message['error'][] = "Address cannot be blank.";
         //if ($this->validator->is_empty_string($phone))
-            //$this->message['error'][] = "Phone cannot be blank.";
+        //$this->message['error'][] = "Phone cannot be blank.";
         if ($this->validator->is_empty_string($city))
             $this->message['error'][] = "City cannot be blank.";
         if (preg_match($special_char, $city))
             $this->message['error'][] = "City must not contains any speacial characters.";
-
+        if ($client == 'waiting') {
+            if ($this->validator->is_empty_string($company))
+                $this->message['error'][] = "Company cannot be blank.";
+        }
         if (count($this->message['error']) > 0) {
             $this->message['success'] = false;
             return false;
@@ -134,8 +140,10 @@ class UserController extends Controller {
         $this->UserModel->add_meta('address', $address, $user_id);
         $this->UserModel->add_meta('address2', $address2, $user_id);
         $this->UserModel->add_meta('phone', $phone, $user_id);
+        
+      
 
-        $this->OrganizerModel->add($user_id);
+        $this->OrganizerModel->add($user_id,$company);
         HelperApp::add_cookie('secret_key', $secret_key, $is_session);
 
         $url = isset($_GET['return']) && !$this->validator->is_empty_string($_GET['return']) ? urldecode($_GET['return']) : HelperUrl::baseUrl() . "home/";
@@ -144,7 +152,7 @@ class UserController extends Controller {
             HelperApp::email_register_organizer($email, $firstname);
         else
             HelperApp::email_register($email, $firstname);
-        
+
         $this->redirect($url);
     }
 
@@ -436,7 +444,7 @@ class UserController extends Controller {
         Yii::app()->params['page'] = "Order #$id";
         Yii::app()->params['is_tab'] = 'paid_event';
 
-        $this->viewData['tickets'] = $this->TicketModel->get_all(array('deleted'=>0,'order_id'=>$order['id']));        
+        $this->viewData['tickets'] = $this->TicketModel->get_all(array('deleted' => 0, 'order_id' => $order['id']));
         $this->viewData['order'] = $order;
         $this->viewData['order_details'] = $order_details;
 

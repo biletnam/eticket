@@ -16,13 +16,14 @@ class OrganizerModel extends CFormModel {
         return $command->queryRow();
     }
     
-    public function add($user_id) {
+    public function add($user_id,$company) {
         
+   
         $time = time();
-        $time = time();
-        $sql = "INSERT INTO etk_organizers(user_id,date_added) VALUES(:user_id,:date_added)";
+        $sql = "INSERT INTO etk_organizers(user_id,title,date_added) VALUES(:user_id,:title,:date_added)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindParam(":user_id", $user_id);
+        $command->bindParam(":title", $company);
         $command->bindParam(":date_added", $time);
         $command->execute();
         return Yii::app()->db->lastInsertID;

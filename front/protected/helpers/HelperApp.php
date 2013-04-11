@@ -322,6 +322,7 @@ class HelperApp {
     }
 
     public static function email_register_organizer($to, $name, $from = 'noreply@360islandevents.com', $footer = true) {
+        $message = '';
         if ($footer)
             $message .= '';
         $header =

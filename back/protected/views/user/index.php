@@ -1,9 +1,10 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a> <span class="divider">/</span> </li>
     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/">User</a> <span class="divider">/</span> </li>
-    <li class="active">All</li>
+    <li class="active"><?php echo $role?></li>
 </ul>
 <br/>
+<?php /*
 <p>
     <span>Type:</span>
     <select class="span2 user-type" style="margin: 0">
@@ -13,7 +14,7 @@
         <option  value="client" <?php echo ($role == 'client')?  'selected' : '' ?>>Client</option>
         
     </select>
-</p>
+</p> */?>
 <table class="table table-bordered table-striped table-center" id="users">
     <thead>
         <tr>                 

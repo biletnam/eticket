@@ -18,7 +18,8 @@
 
         <li class="nav-header"></i>SYSTEM</li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/page"><i class="icon-book"></i>Pages</a></li>
-        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/user/"><i class="icon-user"></i>Users</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/user/index/role/customer"><i class="icon-user"></i>Customers</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl ?>/user/index/role/client"><i class="icon-user"></i>Clients</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/user/pending"><i class="icon-user"></i>Client Pending</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/admin/"><i class="icon-eye-open"></i>Administrators</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl ?>/log/"><i class="icon-warning-sign"></i>Logs</a></li>

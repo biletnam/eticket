@@ -52,6 +52,54 @@ class UserController extends Controller {
         $this->render('index', $this->viewData);
     }
 
+//    public function actionClients($role = 'client', $p = 1) {
+//        $this->CheckPermission();
+//        $ppp = Yii::app()->getParams()->itemAt('ppp');
+//        $s = isset($_GET['s']) ? $_GET['s'] : "";
+//        $s = strlen($s) > 2 ? $s : "";
+//
+//
+//
+//        $args = array('s' => $s, 'deleted' => 0);
+//        $args['role'] = $role;
+//
+//        $users = $this->UserModel->gets($args, $p, $ppp);
+//        $total = $this->UserModel->counts($args);
+//
+//
+//
+//        $this->viewData['role'] = $role;
+//        $this->viewData['users'] = $users;
+//        $this->viewData['total'] = $total;
+//        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/user/index/p/", $total, $p) : "";
+//
+//        $this->render('client', $this->viewData);
+//    }
+//    
+//    public function actionCustomer($role = 'customer', $p = 1) {
+//        $this->CheckPermission();
+//        $ppp = Yii::app()->getParams()->itemAt('ppp');
+//        $s = isset($_GET['s']) ? $_GET['s'] : "";
+//        $s = strlen($s) > 2 ? $s : "";
+//
+//
+//
+//        $args = array('s' => $s, 'deleted' => 0);
+//        $args['role'] = $role;
+//
+//        $users = $this->UserModel->gets($args, $p, $ppp);
+//        $total = $this->UserModel->counts($args);
+//
+//
+//
+//        $this->viewData['role'] = $role;
+//        $this->viewData['users'] = $users;
+//        $this->viewData['total'] = $total;
+//        $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/user/index/p/", $total, $p) : "";
+//
+//        $this->render('customer', $this->viewData);
+//    }
+
     public function actionBan($id) {
         $this->CheckPermission();
         $user = $this->UserModel->get($id);
@@ -162,7 +210,7 @@ class UserController extends Controller {
         $user_email = $user;
 
         $userinfo = $this->UserModel->get($id);
-       
+
 
         if ($approve == 'client') {
             $subject = 'Event Organizer Account Approved';
@@ -183,7 +231,7 @@ class UserController extends Controller {
 
         $url = HelperUrl::hostInfo();
 
-       
+
         $template = '
             <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
                         <div class="header">

@@ -23,7 +23,7 @@
         <?php endif; ?>
         <?php foreach ($emails as $v): ?>
             <tr>                
-                <td style="text-align: left"><a href="<?php echo Yii::app()->request->baseUrl . "/organizer/edit/id/" . $v['id']; ?>"><?php echo $v['title'] ?></a></td>    
+                <td style="text-align: left"><a href="<?php echo Yii::app()->request->baseUrl . "/email/edit/id/" . $v['id']; ?>"><?php echo $v['title'] ?></a></td>    
                 <td>
                     <a class="btn btn-small btn-info" href="<?php echo Yii::app()->request->baseUrl . "/email/edit/id/" . $v['id']; ?>">Edit</a>                    
                 </td>

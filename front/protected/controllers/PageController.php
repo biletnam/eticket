@@ -20,7 +20,7 @@ class PageController extends Controller {
 
         /* @var $PageModel PageModel */
         $this->PageModel = new PageModel();
-        
+
         /* @var $EmailModel EmailModel */
         $this->EmailModel = new EmailModel();
     }
@@ -114,16 +114,16 @@ class PageController extends Controller {
         }
 
         $email_template = $this->EmailModel->get_by_slug('contact-us');
-        
+
         $to = "ntnhanbk@gmail.com";
         $subject = $email_template['title'];
         $from = $email;
-        
+
         $message = $email_template['content'];
-        $replace = array('$name','$email','$content');
-        $data = array($yourname,$email,$content);
-        $message = str_replace($replace, $data, $message);        
-        
+        $replace = array('$name', '$email', '$content');
+        $data = array($yourname, $email, $content);
+        $message = str_replace($replace, $data, $message);
+
         @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
 
         $msg = "Email was sent to admin.";
@@ -134,21 +134,21 @@ class PageController extends Controller {
         if ($_POST) {
             $yourname = trim($_POST['yourname']);
             $email = trim($_POST['email']);
-            $message = trim($_POST['message']);
+            $content = trim($_POST['message']);
 
-            if ($this->validator->is_empty_string($yourname)){
+            if ($this->validator->is_empty_string($yourname)) {
                 $this->message['error'][] = "Please enter your name.";
                 $this->message['yourname'] = 'error';
             }
-            if ($this->validator->is_empty_string($email)){
+            if ($this->validator->is_empty_string($email)) {
                 $this->message['error'][] = "Please enter your email.";
                 $this->message['email'] = 'error';
             }
-            if (!$this->validator->is_email($email)){
+            if (!$this->validator->is_email($email)) {
                 $this->message['error'][] = "Email is not correct.";
                 $this->message['email'] = 'error';
             }
-            if ($this->validator->is_empty_string($message)){
+            if ($this->validator->is_empty_string($content)) {
                 $this->message['error'][] = "Please enter your message.";
                 $this->message['yourmessage'] = 'error';
             }
@@ -159,23 +159,32 @@ class PageController extends Controller {
                 die;
             }
 
-            $to = "ntnhanbk@gmail.com";
-            $subject = "360islandevents.com - New Message";
+            $to = "stefengratz@gmail.com";            
+            $email_template = $this->EmailModel->get_by_slug('contact-us');
+
+            //$to = "ntnhanbk@gmail.com";
+            $subject = $email_template['title'];
             $from = $email;
+
+            $message = $email_template['content'];
+            $replace = array('$name', '$email', '$content');
+            $data = array($yourname, $email, $content);
+            $message = str_replace($replace, $data, $message);
+
             @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
 
             echo json_encode($this->message);
             die;
         }
     }
-    
-    public function actionHow_it_work(){
+
+    public function actionHow_it_work() {
         Yii::app()->params['page'] = "How it work";
         $this->render('how_it_work');
     }
-    
-    public function actionEmail(){
-        
+
+    public function actionEmail() {
+
         $this->layout = 'email';
         $this->render('email_template');
     }

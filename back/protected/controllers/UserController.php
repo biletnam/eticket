@@ -237,7 +237,7 @@ class UserController extends Controller {
         if ($approve == 'client') {
             $email_template = $this->EmailModel->get_by_slug('organizer-approve');
             $subject = $email_template['title'];
-
+            $message = $email_template['content'];
             $replace = array('$firstname', '$lastname', '$website_url');
             $data = array($user['firstname'], $user['lastname'], HelperUrl::hostInfo());
             $message = str_replace($replace, $data, $message);
@@ -245,7 +245,8 @@ class UserController extends Controller {
         else{
             $email_template = $this->EmailModel->get_by_slug('organizer-deny');
             $subject = $email_template['title'];
-
+            $message = $email_template['content'];
+            
             $replace = array('$firstname', '$lastname');
             $data = array($user['firstname'], $user['lastname']);
             $message = str_replace($replace, $data, $message);

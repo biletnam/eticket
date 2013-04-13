@@ -368,7 +368,7 @@ class HelperApp {
                         </div>
                     </div>';
         
-        echo $template;die;
+        
         
         $header =
                 "MIME-Version: 1.0\r\n" .
@@ -376,7 +376,7 @@ class HelperApp {
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-        @mail($to, $subject, $message, $header);
+        @mail($to, $subject, $template, $header);
     }
 
     public static function email_register($to, $name, $pwd, $from = 'noreply@360islandevents.com', $footer = true) {

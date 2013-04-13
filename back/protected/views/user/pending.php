@@ -41,8 +41,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="approved" href="<?php echo HelperUrl::baseUrl() . "user/approved/id/" . $v['id'] . '/user/' . $v['email'] . '/approve/client'; ?>">Approved</a></li>
-                            <li><a class="approved" href="<?php echo HelperUrl::baseUrl() . "user/approved/id/" . $v['id'] . '/user/' . $v['email'] . '/approve/customer'; ?>">Not Approved</a></li>
+                            <li><a class="approved" href="<?php echo HelperUrl::baseUrl() . "user/approved/id/" . $v['id'] . '/email/' . $v['email'] . '/approve/client'; ?>">Approved</a></li>
+                            <li><a class="approved" href="<?php echo HelperUrl::baseUrl() . "user/approved/id/" . $v['id'] . '/email/' . $v['email'] . '/approve/customer'; ?>">Not Approved</a></li>
                         </ul>
                     </div>
 

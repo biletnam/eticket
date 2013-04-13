@@ -7,6 +7,7 @@ class PageController extends Controller {
     private $validator;
     private $PageModel;
     private $EventModel;
+    private $EmailModel;
 
     public function init() {
         parent::init();
@@ -19,6 +20,9 @@ class PageController extends Controller {
 
         /* @var $PageModel PageModel */
         $this->PageModel = new PageModel();
+        
+        /* @var $EmailModel EmailModel */
+        $this->EmailModel = new EmailModel();
     }
 
     /**
@@ -93,7 +97,7 @@ class PageController extends Controller {
     private function do_contact() {
         $yourname = trim($_POST['yourname']);
         $email = trim($_POST['email']);
-        $message = trim($_POST['message']);
+        $content = trim($_POST['message']);
 
         if ($this->validator->is_empty_string($yourname))
             $this->message['error'][] = "Please enter your name.";
@@ -101,7 +105,7 @@ class PageController extends Controller {
             $this->message['error'][] = "Please enter your email.";
         if (!$this->validator->is_email($email))
             $this->message['error'][] = "Email is not correct.";
-        if ($this->validator->is_empty_string($message))
+        if ($this->validator->is_empty_string($content))
             $this->message['error'][] = "Please enter your message.";
 
         if (count($this->message['error']) > 0) {
@@ -109,9 +113,17 @@ class PageController extends Controller {
             return false;
         }
 
+        $email_template = $this->EmailModel->get_by_slug('contact-us');
+        
         $to = "ntnhanbk@gmail.com";
-        $subject = "360islandevents.com - New Message";    
+        $subject = $email_template['title'];
         $from = $email;
+        
+        $message = $email_template['content'];
+        $replace = array('$name','$email','$content');
+        $data = array($yourname,$email,$content);
+        $message = str_replace($replace, $data, $message);        
+        
         @HelperApp::email_contact($to, $subject, $yourname, $message, $from);
 
         $msg = "Email was sent to admin.";

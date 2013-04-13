@@ -174,14 +174,39 @@ class HelperApp {
         return array('img' => $img, 'thumbnail' => $thumbnail);
     }
 
-    public static function email($to, $subject, $message, $footer = true, $from = 'info@360islandevents.com') {
+    public static function email($to, $subject, $message, $footer = true, $from = 'noreply@360islandevents.com') {
+        if ($footer)
+            $message .= '';
+        //$subject =  $subject;
+
+        $template = '
+                    <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
+                        <div class="header">
+                            <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
+                        </div>
+                        <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
+                            ' . $subject . '
+                        </div>
+                        <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                            ' . $message . '
+                            <p>
+                                Regards,<br/>
+                                The 360 Island Events Team.    
+                            </p>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_fb.png"/></a>
+                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
+                        </div>
+                    </div>';
+
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .
                 "From:  <$from>\r\n" .
                 "Reply-to: $from" .
                 "Date: " . date("r") . "\r\n";
-        @mail($to, $subject, $message, $header);
+
+
+        @mail($to, $subject, $template, $header);
     }
 
 }

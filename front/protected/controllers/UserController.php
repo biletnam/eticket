@@ -12,6 +12,7 @@ class UserController extends Controller {
     private $TicketModel;
     private $OrderModel;
     private $TicketTypeModel;
+    private $EmailModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -39,6 +40,9 @@ class UserController extends Controller {
 
         /* @var $TicketTypeModel TicketTypeModel */
         $this->TicketTypeModel = new TicketTypeModel();
+        
+        /* @var $EmailModel EmailModel */
+        $this->EmailModel = new EmailModel();
     }
 
     /**
@@ -245,14 +249,24 @@ class UserController extends Controller {
 
         $forgot_url = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl . "/user/reset/t/$token";
         $to = $email;
-        $subject = "Recovery Password";
+        
+        $email_template = $this->EmailModel->get_by_slug('recovery-password');
+        
+        $subject = $email_template['title'];
+        /*
         $message = 'Hello <strong>' . $user['firstname'] . ' ' . $user['lastname'] . '</strong>, <br /><br />
                     Has requested get back password at 360 Island Events website.
                     If this is you, please click on the link below to continue.
                     If not, please ignore this email.<br/><br />
                     <a href="' . $forgot_url . '">' . $forgot_url . '</a><br/><br/>                   
-                    ';
-
+                    '; */
+        
+        $message = $email_template['content'];
+        
+        $replace = array('$firstname','$lastname','$forgot_url');
+        $data = array($user['firstname'],$user['lastname'],$forgot_url);
+        $message = str_replace($replace, $data, $message);        
+        
         HelperApp::email($to, $subject, $message);
         $this->redirect(HelperUrl::baseUrl() . "user/forgot/?s=1&msg=$msg");
     }

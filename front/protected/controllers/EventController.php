@@ -16,6 +16,7 @@ class EventController extends Controller {
     private $PaypalModel;
     private $SettingsModel;
     private $UserModel;
+    private $EmailModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -53,6 +54,9 @@ class EventController extends Controller {
 
         /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
+
+        /* @var $EmailModel EmailModel */
+        $this->EmailModel = new EmailModel();
     }
 
     /**
@@ -98,12 +102,12 @@ class EventController extends Controller {
             //$this->viewData['message'] = 'You are not authorized to access this page.';
             $this->viewData['message'] = 'To create an event you must first be registered and approved by our team.<br/>
                                 If you would like to upgrade your account please contact us at <a href="mailto:sales@sachacosmetics.com">sales@sachacosmetics.com</a>.<br/><br/>
-                                In the mean time you can still browse events and purchase tickets by <a href="'.HelperUrl::baseUrl().'event/search">clicking here';
+                                In the mean time you can still browse events and purchase tickets by <a href="' . HelperUrl::baseUrl() . 'event/search">clicking here';
             $this->render('access', $this->viewData);
             die;
         }
-        
-        
+
+
 
         //HelperGlobal::require_login();
 //        if(UserControl::getRole()!='client' && UserControl::LoggedIn())
@@ -249,31 +253,9 @@ class EventController extends Controller {
         if ($second_cate)
             $this->EventModel->add_event_category($event_id, $second_cate, 0);
 
+        $email_template = $this->EmailModel->get_by_slug('event-registration');
 
-        $url = HelperUrl::hostInfo();
-
-        $message = '
-                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
-                    <div>
-                        <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
-                    </div>
-                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                        Event Registration
-                    </div>
-                    <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
-                        <p style="margin-bottom: 10px;margin-top:0">Congatulations,</p>
-                        <p style="margin-bottom: 10px;margin-top:0">Your Event has been successfully created.</p>
-                        <p style="margin-bottom: 0px;margin-top:0">
-                            Regards,<br/>
-                            The 360 Island Events Team.    
-                        </p>
-                        <a href="#"><img src="' . $url . 'front/img/email_fb.png"/></a>
-                        <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
-                    </div>
-                </div>
-        ';
-
-        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Registration', $message);
+        @HelperApp::email(UserControl::getEmail(), $email_template['title'], $email_template['content']);
 
         $temp_file = $_POST['file_temp'];
         if ($temp_file != '')
@@ -1034,7 +1016,7 @@ class EventController extends Controller {
 // Add request-specific fields to the request string.
             $nvpStr = "&PAYMENTACTION=$paymentType&AMT=$amount&CREDITCARDTYPE=$creditCardType&ACCT=$creditCardNumber" .
                     "&EXPDATE=$padDateMonth$expDateYear&CVV2=$cvv2Number&FIRSTNAME=$firstName&LASTNAME=$lastName" .
-                    "&STREET=$address1&CITY=$city&STATE=$state&ZIP=$zip&COUNTRYCODE=$country&CURRENCYCODE=$currencyID".
+                    "&STREET=$address1&CITY=$city&STATE=$state&ZIP=$zip&COUNTRYCODE=$country&CURRENCYCODE=$currencyID" .
                     "&EMAIL=$email";
 
 // Execute the API operation; see the PPHttpPost function above.
@@ -1049,7 +1031,7 @@ class EventController extends Controller {
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "",$order['id']);
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "", $order['id']);
                     }
                 }
 
@@ -1304,7 +1286,7 @@ class EventController extends Controller {
                 foreach ($order_details as $k => $v) {
 
                     for ($i = 0; $i < $v['quantity']; $i++) {
-                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "",$order['id']);
+                        $tickets[$v['id']][] = $this->TicketModel->add_ticket($v['ticket_type_id'], $order['user_id'], "", "", "", "", $order['id']);
                     }
                 }
 
@@ -1321,37 +1303,41 @@ class EventController extends Controller {
         echo $this->get_qrcode(HelperUrl::baseUrl(true) . '&size=280x280');
     }
 
-    private function email_register_event($order, $order_details,$tickets) {
+    private function email_register_event($order, $order_details, $tickets) {
         $event = $this->EventModel->get($order['event_id']);
 
+        /*
+          $message = '<p style="margin-bottom:10px">Dear ' . $order['firstname'] . ', </p>
 
-        $message = '<p style="margin-bottom:10px">Dear ' . $order['firstname'] . ', </p>
-                    
-                    <p style="margin-bottom:10px">Thank you for joining our event: ' . $event['title'] . ' </p>
-                    <p style="margin-bottom:10px">We hope you enjoyt it. </p>
-                    
-                    <p>Here are the qrcodes for attending our events: </p>
-                    
-                    
-                    ';
+          <p style="margin-bottom:10px">Thank you for joining our event: ' . $event['title'] . ' </p>
+          <p style="margin-bottom:10px">We hope you enjoyt it. </p>
+
+          <p>Here are the qrcodes for attending our events: </p>
+
+
+          '; */
+
+        $email_template = $this->EmailModel->get_by_slug('ticket-payment');
+        $message = $email_template['content'];
+        $list_qrcodes = "";
         foreach ($order_details as $k => $v) {
 
             //$message.= ($k + 1) . '. ' . $v['title'];
             $tmp_tickets = $tickets[$v['id']];
             foreach ($tmp_tickets as $t) {
-                $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t"."&size=280x280";
-                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname']." ".$order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));                
-                $message.=  ' <img style="margin-right:10px" src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
-                
+                $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t" . "&size=280x280";
+                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname'] . " " . $order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
+                $list_qrcodes.= ' <img style="margin-right:10px" src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
             }
         }
 
-        $message.= '<br/><br/>
-                    
+        //$message.= '<br/><br/>';
 
-                    ';
-        
-        HelperApp::email($order['email'], "Register event " . $event['title'], $message);
+        $replace = array('$firstname', '$event_title', '$list_qrcodes');
+        $data = array($order['firstname'], $event['title'], $list_qrcodes);
+        $message = str_replace($replace, $data, $message);
+
+        HelperApp::email($order['email'], $email_template['title'], $message);
     }
 
     private function get_qrcode($args) {
@@ -1366,7 +1352,7 @@ class EventController extends Controller {
         $simpleImage = new SimpleImage();
         $simpleImage->mergeImageQRCode(280, $args);
         $simpleImage->save_with_default_imagetype($filepath);
-        $this->TicketModel->update(array('qrcode'=>$filename,'id'=>$args['ticket_id']));
+        $this->TicketModel->update(array('qrcode' => $filename, 'id' => $args['ticket_id']));
         return HelperUrl::hostInfo() . HelperUrl::upload_url() . "qrcode/$filename";
     }
 
@@ -1425,7 +1411,7 @@ class EventController extends Controller {
 
         $message = '<h2>Permission Accepted</h2> <br/><br/>
                     <h3>Event: ' . $event['title'] . ' </h3>
-                    <h3>Ticket: #'.$ticket['id'].' - '.$ticket['ticket_type_title'].'</h3>
+                    <h3>Ticket: #' . $ticket['id'] . ' - ' . $ticket['ticket_type_title'] . '</h3>
                     ';
 
         echo $message;
@@ -1474,30 +1460,24 @@ class EventController extends Controller {
     }
 
     public function actionInvite($s) {
-        $link = HelperUrl::baseUrl() . 'event/info/s/' . $s;
-        $url = HelperUrl::hostInfo();
+        $event_link = HelperUrl::baseUrl() . 'event/info/s/' . $s;
+        $message = "";
+        /*
         $message = '
-                <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:16px;color:#000;margin:0 auto;padding:0;width: 500px">
-                    <div>
-                        <div><img width="180px" src="' . $url . 'front/img/logo.png"/></div>
-                    </div>
-                    <div style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:24px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                        Event Invite
-                    </div>
-                    <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
+                
                         <p style="margin-bottom: 10px;margin-top:0">Have a invite Event</p>
                         <p style="margin-bottom: 10px;margin-top:0"><a href=' . $link . '>Click here</a> to view</p>
-                        <p style="margin-bottom: 0px;margin-top:0">
-                            Regards,<br/>
-                            The 360 Island Events Team.    
-                        </p>
-                        <a href="#"><img src="' . $url . 'front/img/email_fb.png"/></a>
-                        <a href="#"><img src="' . $url . 'front/img/email_tw.png"/></a>
-                    </div>
-                </div>
+                        
         ';
-
-        @HelperApp::email(UserControl::getEmail(), '360islandevents.com - Event Invite', $message);
+        */
+        
+        $email_template = $this->EmailModel->get_by_slug('event-invite');
+        
+        $replace = array('$event_link');
+        $data = array($event_link);
+        $message = str_replace($replace, $data, $message);        
+        
+        @HelperApp::email(UserControl::getEmail(), $email_template['title'], $message);
         $this->redirect(HelperUrl::baseUrl() . "event/share/s/$s");
     }
 

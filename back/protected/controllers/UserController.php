@@ -6,6 +6,7 @@ class UserController extends Controller {
     private $message = array('success' => true, 'error' => array());
     private $validator;
     private $UserModel;
+    private $EmailModel;
 
     public function init() {
         /* @var $validator FormValidator */
@@ -13,6 +14,9 @@ class UserController extends Controller {
 
         /* @var $UserModel UserModel */
         $this->UserModel = new UserModel();
+
+        /* @var $EmailModel EmailModel */
+        $this->EmailModel = new EmailModel();
     }
 
     /**
@@ -205,62 +209,49 @@ class UserController extends Controller {
         $this->render('pending', $this->viewData);
     }
 
-    public function actionApproved($user, $id, $approve) {
+    public function actionApproved($email, $id, $approve) {
         $this->CheckPermission();
-        $user_email = $user;
+        $user = $this->UserModel->get($id);
+        $message = "";
+        $subject = "";
+        /*
 
-        $userinfo = $this->UserModel->get($id);
-
+          if ($approve == 'client') {
+          $subject = 'Event Organizer Account Approved';
+          $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
+          Congratulations!<br/>
+          Your request to become an Event Organizer has been approved. You may now create events and start selling tickets on our website http://www.360islandevents.com .<br/>
+          If you get any problems please do not hesitate to contact us.<br/>
+          Regards,<br/>
+          The 360 Island Events Team";
+          } else {
+          $subject = 'Event Organizer Account Not Approved';
+          $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
+          We apologize but your request to be registered as an Event Organizer has been denied.<br/>
+          If you feel that there has been some mistake you may contact us at sales@360islandevents.com.<br/>
+          Regards,<br/>
+          The 360 Island Events Team";
+          }
+         */
 
         if ($approve == 'client') {
-            $subject = 'Event Organizer Account Approved';
-            $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
-                    Congratulations!<br/>
-                    Your request to become an Event Organizer has been approved. You may now create events and start selling tickets on our website http://www.360islandevents.com .<br/>
-                    If you get any problems please do not hesitate to contact us.<br/>
-                    Regards,<br/>
-                    The 360 Island Events Team";
-        } else {
-            $subject = 'Event Organizer Account Not Approved';
-            $note = "Dear " . $userinfo['firstname'] . " " . $userinfo['lastname'] . "<br/><br/>
-                    We apologize but your request to be registered as an Event Organizer has been denied.<br/>
-                    If you feel that there has been some mistake you may contact us at sales@360islandevents.com.<br/>
-                    Regards,<br/>
-                    The 360 Island Events Team";
+            $email_template = $this->EmailModel->get_by_slug('organizer-approve');
+            $subject = $email_template['title'];
+
+            $replace = array('$firstname', '$lastname', '$website_url');
+            $data = array($user['firstname'], $user['lastname'], HelperUrl::hostInfo());
+            $message = str_replace($replace, $data, $message);
+        }
+        else{
+            $email_template = $this->EmailModel->get_by_slug('organizer-deny');
+            $subject = $email_template['title'];
+
+            $replace = array('$firstname', '$lastname');
+            $data = array($user['firstname'], $user['lastname']);
+            $message = str_replace($replace, $data, $message);
         }
 
-        $url = HelperUrl::hostInfo();
-
-
-        $template = '
-            <div style="font-family:\'bebasneue\',Tahoma,Verdana;font-size:20px;color:#000;margin:0 auto;padding:0;width: 500px">
-                        <div class="header">
-                            <img width="180px" src="' . HelperUrl::baseUrl(true) . 'img/logo.png">
-                        </div>
-                        <div class="title" style="font-family: \'bebasneue\',Tahoma,Verdana;font-size:30px; background-color: #414143;color:#fff;padding: 5px 10px;text-transform: capitalize;margin-bottom: 10px">
-                            ' . $subject . '
-                        </div>
-                        <div class="content" style="font-family: \'bebasneue\',Tahoma,Verdana;padding:10px">
-                            ' . $note . '
-                            <p>
-                                Regards,<br/>
-                                The 360 Island Events Team.    
-                            </p>
-                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_fb.png"/></a>
-                            <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
-                        </div>
-                    </div>
-';
-
-        $header =
-                "MIME-Version: 1.0\r\n" .
-                "Content-type: text/html; charset=UTF-8\r\n" .
-                "From:  <$from>\r\n" .
-                "Reply-to: $from" .
-                "Date: " . date("r") . "\r\n";
-
-        // $message;die;
-        @HelperApp::email($user_email, $subject, $template);
+        @HelperApp::email($email, $subject, $message);
 
         $this->UserModel->update(array('role' => $approve, 'id' => $id));
         HelperGlobal::add_log(UserControl::getId(), $this->controllerID(), $this->methodID(), array('Action' => 'Delete', 'Data' => array('id' => $id)));

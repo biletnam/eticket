@@ -322,21 +322,31 @@ class HelperApp {
     }
 
     public static function email_register_organizer($to, $name, $pwd, $from = 'noreply@360islandevents.com', $footer = true) {
-        
-        $subject = "Registration Successful ";
-        
-        $message = 'Dear ' . $name . '<br/><br/>
-                    Congratulations!
-                    Your registration was successful. You may now browse and purchase tickets from any event you wish to attend by visiting our website http://www.360islandevents.com.<br/>
+        /*
+          $subject = "Registration Successful ";
 
-                    Log in using the following:<br/>
+          $message = 'Dear ' . $name . '<br/><br/>
+          Congratulations!
+          Your registration was successful. You may now browse and purchase tickets from any event you wish to attend by visiting our website http://www.360islandevents.com.<br/>
 
-                    Email: ' . $to . '<br/>
-                    Password: ' . $pwd . '<br/>
+          Log in using the following:<br/>
 
-                    If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this.<br/>
-                    Regards,<br/>
-                    The 360 Island Events Team.';
+          Email: ' . $to . '<br/>
+          Password: ' . $pwd . '<br/>
+
+          If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this.<br/>
+          '; */
+
+        $EmailModel = new EmailModel();
+        $email_template = $EmailModel->get_by_slug('register-organizer');
+
+        $subject = $email_template['title'];
+        $message = $email_template['content'];
+
+        $replace = array('$name', '$website_url', '$email','$password');
+        $data = array($name, HelperUrl::hostInfo(), $to,$pwd);
+        $message = str_replace($replace, $data, $message);
+
         if ($footer)
             $message .= '';
         $template = '
@@ -357,7 +367,9 @@ class HelperApp {
                             <a href="#"><img src="' . HelperUrl::baseUrl(true) . 'img/email_tw.png"/></a>
                         </div>
                     </div>';
-
+        
+        echo $template;die;
+        
         $header =
                 "MIME-Version: 1.0\r\n" .
                 "Content-type: text/html; charset=UTF-8\r\n" .

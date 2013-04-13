@@ -1047,7 +1047,7 @@ class EventController extends Controller {
     }
 
     private function PPHttpPost($methodName_, $nvpStr_) {
-        $environment = 'live'; // or sandbox or 'beta-sandbox' or 'live'
+        $environment = 'sandbox'; // or 'beta-sandbox' or 'live'
         // Set up your API credentials, PayPal end point, and API version.
         $API_UserName = urlencode(Yii::app()->params['paypal_api_username']);
         $API_Password = urlencode(Yii::app()->params['paypal_api_password']);
@@ -1200,8 +1200,8 @@ class EventController extends Controller {
                 $queryStr .= "&$key=$value";
             }
 
-            //$this->redirect('https://www.sandbox.paypal.com/cgi-bin/webscr' . $queryStr);
-            $this->redirect('https://www.paypal.com/cgi-bin/webscr' . $queryStr);
+            $this->redirect('https://www.sandbox.paypal.com/cgi-bin/webscr' . $queryStr);
+            //$this->redirect('https://www.paypal.com/cgi-bin/webscr' . $queryStr);
             die;
         }
     }
@@ -1228,8 +1228,8 @@ class EventController extends Controller {
         $payment_to = Yii::app()->params['business'];
 
 
-        if ($_POST['test_ipn'] == 1)
-            exit();
+        //if ($_POST['test_ipn'] == 1)
+        //exit();
         // check that receiver_email is your Primary PayPal email and status must be completed
 
         if ($_POST['business'] != $payment_to || $data['payment_status'] != "Completed")
@@ -1257,8 +1257,8 @@ class EventController extends Controller {
         $header .= "Host: www.sandbox.paypal.com \r\n";
         $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
         $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
-        //$fp = fsockopen('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
-        $fp = fsockopen('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+        $fp = fsockopen('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+        //$fp = fsockopen('ssl://www.paypal.com', 443, $errno, $errstr, 30);
 
 
         if (!$fp)

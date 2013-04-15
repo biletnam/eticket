@@ -84,6 +84,34 @@ class EventsController extends Controller {
         HelperGlobal::return_data(array('events'=>$events), array('code' => 200, 'message' => $this->message['error']));       
     }
     
+    public function actionSearch() {
+        HelperGlobal::CheckAccessToken();
+        $ppp = 12;
+        $p = isset($_GET['p']) ? intval($_GET['p']) : 1;
+        $country_id = isset($_GET['country_id']) ? $_GET['country_id'] : 0;
+        $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : 0;
+        $title = isset($_GET['title']) ? trim(strip_tags($_GET['title'])) : "";
+        $title = strlen($title) > 1 ? $title : "";
+        
+        $args = array('deleted' => 0, 'is_today' => 1, 'published' => 1,'disabled'=>0);
+        
+        if($title)
+            $args['s'] = $title;
+        if($category_id)
+            $args['search_cate'] = $category_id;
+        if($country_id)
+            $args['search_city'] = $country_id;
+        
+        $events = $this->EventModel->gets($args, $p, $ppp);
+        $total = $this->EventModel->counts($args);        
+        
+        foreach($events as $k=>$v){
+            $events[$k]['thumbnail'] = HelperApp::get_thumbnail($events[$k]['thumbnail']);
+        }
+        
+        HelperGlobal::return_data(array('events'=>$events,'total'=>$total,'p'=>$p,'ppp'=>$ppp), array('code' => 200, 'message' => $this->message['error']));       
+    }
+    
     public function actionDetail($s = ""){
         HelperGlobal::CheckAccessToken();
         $event = $this->EventModel->get_by_slug($s);

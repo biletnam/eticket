@@ -55,7 +55,7 @@
                                                             
 
                                                             <li><a href="<?php echo HelperUrl::baseUrl() ?>page/how_it_work">How It Works</a></li>
-                                                            <li class="last"><a href="<?php echo HelperUrl::baseUrl() ?>faq">Help</a></li>
+                                                            <li class="last"><a href="<?php echo HelperUrl::baseUrl() ?>faq">FAQs</a></li>
                                                         </ul>
                                                     </nav>
                                                 </div>

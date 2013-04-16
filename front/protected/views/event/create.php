@@ -2,6 +2,18 @@
 $countries = Helper::countries();
 ?>
 <div class="container_12">
+    
+    <div class="event-bar clearfix">
+        <div class="grid_12">
+            <ul class="clearfix">
+                <li class="active"><a class="active bebasneue" href="#"><i class="icon icon-edit-white hide"></i>Event Information</a></li>
+                <li class=""><a class=" bebasneue" href="#"><i class="icon icon-ticket hide"></i>Ticket Information</a></li>
+                <?php /*<li class="<?php if ($type == "share") echo 'active'; ?>"><a class="<?php if ($type == "share") echo 'active'; ?> bebasneue" href="<?php echo HelperUrl::baseUrl(); ?>event/edit/id/<?php echo $event['id'] ?>/type/share"><i class="icon icon-ticket hide"></i>Share Event</a></li>*/?>
+                <?php /* <li><a class="" href="<?php echo HelperUrl::baseUrl()?>event/gallery/id/<?php echo $event['id'];?>"><i class="icon icon-ticket"></i>Gallery</a></li> */ ?>
+            </ul>
+        </div>
+    </div>
+    
     <div class="grid_12 padding-bottom-50px">
         <form id="event_form" enctype="multipart/form-data" method="POST" class="form-style form-create-event border">
             <input type="hidden" name="location_id" value="<?php if (isset($_POST['location_id'])) echo $_POST['location_id']; ?>"/>
@@ -202,7 +214,7 @@ $countries = Helper::countries();
                     </div>
                 </div>
 
-                <div class="controls-group clearfix">
+                <div class="controls-group clearfix hide">
                     <label class="control-label pull-left" for="optionsCheckbox">&nbsp;</label>
                     <div class="controls pull-left">
                         <div class="rowElem">

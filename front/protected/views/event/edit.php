@@ -225,7 +225,7 @@ $ticket_status = Helper::ticket_status();
                                 </div>
                             </div>
 
-                            <div class="controls-group clearfix">
+                            <div class="controls-group clearfix hide">
                                 <label for="optionsCheckbox" class="control-label pull-left">&nbsp;</label>
                                 <div class="controls pull-left">
                                     <div class="rowElem">

@@ -40,7 +40,7 @@ class FaqController extends Controller {
             $this->layout = "404";
 
         $this->viewData['faq'] = $faq;
-        Yii::app()->params['page'] = 'Help';
+        Yii::app()->params['page'] = 'Faqs';
         $this->render('view', $this->viewData);
     }
 
@@ -52,7 +52,7 @@ class FaqController extends Controller {
         $faqs = $this->FaqModel->get_by_category($category['id'], $p, $ppp);
         $total = $this->FaqModel->count_by_category($category['id']);
 
-        Yii::app()->params['page'] = 'Help';
+        Yii::app()->params['page'] = 'Faqs';
         $this->viewData['category'] = $category;
         $this->viewData['faqs'] = $faqs;
         $this->viewData['total'] = $total;
@@ -77,7 +77,7 @@ class FaqController extends Controller {
         $faqs = $this->FaqModel->gets($args, $p, $ppp);
         $total = $this->FaqModel->counts($args);
 
-        Yii::app()->params['page'] = 'Help';
+        Yii::app()->params['page'] = 'Faqs';
         $this->viewData['faqs'] = $faqs;
         $this->viewData['total'] = $total;
         $this->viewData['paging'] = $total > $ppp ? HelperApp::get_paging($ppp, Yii::app()->request->baseUrl . "/faq/search/p/", $total, $p) : "";

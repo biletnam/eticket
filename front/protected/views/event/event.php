@@ -31,14 +31,14 @@
                         <?php if ($event['link'] != ''): ?>
                             <a href="<?php echo $event['link'] ?>"><img class="link-logo" src="<?php echo HelperUrl::baseUrl() ?>images/link-logo.png"></a>
                         <?php endif; ?>
-                        
+                        <a style="float: left;margin-right: 10px;display: none" href="<?php echo HelperUrl::baseUrl() ?>event/share/s/<?php echo $event['slug'] ?>"><img class="link-logo" style="width: 60px" src="<?php echo HelperUrl::baseUrl() ?>images/share.png" ></a>
                         <!-- AddThis Button BEGIN -->
-                        <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
-                            <a style="float: left;margin-right: 10px;" href="<?php echo HelperUrl::baseUrl() ?>event/share/s/<?php echo $event['slug'] ?>"><img class="link-logo" style="width: 60px" src="<?php echo HelperUrl::baseUrl() ?>images/share.png" ></a>
-                            <a class="addthis_button_compact"></a>
+                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
                         </div>
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
                         <!-- AddThis Button END -->
+
                     </div>
                     <div class="pull-right event-header-thumb">
                         <a class="fancybox" href="<?php echo HelperApp::get_thumbnail($event['thumbnail'], 'full') ?>">

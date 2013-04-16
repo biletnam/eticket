@@ -164,8 +164,8 @@ class UserController extends Controller {
 //        else
 //            HelperApp::email_register($email, $firstname,$pwd1);
 
-        $this->redirect(HelperUrl::baseUrl() . 'user/signup?register=done&link=' . urlencode($url));
-        //$this->redirect($url);
+        //$this->redirect(HelperUrl::baseUrl() . 'user/signup?register=done&link=' . urlencode($url));
+        $this->redirect($url."?register=1");
     }
 
     public function actionSignin() {

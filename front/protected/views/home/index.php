@@ -1,3 +1,16 @@
+<?php if (isset($_GET['register']) && $_GET['register']): ?>
+    <section class="container_12 register-success">
+        <div class="grid_12">
+            <div class="alert alert-success">
+                <h4>Congratulations! Your registration was successful.</h4>
+                <p>You may now browse and purchase tickets from any event you wish to attend.</p>
+
+                <p>If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this</p>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
 <!-- start: Flexslider -->
 
 <section class="slider container_12">

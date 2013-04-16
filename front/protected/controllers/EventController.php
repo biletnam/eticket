@@ -594,7 +594,7 @@ class EventController extends Controller {
             'maximum' => $ticket_max, 'service_fee' => $service_fee
                 ));
 
-        $this->message['error'][] = "New ticket has been added successfully.";
+        $this->message['error'][] = 'A new ticket has been added. <br/> To view your event click <a href="'.HelperUrl::baseUrl().'event/info/s/'.$event['slug'].'">here</a>. <br/> To add a new ticket option click "Add Ticket" below.';
         echo json_encode(array('id' => $ticket_type_id, 'message' => $this->message, 'type' => 'add'));
     }
 
@@ -1325,8 +1325,9 @@ class EventController extends Controller {
             //$message.= ($k + 1) . '. ' . $v['title'];
             $tmp_tickets = $tickets[$v['id']];
             foreach ($tmp_tickets as $t) {
-                $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t" . "&size=280x280";
-                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname'] . " " . $order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title']));
+                $random_key = Ultilities::base32UUID();
+                $url = HelperUrl::baseUrl(true) . "event/attend/eid/$order[event_id]/tid/$t/key/$random_key" . "&size=280x280";
+                $qrcode = $this->get_qrcode(array('url' => $url, 'ticket_id' => $t, 'name' => $order['lastname'] . " " . $order['firstname'], 'event_title' => $event['title'], 'ticket_type_title' => $v['title'],'random_key'=>$random_key));
                 $list_qrcodes.= ' <img style="margin-right:10px" src="' . $qrcode . '" alt="' . $v['title'] . '" title="' . $v['title'] . '" /> <br/> <br/>';
             }
         }
@@ -1352,7 +1353,7 @@ class EventController extends Controller {
         $simpleImage = new SimpleImage();
         $simpleImage->mergeImageQRCode(280, $args);
         $simpleImage->save_with_default_imagetype($filepath);
-        $this->TicketModel->update(array('qrcode' => $filename, 'id' => $args['ticket_id']));
+        $this->TicketModel->update(array('qrcode' => $filename,'random_key'=>$args['random_key'], 'id' => $args['ticket_id']));
         return HelperUrl::hostInfo() . HelperUrl::upload_url() . "qrcode/$filename";
     }
 
@@ -1395,7 +1396,7 @@ class EventController extends Controller {
         $this->render('search', $this->viewData);
     }
 
-    public function actionAttend($eid, $tid) {
+    public function actionAttend($eid, $tid,$key) {
         $event = $this->EventModel->get($eid);
 
         if (!$event) {
@@ -1404,10 +1405,18 @@ class EventController extends Controller {
         }
 
         $ticket = $this->TicketModel->get($tid);
-        if (!$ticket || $ticket['event_id'] != $eid) {
+        if (!$ticket || $ticket['event_id'] != $eid || $ticket['random_key'] == "" || $ticket['random_key'] != $key) {
             echo "PERMISSION DENIED";
             die;
         }
+        
+        if($ticket['is_used'])
+        {
+            echo "THIS TICKET HAS ALREADY USED.";
+            die;
+        }
+        
+        $this->TicketModel->update(array('is_used'=>1,'id'=>$tid));
 
         $message = '<h2>Permission Accepted</h2> <br/><br/>
                     <h3>Event: ' . $event['title'] . ' </h3>

@@ -34,7 +34,7 @@ class CategoryController extends Controller {
         
         $args = array('s' => $s, 'deleted' => 0);
         if($type != "all")
-            $args['role'] = $type;
+            $args['type'] = $type;
 
         $categories = $this->CategoryModel->gets($args, $p, $ppp);
         $total_category = $this->CategoryModel->counts($args);

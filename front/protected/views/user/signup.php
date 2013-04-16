@@ -70,21 +70,24 @@
                 </div>
             </div>
 
-            <div class="controls-group clearfix">
-                <label class="control-label pull-left">Company <span class="required">(Enter name if you register as an event organizer)</span></label>
-                <div class="controls pull-left">
-                    <input type="text" class="input-large" name="company"/>
-                </div>
-            </div>
+
 
             <div class="controls-group clearfix">
                 <label class="control-label pull-left">&nbsp;</label>
                 <div class="controls pull-left" style="width: 415px">
                     <div class="rowElem">
                         <div class="jq-plugin clearfix">
-                            <label class="checkbox label-signup"><input type="checkbox" name="client" value="client" id="client"/>  CHECK HERE TO REGISTER AS AN EVENT ORGANIZER.</label>
+                            <label class="checkbox label-signup"><input type="checkbox" name="client" value="client" id="client" <?php echo (isset($_POST['client']) && $_POST['client'] == "client") ? "checked" : ""; ?>/>  CHECK HERE TO REGISTER AS AN EVENT ORGANIZER.</label>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="controls-group clearfix client-input">
+                <label class="control-label pull-left">Company <span class="required">*</span></label>
+                <div class="controls pull-left">
+                    <input type="text" class="input-large" name="company"/><br/><br/>
+                    <p class="help-block">Enter name if you register as an event organizer</p>
                 </div>
             </div>
 
@@ -105,6 +108,6 @@
     <h4>Congratulations! Your registration was successful.</h4>
     <p>Congratulations! Your registration was successful. You may now browse and purchase tickets from any event you wish to attend.</p>
 
-<p>If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this</p>
-    
+    <p>If you registered as an ‘Event Organizer’ this section of your account will firstly need to be approved. This usually takes 24-48 hrs. Once you are approved we will send you an email confirming this</p>
+
 </div>

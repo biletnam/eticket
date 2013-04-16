@@ -218,7 +218,32 @@ function bind_user() {
         }, 'json');
         return false;
     });
+    
+    var client = $("#client");
+    
+    if(client.length > 0){
+        if(client.is(':checked'))
+            $(".client-input").fadeIn('fast');
+        else
+            $(".client-input").fadeOut('fast');
+    }
+    
+   
+    
+    $("#client").click(function(){
+        var ele = $(this);
+        check_client(ele);
+    });
 }
+
+
+function check_client(ele){
+    if(!ele.is(':checked'))
+        $(".client-input").fadeIn('fast');
+    else
+        $(".client-input").fadeOut('fast');
+}
+
 
 function bind_category() {
     $(".category-type").change(function() {
@@ -269,11 +294,11 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // Strip all characters but numerical ones.
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
     var n = !isFinite(+number) ? 0 : +number,
-            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-            s = '',
-            toFixedFix = function(n, prec) {
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.round(n * k) / k;
     };

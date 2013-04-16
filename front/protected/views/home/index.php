@@ -31,7 +31,7 @@
                     <li>
                         <h6 class="bebasneue"><?php echo date('d F Y', strtotime($v['start_time'])) ?></h6>
                         <div class="border-style">&nbsp;</div>
-                        <div class="cleafix">
+                        <div class="clearfix">
                             <div class="event-thumbnail pull-left">
                                 <a href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $v['slug'] ?>">
                                     <img src="<?php echo HelperApp::get_thumbnail($v['thumbnail'], 'home_thumbnail'); ?>"/>
@@ -44,6 +44,7 @@
                                 <a class="bebasneue" href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $v['slug'] ?>">Get A Ticket</a>
                             </div>
                         </div>
+                        <h6 class="bebasneue event-title"><a href="<?php echo HelperUrl::baseUrl() ?>event/info/s/<?php echo $v['slug'] ?>"><?php echo $v['title']; ?></a></h6>
                     </li>
                 <?php endforeach; ?>
             </ul>

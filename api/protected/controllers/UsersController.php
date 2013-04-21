@@ -164,7 +164,7 @@ class UsersController extends Controller {
         $this->UserModel->add_token($token, $user['id'], 'password', $date_added, $date_expired);
         $msg = "Please check your email. We just sent you an email with a link to setup your new password.";
 
-        $forgot_url = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl . "/user/reset/t/$token";
+        $forgot_url = Yii::app()->request->hostInfo  . "/front/user/reset/t/$token";
         $to = $email;
         $subject = "Recovery Password";
         $message = 'Hello <strong>' . $user['firstname'] . ' ' . $user['lastname'] . '</strong>, <br /><br />
